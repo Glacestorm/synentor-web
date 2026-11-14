@@ -1,0 +1,44 @@
+---
+// Avís legal, privacitat i galetes (diseño §3): borrador pendiente del asesor jurídico; se publica con el visto bueno de
+// gerencia. Solo datos de la empresa. Solo se citan la LQPD y el RGPD.
+import { textos, rellena } from '../../i18n/t';
+import type { Idioma } from '../../i18n/idiomas';
+import { EMPRESA } from '../../datos/empresa';
+
+interface Props {
+  idioma: Idioma;
+  pagina: 'aviso-legal' | 'privacidad' | 'cookies';
+}
+const { idioma, pagina } = Astro.props;
+const todo = textos(idioma);
+const tx = pagina === 'aviso-legal' ? todo.legal.aviso : pagina === 'privacidad' ? todo.legal.privacidad : todo.legal.cookies;
+/** Fecha del texto (cámbiala al cambiar el texto). */
+const ACTUALIZADO = '2026-11-14';
+const d = EMPRESA.direccion;
+const valores = {
+  razon: EMPRESA.razonSocial,
+  direccion: `${d.linea}, ${d.codigoPostal} ${d.localidad} (${d.pais})`,
+  correo: EMPRESA.correo,
+  telefono: EMPRESA.telefono.texto,
+};
+const fecha = new Date(`${ACTUALIZADO}T12:00:00Z`).toLocaleDateString(idioma, { timeZone: 'UTC' });
+---
+
+<section class="cabecera-pagina">
+  <div class="contenedor estrecho">
+    <h1>{tx.encabezado}</h1>
+    <p class="pequeno">{rellena(todo.legal.actualizado, { fecha })}</p>
+  </div>
+</section>
+<section class="bloque">
+  <div class="contenedor estrecho texto-legal">
+    {
+      tx.secciones.map((s) => (
+        <section>
+          <h2>{s.t}</h2>
+          <p>{rellena(s.p, valores)}</p>
+        </section>
+      ))
+    }
+  </div>
+</section>

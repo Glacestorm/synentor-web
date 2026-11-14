@@ -1,0 +1,21 @@
+---
+// Un proceso en pasos (lista ordenada): cada paso con su icono; el último, resaltado.
+import { svgIcono, type NombreIcono } from '../../lib/iconos';
+
+interface Props {
+  pasos: readonly string[];
+  iconos: readonly NombreIcono[];
+}
+const { pasos, iconos } = Astro.props;
+---
+
+<ol class="flujo">
+  {
+    pasos.map((p, i) => (
+      <li>
+        <span class="flujo-icono" set:html={svgIcono(iconos[i] ?? 'check', 20)} />
+        {p}
+      </li>
+    ))
+  }
+</ol>

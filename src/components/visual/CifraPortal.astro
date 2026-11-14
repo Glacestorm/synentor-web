@@ -1,0 +1,27 @@
+---
+// La cifra destacada del portal del empleado: dato MEDIDO (src/datos/portal.ts), con su porcentaje, un medidor y qué se cuenta.
+import { textos, rellena } from '../../i18n/t';
+import type { Idioma } from '../../i18n/idiomas';
+import { PORTAL_MEDIDO } from '../../datos/portal';
+import { porcentaje } from '../../lib/formato';
+
+interface Props {
+  idioma: Idioma;
+}
+const { idioma } = Astro.props;
+const tx = textos(idioma).inicio.rrhh.cifra;
+const fraccion = PORTAL_MEDIDO.fichan / PORTAL_MEDIDO.total;
+const mes = new Date(`${PORTAL_MEDIDO.mes}-15T12:00:00Z`).toLocaleDateString(idioma, { month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+
+<figure class="cifra">
+  <div class="cifra-valor"><span class="texto-oro">{porcentaje(fraccion, idioma)}</span></div>
+  <p><strong>{tx.etiqueta}</strong></p>
+  <div class="cifra-medidor" role="img" aria-label={`${PORTAL_MEDIDO.fichan} / ${PORTAL_MEDIDO.total}`}>
+    <span style={`width:${(fraccion * 100).toFixed(1)}%`}></span>
+  </div>
+  <figcaption>
+    <p>{rellena(tx.texto, { fichan: PORTAL_MEDIDO.fichan, total: PORTAL_MEDIDO.total, mes })}</p>
+    <p class="pequeno">{tx.fuente}</p>
+  </figcaption>
+</figure>

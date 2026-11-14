@@ -1,0 +1,181 @@
+---
+// Precios (diseño §8): el configurador, las tablas de la tarifa, las condiciones, la comparación sin nombres y las
+// preguntas frecuentes. Todos los importes salen de la tarifa; la comparación, de src/datos/mercado.ts.
+import { textos, rellena } from '../../i18n/t';
+import { ruta, type Idioma } from '../../i18n/idiomas';
+import { TARIFA } from '../../lib/precios/tarifa';
+import { porCategoria } from '../../lib/consultoria';
+import { euros, porcentaje } from '../../lib/formato';
+import { textosConfigurador } from '../../lib/textosConfigurador';
+import { MERCADO } from '../../datos/mercado';
+import GraficoComparacion from '../visual/GraficoComparacion.astro';
+
+interface Props {
+  idioma: Idioma;
+}
+const { idioma } = Astro.props;
+const todo = textos(idioma);
+const tx = todo.precios;
+const tt = tx.tablas;
+const eur = (n: number) => euros(n, idioma);
+const pct = (n: number) => porcentaje(n, idioma);
+const fechaLocal = (iso: string) => new Date(`${iso}T12:00:00Z`).toLocaleDateString(idioma, { timeZone: 'UTC' });
+const alMes = (n: number) => rellena(tt.alMes, { precio: eur(n) });
+const consultoriaDesde = Math.min(...porCategoria().map((g) => g.desde));
+const t1 = TARIFA.muv.tramos[0];
+const t2 = TARIFA.muv.tramos[1];
+---
+
+<section class="cabecera-pagina">
+  <div class="contenedor estrecho">
+    <h1>{tx.encabezado}</h1>
+    <p class="subtitulo">{tx.entrada}</p>
+  </div>
+</section>
+
+<section class="bloque">
+  <div class="contenedor">
+    <div
+      id="configurador"
+      class="configurador"
+      data-idioma={idioma}
+      data-contacto={ruta('contacto', idioma)}
+      data-textos={JSON.stringify(textosConfigurador(idioma))}
+    >
+      <noscript><p>{tx.configurador.sinJs}</p></noscript>
+    </div>
+  </div>
+</section>
+
+<section class="bloque claro">
+  <div class="contenedor">
+    <h2>{tt.titulo}</h2>
+    <div class="tabla-envoltura" tabindex="0" role="region" aria-label={tt.titulo}>
+      <table class="tabla-simple">
+        <caption>{tt.suite}</caption>
+        <tbody>
+          <tr><th scope="row">{todo.servicios.modulos.base.nombre}</th><td>{alMes(TARIFA.base.cuota)}</td></tr>
+          <tr><th scope="row">{tt.usuarioAdicional}</th><td>{alMes(TARIFA.usuarioAdicional)}</td></tr>
+          <tr>
+            <th scope="row">{tt.empresaAdicional}</th>
+            <td>
+              {
+                rellena(tt.empresaAdicionalPrecio, {
+                  precio: eur(TARIFA.empresaAdicional.cuota),
+                  porcentaje: pct(TARIFA.empresaAdicional.factorModulos),
+                })
+              }
+            </td>
+          </tr>
+          {
+            (Object.keys(TARIFA.modulos) as (keyof typeof TARIFA.modulos)[]).map((m) => {
+              const def = TARIFA.modulos[m] as { cuota: number; porPersona?: number };
+              return (
+                <tr>
+                  <th scope="row">{todo.servicios.modulos[m].nombre}</th>
+                  <td>
+                    {alMes(def.cuota)}
+                    {def.porPersona ? ` ${rellena(tt.porPersona, { precio: eur(def.porPersona) })}` : ''}
+                  </td>
+                </tr>
+              );
+            })
+          }
+          <tr>
+            <th scope="row">{tt.paquete}</th>
+            <td>
+              {rellena(todo.precios.configurador.paqueteTexto, { usuarios: TARIFA.paquete.usuariosIncluidos, precio: eur(TARIFA.paquete.cuota) })}
+              {' '}
+              {rellena(tt.paqueteUsuario, { precio: eur(TARIFA.paquete.usuarioAdicional) })}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{tt.muv}</th>
+            <td>
+              {
+                rellena(todo.servicios.muv.precio, {
+                  gratis: TARIFA.muv.gratisHasta,
+                  desde1: TARIFA.muv.gratisHasta + 1,
+                  hasta1: t1.hasta,
+                  precio1: eur(t1.precio),
+                  hasta2: t2.hasta,
+                  precio2: eur(t2.precio),
+                })
+              }
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{tt.consultoria}</th>
+            <td>{rellena(todo.servicios.consultoria.desde, { precio: eur(consultoriaDesde) })}</td>
+          </tr>
+          <tr>
+            <th scope="row">{todo.servicios.implantacion.titulo}</th>
+            <td>{rellena(tt.implantacion, { precio: eur(TARIFA.implantacion.jornada) })}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p><a class="enlace" href={ruta('servicios', idioma)}>{tt.servicios}: {tt.verServicios} →</a></p>
+  </div>
+</section>
+
+<section class="bloque">
+  <div class="contenedor dos-col">
+    <div>
+      <h2>{tx.condiciones.titulo}</h2>
+      <ul class="lista-ok">
+        {
+          tx.condiciones.puntos.map((p) => (
+            <li>{rellena(p, { igi: pct(TARIFA.igiAndorra), recargo: pct(TARIFA.recargoMensual) })}</li>
+          ))
+        }
+      </ul>
+      <p class="pequeno">{todo.servicios.implantacion.soporte}</p>
+    </div>
+    <div>
+      <h2>{tx.comparacion.titulo}</h2>
+      <p>
+        {
+          rellena(tx.comparacion.texto, {
+            nominaMin: eur(MERCADO.nominaPorPersona.min),
+            nominaMax: eur(MERCADO.nominaPorPersona.max),
+            erp: eur(MERCADO.erpPorUsuario),
+            usuarios: TARIFA.base.usuariosIncluidos,
+          })
+        }
+      </p>
+      <GraficoComparacion idioma={idioma} />
+      <p class="pequeno">{rellena(tx.comparacion.fuente, { fecha: fechaLocal(MERCADO.consultado) })}</p>
+    </div>
+  </div>
+</section>
+
+<section class="bloque claro">
+  <div class="contenedor estrecho">
+    <h2>{tx.faq.titulo}</h2>
+    {
+      tx.faq.preguntas.map((q) => (
+        <details class="pregunta">
+          <summary>{q.p}</summary>
+          <p>{q.r}</p>
+        </details>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  import { montaConfigurador } from '../../scripts/configurador';
+  import type { Idioma } from '../../i18n/idiomas';
+  import type { Pais } from '../../lib/precios/calcula';
+
+  const raiz = document.getElementById('configurador');
+  if (raiz) {
+    const idioma = raiz.dataset.idioma as Idioma;
+    // El país inicial lo dice el Worker; si no contesta, «otro país» (nunca se adivina).
+    fetch('/api/pais')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d: { pais?: Pais } | null) => montaConfigurador(raiz, idioma, d?.pais ?? 'OTRO'))
+      .catch(() => montaConfigurador(raiz, idioma, 'OTRO'));
+  }
+</script>

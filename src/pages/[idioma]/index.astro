@@ -1,0 +1,18 @@
+---
+// La portada de cada idioma con textos. La raíz «/» no es una página: la atiende el Worker y lleva al idioma de la persona.
+import Base from '../../layouts/Base.astro';
+import Inicio from '../../components/inicio/Inicio.astro';
+import { TEXTOS } from '../../i18n/t';
+import type { Idioma } from '../../i18n/idiomas';
+
+export function getStaticPaths() {
+  return (Object.keys(TEXTOS) as Idioma[]).map((idioma) => ({ params: { idioma } }));
+}
+
+const idioma = Astro.params.idioma as Idioma;
+const tx = TEXTOS[idioma] ?? TEXTOS.ca;
+---
+
+<Base idioma={idioma} pagina="inicio" titulo={tx.inicio.titulo} descripcion={tx.inicio.descripcion}>
+  <Inicio idioma={idioma} />
+</Base>

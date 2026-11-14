@@ -1,0 +1,13 @@
+---
+// Un icono de línea de la casa (src/lib/iconos.ts). Decorativo: el texto de al lado dice lo que es.
+import { svgIcono, type NombreIcono } from '../lib/iconos';
+
+interface Props {
+  nombre: NombreIcono;
+  tam?: number;
+  clase?: string;
+}
+const { nombre, tam = 24, clase = 'icono' } = Astro.props;
+---
+
+<Fragment set:html={svgIcono(nombre, tam, clase)} />

@@ -1,0 +1,23 @@
+{
+  // Web pública de Synentor: los ficheros estáticos de dist/ y un Worker para "/" (idioma) y "/api/*" (formulario).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "synentor-web",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/", "/api/*"],
+    // Una dirección que no existe da dist/404.html con estado 404 (las de la web anterior las lleva public/_redirects).
+    "not_found_handling": "404-page"
+  },
+  // Lo único que no es secreto. Las claves (TURNSTILE_SECRET, RESEND_API_KEY) son secretos de Cloudflare:
+  // nunca en este fichero (el repositorio es público).
+  "vars": {
+    "PUBLIC_TURNSTILE_SITEKEY": ""
+  },
+  "observability": { "enabled": true },
+  // Cada día a las 03:17 (UTC) se borran las pruebas de consentimiento de más de 12 meses (worker/consentimiento.ts).
+  // La base D1 «CONSENTIMIENTOS» se añade aquí cuando gerencia la cree (guía de puesta en marcha, §9.5).
+  "triggers": { "crons": ["17 3 * * *"] }
+}

@@ -1,0 +1,244 @@
+{
+  "fecha": "2026-11-02",
+  "origen": "ERP docs/producte/consultoria/catalogo.json",
+  "servicios": [
+    {
+      "id": "diagnostico-ia-express",
+      "nombre": "Diagnóstico exprés de IA",
+      "categoria": "estrategia",
+      "precioDesde": 950,
+      "cuotaDesde": 0
+    },
+    {
+      "id": "auditoria-hoja-ruta-ia",
+      "nombre": "Auditoría de oportunidades y hoja de ruta de IA",
+      "categoria": "estrategia",
+      "precioDesde": 2400,
+      "cuotaDesde": 0
+    },
+    {
+      "id": "piloto-prueba-concepto",
+      "nombre": "Prueba piloto de un caso de uso (30-60 días)",
+      "categoria": "estrategia",
+      "precioDesde": 1900,
+      "cuotaDesde": 0
+    },
+    {
+      "id": "direccion-ia-tiempo-parcial",
+      "nombre": "Responsable de IA externo (dirección a tiempo parcial)",
+      "categoria": "estrategia",
+      "precioDesde": 500,
+      "cuotaDesde": 650
+    },
+    {
+      "id": "taller-ia-direccion",
+      "nombre": "Taller de IA para dirección",
+      "categoria": "formacion",
+      "precioDesde": 700,
+      "cuotaDesde": 0
+    },
+    {
+      "id": "formacion-ia-equipos",
+      "nombre": "Formación práctica en IA generativa para equipos (incluye alfabetización en IA)",
+      "categoria": "formacion",
+      "precioDesde": 950,
+      "cuotaDesde": 0
+    },
+    {
+      "id": "programa-adopcion-ia",
+      "nombre": "Programa de adopción de IA con referentes internos",
+      "categoria": "formacion",
+      "precioDesde": 2400,
+      "cuotaDesde": 0
+    },
+    {
+      "id": "asistente-atencion-cliente",
+      "nombre": "Asistente de atención al cliente en web y WhatsApp",
+      "categoria": "asistentes",
+      "precioDesde": 1900,
+      "cuotaDesde": 90
+    },
+    {
+      "id": "agente-voz-telefonico",
+      "nombre": "Recepcionista telefónico con IA (agente de voz)",
+      "categoria": "asistentes",
+      "precioDesde": 2400,
+      "cuotaDesde": 150
+    },
+    {
+      "id": "gestion-resenas",
+      "nombre": "Gestión de reseñas y reputación en línea con IA",
+      "categoria": "asistentes",
+      "precioDesde": 700,
+      "cuotaDesde": 40
+    },
+    {
+      "id": "asistente-comercial",
+      "nombre": "Asistente comercial: cualificación de contactos y presupuestos",
+      "categoria": "asistentes",
+      "precioDesde": 1900,
+      "cuotaDesde": 80
+    },
+    {
+      "id": "lectura-facturas-albaranes",
+      "nombre": "Lectura automática de facturas y albaranes",
+      "categoria": "automatizacion",
+      "precioDesde": 1900,
+      "cuotaDesde": 90
+    },
+    {
+      "id": "correo-entrante",
+      "nombre": "Clasificación y respuesta asistida del correo",
+      "categoria": "automatizacion",
+      "precioDesde": 1450,
+      "cuotaDesde": 60
+    },
+    {
+      "id": "automatizacion-flujos",
+      "nombre": "Automatización de tareas entre aplicaciones (paquete de 3 flujos)",
+      "categoria": "automatizacion",
+      "precioDesde": 1900,
+      "cuotaDesde": 60
+    },
+    {
+      "id": "agentes-ia-procesos",
+      "nombre": "Agentes de IA para procesos de varios pasos",
+      "categoria": "automatizacion",
+      "precioDesde": 3850,
+      "cuotaDesde": 150
+    },
+    {
+      "id": "contenidos-marketing",
+      "nombre": "Contenidos y marketing con IA",
+      "categoria": "automatizacion",
+      "precioDesde": 1450,
+      "cuotaDesde": 50
+    },
+    {
+      "id": "buscador-documental-rag",
+      "nombre": "Buscador inteligente sobre documentos internos (RAG)",
+      "categoria": "documentos",
+      "precioDesde": 2400,
+      "cuotaDesde": 90
+    },
+    {
+      "id": "asistente-interno",
+      "nombre": "Asistente interno para la plantilla (procedimientos y personal)",
+      "categoria": "documentos",
+      "precioDesde": 1450,
+      "cuotaDesde": 60
+    },
+    {
+      "id": "extraccion-revision-documentos",
+      "nombre": "Extracción y revisión de documentos (contratos, expedientes, pólizas)",
+      "categoria": "documentos",
+      "precioDesde": 1900,
+      "cuotaDesde": 90
+    },
+    {
+      "id": "actas-transcripcion",
+      "nombre": "Transcripción y actas automáticas (reuniones, visitas, consultas)",
+      "categoria": "documentos",
+      "precioDesde": 950,
+      "cuotaDesde": 60
+    },
+    {
+      "id": "traduccion-multilingue",
+      "nombre": "Traducción y comunicación multilingüe",
+      "categoria": "documentos",
+      "precioDesde": 950,
+      "cuotaDesde": 50
+    },
+    {
+      "id": "cuadro-mando-ia",
+      "nombre": "Cuadro de mando con preguntas en lenguaje natural",
+      "categoria": "datos",
+      "precioDesde": 1900,
+      "cuotaDesde": 80
+    },
+    {
+      "id": "prevision-demanda",
+      "nombre": "Previsión de demanda, ocupación y ventas",
+      "categoria": "datos",
+      "precioDesde": 2400,
+      "cuotaDesde": 100
+    },
+    {
+      "id": "mantenimiento-predictivo",
+      "nombre": "Mantenimiento predictivo y detección de anomalías",
+      "categoria": "datos",
+      "precioDesde": 2900,
+      "cuotaDesde": 150
+    },
+    {
+      "id": "calidad-datos",
+      "nombre": "Preparación y calidad de datos",
+      "categoria": "datos",
+      "precioDesde": 1450,
+      "cuotaDesde": 0
+    },
+    {
+      "id": "ia-local-privada",
+      "nombre": "IA privada en servidor propio o andorrano",
+      "categoria": "medida",
+      "precioDesde": 2400,
+      "cuotaDesde": 150
+    },
+    {
+      "id": "desarrollo-medida",
+      "nombre": "Desarrollo e integración de IA a medida",
+      "categoria": "medida",
+      "precioDesde": 4800,
+      "cuotaDesde": 120
+    },
+    {
+      "id": "vision-artificial",
+      "nombre": "Visión artificial (control de calidad, inventario, conteo)",
+      "categoria": "medida",
+      "precioDesde": 3850,
+      "cuotaDesde": 100
+    },
+    {
+      "id": "adecuacion-reglamento-ia",
+      "nombre": "Adecuación al Reglamento europeo de IA",
+      "categoria": "cumplimiento",
+      "precioDesde": 1450,
+      "cuotaDesde": 0
+    },
+    {
+      "id": "proteccion-datos-ia",
+      "nombre": "Protección de datos en proyectos de IA (LQPD y RGPD)",
+      "categoria": "cumplimiento",
+      "precioDesde": 950,
+      "cuotaDesde": 0
+    },
+    {
+      "id": "politica-uso-ia",
+      "nombre": "Política interna de uso de IA y gobierno",
+      "categoria": "cumplimiento",
+      "precioDesde": 700,
+      "cuotaDesde": 0
+    },
+    {
+      "id": "mantenimiento-soporte",
+      "nombre": "Mantenimiento y soporte de soluciones de IA",
+      "categoria": "soporte",
+      "precioDesde": 250,
+      "cuotaDesde": 150
+    },
+    {
+      "id": "bolsa-jornadas",
+      "nombre": "Bolsa de jornadas de mejora continua",
+      "categoria": "soporte",
+      "precioDesde": 2150,
+      "cuotaDesde": 0
+    },
+    {
+      "id": "operacion-ia-gestionada",
+      "nombre": "Servicio gestionado de IA local",
+      "categoria": "soporte",
+      "precioDesde": 500,
+      "cuotaDesde": 250
+    }
+  ]
+}

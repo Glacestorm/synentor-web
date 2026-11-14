@@ -1,0 +1,42 @@
+---
+// Las páginas de cada idioma con textos, salvo la portada (index.astro): la dirección de cada una sale de RUTAS.
+import Base from '../../layouts/Base.astro';
+import Servicios from '../../components/servicios/Servicios.astro';
+import Precios from '../../components/precios/Precios.astro';
+import Contacto from '../../components/contacto/Contacto.astro';
+import Legal from '../../components/legal/Legal.astro';
+import { TEXTOS, textos } from '../../i18n/t';
+import { PAGINAS, RUTAS, type Idioma, type Pagina } from '../../i18n/idiomas';
+
+export function getStaticPaths() {
+  return (Object.keys(TEXTOS) as Idioma[]).flatMap((idioma) =>
+    PAGINAS.filter((p) => p !== 'inicio').map((pagina) => ({
+      params: { idioma, pagina: RUTAS[pagina][idioma] },
+      props: { pagina },
+    })),
+  );
+}
+
+const idioma = Astro.params.idioma as Idioma;
+const { pagina } = Astro.props as { pagina: Exclude<Pagina, 'inicio'> };
+const todo = textos(idioma);
+const meta =
+  pagina === 'servicios'
+    ? todo.servicios
+    : pagina === 'precios'
+      ? todo.precios
+      : pagina === 'contacto'
+        ? todo.contacto
+        : pagina === 'aviso-legal'
+          ? { titulo: todo.legal.aviso.titulo, descripcion: todo.legal.aviso.encabezado }
+          : pagina === 'privacidad'
+            ? { titulo: todo.legal.privacidad.titulo, descripcion: todo.legal.privacidad.encabezado }
+            : { titulo: todo.legal.cookies.titulo, descripcion: todo.legal.cookies.encabezado };
+---
+
+<Base idioma={idioma} pagina={pagina} titulo={meta.titulo} descripcion={meta.descripcion}>
+  {pagina === 'servicios' && <Servicios idioma={idioma} />}
+  {pagina === 'precios' && <Precios idioma={idioma} />}
+  {pagina === 'contacto' && <Contacto idioma={idioma} />}
+  {(pagina === 'aviso-legal' || pagina === 'privacidad' || pagina === 'cookies') && <Legal idioma={idioma} pagina={pagina} />}
+</Base>

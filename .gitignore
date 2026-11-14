@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.dev.vars
+.env
+.env.*
+test-results/
+playwright-report/
+
+# Capturas de pantalla para revisar (no van al repositorio)
+capturas-idiomas/
