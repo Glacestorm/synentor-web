@@ -241,6 +241,35 @@ Sin IGI. Incluyen formulario que envía de verdad, estadísticas sin cookies (Um
 | Mantenimiento Básico | Alojamiento, copias, actualizaciones, estadísticas, 1 h de cambios al mes | 49 € al mes |
 | Mantenimiento Plus | Lo mismo, 3 h de cambios al mes e informe mensual de visitas | 99 € al mes |
 
+### 7.4 ter Servicios aprobados por gerencia el 14/11/2026
+
+Sin impuestos. Los importes viven solo en `src/lib/precios/tarifa.ts`.
+
+- **C. Eléctrica** (programa para asesores energéticos): 79 € al mes, con la Base. Solo España (CUPS, peajes, OMIE); en
+  Andorra y en los demás países, a medida. Se anuncia ya (gerencia), sin lo que no hace: ni Andorra, ni 6 periodos, ni
+  precios de mercado en tiempo real, ni gas, ni solar, ni alertas automáticas, ni firma con validez legal.
+- **Energía (servicios)**: estudio de factura para particulares, 49 € (se devuelve si no encontramos un ahorro de al menos
+  49 € al año); empresas, 290 € por suministro o a éxito, 30 % del ahorro comprobado de los 12 primeros meses (sin ahorro,
+  no se cobra); 6 periodos, hospitales y promotoras, a medida. **No se nombra ningún caso** (gerencia: hay una propuesta
+  presentada a un hospital de Andorra, sin respuesta). Hoy no hay tratos con ninguna comercializadora.
+- **Monitorización con Home Assistant y Grafana**: vivienda o pequeño negocio desde 690 € y 19 € al mes; pyme o comercio
+  (hasta 6 cuadros) desde 2.900 € y 49 €; edificio, hotel o promotora desde 6.900 € y 99 €; hospital o gran consumidor, a
+  medida y desde 290 € al mes. La instalación incluye los medidores de esos puntos.
+- **Migraciones** (pago único, solo lo que hoy importa de verdad el ERP): arranque 1.440 €; contabilidad anterior
+  (Andorra) 1.440 € el primer ejercicio y 720 € cada uno más; personal (Andorra) 1.440 € hasta 25 personas. Lo que hoy no se
+  importa (maestro de clientes, cartera, stock, inmovilizado, conectores directos), a medida.
+- **Convivencia con el programa actual**, por ficheros: 720 € de puesta en marcha y 99 € al mes (hasta 4 cargas al mes).
+  No hay conectores directos (los de Odoo y TPV del ERP son simulados): un conector, a medida.
+- **Solo el portal del empleado**: 59 € al mes hasta 10 personas, 4 € por persona más, 720 € de implantación, sin la Base.
+  Andorra disponible; España, en desarrollo inminente. Dato para destacarlo: según gerencia, en el obrador donde nació
+  el producto llegó a fichar desde el portal casi el 80 % de la plantilla. **En el repositorio no hay ninguna medida**: se
+  publica solo cuando la confirme la consulta de solo lectura de la base (recuentos por mes), y con la cifra medida.
+- **Centralita de IA para consultorios** (proyecto nuevo, aún sin construir): en la web, «próximamente», sin precios y con
+  formulario para clínicas interesadas. Tarifa para presupuestos (la de Claude, aprobada): Esencial 290 € al mes, 1.500 € de
+  implantación y 1.000 minutos; Avanzada 450 €, 2.900 € y 2.000 minutos; Élite 890 €, desde 5.900 € y 3.500 minutos; minuto
+  adicional 0,15 €. El teléfono lo contrata la clínica con su operador (en Andorra, Andorra Telecom). IA de voz en la nube
+  de la UE con contrato de encargado: aprobada por gerencia, pendiente de la verificación legal y técnica completa.
+
 ### 7.5 Nota para el ERP
 
 La base del ERP tiene planes de licencia de agosto (`license_plans`: 49 / 189 / 79 / 269 €) que no casan con esta tarifa y

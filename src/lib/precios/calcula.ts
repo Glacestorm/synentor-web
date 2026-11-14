@@ -85,6 +85,13 @@ function cuotaMuv(usuarios: number): number {
   return total;
 }
 
+/** Cuota mensual, en euros, de solo el portal del empleado (sin la Base): las primeras personas incluidas, después por persona. */
+export function cuotaPortal(personas: number): number {
+  const p = TARIFA.portalEmpleado;
+  const extra = Math.max(0, entero(personas) - p.personasIncluidas);
+  return eur(cent(p.cuota) + extra * cent(p.personaAdicional));
+}
+
 export function calcula(sel: Seleccion): Presupuesto {
   const lineas: Linea[] = [];
   const avisos = new Set<Aviso>();

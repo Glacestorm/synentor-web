@@ -20,6 +20,7 @@ const ESPANA: Record<Producto, Estado> = {
   productos: 'disponible',
   tpv: 'disponible',
   muv: 'disponible',
+  electrica: 'disponible',
 };
 
 const OTROS: Record<Producto, Estado> = {
@@ -33,10 +34,13 @@ const OTROS: Record<Producto, Estado> = {
   productos: 'disponible',
   tpv: 'a_medida',
   muv: 'disponible',
+  // C. Eléctrica trabaja con el mercado eléctrico español (CUPS, peajes, OMIE): fuera de España, a medida.
+  electrica: 'a_medida',
 };
 
 export function estadoModulo(pais: Pais, producto: Producto): Estado {
-  if (pais === 'AD') return 'disponible';
+  // En Andorra todo está disponible salvo C. Eléctrica, que es del mercado español.
+  if (pais === 'AD') return producto === 'electrica' ? 'a_medida' : 'disponible';
   if (pais === 'ES') return ESPANA[producto];
   return OTROS[producto];
 }
