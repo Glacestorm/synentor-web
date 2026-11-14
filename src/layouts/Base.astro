@@ -1,0 +1,94 @@
+---
+// Plantilla común: metadatos, cabecera y pie. La tarea 3 añade el selector de idioma y los hreflang.
+import '../estilos/marca.css';
+import { EMPRESA } from '../datos/empresa';
+
+interface Props {
+  idioma: string;
+  titulo: string;
+  descripcion: string;
+  ruta: string;
+}
+
+const { idioma, titulo, descripcion, ruta } = Astro.props;
+const canonica = new URL(ruta, EMPRESA.dominio).toString();
+const anio = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang={idioma}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="canonical" href={canonica} />
+    <link rel="icon" href="/marca/icona-32.png" sizes="32x32" />
+    <link rel="icon" href="/marca/icona-64.png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="/marca/icona-180.png" />
+    <meta name="theme-color" content="#050918" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:url" content={canonica} />
+    <meta property="og:image" content={new URL('/marca/portada.png', EMPRESA.dominio).toString()} />
+    <slot name="cabeza" />
+  </head>
+  <body>
+    <header class="cabecera">
+      <div class="contenedor cabecera-fila">
+        <a href={`/${idioma}/`} class="logo" aria-label={EMPRESA.marca}>
+          <img src="/marca/or-fosc-sense-descriptor.png" alt={EMPRESA.marca} width="186" height="50" />
+        </a>
+        <slot name="navegacion" />
+      </div>
+    </header>
+    <main id="contenido">
+      <slot />
+    </main>
+    <footer class="pie">
+      <div class="contenedor">
+        <slot name="pie" />
+        <p class="pie-legal">
+          © {anio} {EMPRESA.razonSocial} ({EMPRESA.estado}) · {EMPRESA.direccion.linea}, {EMPRESA.direccion.codigoPostal}
+          {EMPRESA.direccion.localidad} ({EMPRESA.direccion.pais}) ·
+          <a href={`mailto:${EMPRESA.correo}`}>{EMPRESA.correo}</a> ·
+          <a href={`tel:${EMPRESA.telefono.enlace}`}>{EMPRESA.telefono.texto}</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(5, 9, 24, 0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .cabecera-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 68px;
+  }
+  .logo img {
+    display: block;
+    width: 160px;
+    height: auto;
+  }
+  .pie {
+    margin-top: 96px;
+    padding: 40px 0 56px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--syn-gris);
+    font-size: 14px;
+  }
+  .pie-legal {
+    margin: 24px 0 0;
+  }
+</style>
