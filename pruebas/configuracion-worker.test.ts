@@ -25,6 +25,15 @@ describe('wrangler.jsonc', () => {
     expect(config.triggers).toEqual({ crons: ['17 3 * * *'] });
   });
 
+  it('las vistas previas de Cloudflare tienen su bloque y no tocan la base de consentimientos de producción', () => {
+    // `wrangler preview` (las construcciones de las ramas) se niega a publicar sin el bloque `previews`.
+    expect(config.previews).toBeDefined();
+    expect(JSON.stringify(config.previews)).not.toContain('REPLACE_ME');
+    expect(JSON.stringify(config.previews)).not.toContain(config.d1_databases[0].database_id);
+    expect(config.previews.d1_databases ?? []).toEqual([]);
+    expect(config.previews.vars).toEqual(config.vars);
+  });
+
   it('no guarda ningún secreto en las variables (el repositorio es público)', () => {
     const nombres = Object.keys(config.vars ?? {});
     expect(nombres.filter((n) => /SECRET|KEY|TOKEN|PASSWORD/i.test(n) && !n.startsWith('PUBLIC_'))).toEqual([]);
