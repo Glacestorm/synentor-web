@@ -83,7 +83,76 @@ Es el momento en que la web anterior deja de verse.
 
 ## 8. Estadísticas
 
-1. En Umami, la web ya tiene su identificador (`src/datos/analitica.ts`) y solo cuenta `synentor.com` y `www.synentor.com`.
-   Comprueba que llegan visitas después del paso 6.
-2. Google Analytics, Clarity y los píxeles de Meta y LinkedIn necesitan el aviso de cookies (diseño, §17), que se construye
-   después de aprobarlo. Hasta entonces la web no los carga.
+Umami ya funciona: la web tiene su identificador (`src/datos/analitica.ts`) y solo cuenta `synentor.com` y
+`www.synentor.com`. Comprueba que llegan visitas después del paso 6.
+
+## 9. Los cuatro identificadores del aviso de cookies (diseño, §17)
+
+Ninguno es un secreto: van dentro de la página. Pásalos por el chat y se ponen en `src/datos/analitica.ts`. Mientras falten,
+el aviso de cookies no sale y la web no carga esas herramientas.
+
+**Antes de empezar**:
+- Abre las cuatro cuentas con el correo de la empresa (`administracion@synentor.com`), no con uno personal: así son de la
+  empresa y no de una persona.
+- **No pegues en la web ningún código que te den** (etiqueta, fragmento, «snippet»). Solo hace falta el identificador:
+  el aviso de cookies carga cada herramienta después de que el visitante acepte.
+- Los menús de estas plataformas cambian de nombre a menudo. Si algo no está donde dice la guía, búscalo por el nombre
+  que se da entre comillas.
+
+### 9.1 Google Analytics 4 — el «ID de medición» (`G-` y 10 letras o cifras)
+
+1. Entra en `analytics.google.com` con una cuenta de Google de la empresa y pulsa «Empezar a medir».
+2. Cuenta: nombre `Synentor`. Desmarca las opciones de compartir datos con Google que no necesites.
+3. Propiedad: nombre `synentor.com`, zona horaria `Andorra`, moneda `Euro (EUR)`.
+4. Rellena el tamaño y el sector de la empresa y los objetivos (cualquiera vale; solo cambia los informes que te sugiere).
+5. Plataforma: «Web». URL `https://synentor.com`, nombre del flujo `Web synentor.com`. Deja activada la «medición
+   mejorada» y pulsa «Crear flujo».
+6. En la pantalla del flujo aparece el **«ID de medición»**: `G-` seguido de 10 caracteres. Ese es el identificador.
+7. Dos ajustes en «Administrar» (la rueda, abajo a la izquierda):
+   - «Configuración de datos» → «Retención de datos»: **14 meses**;
+   - «Configuración de datos» → «Recogida de datos»: **deja apagadas las «Señales de Google»**. El aviso de cookies solo
+     las pedirá si el visitante acepta la publicidad.
+
+### 9.2 Microsoft Clarity — el «ID del proyecto» (unos 10 caracteres)
+
+1. Entra en `clarity.microsoft.com` y regístrate (con una cuenta de Microsoft, Google o Facebook de la empresa).
+2. «Nuevo proyecto»: nombre `Synentor`, sitio web `https://synentor.com`, categoría la que más se parezca (servicios
+   profesionales o tecnología).
+3. Cuando ofrezca formas de instalarlo, elige la manual y no copies nada.
+4. Ve a «Configuración» → «Información general»: el **«ID del proyecto»** es el identificador.
+5. En «Configuración» → «Enmascaramiento» deja como mínimo el modo **«Equilibrado»**, que tapa lo que se escribe en los
+   formularios. Las grabaciones no deben ver nunca el nombre, el correo ni el mensaje de quien escribe.
+
+### 9.3 Píxel de Meta (Facebook e Instagram) — el «identificador del conjunto de datos» (15–16 cifras)
+
+1. Necesitas un portfolio comercial de Meta. Si no lo tienes, créalo en `business.facebook.com` con el nombre
+   `SYNENTOR, S.L.U.` y el correo de la empresa.
+2. Abre el «Administrador de eventos» (en el menú de herramientas del portfolio) → «Conectar orígenes de datos» → «Web» →
+   nombre `Web synentor.com`.
+3. Si te pide la dirección, escribe `https://synentor.com`. Cuando te ofrezca instalarlo con una plataforma o con el código,
+   elige **«Instalar el código manualmente»** y cierra sin copiar el código.
+4. El número que sale bajo el nombre del conjunto de datos («identificador del conjunto de datos» o «ID del píxel») es el
+   identificador.
+5. En la configuración del conjunto de datos, **desactiva la «Coincidencia avanzada automática»**: si no, Meta leería los
+   correos y teléfonos que se escriben en el formulario, y la web se ha comprometido a no enviarlos nunca.
+6. Recomendado, para los anuncios: en la configuración del portfolio → «Seguridad de la marca» → «Dominios», añade
+   `synentor.com` y verifícalo con el registro TXT que te dé, puesto en Cloudflare (paso 1).
+
+### 9.4 LinkedIn — el «ID de socio» de la Insight Tag (6–8 cifras)
+
+1. Necesitas una página de empresa de Synentor en LinkedIn. Si no existe, créala antes desde tu perfil («Para negocios» →
+   «Crear una página de empresa»).
+2. Entra en `linkedin.com/campaignmanager` y crea una cuenta publicitaria: nombre `Synentor`, moneda `EUR`, y asóciala a la
+   página de empresa. Crear la cuenta no cobra nada: la forma de pago solo se pide al lanzar una campaña.
+3. En la cuenta: «Activos de la cuenta» (o «Datos») → «Insight Tag» → «Instalar mi Insight Tag» → **«Instalaré la etiqueta
+   yo mismo»**.
+4. En el código que enseña aparece `_linkedin_partner_id = "1234567"`: ese número es el identificador. No copies el resto.
+
+### 9.5 Antes de poner los identificadores
+
+1. El asesor jurídico revisa la política de cookies y la de privacidad nuevas (enumeran las cuatro empresas, lo que guarda
+   cada una, cuánto tiempo y que los datos salen de Andorra y de la UE).
+2. Se ponen los identificadores, se publica y se comprueba en la web:
+   - sin aceptar, ninguna de las cuatro herramientas se carga;
+   - al aceptar, empiezan a llegar datos (Google Analytics → «Tiempo real»; Clarity y Meta tardan unos minutos);
+   - «Configuración de cookies», en el pie, deja cambiar la decisión.
