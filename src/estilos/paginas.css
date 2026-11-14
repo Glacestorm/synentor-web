@@ -177,14 +177,14 @@ th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--syn-cri
 .conf-empresa legend { font: 700 1.05rem var(--syn-fuente-titulos); padding: 0 8px; }
 .conf-base { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; font-weight: 700; }
 .conf-modulos { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); }
-.conf-modulo { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: 4px 12px; align-items: center; padding: 14px; border-radius: 16px; cursor: pointer;
+.conf-modulo { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 12px; align-items: center; padding: 14px; border-radius: 16px; cursor: pointer;
   border: 1px solid var(--syn-cristal-borde); background: var(--syn-cristal); transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease; }
 .conf-modulo:hover { transform: translateY(-2px); border-color: var(--syn-tenue); }
 .conf-modulo input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.conf-modulo > .icono { color: var(--syn-tenue); grid-row: span 2; }
-.conf-modulo .conf-nombre { font-weight: 700; }
-.conf-modulo .conf-precio { font-size: 0.85rem; color: var(--syn-tenue); justify-self: end; }
-.conf-modulo .conf-estado, .conf-modulo .conf-nota { justify-self: start; grid-column: 2 / 4; }
+.conf-modulo > .icono { color: var(--syn-tenue); grid-row: 1 / span 3; align-self: start; }
+.conf-modulo .conf-nombre { font-weight: 700; padding-right: 28px; overflow-wrap: anywhere; hyphens: auto; }
+.conf-modulo .conf-precio { font-size: 0.85rem; color: var(--syn-tenue); grid-column: 2; }
+.conf-modulo .conf-estado, .conf-modulo .conf-nota { justify-self: start; grid-column: 2; }
 .conf-modulo .conf-nota { font-size: 0.78rem; color: var(--syn-hielo); }
 .conf-modulo .conf-check { position: absolute; top: 10px; right: 10px; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--syn-cristal-borde); display: grid; place-items: center; color: transparent; }
 .conf-modulo.marcado { border-color: var(--syn-oro); background: var(--syn-oro-tenue); }
