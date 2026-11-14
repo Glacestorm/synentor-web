@@ -1,0 +1,51 @@
+---
+// La página de «no existe» (dist/404.html; wrangler.jsonc, not_found_handling): la web no sabe en qué idioma llega
+// quien la ve, así que lo dice en los siete y enlaza a la portada de cada uno. Sin índice en los buscadores.
+import '@fontsource-variable/manrope';
+import '../estilos/marca.css';
+import '../estilos/paginas.css';
+import { EMPRESA } from '../datos/empresa';
+import { IDIOMAS, NOMBRE_IDIOMA, ruta } from '../i18n/idiomas';
+
+const AVISO = {
+  ca: 'Aquesta pàgina no existeix.',
+  es: 'Esta página no existe.',
+  en: 'This page does not exist.',
+  fr: 'Cette page n’existe pas.',
+  pt: 'Esta página não existe.',
+  it: 'Questa pagina non esiste.',
+  de: 'Diese Seite gibt es nicht.',
+} as const;
+---
+
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>{`404 · ${EMPRESA.marca}`}</title>
+    <link rel="icon" href="/marca/icona-32.png" sizes="32x32" />
+  </head>
+  <body>
+    <main class="bloque">
+      <div class="contenedor estrecho centrado">
+        <a href="/"><img src="/marca/or-fosc-sense-descriptor.png" alt={EMPRESA.marca} width="160" height="43" /></a>
+        <h1><span class="texto-oro">404</span></h1>
+        <ul class="lista-404">
+          {
+            IDIOMAS.map((i) => (
+              <li lang={i}>
+                {AVISO[i]} <a class="enlace" href={ruta('inicio', i)}>{NOMBRE_IDIOMA[i]} →</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  .lista-404 { list-style: none; padding: 0; display: grid; gap: 10px; margin-top: 24px; }
+</style>

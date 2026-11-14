@@ -1,0 +1,6 @@
+# Web pública de Synentor: todo se puede indexar salvo el formulario (/api/).
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://synentor.com/sitemap.xml

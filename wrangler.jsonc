@@ -7,7 +7,9 @@
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
-    "run_worker_first": ["/", "/api/*"]
+    "run_worker_first": ["/", "/api/*"],
+    // Una dirección que no existe da dist/404.html con estado 404 (las de la web anterior las lleva public/_redirects).
+    "not_found_handling": "404-page"
   },
   // Lo único que no es secreto. Las claves (TURNSTILE_SECRET, RESEND_API_KEY) son secretos de Cloudflare:
   // nunca en este fichero (el repositorio es público).
