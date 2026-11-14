@@ -84,8 +84,18 @@ table { border-collapse: collapse; width: 100%; }
 caption { text-align: left; font-weight: 700; padding: 8px 0 12px; font-family: var(--syn-fuente-titulos); font-size: 1.1rem; }
 th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--syn-cristal-borde); vertical-align: top; }
 .claro th, .claro td { border-bottom-color: var(--syn-borde-claro); }
-.claro .tabla-envoltura { background: var(--syn-blanco); box-shadow: var(--syn-sombra-clara); padding: 8px 16px; }
+.claro .tabla-envoltura { box-shadow: var(--syn-sombra-clara); padding: 8px 16px;
+  /* Pista de que la tabla se desplaza de lado: una sombra en el borde que tiene más contenido; desaparece al llegar al final. */
+  background:
+    linear-gradient(to right, var(--syn-blanco) 30%, transparent) left center / 48px 100% no-repeat local,
+    linear-gradient(to left, var(--syn-blanco) 30%, transparent) right center / 48px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, var(--syn-sombra-desplaza), transparent) left center / 16px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, var(--syn-sombra-desplaza), transparent) right center / 16px 100% no-repeat scroll,
+    var(--syn-blanco); }
 .tabla-modulos th[scope='row'] { font-weight: normal; min-width: 280px; }
+.tabla-modulos thead th { vertical-align: bottom; }
+/* La última columna nombra cuatro países: en dos líneas, no en cinco. */
+.tabla-modulos thead th:last-child { min-width: 12rem; }
 .tabla-modulos .modulo-cabeza { display: flex; gap: 12px; align-items: center; margin-bottom: 6px; }
 .tabla-modulos .modulo-cabeza .icono { color: var(--syn-oro); }
 .tabla-modulos th[scope='row'] .pequeno { display: block; }

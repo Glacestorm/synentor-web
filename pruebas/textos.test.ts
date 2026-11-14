@@ -36,3 +36,10 @@ describe('textos de la web', () => {
     });
   }
 });
+
+describe('franja de idioma', () => {
+  it('nombra cada idioma como se escribe dentro de una frase (minúscula salvo en inglés y alemán)', () => {
+    const esperado: Record<string, string> = { ca: 'català', es: 'español', en: 'English', fr: 'français', pt: 'português', it: 'italiano', de: 'Deutsch' };
+    for (const [idioma, t] of Object.entries(TEXTOS)) expect(t!.franjaIdioma.idioma, idioma).toBe(esperado[idioma]);
+  });
+});
