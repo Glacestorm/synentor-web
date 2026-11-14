@@ -93,6 +93,8 @@ export const ca = {
       ],
       espana:
         'A Espanya: nòmina i lectura de convenis col·lectius del registre oficial (REGCON i BOE), en desenvolupament imminent i adaptació a mida del client.',
+      dato:
+        'A l’obrador on va néixer, al segon mes gairebé 8 de cada 10 persones que van treballar el mes sencer ja fitxaven des del portal de l’empleat.',
     },
     multiempresa: {
       antetitulo: 'Multiempresa',
@@ -182,8 +184,351 @@ export const ca = {
       sinJs: 'Si el formulari no funciona, escriu-nos a {correo}.',
     },
   },
+  servicios: {
+    titulo: 'Serveis · Synentor',
+    descripcion:
+      "Synentor Suite ERP-CRM mòdul a mòdul, MUV, consultoria d'IA i vendes, energia, migracions, portal de l'empleat i pàgines web.",
+    encabezado: 'Tot el que fem, sense lletra petita.',
+    entrada:
+      'Programari propi i consultoria. A cada mòdul et diem si funciona avui al teu país, si està en desenvolupament imminent o si s’adapta a mida.',
+    columnas: { andorra: 'Andorra', espana: 'Espanya', otros: 'Portugal, França, Itàlia i Alemanya' },
+    suite: {
+      titulo: 'Synentor Suite ERP-CRM',
+      texto: 'La gestió de l’empresa en un sol lloc. Pagues per empresa i pels mòduls que facis servir.',
+      requiere: 'Requereix {modulo}',
+      idiomaPrograma:
+        'Les pantalles del programa són en català i castellà. Altres idiomes, en desenvolupament imminent i adaptació a mida del client.',
+    },
+    modulos: {
+      base: {
+        nombre: 'Synentor Base',
+        texto:
+          'El motor multiempresa: usuaris i permisos, còpies de seguretat, IA local, entrada única de documents, mestres, fitxa d’empresa i llibre d’actes, comptabilitat amb el pla andorrà, tresoreria i conciliació bancària, quadre de comandament i informes.',
+      },
+      compras: {
+        nombre: 'Compres intel·ligents',
+        texto:
+          'Les factures dels proveïdors arriben per correu o en una carpeta i es llegeixen soles: alta del proveïdor si cal i esborrany per revisar.',
+      },
+      ventas_crm: {
+        nombre: 'Vendes i CRM',
+        texto: 'Clients, projectes, contactes, mapa comercial i registre de factures emeses amb l’IGI.',
+      },
+      rrhh: {
+        nombre: 'Recursos humans i nòmines',
+        texto:
+          'Fitxa, contractes, alta a la CASS, nòmina i IRPF andorrà, vacances, horaris, fitxatge, portal de l’empleat i finiquits.',
+      },
+      fiscal: { nombre: 'Fiscal', texto: 'IGI, impost de societats, presentacions i impresos de la DTF.' },
+      juridico: {
+        nombre: 'Jurídic i tràmits',
+        texto: 'Vigilància del BOPA, tràmits oficials amb els seus terminis, expedients i llibre d’actes societaris.',
+      },
+      pbc: {
+        nombre: 'Prevenció del blanqueig',
+        texto: 'El dossier de cada client per als subjectes obligats: qüestionaris, model de risc, decisions i comunicacions a la UIFAND.',
+      },
+      productos: { nombre: 'Productes, escandalls i estoc', texto: 'Productes, receptes amb el seu cost i estoc.' },
+      tpv: {
+        nombre: 'TPV i caixa',
+        texto: 'Les vendes del TPV HIOPOS i la caixa CashDro, cada dia a la comptabilitat. CashDro, en una sola empresa per instal·lació.',
+      },
+      electrica: {
+        nombre: 'C. Elèctrica',
+        texto:
+          'Per a assessors energètics: expedients, clients, subministraments i CUPS, factures amb el seu PDF, contractes i venciments, comparació amb el teu catàleg de tarifes, informe i proposta en PDF, seguiment de l’estalvi i portal del client. Mercat elèctric espanyol, tarifes de fins a 3 períodes.',
+      },
+    },
+    muv: {
+      titulo: 'MUV',
+      texto:
+        'El cervell operatiu de l’empresa: mapes de coneixement, tasques amb responsables, dates i dependències, i una IA privada que funciona a la teva oficina.',
+      precio: 'Gratis fins a {gratis} usuaris. Del {desde1}è al {hasta1}è, {precio1} per usuari al mes; fins a {hasta2}, {precio2}.',
+      equipos: 'Equips recomanats (pagament únic): Bàsic {basico} · IA {ia} · IA+ {iaPlus}.',
+      enDesarrollo: 'Encara no té edició simultània en temps real ni aplicació mòbil: en desenvolupament.',
+    },
+    consultoria: {
+      titulo: "Consultoria d'IA i vendes",
+      texto:
+        "Som una consultoria d'IA i de vendes. Diagnòstic, formació, assistents, automatitzacions i treballs d'IA a mida, segons el teu pressupost.",
+      categorias: {
+        estrategia: 'Estratègia i diagnòstic',
+        formacion: 'Formació',
+        asistentes: 'Assistents i atenció al client',
+        automatizacion: 'Automatització de processos',
+        documentos: 'Documents i coneixement',
+        datos: 'Dades, analítica i previsió',
+        medida: 'Desenvolupament a mida',
+        cumplimiento: 'Compliment i governança',
+        soporte: 'Suport i manteniment',
+      },
+      desde: 'des de {precio}',
+      cuota: 'i des de {cuota} al mes',
+      nota: 'Preus per a una microempresa, sense impostos (catàleg del {fecha}). Per a empreses més grans, segons la proposta.',
+      medida: "Treballs d'IA a mida: et fem el pressupost.",
+    },
+    energia: {
+      titulo: 'Energia',
+      texto: 'T’ajudem a pagar menys llum i a saber on es gasta cada quilowatt.',
+      particulares: {
+        titulo: 'Estudi de factura per a particulars',
+        texto: 'Revisem la teva factura i la potència contractada per {precio}. Te’l tornem si no trobem un estalvi d’almenys {precio} a l’any.',
+      },
+      empresas: {
+        titulo: 'Empreses (Espanya)',
+        texto:
+          '{precio} per subministrament, o a èxit: el {porcentaje} de l’estalvi comprovat dels 12 primers mesos. Sense estalvi, no cobrem. Tarifes de 6 períodes, hospitals i promotores: a mida.',
+      },
+      comisiones: 'Avui no cobrem cap comissió de cap comercialitzadora: et recomanem el que et convé a tu.',
+      monitorizacion: {
+        titulo: 'Monitorització amb Home Assistant i Grafana',
+        texto: 'Mesurem el consum de cada quadre elèctric i el veus en un tauler. Les dades es queden en un equip al teu edifici.',
+        vivienda: 'Habitatge o petit negoci (1 quadre)',
+        pyme: 'Pime o comerç (fins a 6 quadres)',
+        edificio: 'Edifici, hotel o promotora',
+        granConsumidor: 'Hospital o gran consumidor',
+        instalacionDesde: 'Instal·lació des de {precio}',
+        instalacionMedida: 'Instal·lació a mida',
+        cuota: '{precio} al mes',
+        cuotaDesde: 'des de {precio} al mes',
+        incluye: 'La instal·lació inclou els mesuradors d’aquests punts. La quota inclou manteniment, còpies, actualitzacions i un informe mensual.',
+      },
+      programa: 'Ets assessor energètic? Mira C. Elèctrica, a la Suite.',
+    },
+    migracion: {
+      titulo: 'Migració i convivència',
+      texto: 'Portem les teves dades del programa anterior. Només et prometem el que avui s’importa de veritat.',
+      arranque: {
+        nombre: 'Arrencada',
+        texto: 'Proveïdors, empleats, productes i contactes des de CSV o Excel; extractes de qualsevol banc (Norma 43, Excel, OFX, QIF, MT940, CAMT.053).',
+        precio: '{precio}',
+      },
+      contabilidad: {
+        nombre: 'Comptabilitat anterior (Andorra)',
+        texto: 'Diari, majors i sumes i saldos, comprovats i incorporats; estats del 805-B; llibre de factures emeses; factures de proveïdor en PDF.',
+        precio: '{precio} el primer exercici i {adicional} cada un més',
+      },
+      personal: {
+        nombre: 'Personal (Andorra)',
+        texto: 'Històric de nòmines, cotitzacions de la CASS, vacances i hores.',
+        precio: '{precio} fins a {personas} persones',
+      },
+      aMedida:
+        'La resta (clients, cobraments i pagaments pendents, estoc inicial, immobilitzat, connexió directa amb altres programes): a mida.',
+      convivencia: {
+        titulo: 'Convivència amb el teu programa',
+        texto:
+          'Si vols seguir amb el teu programa una temporada, carreguem cada mes el que exporta: {puesta} de posada en marxa i {cuota} al mes, fins a {cargas} càrregues al mes. Una connexió directa, a mida.',
+      },
+    },
+    portal: {
+      titulo: 'Portal de l’empleat',
+      texto: 'Nòmines, documents, vacances, sol·licituds, fitxatge, perfil i certificats, des de qualsevol navegador.',
+      dato:
+        'A l’obrador on va néixer, al segon mes gairebé 8 de cada 10 persones que van treballar el mes sencer ja fitxaven des del portal. Sense paper i sense cap fitxatge a mà.',
+      precio:
+        'Sol, sense la resta del programa: {cuota} al mes fins a {personas} persones, {adicional} per persona més i {implantacion} d’implantació.',
+      incluido: 'Amb Recursos humans, ja hi va inclòs.',
+    },
+    webs: {
+      titulo: 'Pàgines web',
+      texto: 'Webs ràpides, en diversos idiomes, amb un formulari que envia de debò i estadístiques sense galetes. Aquesta mateixa web l’hem feta així.',
+      esencial: { nombre: 'Web Essencial', texto: 'Una pàgina de presentació, en 1 o 2 idiomes.' },
+      profesional: { nombre: 'Web Professional', texto: 'Fins a 6 pàgines, 3 idiomes i posicionament bàsic.' },
+      premium: {
+        nombre: 'Web Premium',
+        texto: 'Fins a 12 pàgines, fins a 7 idiomes, disseny de marca i una calculadora o configurador a mida.',
+      },
+      desde: 'des de {precio}',
+      tienda: 'Botiga en línia: a mida, segons pressupost.',
+      extras: 'Pàgina addicional, {pagina}; idioma addicional, {idioma} (la revisió nativa, a part).',
+      mantenimiento: 'Manteniment: {basico} al mes (1 hora de canvis) o {plus} al mes (3 hores i informe mensual de visites).',
+    },
+    centralita: {
+      titulo: 'Centraleta amb IA per a consultoris',
+      etiqueta: 'Pròximament',
+      texto:
+        'Una centraleta que respon les trucades dels pacients les 24 hores: reserves, anul·lacions i canvis de cita, llista d’espera i recordatoris. Sempre diu al pacient que parla amb una IA. Per a consultoris mèdics i clíniques dentals d’Andorra i Espanya.',
+      boton: 'Vull més informació',
+    },
+    implantacion: {
+      titulo: 'Implantació i suport',
+      texto: 'Instal·lem, configurem, carreguem les dades i formem el teu equip: {jornada} la jornada; la Suite, des de {minimo} jornades.',
+      soporte: 'Suport per correu i telèfon, de dilluns a divendres de 9:00 a 18:00 (hora d’Andorra), amb resposta en un dia laborable.',
+    },
+  },
+  precios: {
+    titulo: 'Preus · Synentor',
+    descripcion: 'Calcula el preu de Synentor Suite ERP-CRM i de MUV al moment, sense sorpreses.',
+    encabezado: 'Calcula el teu preu.',
+    entrada: 'Tria el país, els mòduls i les persones. El total surt al moment, sense impostos; a Andorra, també amb l’IGI.',
+    configurador: {
+      pais: 'País',
+      paises: { AD: 'Andorra', ES: 'Espanya', PT: 'Portugal', FR: 'França', IT: 'Itàlia', DE: 'Alemanya', OTRO: 'Un altre país' },
+      modalidad: 'On el vols',
+      modalidadA: 'Instal·lat a la teva empresa',
+      modalidadB: 'Allotjat per Synentor a Andorra (+{precio} al mes)',
+      pago: 'Pagament',
+      anual: 'Anual',
+      mensual: 'Mensual (+{porcentaje})',
+      suite: 'Synentor Suite ERP-CRM',
+      paquete: 'Paquet Synentor Complet',
+      paqueteTexto: 'Base, Compres, Vendes i CRM, Fiscal i MUV, amb {usuarios} usuaris: {precio} al mes.',
+      usuarios: 'Usuaris del programa',
+      empresa: 'Empresa {n}',
+      principal: 'Empresa principal',
+      personas: 'Persones en plantilla',
+      anadirEmpresa: 'Afegeix una empresa',
+      quitarEmpresa: 'Treu aquesta empresa',
+      muvUsuarios: 'Usuaris de MUV',
+      anadidoPor: 'Afegit: el requereix un altre mòdul',
+      incluidoPaquete: 'Inclòs al paquet',
+      estados: { disponible: 'Disponible', inminente: 'En desenvolupament imminent', a_medida: 'A mida' },
+      lineas: {
+        base: 'Synentor Base',
+        paquete: 'Paquet Synentor Complet',
+        'empresa-adicional': 'Empresa addicional',
+        personas: 'Persones en plantilla (Recursos humans)',
+        'usuarios-adicionales': 'Usuaris addicionals',
+        'paquete-usuarios': 'Usuaris addicionals del paquet',
+        'modalidad-b': 'Allotjament per Synentor',
+        'muv-usuarios': 'MUV',
+        'recargo-mensual': 'Pagament mensual',
+      },
+      resumen: 'El teu pressupost',
+      cuota: 'Quota al mes',
+      sinImpuestos: 'sense impostos',
+      igi: 'IGI ({porcentaje})',
+      total: 'Total al mes',
+      implantacion: 'Implantació, des de {precio} (pagament únic)',
+      avisos: {
+        'impuestos-no-incluidos': 'Impostos no inclosos (IVA, TVA o MwSt., segons el país).',
+        'cashdro-una-empresa': 'CashDro funciona en una sola empresa per instal·lació.',
+        'volumen-empresas': 'Amb més de {max} empreses, tarifa per volum: et fem la proposta.',
+        'modalidad-b-inminente': 'L’allotjament per Synentor està en desenvolupament imminent.',
+        'muv-a-medida': 'Amb més de {max} usuaris de MUV, a mida.',
+        'requiere-adaptacion': 'Algun mòdul no està disponible avui al teu país: en desenvolupament imminent o a mida.',
+      },
+      botonDemo: 'Demana una demostració',
+      botonPropuesta: 'Demana la teva proposta',
+      botonPedido: 'Envia la meva selecció',
+      pedidoNota: 'Sense pagament a la web: et responem amb la proposta i el contracte per escrit.',
+      pedidoAsunto: 'Sol·licitud de comanda des del calculador',
+      sinJs: 'El calculador necessita JavaScript. Mira les taules de sota o escriu-nos.',
+    },
+    tablas: {
+      titulo: 'Totes les tarifes',
+      suite: 'Synentor Suite ERP-CRM',
+      concepto: 'Concepte',
+      precio: 'Preu',
+      alMes: '{precio} al mes',
+      porPersona: '+ {precio} per persona en plantilla',
+      usuarioAdicional: 'Usuari addicional',
+      empresaAdicional: 'Empresa addicional',
+      empresaAdicionalPrecio: '{precio} al mes + els seus mòduls al {porcentaje}',
+      paquete: 'Paquet Synentor Complet',
+      paqueteUsuario: 'Usuari addicional del paquet: {precio} al mes',
+      muv: 'MUV',
+      consultoria: "Consultoria d'IA i vendes",
+      servicios: 'Energia, migracions, portal i webs',
+      verServicios: 'Tots els detalls, a Serveis',
+      implantacion: 'Implantació: {precio} la jornada',
+    },
+    condiciones: {
+      titulo: 'Condicions',
+      puntos: [
+        'Llicència anual, sense permanència de més de 12 mesos i amb preavís de 30 dies.',
+        'Suport i actualitzacions inclosos.',
+        'En acabar, et lliurem l’arxiu amb les dades de la teva empresa.',
+        'Preus en euros, sense impostos. A Andorra, IGI del {igi}.',
+        'Pagament mensual: {recargo} més.',
+      ],
+    },
+    comparacion: {
+      titulo: 'Com ens comparem',
+      texto:
+        'Un programa de nòmina al núvol cobra entre {nominaMin} i {nominaMax} per persona al mes, més una quota fixa. Un ERP internacional, uns {erp} per usuari al mes. Amb Synentor pagues per empresa i els primers {usuarios} usuaris hi estan inclosos.',
+      fuente: 'Fonts: pàgines oficials de preus dels fabricants, consultades el {fecha}.',
+    },
+    faq: {
+      titulo: 'Preguntes freqüents',
+      preguntas: [
+        {
+          p: 'En quins idiomes és el programa?',
+          r: 'En català i castellà. Altres idiomes, en desenvolupament imminent i adaptació a mida del client.',
+        },
+        {
+          p: 'On s’instal·la?',
+          r: 'A la teva empresa, en un servidor o un NAS: disponible avui. Allotjat per Synentor a Andorra: en desenvolupament imminent.',
+        },
+        {
+          p: 'Les dades surten al núvol?',
+          r: 'Les factures dels proveïdors i els documents de les persones es llegeixen amb una IA que funciona en un equip de la teva empresa. Si alguna funció fa servir un servei extern, t’ho diem a la proposta.',
+        },
+        { p: 'Funciona a Espanya?', r: 'Sí. Hi ha mòduls disponibles avui i d’altres en desenvolupament imminent: el calculador t’ho diu mòdul a mòdul.' },
+        { p: 'Hi ha permanència?', r: 'Llicència anual, sense permanència de més de 12 mesos i amb preavís de 30 dies.' },
+        { p: 'Qui fa servir Synentor?', r: 'Va néixer gestionant cada dia un obrador amb botigues d’Andorra. I és el programa amb què treballa Synentor.' },
+      ],
+    },
+  },
   legal: {
     actualizado: 'Darrera actualització: {fecha}',
+    aviso: {
+      titulo: 'Avís legal · Synentor',
+      encabezado: 'Avís legal',
+      secciones: [
+        {
+          t: 'Titular',
+          p: 'Aquesta web és de {razon} ({estado}), amb domicili a {direccion}. Correu: {correo}. Telèfon: {telefono}. NRT i inscripció al Registre de Societats Mercantils: en tràmit.',
+        },
+        {
+          t: 'Ús de la web',
+          p: 'La informació d’aquesta web és orientativa. Els preus i les condicions que valen són els de la proposta que et fem per escrit.',
+        },
+        {
+          t: 'Propietat intel·lectual',
+          p: 'Els textos, el logotip i el disseny d’aquesta web són de {razon}. No els facis servir sense el nostre permís.',
+        },
+        { t: 'Llei aplicable', p: 'S’aplica la llei andorrana. Per a qualsevol conflicte, els jutjats del Principat d’Andorra.' },
+      ],
+    },
+    privacidad: {
+      titulo: 'Política de privacitat · Synentor',
+      encabezado: 'Política de privacitat',
+      secciones: [
+        { t: 'Qui és el responsable', p: '{razon} ({estado}), {direccion}. Correu: {correo}.' },
+        {
+          t: 'Quines dades tractem',
+          p: 'Les del formulari de contacte: nom, correu, empresa i telèfon (aquests dos, si els escrius), assumpte i missatge. El missatge ens arriba per correu: la web no el desa.',
+        },
+        { t: 'Per a què', p: 'Per respondre’t i, si ho demanes, preparar-te una proposta. La base és el teu consentiment.' },
+        { t: 'Quant de temps', p: 'El temps necessari per atendre’t i el que exigeixi la llei.' },
+        {
+          t: 'Qui més les veu',
+          p: 'Els proveïdors que fan funcionar la web: l’allotjament i la comprovació antirobot (Cloudflare) i l’enviament del correu. Les estadístiques de visites (Umami) no fan servir galetes ni guarden dades que t’identifiquin.',
+        },
+        {
+          t: 'Els teus drets',
+          p: 'Pots demanar accés, rectificació, supressió, oposició, limitació i portabilitat escrivint a {correo}. Si no hi estàs d’acord, pots reclamar a l’Agència Andorrana de Protecció de Dades (apda.ad).',
+        },
+        {
+          t: 'Lleis',
+          p: 'Llei 29/2021, del 28 d’octubre, qualificada de protecció de dades personals, i el Reglament general de protecció de dades de la Unió Europea per a les persones de la UE.',
+        },
+      ],
+    },
+    cookies: {
+      titulo: 'Política de galetes · Synentor',
+      encabezado: 'Política de galetes',
+      secciones: [
+        {
+          t: 'Què fem servir',
+          p: 'Una sola galeta, «lang», que guarda l’idioma que tries (un any). I al teu navegador, una marca per no tornar-te a ensenyar l’avís d’idioma si el tanques.',
+        },
+        { t: 'Estadístiques', p: 'Comptem les visites amb Umami, sense galetes i sense guardar dades que t’identifiquin.' },
+        { t: 'Com treure-les', p: 'Pots esborrar-les quan vulguis des de la configuració del teu navegador.' },
+      ],
+    },
   },
 } as const;
 

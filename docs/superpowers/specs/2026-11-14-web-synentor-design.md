@@ -261,9 +261,11 @@ Sin impuestos. Los importes viven solo en `src/lib/precios/tarifa.ts`.
 - **Convivencia con el programa actual**, por ficheros: 720 € de puesta en marcha y 99 € al mes (hasta 4 cargas al mes).
   No hay conectores directos (los de Odoo y TPV del ERP son simulados): un conector, a medida.
 - **Solo el portal del empleado**: 59 € al mes hasta 10 personas, 4 € por persona más, 720 € de implantación, sin la Base.
-  Andorra disponible; España, en desarrollo inminente. Dato para destacarlo: según gerencia, en el obrador donde nació
-  el producto llegó a fichar desde el portal casi el 80 % de la plantilla. **En el repositorio no hay ninguna medida**: se
-  publica solo cuando la confirme la consulta de solo lectura de la base (recuentos por mes), y con la cifra medida.
+  Andorra disponible; España, en desarrollo inminente. **Dato medido** (consulta de solo lectura en la base de la 3041,
+  14/11/2026, solo recuentos): el portal empezó el 12/08/2026; en septiembre (datos hasta el 25/09, cuando el portal dejó
+  de verse desde fuera), **15 de las 19 personas que trabajaron el mes entero ficharon desde el portal (78,9 %)** y los
+  192 fichajes del mes se hicieron por el portal, ninguno a mano. Contando a todos los que estaban de alta el 25/09, 15 de
+  22 (68 %). La web dice «casi 8 de cada 10 personas que trabajaron el mes entero», en pasado y sin nombrar la empresa.
 - **Centralita de IA para consultorios** (proyecto nuevo, aún sin construir): en la web, «próximamente», sin precios y con
   formulario para clínicas interesadas. Tarifa para presupuestos (la de Claude, aprobada): Esencial 290 € al mes, 1.500 € de
   implantación y 1.000 minutos; Avanzada 450 €, 2.900 € y 2.000 minutos; Élite 890 €, desde 5.900 € y 3.500 minutos; minuto
