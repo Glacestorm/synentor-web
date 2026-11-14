@@ -28,5 +28,13 @@
     }
   ],
   // Cada día a las 03:17 (UTC) se borran las pruebas de consentimiento de más de 12 meses (worker/consentimiento.ts).
-  "triggers": { "crons": ["17 3 * * *"] }
+  "triggers": { "crons": ["17 3 * * *"] },
+  // Las vistas previas de las ramas (Cloudflare las publica con `wrangler preview`, que exige este bloque). A propósito
+  // SIN la base de consentimientos: una vista previa nunca escribe en la de producción (sin ella, el Worker contesta 503
+  // y la web sigue funcionando).
+  "previews": {
+    "vars": {
+      "PUBLIC_TURNSTILE_SITEKEY": ""
+    }
+  }
 }
