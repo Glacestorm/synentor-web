@@ -1,11 +1,15 @@
 // Worker de la web: atiende solo «/» (idioma de entrada) y «/api/*»; lo demás lo sirve el almacén de ficheros estáticos
-// (wrangler.jsonc, run_worker_first). El formulario (/api/contacto) llega en la tarea 5 del plan.
+// (wrangler.jsonc, run_worker_first). /api/contacto: el formulario (worker/contacto.ts).
 import { elegirIdioma, paisConfigurador } from './idioma';
+import { atiendeContacto } from './contacto';
 import { ruta } from '../src/i18n/idiomas';
 
 export interface Env {
   ASSETS: Fetcher;
   PUBLIC_TURNSTILE_SITEKEY: string;
+  /** Secretos de Cloudflare (wrangler secret put): nunca en el repositorio. */
+  TURNSTILE_SECRET?: string;
+  RESEND_API_KEY?: string;
 }
 
 /** El país de la conexión que da Cloudflare (no se guarda). */
@@ -40,6 +44,8 @@ export default {
         { headers: { 'Cache-Control': 'no-store' } },
       );
     }
+
+    if (url.pathname === '/api/contacto') return atiendeContacto(request, env);
 
     return env.ASSETS.fetch(request);
   },
