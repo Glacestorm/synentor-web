@@ -488,7 +488,7 @@ privacidad y de cookies tienen que decir con exactitud qué se trata, para qué,
 3. Lo que no se pudo comprobar en la página oficial del proveedor lleva `verificado: false`, y una prueba impide activar
    esa herramienta hasta comprobarlo.
 4. El asesor revisa `docs/legal/REVISION-TEXTOS-LEGALES.md` (catalán y castellano, con todas las herramientas y los
-   puntos a confirmar), generado con `npm run revision-legal` de los mismos textos y datos. **No se publica sin su visto
-   bueno.**
-5. Plazo de los mensajes de quien no llega a ser cliente: 1 año desde el último contacto (propuesta de Claude, pendiente
-   de gerencia).
+   puntos a confirmar), generado con `npm run revision-legal` de los mismos textos y datos. **Gerencia decidió el
+   14/11/2026 publicarlos ya** («implementalo y ya lo modificaremos llegado el caso»): lo que diga el asesor se cambia
+   después.
+5. Plazo de los mensajes de quien no llega a ser cliente: 1 año desde el último contacto (gerencia, 14/11/2026).
