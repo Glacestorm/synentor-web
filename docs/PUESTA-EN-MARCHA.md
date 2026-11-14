@@ -16,6 +16,24 @@ guía, se busca por su nombre en el buscador del panel.
    nueva dejan de existir en ese dominio y dan «no existe». Si alguien entra al ERP por ahí, hay que darle otra dirección
    antes.
 
+### Los registros de synentor.com (captura de IONOS del 14/11/2026: 14 registros)
+
+| Registro | Qué es | En Cloudflare |
+|---|---|---|
+| MX `@` → `synentor-com.mail.protection.outlook.com` | El correo (Microsoft 365) | **Conservar**, «Solo DNS» |
+| TXT `@` `v=spf1 include:spf.protection.outlook.com …` | SPF del correo | **Conservar** (Resend va en `send`, no cambia este) |
+| TXT `_dmarc` `v=DMARC1; p=none; …` | DMARC del correo | **Conservar** |
+| CNAME `selector1._domainkey` y `selector2._domainkey` | DKIM de Microsoft 365 | **Conservar**, «Solo DNS» |
+| CNAME `autodiscover` → `autodiscover.outlook.com` | Configuración automática de Outlook | **Conservar**, «Solo DNS» |
+| CNAME `enterpriseenrollment` y `enterpriseregistration` | Alta de equipos en Microsoft 365 | **Conservar**, «Solo DNS» |
+| TXT `@` `v=verifydomain MS=…` | Verificación del dominio en Microsoft | **Conservar** |
+| A `@` y A `www` → `185.158.133.1` | La web actual en Lovable | Conservar **hasta el paso 6**; entonces se quitan |
+| TXT `_lovable` y `_lovable.www` | Verificación de Lovable | Conservar hasta el paso 6; entonces se quitan |
+| CNAME `_domainconnect` → `_domainconnect.ionos.com` | Configuración automática de IONOS | No hace falta en Cloudflare: se puede no copiar |
+
+Los valores largos (SPF, DMARC, DKIM) salen cortados en la pantalla de IONOS: se comparan enteros en Cloudflare, abriendo
+cada registro, nunca a partir de la captura.
+
 ## 1. Cloudflare y los DNS
 
 1. Crea la cuenta de Cloudflare (plan gratuito) y añade el sitio **synentor.com**.
@@ -67,9 +85,11 @@ npx wrangler secret put RESEND_API_KEY
 Es el momento en que la web anterior deja de verse.
 
 1. En el Worker → Configuración → Dominios: añade `synentor.com`.
-2. Quita de Cloudflare los registros que apuntaban la web a la plataforma anterior (A o CNAME de `synentor.com` y `www`),
-   **sin tocar los del correo**.
-3. Comprueba:
+2. Quita de Cloudflare los cuatro registros de Lovable: A `@`, A `www`, TXT `_lovable` y TXT `_lovable.www`, **sin tocar
+   los del correo**.
+3. Para que `www.synentor.com` pueda redirigir (paso 7), añade un registro AAAA `www` → `100::` **con el proxy activado**
+   (nube naranja): es una dirección vacía que Cloudflare usa para los nombres que solo redirigen.
+4. Comprueba:
    - `https://synentor.com/` lleva a la portada del idioma del visitante;
    - `https://synentor.com/rrhh-espana` lleva a «Servicios», y una dirección inventada da la página de «no existe»;
    - el formulario funciona;
