@@ -48,7 +48,7 @@ de MUV más allá de su ficha comercial, las secciones de la web actual que no e
   de apoyo: Arial / Arial Bold (el nombre del logotipo es imagen). Los logotipos son raster (los SVG llevan una imagen
   dentro): **ancho máximo recomendado 325 px**; marge libre del 15 % de su alto. Voz: «precisa, propera, segura i
   contemporània»; «frases clares, beneficis concrets i llenguatge sense exageracions».
-- **Legal**: SYNENTOR, S.L.U. **(en constitución)**, NRT e inscripción **en trámite** (nunca un NRT de relleno); domicilio
+- **Legal**: SYNENTOR, S.L.U. (**constituida**: gerencia, 14/11/2026; antes «en constitución»), NRT e inscripción **en trámite** hasta que gerencia los dé (nunca un NRT de relleno); domicilio
   y datos de contacto de la empresa (§9); ley aplicable la andorrana (Llei 29/2021, LQPD; APDA) y el RGPD para personas de
   la UE. **Los textos legales son un borrador pendiente del asesor jurídico**: se publican solo con el visto bueno de
   gerencia.
@@ -293,12 +293,12 @@ más adelante y con datos de ejemplo.
 - **Preus**: el **configurador** (elige módulos, usuarios, personas en plantilla, empresas y forma de pago; añade solo los
   módulos que se requieren y lo explica; calcula el total sin IGI y con IGI andorrano); tablas de la Suite, el paquete, MUV
   y la consultoría; condiciones; preguntas frecuentes; «cómo nos comparamos» con las cifras de §7.1 y sus fuentes.
-- **Contacte**: formulario; correo, teléfono y dirección de la empresa; «Andorra (en constitución)» en la identificación.
+- **Contacte**: formulario; correo, teléfono y dirección de la empresa; la razón social en la identificación.
 - **Legal**: avís legal, política de privacitat, política de cookies.
 
 ## 9. Datos de la empresa en la web
 
-Razón social «SYNENTOR, S.L.U. (en constitución)»; NRT «en trámite»; dirección la que dio gerencia el 14/11/2026 (en
+Razón social «SYNENTOR, S.L.U.» (constituida; gerencia, 14/11/2026); NRT «en trámite»; dirección la que dio gerencia el 14/11/2026 (en
 `src/datos/empresa.ts`); correo administracion@synentor.com; teléfono de la empresa confirmado por gerencia el 14/11/2026.
 **Ningún nombre de persona.** WhatsApp no (el kit lo trae desactivado). Redes sociales: ninguna hasta que existan las
 cuentas (el kit las trae vacías).

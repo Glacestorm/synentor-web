@@ -12,7 +12,6 @@ interface Props {
 }
 const { idioma } = Astro.props;
 const tx = textos(idioma).contacto;
-const enConstitucion = textos(idioma).pie.enConstitucion;
 const f = tx.formulario;
 const sitekey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY as string | undefined;
 const correoEnlace = `<a href="mailto:${EMPRESA.correo}">${EMPRESA.correo}</a>`;
@@ -106,7 +105,7 @@ const mensajes = {
           <span class="icono-caja"><Icono nombre="ubicacion" tam={22} /></span>
           <div>
             <strong>{tx.direccion}</strong>
-            {EMPRESA.razonSocial} ({enConstitucion})<br />
+            {EMPRESA.razonSocial}<br />
             {EMPRESA.direccion.linea}<br />
             {EMPRESA.direccion.codigoPostal} {EMPRESA.direccion.localidad} · {EMPRESA.direccion.pais}
           </div>

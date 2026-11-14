@@ -29,7 +29,6 @@ export const de: Textos = {
     avisoLegal: 'Impressum',
     privacidad: 'Datenschutz',
     cookies: 'Cookies',
-    enConstitucion: 'in Gründung',
     nrt: 'NRT in Bearbeitung',
     estadisticas: 'Besucherstatistik ohne Cookies (Umami).',
   },
@@ -509,7 +508,7 @@ export const de: Textos = {
       secciones: [
         {
           t: 'Anbieter',
-          p: 'Diese Webseite gehört {razon} ({estado}), mit Sitz in {direccion}. E-Mail: {correo}. Telefon: {telefono}. NRT und Eintragung im Handelsgesellschaftsregister: in Bearbeitung.',
+          p: 'Diese Webseite gehört {razon}, mit Sitz in {direccion}. E-Mail: {correo}. Telefon: {telefono}. NRT und Eintragung im Handelsgesellschaftsregister: in Bearbeitung.',
         },
         {
           t: 'Nutzung der Webseite',
@@ -526,7 +525,7 @@ export const de: Textos = {
       titulo: 'Datenschutzerklärung · Synentor',
       encabezado: 'Datenschutzerklärung',
       secciones: [
-        { t: 'Wer verantwortlich ist', p: '{razon} ({estado}), {direccion}. E-Mail: {correo}.' },
+        { t: 'Wer verantwortlich ist', p: '{razon}, {direccion}. E-Mail: {correo}.' },
         {
           t: 'Welche Daten wir verarbeiten',
           p: 'Die Daten aus dem Kontaktformular: Name, E-Mail-Adresse, Unternehmen und Telefon (die beiden Letzteren, wenn Sie sie angeben), Betreff und Nachricht. Die Nachricht erreicht uns per E-Mail: Die Webseite speichert sie nicht.',

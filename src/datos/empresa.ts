@@ -3,8 +3,8 @@
 export const EMPRESA = {
   marca: 'Synentor',
   razonSocial: 'SYNENTOR, S.L.U.',
-  // Se está constituyendo en Andorra: la web dice «(en constitución)» y el NRT «en trámite» (nunca uno de relleno).
-  estado: 'en constitución',
+  // Constituida (gerencia, 14/11/2026). El NRT se publica cuando gerencia lo dé; hasta entonces, «en trámite» (nunca uno de
+  // relleno).
   nrt: null as string | null,
   direccion: {
     linea: 'Avgda. Carlemany, 117, 3-1',

@@ -29,7 +29,6 @@ export const ca = {
     avisoLegal: 'Avís legal',
     privacidad: 'Privacitat',
     cookies: 'Galetes',
-    enConstitucion: 'en constitució',
     nrt: 'NRT en tràmit',
     estadisticas: 'Estadístiques de visites sense galetes (Umami).',
   },
@@ -510,7 +509,7 @@ export const ca = {
       secciones: [
         {
           t: 'Titular',
-          p: 'Aquesta web és de {razon} ({estado}), amb domicili a {direccion}. Correu: {correo}. Telèfon: {telefono}. NRT i inscripció al Registre de Societats Mercantils: en tràmit.',
+          p: 'Aquesta web és de {razon}, amb domicili a {direccion}. Correu: {correo}. Telèfon: {telefono}. NRT i inscripció al Registre de Societats Mercantils: en tràmit.',
         },
         {
           t: 'Ús de la web',
@@ -527,7 +526,7 @@ export const ca = {
       titulo: 'Política de privacitat · Synentor',
       encabezado: 'Política de privacitat',
       secciones: [
-        { t: 'Qui és el responsable', p: '{razon} ({estado}), {direccion}. Correu: {correo}.' },
+        { t: 'Qui és el responsable', p: '{razon}, {direccion}. Correu: {correo}.' },
         {
           t: 'Quines dades tractem',
           p: 'Les del formulari de contacte: nom, correu, empresa i telèfon (aquests dos, si els escrius), assumpte i missatge. El missatge ens arriba per correu: la web no el desa.',

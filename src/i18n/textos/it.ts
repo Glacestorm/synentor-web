@@ -29,7 +29,6 @@ export const it: Textos = {
     avisoLegal: 'Avviso legale',
     privacidad: 'Privacy',
     cookies: 'Cookie',
-    enConstitucion: 'in costituzione',
     nrt: 'NRT in corso di rilascio',
     estadisticas: 'Statistiche delle visite senza cookie (Umami).',
   },
@@ -509,7 +508,7 @@ export const it: Textos = {
       secciones: [
         {
           t: 'Titolare',
-          p: 'Questo sito appartiene a {razon} ({estado}), con sede in {direccion}. E-mail: {correo}. Telefono: {telefono}. NRT e iscrizione al Registro delle società commerciali: in corso di rilascio.',
+          p: 'Questo sito appartiene a {razon}, con sede in {direccion}. E-mail: {correo}. Telefono: {telefono}. NRT e iscrizione al Registro delle società commerciali: in corso di rilascio.',
         },
         {
           t: 'Uso del sito',
@@ -526,7 +525,7 @@ export const it: Textos = {
       titulo: 'Informativa sulla privacy · Synentor',
       encabezado: 'Informativa sulla privacy',
       secciones: [
-        { t: 'Chi è il responsabile', p: '{razon} ({estado}), {direccion}. E-mail: {correo}.' },
+        { t: 'Chi è il responsabile', p: '{razon}, {direccion}. E-mail: {correo}.' },
         {
           t: 'Quali dati trattiamo',
           p: 'Quelli del modulo di contatto: nome, e-mail, azienda e telefono (questi ultimi due, se li inserisce), oggetto e messaggio. Il messaggio ci arriva per e-mail: il sito non lo conserva.',

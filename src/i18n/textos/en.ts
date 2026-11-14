@@ -29,7 +29,6 @@ export const en: Textos = {
     avisoLegal: 'Legal notice',
     privacidad: 'Privacy',
     cookies: 'Cookies',
-    enConstitucion: 'being incorporated',
     nrt: 'NRT pending',
     estadisticas: 'Cookie-free visit statistics (Umami).',
   },
@@ -509,7 +508,7 @@ export const en: Textos = {
       secciones: [
         {
           t: 'Owner',
-          p: 'This website belongs to {razon} ({estado}), registered at {direccion}. Email: {correo}. Telephone: {telefono}. NRT and entry in the Register of Commercial Companies: pending.',
+          p: 'This website belongs to {razon}, registered at {direccion}. Email: {correo}. Telephone: {telefono}. NRT and entry in the Register of Commercial Companies: pending.',
         },
         {
           t: 'Use of the website',
@@ -526,7 +525,7 @@ export const en: Textos = {
       titulo: 'Privacy policy · Synentor',
       encabezado: 'Privacy policy',
       secciones: [
-        { t: 'Who is the controller', p: '{razon} ({estado}), {direccion}. Email: {correo}.' },
+        { t: 'Who is the controller', p: '{razon}, {direccion}. Email: {correo}.' },
         {
           t: 'What data we process',
           p: 'The data in the contact form: name, email, company and telephone (the last two, if you enter them), subject and message. The message reaches us by email: the website does not store it.',

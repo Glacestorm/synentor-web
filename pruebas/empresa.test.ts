@@ -11,9 +11,9 @@ describe('datos de la empresa', () => {
     expect(EMPRESA.telefono.enlace).toBe('+376692069');
   });
 
-  it('la sociedad está en constitución y sin NRT de relleno', () => {
+  it('la sociedad, constituida, sin «en constitución» y sin NRT de relleno', () => {
     expect(EMPRESA.razonSocial).toBe('SYNENTOR, S.L.U.');
-    expect(EMPRESA.estado).toBe('en constitución');
+    expect('estado' in EMPRESA).toBe(false);
     expect(EMPRESA.nrt).toBeNull();
   });
 
