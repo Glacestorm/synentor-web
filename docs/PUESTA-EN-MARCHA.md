@@ -109,8 +109,14 @@ Es el momento en que la web anterior deja de verse.
 
 ## 8. Estadísticas
 
-Umami ya funciona: la web tiene su identificador (`src/datos/analitica.ts`) y solo cuenta `synentor.com` y
-`www.synentor.com`. Comprueba que llegan visitas después del paso 6.
+Umami: cuenta en la región **UE (Fráncfort)** y web dada de alta el 14/11/2026 (nombre `Synentor`, dominio
+`synentor.com`). El identificador va en `src/datos/analitica.ts` y solo cuenta `synentor.com` y `www.synentor.com`.
+Comprueba que llegan visitas después del paso 6.
+
+- El identificador es el **«ID del lloc web»** (Website ID): en Umami, «Llocs web» → la fila de la web → editar, o la
+  pestaña «Codi de seguiment». **No es el «Account ID» de la cuenta**, que tiene la misma forma: hasta el 14/11/2026 la
+  web llevaba ese por error y Umami no guardaba nada.
+- El guion es `https://cloud.umami.is/script.js` también en la región UE (lo dice el código de seguimiento de la cuenta).
 
 ## 9. Los cuatro identificadores del aviso de cookies (diseño, §17)
 
