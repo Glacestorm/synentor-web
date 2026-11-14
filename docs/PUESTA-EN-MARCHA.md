@@ -125,19 +125,31 @@ el aviso de cookies no sale y la web no carga esas herramientas.
 - Los menús de estas plataformas cambian de nombre a menudo. Si algo no está donde dice la guía, búscalo por el nombre
   que se da entre comillas.
 
-### 9.1 Google Analytics 4 — el «ID de medición» (`G-` y 10 letras o cifras)
+### 9.1 Google Analytics 4 — el «ID de medición» (`G-` y 10 letras o cifras) — hecho el 14/11/2026
 
-1. Entra en `analytics.google.com` con una cuenta de Google de la empresa y pulsa «Empezar a medir».
+**ID de medición: `G-KB0654M7HP`** (cuenta de Google de la empresa, administracion@synentor.com). Está en
+`src/datos/analitica.ts` y se publica con los textos legales cuando los apruebe el asesor.
+
+Cómo se creó (por si hay que repetirlo):
+1. Entra en `analytics.google.com` con la cuenta de Google de la empresa y pulsa «Empezar a medir».
 2. Cuenta: nombre `Synentor`. Desmarca las opciones de compartir datos con Google que no necesites.
 3. Propiedad: nombre `synentor.com`, zona horaria `Andorra`, moneda `Euro (EUR)`.
-4. Rellena el tamaño y el sector de la empresa y los objetivos (cualquiera vale; solo cambia los informes que te sugiere).
-5. Plataforma: «Web». URL `https://synentor.com`, nombre del flujo `Web synentor.com`. Deja activada la «medición
-   mejorada» y pulsa «Crear flujo».
-6. En la pantalla del flujo aparece el **«ID de medición»**: `G-` seguido de 10 caracteres. Ese es el identificador.
-7. Dos ajustes en «Administrar» (la rueda, abajo a la izquierda):
-   - «Configuración de datos» → «Retención de datos»: **14 meses**;
-   - «Configuración de datos» → «Recogida de datos»: **deja apagadas las «Señales de Google»**. El aviso de cookies solo
-     las pedirá si el visitante acepta la publicidad.
+4. Rellena el tamaño y el sector de la empresa. Objetivos: «Generar oportunidades de venta» y «Conocer el tráfico web».
+5. Plataforma: «Web». URL `https://synentor.com`, nombre del flujo `Web Synentor`. Deja activada la «medición
+   mejorada» y pulsa «Crear flujo». Si te ofrece instalar la etiqueta, ciérralo: la pone el código de la web.
+6. En «Detalles del flujo web», arriba a la derecha, aparece el **«ID de medición»**. Ese es el identificador.
+
+Ajustes que deben quedar así (Administrar → «Recopilación y modificación de datos»). Cuadran con los textos legales:
+Analytics solo para estadísticas, sin publicidad y con los datos justos.
+- «Recogida de datos»:
+  - **Google signals: sin activar**;
+  - **Recogida de datos proporcionados por los usuarios: desactivada**, y también la detección automática. Si no, la
+    etiqueta de Google buscaría correos y teléfonos en la web (el formulario) y los enviaría a Google;
+  - **Recogida de datos granulares de ubicación y dispositivo: desactivada** (Analytics sigue sabiendo el país y la región);
+  - **Personalización de anuncios: 0 regiones** (no usamos Google Ads);
+  - Consentimiento de recogida de datos de usuario: confirmado (la web pide el consentimiento antes de cargar Analytics).
+- «Conservación de datos»: datos de eventos **14 meses**, datos de usuario **14 meses** y «Borrar cuando haya actividad
+  nueva del usuario» **desactivado** (así se borran a los 14 meses, aunque la persona vuelva).
 
 ### 9.2 Microsoft Clarity — el «ID del proyecto» (unos 10 caracteres)
 
