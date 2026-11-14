@@ -11,18 +11,21 @@ export interface EmpresaSeleccion {
   personas: number;
 }
 
+/** El paquete elegido: ninguno, «Synentor Completo» o «Obrador» (diseño §7.3 y §18). */
+export type Paquete = 'ninguno' | 'completo' | 'obrador';
+
 export interface Seleccion {
   pais: Pais;
   modalidad: 'A' | 'B';
   pago: 'anual' | 'mensual';
   /** Synentor Suite ERP-CRM (la Base y sus módulos). Sin ella, solo MUV. */
   suite: boolean;
-  paquete: boolean;
+  paquete: Paquete;
   /** La primera es la empresa principal; las demás, empresas adicionales en la misma instalación. */
   empresas: EmpresaSeleccion[];
   /** Usuarios del ERP-CRM, contados por instalación (las cuentas del portal del empleado no cuentan). */
   usuarios: number;
-  /** Usuarios de MUV (0 = sin MUV). Con el paquete, MUV va incluido con los mismos usuarios que el ERP-CRM. */
+  /** Usuarios de MUV (0 = sin MUV). Con el paquete Completo, MUV va incluido con los mismos usuarios que el ERP-CRM. */
   muvUsuarios: number;
 }
 
@@ -92,6 +95,18 @@ export function cuotaPortal(personas: number): number {
   return eur(cent(p.cuota) + extra * cent(p.personaAdicional));
 }
 
+/**
+ * Cuota mensual, en euros y sin impuestos, del paquete Despachos y gestorías (diseño §18): la cuota con sus empresas
+ * incluidas, cada empresa cliente más y cada nómina. Con más empresas de las que admite, `null`: bajo propuesta.
+ */
+export function cuotaGestoria(empresas: number, personas: number): number | null {
+  const g = TARIFA.gestorias;
+  const n = Math.max(1, entero(empresas));
+  if (n > g.maxEmpresas) return null;
+  const extra = Math.max(0, n - g.empresasIncluidas);
+  return eur(cent(g.cuota) + extra * cent(g.empresaAdicional) + entero(personas) * cent(g.porNomina));
+}
+
 export function calcula(sel: Seleccion): Presupuesto {
   const lineas: Linea[] = [];
   const avisos = new Set<Aviso>();
@@ -106,7 +121,9 @@ export function calcula(sel: Seleccion): Presupuesto {
     }
   };
 
-  const conPaquete = sel.suite && sel.paquete;
+  const paquete: Paquete = sel.suite ? sel.paquete : 'ninguno';
+  const completo = paquete === 'completo';
+  const obrador = paquete === 'obrador';
 
   if (sel.suite) {
     const empresas = sel.empresas.length > 0 ? sel.empresas : [{ modulos: [], personas: 0 }];
@@ -115,13 +132,23 @@ export function calcula(sel: Seleccion): Presupuesto {
 
     empresas.forEach((empresa, i) => {
       const principal = i === 0;
-      const incluidos: readonly ModuloId[] = principal && conPaquete ? TARIFA.paquete.incluye : [];
+      // Con el Obrador, el control de costes de la empresa principal va dentro del paquete (por `conCostes`).
+      const obradorConCostes = principal && obrador && empresa.modulos.includes('costes');
+      const incluidos: readonly ModuloId[] = !principal
+        ? []
+        : completo
+          ? TARIFA.paquete.incluye
+          : obrador
+            ? [...TARIFA.paqueteObrador.incluye, ...(obradorConCostes ? (['costes'] as const) : [])]
+            : [];
       const pedidos = [...new Set([...empresa.modulos, ...incluidos])];
       const resuelto = resuelveDependencias(pedidos);
       resuelto.anadidos.forEach((m) => anadidos.add(m));
 
       if (principal) {
-        if (conPaquete) linea('paquete', 0, 1, cent(TARIFA.paquete.cuota));
+        if (completo) linea('paquete', 0, 1, cent(TARIFA.paquete.cuota));
+        else if (obradorConCostes) linea('paquete-obrador-costes', 0, 1, cent(TARIFA.paqueteObrador.conCostes));
+        else if (obrador) linea('paquete-obrador', 0, 1, cent(TARIFA.paqueteObrador.cuota));
         else linea('base', 0, 1, cent(TARIFA.base.cuota));
       } else {
         linea('empresa-adicional', i, 1, cent(TARIFA.empresaAdicional.cuota));
@@ -148,11 +175,12 @@ export function calcula(sel: Seleccion): Presupuesto {
     }
 
     const usuarios = entero(sel.usuarios);
-    if (conPaquete) {
+    if (completo) {
       const extra = Math.max(0, usuarios - TARIFA.paquete.usuariosIncluidos);
       if (extra > 0) linea('paquete-usuarios', null, extra, extra * cent(TARIFA.paquete.usuarioAdicional));
     } else {
-      const extra = Math.max(0, usuarios - TARIFA.base.usuariosIncluidos);
+      const incluidos = obrador ? TARIFA.paqueteObrador.usuariosIncluidos : TARIFA.base.usuariosIncluidos;
+      const extra = Math.max(0, usuarios - incluidos);
       if (extra > 0) linea('usuarios-adicionales', null, extra, extra * cent(TARIFA.usuarioAdicional));
     }
 
@@ -163,10 +191,10 @@ export function calcula(sel: Seleccion): Presupuesto {
     }
   }
 
-  const muvUsuarios = conPaquete ? entero(sel.usuarios) : entero(sel.muvUsuarios);
+  const muvUsuarios = completo ? entero(sel.usuarios) : entero(sel.muvUsuarios);
   if (muvUsuarios > 0) {
     marcaEstado('muv');
-    if (!conPaquete) linea('muv-usuarios', null, muvUsuarios, cuotaMuv(muvUsuarios));
+    if (!completo) linea('muv-usuarios', null, muvUsuarios, cuotaMuv(muvUsuarios));
     if (muvUsuarios > TARIFA.muv.maxSinPropuesta) {
       requierePropuesta = true;
       avisos.add('muv-a-medida');

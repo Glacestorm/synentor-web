@@ -184,6 +184,12 @@ th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--syn-cri
 .conf-panel { border-radius: 20px; padding: 22px; background: var(--syn-cristal); border: 1px solid var(--syn-cristal-borde); }
 .conf-fila { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); align-items: start; }
 .conf-grupo { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+/* La elección del paquete: tres tarjetas en columna, con el nombre y lo que incluye. */
+.conf-paquetes { flex-direction: column; margin: 12px 0; }
+.conf-paquetes legend { flex-basis: 100%; }
+.conf-op.conf-paquete { display: flex; align-items: flex-start; border-radius: 14px; padding: 12px 16px; font-weight: normal; }
+.conf-op.conf-paquete strong { display: block; font-family: var(--syn-fuente-titulos); }
+.conf-op.conf-paquete small { display: block; color: var(--syn-tenue); font-weight: normal; margin-top: 2px; }
 .conf-campo { display: grid; gap: 8px; font-weight: 700; align-content: start; }
 .conf-numero { display: flex; align-items: stretch; gap: 0; max-width: 220px; }
 .conf-numero input { text-align: center; border-radius: 0; -moz-appearance: textfield; }
@@ -371,3 +377,11 @@ figure { margin: 0; }
 .cookies-flotante { position: fixed; z-index: 35; left: 12px; bottom: 12px; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
   color: var(--syn-blanco); background: var(--syn-noche-2); border: 1px solid var(--syn-borde-control); box-shadow: var(--syn-sombra-oscura); cursor: pointer; }
 @media (max-width: 900px) { html:has(.conf-barra) .cookies-flotante { bottom: 92px; } }
+
+/* ---------- Control de costes y Despachos y gestorías (diseño §18) ---------- */
+.bloque-costes { margin-top: 48px; align-items: start; }
+.bloque-costes h4 { margin: 22px 0 4px; font-family: var(--syn-fuente-titulos); }
+.caja-gestorias { max-width: 680px; margin: 28px 0; }
+/* La etiqueta de estado es larga: aquí puede partirse en dos líneas sin salirse de la tarjeta en el móvil. */
+.tarjeta-gestorias .conf-estado { white-space: normal; border-radius: 12px; }
+.tarjeta-gestorias .boton { margin-top: 8px; }

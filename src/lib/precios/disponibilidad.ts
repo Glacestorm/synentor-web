@@ -18,6 +18,8 @@ const ESPANA: Record<Producto, Estado> = {
   juridico: 'a_medida',
   pbc: 'a_medida',
   productos: 'disponible',
+  // El control de costes vive dentro de Compras: el mismo estado que ella.
+  costes: 'inminente',
   tpv: 'disponible',
   muv: 'disponible',
   electrica: 'disponible',
@@ -32,6 +34,7 @@ const OTROS: Record<Producto, Estado> = {
   juridico: 'a_medida',
   pbc: 'a_medida',
   productos: 'disponible',
+  costes: 'a_medida',
   tpv: 'a_medida',
   muv: 'disponible',
   // C. Eléctrica trabaja con el mercado eléctrico español (CUPS, peajes, OMIE): fuera de España, a medida.

@@ -437,3 +437,40 @@ aviso desde ya. Gerencia eligió (c). Para el aviso: un gestor de consentimiento
 
 **Lo que hace gerencia**: crear las cuentas y dar los cuatro identificadores (GA4 `G-…`, Clarity, píxel de Meta, socio de
 LinkedIn); el asesor jurídico revisa las dos políticas antes de poner los identificadores.
+
+## 18. Control de costes, paquete Obrador y paquete Despachos y gestorías — APROBADO el 14/11/2026
+
+**Por qué**: gerencia quiere vender ya tres productos que salen de lo que el ERP hace hoy: el control de costes de compra
+(que estaba escondido dentro de Compras y Productos), un paquete para obradores con tiendas y otro para despachos que
+llevan las empresas de sus clientes. Cifras propuestas por Claude con el estudio de mercado y aprobadas por gerencia.
+
+**Enfoques considerados**: el control de costes destacado dentro de Compras sin precio propio (descartado por gerencia:
+«visto el ahorro, tendría que ser superior»), o como complemento de pago (elegido). Las gestorías, solo anunciadas sin
+precio (descartado) o con precio y la etiqueta de desarrollo inminente (elegido). El Obrador, a la carta (descartado)
+o como paquete en el configurador (elegido).
+
+**Lo decidido**:
+1. **Control de costes de compra**: módulo nuevo `costes`, **59 €/mes**, requiere Compras; en las empresas adicionales,
+   al 50 % como todos. Disponibilidad igual que Compras (Andorra disponible, España inminente, resto a medida). La web
+   explica con detalle lo que hace hoy (inventario del ERP del 14/11/2026): comparador de precios por proveedor y
+   artículo (precio por kilo, litro o unidad; mejor proveedor y ahorro; cesta de pedidos al más barato; precios pagados,
+   ofertas de tarifas y precios sospechosos), descuentos de proveedor y control de pedido, recepción y factura contra el
+   precio prometido, y avisos de subidas en el cuadro de mando. Con recetas (Productos): coste vivo de cada receta. Con
+   recetas y el TPV conectado (hoy HIOPOS): consumo teórico frente a lo comprado y margen por pieza. **No se promete**:
+   avisos por correo, recuento de inventario, recargo de aduanas, otro TPV que HIOPOS.
+2. **Paquete Obrador**: **299 €/mes** (Base, Compras, Productos, TPV y Recursos humanos, 5 usuarios; usuario adicional
+   y personas en plantilla a la tarifa normal) y **329 €/mes con el control de costes**. En el configurador, el
+   interruptor del paquete pasa a una elección: sin paquete, Completo u Obrador.
+3. **Paquete Despachos y gestorías**: **249 €/mes**, con Contabilidad (la Base), Compras con lectura de facturas,
+   Ventas, Fiscal y Nóminas, **10 empresas cliente y 5 usuarios** del despacho; empresa cliente adicional **9 €/mes**
+   hasta **25**; nóminas **5 € por persona y mes**; más de 25 empresas, bajo propuesta. **Solo para despachos que
+   llevan empresas de sus clientes.** Para Andorra, con la etiqueta «En desarrollo inminente y adaptación a medida del
+   cliente» (el aislamiento entre empresas del ERP está por terminar, y es lo siguiente del ERP); en otros países, a
+   medida. Va en una tarjeta en Precios y en Servicios, fuera del configurador, con «Pide una propuesta» (asunto
+   `gestorias` en el formulario). Ningún texto dice «aislado» ni que los clientes no se ven entre sí.
+
+**Lo que queda al constructor**: la redacción en los siete idiomas, el icono del control de costes y dónde va cada
+bloque dentro de las páginas.
+
+**Para el ERP** (no es de la web): vender el control de costes aparte obliga a que esas pantallas pidan su propia clave
+(hoy las ve cualquiera con Compras). Se hará después del aislamiento entre empresas.

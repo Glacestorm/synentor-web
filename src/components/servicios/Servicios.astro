@@ -9,6 +9,7 @@ import { porCategoria, FECHA_CATALOGO } from '../../lib/consultoria';
 import { euros, porcentaje } from '../../lib/formato';
 import Icono from '../Icono.astro';
 import CifraPortal from '../visual/CifraPortal.astro';
+import TarjetaGestorias from '../precios/TarjetaGestorias.astro';
 import type { NombreIcono } from '../../lib/iconos';
 import type { Categoria } from '../../lib/consultoria';
 
@@ -113,6 +114,23 @@ const t2 = TARIFA.muv.tramos[1];
       </table>
     </div>
     <p class="pequeno">{tx.suite.idiomaPrograma}</p>
+    <div class="dos-col bloque-costes">
+      <div id="costes">
+        <span class="icono-caja"><Icono nombre="costes" /></span>
+        <h3>{tx.costes.titulo}</h3>
+        <p>{rellena(tx.costes.texto, { precio: eur(TARIFA.modulos.costes.cuota) })}</p>
+        <ul class="lista-ok">
+          {tx.costes.puntos.map((p) => <li>{p}</li>)}
+        </ul>
+        <h4>{tx.costes.condicionesTitulo}</h4>
+        <ul class="lista-ok">
+          {tx.costes.condiciones.map((p) => <li>{p}</li>)}
+        </ul>
+        <p class="pequeno">{tx.costes.nota}</p>
+        <p><a class="enlace" href={`${ruta('precios', idioma)}#configurador`}>{tx.costes.enlace} →</a></p>
+      </div>
+      <TarjetaGestorias idioma={idioma} />
+    </div>
   </div>
 </section>
 

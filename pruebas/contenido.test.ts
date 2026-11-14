@@ -11,7 +11,8 @@ import { TARIFA } from '../src/lib/precios/tarifa';
 import { MERCADO } from '../src/datos/mercado';
 import { EMPRESA } from '../src/datos/empresa';
 import catalogo from '../src/datos/consultoria.json';
-import { calcula } from '../src/lib/precios/calcula';
+import { calcula, cuotaGestoria } from '../src/lib/precios/calcula';
+import { EJEMPLO_GESTORIA } from '../src/lib/precios/ejemplos';
 
 const DIST = fileURLToPath(new URL('../dist', import.meta.url));
 
@@ -54,11 +55,13 @@ function importesPermitidos(): Set<string> {
   const e = MERCADO.ejemplo;
   n.add(
     calcula({
-      pais: 'AD', modalidad: 'A', pago: 'anual', suite: true, paquete: false,
+      pais: 'AD', modalidad: 'A', pago: 'anual', suite: true, paquete: 'ninguno',
       empresas: [{ modulos: ['compras', 'rrhh', 'fiscal', 'productos', 'tpv'], personas: e.personas }],
       usuarios: e.usuarios, muvUsuarios: 0,
     }).cuotaMensual,
   );
+  // El ejemplo de la tarjeta de gestorías (diseño §18), calculado con el motor.
+  n.add(cuotaGestoria(EJEMPLO_GESTORIA.empresas, EJEMPLO_GESTORIA.personas)!);
   return new Set([...n].map((x) => (Number.isInteger(x) ? String(x) : x.toFixed(2).replace('.', ''))));
 }
 

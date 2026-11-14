@@ -15,6 +15,8 @@ export const ICONOS = {
   pbc: '<path d="M12 3 5 6v5.5c0 4.3 2.9 7.8 7 9.5 4.1-1.7 7-5.2 7-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/>',
   productos:
     '<path d="m12 3 8 4.2v9.6L12 21l-8-4.2V7.2z"/><path d="m4 7.2 8 4.3 8-4.3M12 11.5V21"/>',
+  // Control de costes de compra: una etiqueta de precio.
+  costes: '<path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3a1 1 0 0 1 0 1.4l-6.8 6.8a1 1 0 0 1-1.4 0z"/><circle cx="8" cy="8" r="1.6"/><path d="m10.5 16.5 5-5"/>',
   tpv: '<rect x="4" y="10" width="16" height="10.5" rx="2"/><path d="M7 10V4.5h10V10"/><path d="M9.5 7h5M8 14h2M12 14h2M16 14h0M8 17h8"/>',
   electrica: '<path d="M13 2.5 5 13.5h6l-1 8 8-11h-6z"/>',
   muv: '<circle cx="12" cy="12" r="2.6"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="m6.6 7.3 3.4 3M17.4 7.3l-3.4 3M6.6 16.7l3.4-3M17.4 16.7l-3.4-3"/>',
