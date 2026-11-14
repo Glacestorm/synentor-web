@@ -847,7 +847,7 @@ export const en: Textos = {
       },
       umami: {
         para: 'Visit statistics without cookies.',
-        donde: 'United States and Germany.',
+        donde: 'European Union (Frankfurt, Germany). The company is based in the United States.',
         garantia: 'Standard contractual clauses.',
       },
       google: {

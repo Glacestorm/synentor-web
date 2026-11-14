@@ -847,7 +847,7 @@ export const it: Textos = {
       },
       umami: {
         para: 'Statistiche delle visite senza cookie.',
-        donde: 'Stati Uniti e Germania.',
+        donde: 'Unione europea (Francoforte, Germania). L’azienda ha sede negli Stati Uniti.',
         garantia: 'Clausole contrattuali standard.',
       },
       google: {

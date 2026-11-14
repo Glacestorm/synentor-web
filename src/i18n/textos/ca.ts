@@ -849,7 +849,7 @@ export const ca = {
       },
       umami: {
         para: 'Estadístiques de visites sense galetes.',
-        donde: 'Estats Units i Alemanya.',
+        donde: 'Unió Europea (Frankfurt, Alemanya). L’empresa és dels Estats Units.',
         garantia: 'Clàusules contractuals tipus.',
       },
       google: {

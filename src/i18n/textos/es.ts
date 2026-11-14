@@ -847,7 +847,7 @@ export const es: Textos = {
       },
       umami: {
         para: 'Estadísticas de visitas sin cookies.',
-        donde: 'Estados Unidos y Alemania.',
+        donde: 'Unión Europea (Fráncfort, Alemania). La empresa es de Estados Unidos.',
         garantia: 'Cláusulas contractuales tipo.',
       },
       google: {

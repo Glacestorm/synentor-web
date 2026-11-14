@@ -847,7 +847,7 @@ export const de: Textos = {
       },
       umami: {
         para: 'Besucherstatistik ohne Cookies.',
-        donde: 'Vereinigte Staaten und Deutschland.',
+        donde: 'Europäische Union (Frankfurt, Deutschland). Das Unternehmen hat seinen Sitz in den Vereinigten Staaten.',
         garantia: 'Standardvertragsklauseln.',
       },
       google: {

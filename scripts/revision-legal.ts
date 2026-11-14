@@ -110,13 +110,13 @@ activar esa herramienta hasta comprobarlas.
 7. Número de inscripción en el Registre de Societats: el aviso legal solo dice «NRT: en trámite».
 8. Dónde guarda Microsoft 365 el correo de la empresa (centro de administración → Configuración de la organización →
    Ubicación de los datos); el texto dice «Unión Europea y Estados Unidos».
-9. Región de la cuenta de Umami (Estados Unidos o Unión Europea); el texto dice «Estados Unidos y Alemania» (sus
-    condiciones).
 
 **Confirmado por gerencia (14/11/2026)**
 - Plazo para los mensajes de quien no llega a ser cliente: **1 año** desde el último contacto.
 - La base de datos de las pruebas de consentimiento (Cloudflare D1) se creó con la **jurisdicción de la Unión Europea**:
   los registros se guardan en la UE.
+- La cuenta de Umami está en la región **Unión Europea (Fráncfort)**: las estadísticas sin cookies se guardan en la UE;
+  la empresa es de Estados Unidos.
 
 **Comprobado y su fuente** (búsqueda en las páginas oficiales del 14/11/2026; abrir cada una antes de activar):
 - Google Analytics: \`_ga\` y \`_ga_<ID>\`; la web las limita a 395 días (unos 13 meses) con \`cookie_expires\`:
@@ -132,7 +132,7 @@ activar esa herramienta hasta comprobarlas.
   https://developers.cloudflare.com/workers/observability/logs/workers-logs/ · https://developers.cloudflare.com/observability/pricing/
 - Resend guarda todos los datos en Estados Unidos (aunque envíe desde Irlanda): https://resend.com/docs/dashboard/domains/regions ·
   https://resend.com/security/gdpr
-- Umami: sin cookies, cláusulas tipo, datos en Estados Unidos y Alemania: https://umami.is/dpa · https://umami.is/terms
+- Umami: sin cookies, cláusulas tipo; región de datos elegida al crear la cuenta (la nuestra, UE): https://umami.is/dpa · https://umami.is/terms
 - APDA: C/ Dr. Vilanova 15-17, planta -5, AD500 Andorra la Vella · https://www.apda.ad
 `;
 
