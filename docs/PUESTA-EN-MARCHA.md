@@ -87,9 +87,9 @@ npx wrangler secret put RESEND_API_KEY
 
 Es el momento en que la web anterior deja de verse.
 
-1. En el Worker → Configuración → Dominios: añade `synentor.com`.
-2. Quita de Cloudflare los cuatro registros de Lovable: A `@`, A `www`, TXT `_lovable` y TXT `_lovable.www`, **sin tocar
-   los del correo**.
+1. Quita de Cloudflare los cuatro registros de Lovable: A `@`, A `www`, TXT `_lovable` y TXT `_lovable.www`, **sin tocar
+   los del correo**. Primero esto: Cloudflare no deja poner un dominio en el Worker si ya hay un registro con ese nombre.
+2. En el Worker → Configuración → Dominios: añade `synentor.com`.
 3. Para que `www.synentor.com` pueda redirigir (paso 7), añade un registro AAAA `www` → `100::` **con el proxy activado**
    (nube naranja): es una dirección vacía que Cloudflare usa para los nombres que solo redirigen.
 4. En Lovable, **despublica el proyecto** (y, si ya no lo usáis, dalo de baja): su dirección propia (`*.lovable.app`)
@@ -174,7 +174,27 @@ el aviso de cookies no sale y la web no carga esas herramientas.
    yo mismo»**.
 4. En el código que enseña aparece `_linkedin_partner_id = "1234567"`: ese número es el identificador. No copies el resto.
 
-### 9.5 Antes de poner los identificadores
+### 9.5 La prueba de los consentimientos (base D1) — hecho el 14/11/2026
+
+Cada vez que alguien acepta o rechaza las cookies, el Worker guarda un identificador al azar, la versión de la política,
+las dos decisiones y la fecha (ni la IP ni nada de la persona) y borra cada día lo de más de 12 meses.
+
+1. Cloudflare → Almacenamiento y bases de datos → D1 → Crear: nombre `synentor-consentimientos`, **«Especificar
+   jurisdicción» → Unión Europea**. Su identificador está en `wrangler.jsonc` (no es secreto).
+2. En la base, pestaña «Consola», se ejecuta una vez lo de `migraciones/0001_consentimientos.sql`, una orden detrás de otra:
+
+```sql
+CREATE TABLE IF NOT EXISTS consentimientos (id TEXT PRIMARY KEY, version TEXT NOT NULL, estadisticas INTEGER NOT NULL CHECK (estadisticas IN (0, 1)), publicidad INTEGER NOT NULL CHECK (publicidad IN (0, 1)), fecha TEXT NOT NULL);
+```
+
+```sql
+CREATE INDEX IF NOT EXISTS consentimientos_fecha ON consentimientos (fecha);
+```
+
+3. Comprueba en la consola que la tabla existe: `SELECT count(*) FROM consentimientos;` tiene que dar 0 (o lo que se haya
+   guardado ya).
+
+### 9.6 Antes de poner los identificadores
 
 1. El asesor jurídico revisa la política de cookies y la de privacidad nuevas (enumeran las cuatro empresas, lo que guarda
    cada una, cuánto tiempo y que los datos salen de Andorra y de la UE).

@@ -17,7 +17,16 @@
     "PUBLIC_TURNSTILE_SITEKEY": ""
   },
   "observability": { "enabled": true },
+  // La prueba de cada consentimiento de cookies (diseño §17): base D1 creada por gerencia el 14/11/2026, con los datos en
+  // la jurisdicción de la UE. El identificador no es secreto. La tabla, en migraciones/ (guía de puesta en marcha, §9.5).
+  "d1_databases": [
+    {
+      "binding": "CONSENTIMIENTOS",
+      "database_name": "synentor-consentimientos",
+      "database_id": "3eb6819a-4735-48f4-a7c3-2594a373dd31",
+      "migrations_dir": "migraciones"
+    }
+  ],
   // Cada día a las 03:17 (UTC) se borran las pruebas de consentimiento de más de 12 meses (worker/consentimiento.ts).
-  // La base D1 «CONSENTIMIENTOS» se añade aquí cuando gerencia la cree (guía de puesta en marcha, §9.5).
   "triggers": { "crons": ["17 3 * * *"] }
 }
