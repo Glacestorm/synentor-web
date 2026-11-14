@@ -382,3 +382,50 @@ cuentas (el kit las trae vacías).
 
 La estructura del proyecto Astro, los componentes, la redacción final de los textos dentro de este marco, las
 ilustraciones, el diseño visual dentro de la marca, la herramienta de pruebas y la guía de despliegue.
+
+## 17. Cookies y medición con consentimiento (gerencia, 14/11/2026: «Todo con aviso desde ya») — PENDIENTE DE APROBAR
+
+**Por qué**: gerencia quiere «las mejores cookies y que nos aporten muchos datos». Hasta hoy la web solo medía con Umami,
+sin cookies y sin aviso (§12). Se eligió, de tres opciones, la que da más detalle por visitante: Google Analytics 4,
+Microsoft Clarity y los píxeles de Meta y LinkedIn, con un aviso de consentimiento desde el primer día.
+
+**Lo que se sabe y lo que no**: la ley andorrana (Llei 29/2021) y la guía de la APDA piden un consentimiento con un acto
+positivo, igual de fácil de aceptar que de rechazar o de retirar, y nunca «seguir navegando» como aceptación; la propia
+APDA no pide consentimiento para las cookies técnicas y de preferencias (idioma). Para visitantes de la UE rige además el
+RGPD y la directiva de privacidad electrónica. **No se ha podido abrir la guía de la APDA desde la sesión** (apda.ad no
+está permitido en su red): lo anterior sale de resúmenes y de la política de cookies de la APDA, y **la redacción final
+la revisa el asesor jurídico**, como el resto de las páginas legales.
+
+**Enfoques considerados**: (a) solo Umami con eventos, sin aviso; (b) eventos y aviso solo para anuncios; (c) todo con
+aviso desde ya. Gerencia eligió (c). Para el aviso: un gestor de consentimiento propio, pequeño y en los siete idiomas
+(recomendado: sin dependencias ni otra empresa más que lea las visitas), frente a una plataforma de consentimiento de pago.
+
+**Diseño**:
+1. **Nada se carga sin aceptar.** Google Analytics 4 y Clarity («Estadísticas») y los píxeles de Meta y LinkedIn
+   («Publicidad») se insertan en la página solo después de aceptar su categoría; al rechazar o retirar, no se cargan más y
+   se borran las cookies de la propia web que dejaron (las de los dominios de Meta y LinkedIn no se pueden borrar desde
+   aquí: la política lo dice).
+2. **El aviso**: franja inferior con «Aceptar todas», «Rechazar todas» y «Configurar», los dos primeros con el mismo tamaño
+   y el mismo peso; «Configurar» abre las categorías con un interruptor cada una (las necesarias, siempre activas y sin
+   interruptor). Sin muro: la web se usa igual sin decidir. Se vuelve a abrir desde «Configuración de cookies» en el pie.
+3. **La decisión** se guarda en una cookie propia (`synentor_consentimiento`: versión de la política, fecha y una marca por
+   categoría) durante 12 meses (el modelo de la APDA); pasado ese plazo, o si cambia la política, se vuelve a preguntar.
+4. **Prueba del consentimiento**: cada decisión se apunta en el servidor (Worker → Cloudflare D1): un identificador al azar
+   que no es de la persona, la decisión, la fecha y la versión de la política; **sin la IP**. Se conserva 12 meses.
+5. **Sin identificadores no hay aviso**: las cuatro herramientas tienen su identificador en `src/datos/analitica.ts`
+   (no son secretos: van en la página). Mientras estén vacíos, el aviso no aparece y la web sigue como hoy.
+6. **Eventos** (lo que da «muchos datos»): una sola función manda cada evento a Umami siempre (sin cookies) y a las demás
+   herramientas solo si su categoría está aceptada: clic en «Pide una demostración», configurador (país, número de
+   módulos, tramo del total), pedido enviado, formulario enviado (solo el asunto), cambio de idioma. **Nunca** el nombre,
+   el correo, el teléfono ni el texto del mensaje.
+7. **Google Analytics 4** con su duración de cookie reducida a 13 meses y sin señales de Google para anuncios salvo que se
+   acepte «Publicidad».
+8. **Textos**: el pie deja de decir «estadísticas sin cookies»; la política de cookies enumera cada cookie (nombre,
+   empresa, finalidad, duración), también la verificación antirrobots del formulario (necesaria); la de privacidad añade
+   los destinatarios (Google, Microsoft, Meta, LinkedIn), la base (el consentimiento) y las transferencias fuera de
+   Andorra y de la UE. Las duraciones exactas se copian de la documentación de cada proveedor al construir.
+
+**No objetivos**: plataforma de consentimiento de terceros, cookies sin consentimiento, «seguir navegando» como aceptación.
+
+**Lo que hace gerencia**: crear las cuentas y dar los cuatro identificadores (GA4 `G-…`, Clarity, píxel de Meta, socio de
+LinkedIn); el asesor jurídico revisa las dos políticas antes de poner los identificadores.

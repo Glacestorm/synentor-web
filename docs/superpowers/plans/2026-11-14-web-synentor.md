@@ -395,3 +395,12 @@ usan a la vez las tablas, el configurador y las pruebas.
   cobran con RRHH, y el ejemplo del plan las cobraba con Compras. La Base fuera de Andorra no está «disponible» (lleva la
   contabilidad del país): en España, «inminente»; en los demás, «a medida».
 - **Analítica**: Umami en lugar de Cloudflare Web Analytics (gerencia, 14/11/2026; diseño §12).
+- **Tarea 6**:
+  - La comprobación de contenido es una prueba de vitest (`pruebas/contenido.test.ts`), no `scripts/comprueba-contenido.mjs`:
+    corre con `npm test` sobre la web construida y lleva su control positivo.
+  - «Cualquier otra ruta de la web antigua → /» se cambia por: las 85 páginas públicas de la web anterior, una a una, a la
+    página nueva de su tema, y lo demás a la página de «no existe» (404 en los siete idiomas). Una redirección general
+    pisaría las direcciones nuevas y daría «soft 404» en los buscadores. `/api` no se redirige (choca con el formulario).
+  - `pruebas/navegador.spec.ts` queda pendiente: la comprobación de desbordes y las capturas se hicieron con Playwright a
+    mano en 360, 768, 1024 y 1366 px (49 páginas, 0 desbordes).
+
