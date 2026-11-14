@@ -383,18 +383,25 @@ cuentas (el kit las trae vacías).
 La estructura del proyecto Astro, los componentes, la redacción final de los textos dentro de este marco, las
 ilustraciones, el diseño visual dentro de la marca, la herramienta de pruebas y la guía de despliegue.
 
-## 17. Cookies y medición con consentimiento (gerencia, 14/11/2026: «Todo con aviso desde ya») — PENDIENTE DE APROBAR
+## 17. Cookies y medición con consentimiento (gerencia, 14/11/2026: «Todo con aviso desde ya») — APROBADO el 14/11/2026
 
 **Por qué**: gerencia quiere «las mejores cookies y que nos aporten muchos datos». Hasta hoy la web solo medía con Umami,
 sin cookies y sin aviso (§12). Se eligió, de tres opciones, la que da más detalle por visitante: Google Analytics 4,
 Microsoft Clarity y los píxeles de Meta y LinkedIn, con un aviso de consentimiento desde el primer día.
 
-**Lo que se sabe y lo que no**: la ley andorrana (Llei 29/2021) y la guía de la APDA piden un consentimiento con un acto
-positivo, igual de fácil de aceptar que de rechazar o de retirar, y nunca «seguir navegando» como aceptación; la propia
-APDA no pide consentimiento para las cookies técnicas y de preferencias (idioma). Para visitantes de la UE rige además el
-RGPD y la directiva de privacidad electrónica. **No se ha podido abrir la guía de la APDA desde la sesión** (apda.ad no
-está permitido en su red): lo anterior sale de resúmenes y de la política de cookies de la APDA, y **la redacción final
-la revisa el asesor jurídico**, como el resto de las páginas legales.
+**Lo que dice la guía de la APDA** («Ús de cookies, política de privadesa i avís legal», versión 4, 23/01/2024, leída el
+14/11/2026, con sus modelos de aviso legal y de cookies):
+- Las técnicas o estrictamente necesarias no piden consentimiento, pero se explican en la política. Las de preferencias que
+  elige la persona (el idioma) tampoco. La medición de audiencia solo para el editor, con estadísticas anónimas, sin
+  cruzarla con otros datos ni seguir a la persona por otras webs, tampoco (el caso de Umami); la APDA recomienda informar.
+- Las demás, consentimiento expreso con un acto positivo; nunca «seguir navegando»; sin muro de cookies.
+- **Primera capa**: «aceptar todas», «rechazar todas» y personalizar; **sin «rechazar» es un incumplimiento**; **colores y
+  contrastes que empujen a una opción pueden invalidar el consentimiento**; nada marcado de antemano en la segunda capa.
+- Antes de consentir: quién es el responsable, qué datos, para qué, cuánto tiempo, cómo aceptar o rechazar y qué pasa en
+  cada caso, el derecho a retirarlo y cómo, y los destinatarios.
+- **Retirarlo tan fácil como darlo**: un botón flotante permanente y visible, o algo igual de ágil.
+Para visitantes de la UE rige además el RGPD y la directiva de privacidad electrónica. **La redacción final la revisa el
+asesor jurídico**, como el resto de las páginas legales.
 
 **Enfoques considerados**: (a) solo Umami con eventos, sin aviso; (b) eventos y aviso solo para anuncios; (c) todo con
 aviso desde ya. Gerencia eligió (c). Para el aviso: un gestor de consentimiento propio, pequeño y en los siete idiomas
@@ -405,9 +412,10 @@ aviso desde ya. Gerencia eligió (c). Para el aviso: un gestor de consentimiento
    («Publicidad») se insertan en la página solo después de aceptar su categoría; al rechazar o retirar, no se cargan más y
    se borran las cookies de la propia web que dejaron (las de los dominios de Meta y LinkedIn no se pueden borrar desde
    aquí: la política lo dice).
-2. **El aviso**: franja inferior con «Aceptar todas», «Rechazar todas» y «Configurar», los dos primeros con el mismo tamaño
-   y el mismo peso; «Configurar» abre las categorías con un interruptor cada una (las necesarias, siempre activas y sin
-   interruptor). Sin muro: la web se usa igual sin decidir. Se vuelve a abrir desde «Configuración de cookies» en el pie.
+2. **El aviso**: franja inferior con «Aceptar todas», «Rechazar todas» y «Configurar», **los tres con el mismo estilo,
+   tamaño y color** (APDA); «Configurar» abre las categorías con un interruptor cada una, apagados de entrada (las
+   necesarias, siempre activas y sin interruptor). Sin muro: la web se usa igual sin decidir. Una vez decidido, un
+   **botón flotante pequeño y fijo** (abajo a la izquierda) y «Configuración de cookies» en el pie lo vuelven a abrir.
 3. **La decisión** se guarda en una cookie propia (`synentor_consentimiento`: versión de la política, fecha y una marca por
    categoría) durante 12 meses (el modelo de la APDA); pasado ese plazo, o si cambia la política, se vuelve a preguntar.
 4. **Prueba del consentimiento**: cada decisión se apunta en el servidor (Worker → Cloudflare D1): un identificador al azar
