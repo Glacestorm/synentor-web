@@ -1,7 +1,9 @@
 // Worker de la web: atiende solo «/» (idioma de entrada) y «/api/*»; lo demás lo sirve el almacén de ficheros estáticos
-// (wrangler.jsonc, run_worker_first). /api/contacto: el formulario (worker/contacto.ts).
+// (wrangler.jsonc, run_worker_first). /api/contacto: el formulario (worker/contacto.ts); /api/consentimiento: la prueba
+// del consentimiento de cookies (worker/consentimiento.ts).
 import { elegirIdioma, paisConfigurador } from './idioma';
 import { atiendeContacto } from './contacto';
+import { atiendeConsentimiento, borraAntiguos } from './consentimiento';
 import { ruta } from '../src/i18n/idiomas';
 
 export interface Env {
@@ -10,6 +12,8 @@ export interface Env {
   /** Secretos de Cloudflare (wrangler secret put): nunca en el repositorio. */
   TURNSTILE_SECRET?: string;
   RESEND_API_KEY?: string;
+  /** Prueba de los consentimientos de cookies (Cloudflare D1; guía de puesta en marcha, §9.5). */
+  CONSENTIMIENTOS?: D1Database;
 }
 
 /** El país de la conexión que da Cloudflare (no se guarda). */
@@ -47,6 +51,13 @@ export default {
 
     if (url.pathname === '/api/contacto') return atiendeContacto(request, env);
 
+    if (url.pathname === '/api/consentimiento') return atiendeConsentimiento(request, env);
+
     return env.ASSETS.fetch(request);
+  },
+
+  /** Cada día: borra las pruebas de consentimiento de más de 12 meses. */
+  async scheduled(_evento: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
+    ctx.waitUntil(borraAntiguos(env, new Date()));
   },
 } satisfies ExportedHandler<Env>;

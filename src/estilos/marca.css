@@ -209,6 +209,11 @@ html {
   }
 }
 
+/* Lo marcado como oculto queda oculto aunque una regla le dé otro «display» (el aviso de cookies lo necesita). */
+[hidden] {
+  display: none !important;
+}
+
 .solo-lector {
   position: absolute;
   width: 1px;

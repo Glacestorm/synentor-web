@@ -343,3 +343,21 @@ figure { margin: 0; }
 .ilustracion-pausa { position: absolute; right: 0; bottom: 0; z-index: 2; background: var(--syn-cristal); color: var(--syn-gris); border: 1px solid var(--syn-borde-control);
   border-radius: 999px; padding: 6px 12px; font: 600 0.82rem var(--syn-fuente-titulos); cursor: pointer; }
 .ilustracion-pausa:hover { color: var(--syn-blanco); }
+
+/* ---------- Aviso de cookies (diseño §17; APDA: los tres botones iguales, sin colores que empujen) ---------- */
+.cookies-aviso { position: fixed; z-index: 40; left: 12px; right: 12px; bottom: 12px; margin: 0 auto; max-width: 760px; padding: 20px 22px;
+  border-radius: 18px; background: var(--syn-noche-2); border: 1px solid var(--syn-borde-control); box-shadow: var(--syn-sombra-oscura); }
+.cookies-aviso h2 { font-size: 1.15rem; margin: 0 0 8px; max-width: none; }
+.cookies-aviso p { margin: 0 0 12px; font-size: 0.95rem; max-width: none; }
+.cookies-aviso a { color: var(--syn-blanco); text-decoration: underline; }
+.cookies-config { display: grid; gap: 12px; max-height: 45vh; overflow-y: auto; margin-bottom: 12px; }
+.cookies-cat { border-top: 1px solid var(--syn-linea); padding-top: 10px; }
+.cookies-cat ul { margin: 6px 0 0; padding-left: 60px; font-size: 0.86rem; color: var(--syn-gris); }
+.cookies-cat .interruptor { padding: 4px 0; }
+.cookies-botones { display: flex; flex-wrap: wrap; gap: 10px; }
+.boton-cookies { flex: 1 1 160px; min-height: 44px; padding: 10px 16px; border-radius: 10px; cursor: pointer;
+  font: 700 0.95rem var(--syn-fuente-titulos); color: var(--syn-blanco); background: var(--syn-cristal-2); border: 1px solid var(--syn-borde-control); }
+.boton-cookies:hover { background: var(--syn-cristal); border-color: var(--syn-blanco); }
+.cookies-flotante { position: fixed; z-index: 35; left: 12px; bottom: 12px; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  color: var(--syn-blanco); background: var(--syn-noche-2); border: 1px solid var(--syn-borde-control); box-shadow: var(--syn-sombra-oscura); cursor: pointer; }
+@media (max-width: 900px) { html:has(.conf-barra) .cookies-flotante { bottom: 92px; } }
