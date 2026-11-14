@@ -8,6 +8,7 @@ import { porCategoria } from '../../lib/consultoria';
 import { euros, porcentaje } from '../../lib/formato';
 import { textosConfigurador } from '../../lib/textosConfigurador';
 import { MERCADO } from '../../datos/mercado';
+import GraficoComparacion from '../visual/GraficoComparacion.astro';
 
 interface Props {
   idioma: Idioma;
@@ -143,6 +144,7 @@ const t2 = TARIFA.muv.tramos[1];
           })
         }
       </p>
+      <GraficoComparacion idioma={idioma} />
       <p class="pequeno">{rellena(tx.comparacion.fuente, { fecha: fechaLocal(MERCADO.consultado) })}</p>
     </div>
   </div>

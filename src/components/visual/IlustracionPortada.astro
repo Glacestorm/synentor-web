@@ -1,0 +1,53 @@
+---
+// Ilustración de la portada (diseño §8: abstracta, claramente ilustrativa, nunca una captura): los módulos conectados
+// alrededor del símbolo de Synentor. Decorativa para los lectores de pantalla; el movimiento se apaga con
+// prefers-reduced-motion (marca.css).
+import { textos } from '../../i18n/t';
+import type { Idioma } from '../../i18n/idiomas';
+import { svgIcono, type NombreIcono } from '../../lib/iconos';
+
+interface Props {
+  idioma: Idioma;
+}
+const { idioma } = Astro.props;
+const n = textos(idioma).inicio.portada.nodos;
+const nodos: { icono: NombreIcono; texto: string }[] = [
+  { icono: 'compras', texto: n.compras },
+  { icono: 'ventas_crm', texto: n.ventas },
+  { icono: 'rrhh', texto: n.rrhh },
+  { icono: 'muv', texto: n.muv },
+  { icono: 'bancos', texto: n.bancos },
+  { icono: 'base', texto: n.contabilidad },
+];
+const R = 40;
+const posiciones = nodos.map((_, i) => {
+  const a = ((-90 + i * 60) * Math.PI) / 180;
+  return { x: 50 + R * Math.cos(a), y: 50 + R * Math.sin(a) };
+});
+---
+
+<div class="ilustracion" aria-hidden="true">
+  <svg class="lineas" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="trazo" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" style="stop-color:var(--syn-oro)" />
+        <stop offset="1" style="stop-color:var(--syn-azul)" />
+      </linearGradient>
+    </defs>
+    <circle cx="50" cy="50" r={R} fill="none" style="stroke:var(--syn-cristal-borde)" stroke-width="0.25" vector-effect="non-scaling-stroke" />
+    {
+      posiciones.map((p) => (
+        <path d={`M50 50 L${p.x.toFixed(2)} ${p.y.toFixed(2)}`} stroke="url(#trazo)" stroke-width="1.5" vector-effect="non-scaling-stroke" fill="none" opacity="0.7" />
+      ))
+    }
+  </svg>
+  <div class="centro"><img src="/marca/simbol-cercle-perfecte.png" alt="" width="160" height="160" loading="eager" /></div>
+  {
+    nodos.map((nodo, i) => (
+      <div class="nodo" style={`left:${posiciones[i].x.toFixed(2)}%;top:${posiciones[i].y.toFixed(2)}%`}>
+        <span class="bola" set:html={svgIcono(nodo.icono, 26)} />
+        <span>{nodo.texto}</span>
+      </div>
+    ))
+  }
+</div>

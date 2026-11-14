@@ -1,9 +1,14 @@
 ---
-// Portada (diseño §8): una idea por bloque, frases cortas, contraste azul noche y dorado. Los precios, de la tarifa.
+// Portada (diseño §8; rediseño visual del 14/11/2026): una idea por bloque, oscuro y claro alternos, cristal con medida.
+// Los precios, de la tarifa; la cifra del portal, medida (src/datos/portal.ts).
 import { textos, rellena } from '../../i18n/t';
 import { ruta, type Idioma } from '../../i18n/idiomas';
 import { TARIFA } from '../../lib/precios/tarifa';
 import { euros } from '../../lib/formato';
+import Icono from '../Icono.astro';
+import IlustracionPortada from '../visual/IlustracionPortada.astro';
+import Flujo from '../visual/Flujo.astro';
+import CifraPortal from '../visual/CifraPortal.astro';
 
 interface Props {
   idioma: Idioma;
@@ -14,40 +19,53 @@ const eur = (n: number) => euros(n, idioma);
 const contacto = ruta('contacto', idioma);
 const servicios = ruta('servicios', idioma);
 const precios = ruta('precios', idioma);
+const nota = rellena(tx.portada.nota, { base: eur(TARIFA.base.cuota), usuarios: TARIFA.base.usuariosIncluidos });
+const pilares = [
+  { k: 'suite', icono: 'base', ia: false },
+  { k: 'muv', icono: 'muv', ia: true },
+  { k: 'consultoria', icono: 'consultoria', ia: true },
+] as const;
 ---
 
 <section class="portada">
   <div class="contenedor portada-dentro">
-    <p class="antetitulo">{tx.portada.antetitulo}</p>
-    <h1><span class="texto-oro">{tx.portada.titulo}</span></h1>
-    <p class="subtitulo">{tx.portada.subtitulo}</p>
-    <div class="botones">
-      <a class="boton boton-oro" href={`${contacto}?asunto=demostracion`}>{tx.portada.botonDemo}</a>
-      <a class="boton boton-contorno" href={precios}>{tx.portada.botonPrecio}</a>
+    <div>
+      <p class="antetitulo">{tx.portada.antetitulo}</p>
+      <h1><span class="texto-oro">{tx.portada.titulo}</span></h1>
+      <p class="subtitulo">{tx.portada.subtitulo}</p>
+      <div class="botones">
+        <a class="boton boton-oro" href={`${contacto}?asunto=demostracion`}>{tx.portada.botonDemo}</a>
+        <a class="boton boton-contorno" href={precios}>{tx.portada.botonPrecio}</a>
+      </div>
+      <p class="nota">{nota}</p>
     </div>
-    <p class="nota">{rellena(tx.portada.nota, { base: eur(TARIFA.base.cuota), usuarios: TARIFA.base.usuariosIncluidos })}</p>
-  </div>
-  <div class="halo" aria-hidden="true"></div>
-</section>
-
-<section class="bloque">
-  <div class="contenedor estrecho">
-    <h2>{tx.problema.titulo}</h2>
-    <ul class="lista-x">{tx.problema.puntos.map((p) => <li>{p}</li>)}</ul>
-    <p class="cierre">{tx.problema.cierre}</p>
+    <IlustracionPortada idioma={idioma} />
   </div>
 </section>
 
 <section class="bloque claro">
+  <div class="contenedor dos-col">
+    <h2>{tx.problema.titulo}</h2>
+    <div>
+      <ul class="lista-x">{tx.problema.puntos.map((p) => <li>{p}</li>)}</ul>
+      <p class="cierre">{tx.problema.cierre}</p>
+    </div>
+  </div>
+</section>
+
+<section class="bloque">
   <div class="contenedor">
     <h2>{tx.pilares.titulo}</h2>
     <div class="rejilla-3">
       {
-        (['suite', 'muv', 'consultoria'] as const).map((k) => (
+        pilares.map((p) => (
           <article class="tarjeta">
-            <h3>{tx.pilares[k].titulo}</h3>
-            <p>{tx.pilares[k].texto}</p>
-            <a class="enlace" href={`${servicios}#${k}`}>{tx.pilares.mas} →</a>
+            <span class={`icono-caja${p.ia ? ' ia' : ''}`}>
+              <Icono nombre={p.icono} />
+            </span>
+            <h3>{tx.pilares[p.k].titulo}</h3>
+            <p>{tx.pilares[p.k].texto}</p>
+            <a class="enlace" href={`${servicios}#${p.k}`}>{tx.pilares.mas} →</a>
           </article>
         ))
       }
@@ -55,24 +73,23 @@ const precios = ruta('precios', idioma);
   </div>
 </section>
 
-<section class="bloque">
+<section class="bloque claro">
   <div class="contenedor dos-col">
     <div>
       <p class="antetitulo">{tx.rrhh.antetitulo}</p>
       <h2>{tx.rrhh.titulo}</h2>
       <p>{tx.rrhh.texto}</p>
-      <p class="destacado">{tx.rrhh.dato}</p>
-    </div>
-    <div>
       <ul class="lista-ok">{tx.rrhh.puntos.map((p) => <li>{p}</li>)}</ul>
       <p class="pequeno">{tx.rrhh.espana}</p>
     </div>
+    <CifraPortal idioma={idioma} />
   </div>
 </section>
 
-<section class="bloque claro">
+<section class="bloque">
   <div class="contenedor dos-col">
     <div>
+      <span class="icono-caja"><Icono nombre="multiempresa" /></span>
       <p class="antetitulo">{tx.multiempresa.antetitulo}</p>
       <h2>{tx.multiempresa.titulo}</h2>
       <p>{tx.multiempresa.texto}</p>
@@ -87,48 +104,61 @@ const precios = ruta('precios', idioma);
   </div>
 </section>
 
+<section class="bloque claro">
+  <div class="contenedor">
+    <div class="rejilla-3">
+      <article class="tarjeta">
+        <span class="icono-caja"><Icono nombre="compras" /></span>
+        <h3>{tx.compras.titulo}</h3>
+        <p>{tx.compras.texto}</p>
+        <Flujo pasos={tx.compras.pasos} iconos={['correo', 'ia', 'compras', 'check']} />
+      </article>
+      <article class="tarjeta">
+        <span class="icono-caja"><Icono nombre="bancos" /></span>
+        <h3>{tx.bancos.titulo}</h3>
+        <p>{tx.bancos.texto}</p>
+        <Flujo pasos={tx.bancos.pasos} iconos={['bancos', 'migracion', 'ia', 'check']} />
+      </article>
+      <article class="tarjeta">
+        <span class="icono-caja"><Icono nombre="juridico" /></span>
+        <h3>{tx.juridico.titulo}</h3>
+        <p>{tx.juridico.texto}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="bloque">
   <div class="contenedor estrecho centrado">
+    <span class="icono-caja ia"><Icono nombre="ia" /></span>
     <p class="antetitulo">{tx.ia.antetitulo}</p>
     <h2><span class="texto-oro">{tx.ia.titulo}</span></h2>
-    <p>{tx.ia.texto}</p>
+    <p class="subtitulo">{tx.ia.texto}</p>
   </div>
 </section>
 
 <section class="bloque claro">
-  <div class="contenedor rejilla-3">
-    {
-      (['compras', 'bancos', 'juridico'] as const).map((k) => (
-        <article class="tarjeta">
-          <h3>{tx[k].titulo}</h3>
-          <p>{tx[k].texto}</p>
-        </article>
-      ))
-    }
-  </div>
-</section>
-
-<section class="bloque">
-  <div class="contenedor estrecho">
-    <p class="antetitulo">{tx.historia.antetitulo}</p>
-    <h2>{tx.historia.titulo}</h2>
-    <p>{tx.historia.texto}</p>
-  </div>
-</section>
-
-<section class="bloque claro">
-  <div class="contenedor estrecho centrado">
-    <h2>{tx.precio.titulo}</h2>
-    <p>{tx.precio.texto}</p>
-    <p class="precio-grande">{rellena(tx.portada.nota, { base: eur(TARIFA.base.cuota), usuarios: TARIFA.base.usuariosIncluidos })}</p>
-    <a class="boton boton-oro" href={precios}>{tx.precio.boton}</a>
+  <div class="contenedor dos-col">
+    <div>
+      <p class="antetitulo">{tx.historia.antetitulo}</p>
+      <h2>{tx.historia.titulo}</h2>
+      <p>{tx.historia.texto}</p>
+    </div>
+    <div class="tarjeta centrado">
+      <h3>{tx.precio.titulo}</h3>
+      <p>{tx.precio.texto}</p>
+      <p class="precio-grande">{nota}</p>
+      <a class="boton boton-oro" href={precios}>{tx.precio.boton}</a>
+    </div>
   </div>
 </section>
 
 <section class="bloque final">
   <div class="contenedor estrecho centrado">
     <h2><span class="texto-oro">{tx.final.titulo}</span></h2>
-    <p>{tx.final.texto}</p>
-    <a class="boton boton-oro" href={`${contacto}?asunto=demostracion`}>{tx.final.boton}</a>
+    <p class="subtitulo">{tx.final.texto}</p>
+    <div class="botones" style="justify-content:center">
+      <a class="boton boton-oro" href={`${contacto}?asunto=demostracion`}>{tx.final.boton}</a>
+    </div>
   </div>
 </section>

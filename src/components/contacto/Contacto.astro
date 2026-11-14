@@ -1,9 +1,11 @@
 ---
-// Contacto (diseño §8 y §9): el formulario y los datos de la empresa. «Enviado» solo si el Worker lo confirma (tarea 5);
-// si no, se dice y se ofrece el correo. Llega rellenado desde el configurador (?asunto=pedido&seleccion=…).
+// Contacto (diseño §8 y §9; rediseño del 14/11/2026): tarjeta de cristal, campos con etiqueta flotante, el asunto en
+// fichas, contador, «Qué pasa después» y los datos de la empresa. «Enviado» solo si el Worker lo confirma.
+// Llega rellenado desde el configurador (?asunto=pedido&seleccion=…).
 import { textos, rellena } from '../../i18n/t';
 import { ruta, type Idioma } from '../../i18n/idiomas';
 import { EMPRESA } from '../../datos/empresa';
+import Icono from '../Icono.astro';
 
 interface Props {
   idioma: Idioma;
@@ -15,6 +17,7 @@ const f = tx.formulario;
 const sitekey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY as string | undefined;
 const correoEnlace = `<a href="mailto:${EMPRESA.correo}">${EMPRESA.correo}</a>`;
 const politica = `<a href="${ruta('privacidad', idioma)}">${f.politica}</a>`;
+const MAX = 5000;
 const mensajes = {
   ok: f.ok,
   datos: f.errores.datos,
@@ -22,12 +25,14 @@ const mensajes = {
   envio: f.errores.envio,
   red: f.errores.red,
   enviando: f.enviando,
+  contador: f.contador,
+  max: MAX,
 };
 ---
 
 <section class="cabecera-pagina">
   <div class="contenedor estrecho">
-    <h1>{tx.encabezado}</h1>
+    <h1><span class="texto-oro">{tx.encabezado}</span></h1>
     <p class="subtitulo">{tx.entrada}</p>
   </div>
 </section>
@@ -36,28 +41,46 @@ const mensajes = {
   <div class="contenedor dos-col contacto">
     <form id="formulario" class="formulario" novalidate data-mensajes={JSON.stringify(mensajes)} data-idioma={idioma}>
       <h2>{f.titulo}</h2>
-      <label>{f.nombre} <span class="obligatorio">({f.obligatorio})</span>
-        <input name="nombre" autocomplete="name" required maxlength="120" />
-      </label>
-      <label>{f.correo} <span class="obligatorio">({f.obligatorio})</span>
-        <input name="correo" type="email" autocomplete="email" required maxlength="200" />
-      </label>
-      <label>{f.empresa}<input name="empresa" autocomplete="organization" maxlength="160" /></label>
-      <label>{f.telefono}<input name="telefono" type="tel" autocomplete="tel" maxlength="40" /></label>
-      <label>{f.asunto}
-        <select name="asunto">
-          {Object.entries(f.asuntos).map(([k, v]) => <option value={k}>{v}</option>)}
-        </select>
-      </label>
-      <label>{f.mensaje} <span class="obligatorio">({f.obligatorio})</span>
-        <textarea name="mensaje" rows="8" required maxlength="5000"></textarea>
-      </label>
+      <div class="dos">
+        <div class="campo">
+          <input id="f-nombre" name="nombre" autocomplete="name" required maxlength="120" placeholder=" " />
+          <label for="f-nombre">{f.nombre} <span class="obligatorio">({f.obligatorio})</span></label>
+        </div>
+        <div class="campo">
+          <input id="f-correo" name="correo" type="email" autocomplete="email" required maxlength="200" placeholder=" " />
+          <label for="f-correo">{f.correo} <span class="obligatorio">({f.obligatorio})</span></label>
+        </div>
+        <div class="campo">
+          <input id="f-empresa" name="empresa" autocomplete="organization" maxlength="160" placeholder=" " />
+          <label for="f-empresa">{f.empresa}</label>
+        </div>
+        <div class="campo">
+          <input id="f-telefono" name="telefono" type="tel" autocomplete="tel" maxlength="40" placeholder=" " />
+          <label for="f-telefono">{f.telefono}</label>
+        </div>
+      </div>
+      <fieldset class="fichas">
+        <legend>{f.asunto}</legend>
+        {
+          Object.entries(f.asuntos).map(([k, v], i) => (
+            <label class="ficha">
+              <input type="radio" name="asunto" value={k} checked={i === 0} />
+              {v}
+            </label>
+          ))
+        }
+      </fieldset>
+      <div class="campo">
+        <textarea id="f-mensaje" name="mensaje" rows="7" required maxlength={MAX} placeholder=" "></textarea>
+        <label for="f-mensaje">{f.mensaje} <span class="obligatorio">({f.obligatorio})</span></label>
+        <span class="contador" aria-live="off">{rellena(f.contador, { n: 0, max: MAX })}</span>
+      </div>
       <label class="trampa" aria-hidden="true">Web<input name="web" tabindex="-1" autocomplete="off" /></label>
       <label class="consentimiento">
         <input name="consentimiento" type="checkbox" required />
         <span set:html={rellena(f.consentimiento, { politica })} />
       </label>
-      {sitekey && <div class="cf-turnstile" data-sitekey={sitekey} data-language={idioma}></div>}
+      {sitekey && <div class="cf-turnstile" data-sitekey={sitekey} data-language={idioma} data-theme="dark"></div>}
       <button class="boton boton-oro" type="submit">{f.enviar}</button>
       <p class="estado-envio" role="status" aria-live="polite"></p>
       <p class="pequeno alternativa" hidden set:html={rellena(f.alternativa, { correo: correoEnlace })} />
@@ -65,22 +88,34 @@ const mensajes = {
     </form>
 
     <aside class="datos-contacto">
+      <div class="despues">
+        <h3>{tx.despues.titulo}</h3>
+        <ol>{tx.despues.pasos.map((p) => <li>{p}</li>)}</ol>
+      </div>
       <h2>{tx.datos}</h2>
-      <dl>
-        <dt>{tx.correo}</dt>
-        <dd><a href={`mailto:${EMPRESA.correo}`}>{EMPRESA.correo}</a></dd>
-        <dt>{tx.telefono}</dt>
-        <dd><a href={`tel:${EMPRESA.telefono.enlace}`}>{EMPRESA.telefono.texto}</a></dd>
-        <dt>{tx.direccion}</dt>
-        <dd>
-          {EMPRESA.razonSocial} ({enConstitucion})<br />
-          {EMPRESA.direccion.linea}<br />
-          {EMPRESA.direccion.codigoPostal} {EMPRESA.direccion.localidad}<br />
-          {EMPRESA.direccion.pais}
-        </dd>
-        <dt>{tx.horario}</dt>
-        <dd>{tx.horarioTexto}</dd>
-      </dl>
+      <ul>
+        <li>
+          <span class="icono-caja"><Icono nombre="correo" tam={22} /></span>
+          <div><strong>{tx.correo}</strong><a href={`mailto:${EMPRESA.correo}`}>{EMPRESA.correo}</a></div>
+        </li>
+        <li>
+          <span class="icono-caja"><Icono nombre="telefono" tam={22} /></span>
+          <div><strong>{tx.telefono}</strong><a href={`tel:${EMPRESA.telefono.enlace}`}>{EMPRESA.telefono.texto}</a></div>
+        </li>
+        <li>
+          <span class="icono-caja"><Icono nombre="ubicacion" tam={22} /></span>
+          <div>
+            <strong>{tx.direccion}</strong>
+            {EMPRESA.razonSocial} ({enConstitucion})<br />
+            {EMPRESA.direccion.linea}<br />
+            {EMPRESA.direccion.codigoPostal} {EMPRESA.direccion.localidad} · {EMPRESA.direccion.pais}
+          </div>
+        </li>
+        <li>
+          <span class="icono-caja"><Icono nombre="reloj" tam={22} /></span>
+          <div><strong>{tx.horario}</strong>{tx.horarioTexto}</div>
+        </li>
+      </ul>
     </aside>
   </div>
 </section>

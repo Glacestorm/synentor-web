@@ -8,6 +8,7 @@ import { euros, porcentaje } from '../lib/formato';
 import { rellena } from '../i18n/rellena';
 import type { Idioma } from '../i18n/idiomas';
 import type { TextosConfigurador } from '../lib/textosConfigurador';
+import { svgIcono, type NombreIcono } from '../lib/iconos';
 
 const MAX_EMPRESAS = 20;
 
@@ -51,14 +52,26 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
 
   const nombreEmpresa = (i: number) => (i === 0 ? c.principal : rellena(c.empresa, { n: i + 1 }));
 
+  /** Un número con botones − y + (data-k del campo; los botones, «menos-…» y «mas-…»). */
+  const numeroConPasos = (k: string, etiqueta: string, valor: number, min: number) =>
+    `<label class="conf-campo">${esc(etiqueta)}
+      <span class="conf-numero">
+        <button type="button" class="conf-paso" data-k="menos-${k}" aria-label="${esc(c.menos)}">−</button>
+        <input type="number" min="${min}" inputmode="numeric" data-k="${k}" value="${valor}">
+        <button type="button" class="conf-paso" data-k="mas-${k}" aria-label="${esc(c.mas)}">+</button>
+      </span></label>`;
+
   function controles(): string {
     const paises = PAISES.map(
       (p) => `<option value="${p}"${p === estado.pais ? ' selected' : ''}>${esc(c.paises[p])}</option>`,
     ).join('');
     const radio = (grupo: string, valor: string, texto: string, actual: string) =>
       `<label class="conf-op"><input type="radio" name="conf-${grupo}" data-k="${grupo}-${valor}" value="${valor}"${valor === actual ? ' checked' : ''}> ${esc(texto)}</label>`;
+    const interruptor = (k: string, marcado: boolean, titulo: string, detalle = '') =>
+      `<label class="interruptor"><input type="checkbox" role="switch" data-k="${k}"${marcado ? ' checked' : ''}>
+        <span><strong>${esc(titulo)}</strong>${detalle ? `<small>${esc(detalle)}</small>` : ''}</span></label>`;
 
-    let html = `<div class="conf-fila">
+    let html = `<div class="conf-panel"><div class="conf-fila">
       <label class="conf-campo">${esc(c.pais)}<select data-k="pais">${paises}</select></label>
       <fieldset class="conf-grupo"><legend>${esc(c.modalidad)}</legend>
         ${radio('modalidad', 'A', c.modalidadA, estado.modalidad)}
@@ -68,45 +81,56 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
         ${radio('pago', 'anual', c.anual, estado.pago)}
         ${radio('pago', 'mensual', rellena(c.mensual, { porcentaje: porcentaje(TARIFA.recargoMensual, idioma) }), estado.pago)}
       </fieldset>
-    </div>
-    <label class="conf-op conf-destacado"><input type="checkbox" data-k="suite"${estado.suite ? ' checked' : ''}> ${esc(c.suite)}</label>`;
+    </div></div>
+    <div class="conf-panel">${interruptor('suite', estado.suite, c.suite)}`;
 
     if (estado.suite) {
-      html += `<label class="conf-op"><input type="checkbox" data-k="paquete"${estado.paquete ? ' checked' : ''}> ${esc(c.paquete)}
-          <small>${esc(rellena(c.paqueteTexto, { usuarios: TARIFA.paquete.usuariosIncluidos, precio: eur(TARIFA.paquete.cuota) }))}</small></label>
-        <label class="conf-campo">${esc(c.usuarios)}<input type="number" min="1" inputmode="numeric" data-k="usuarios" value="${estado.usuarios}"></label>`;
+      html +=
+        interruptor(
+          'paquete',
+          estado.paquete,
+          c.paquete,
+          rellena(c.paqueteTexto, { usuarios: TARIFA.paquete.usuariosIncluidos, precio: eur(TARIFA.paquete.cuota) }),
+        ) + numeroConPasos('usuarios', c.usuarios, estado.usuarios, 1);
+    }
+    html += '</div>';
 
+    if (estado.suite) {
       estado.empresas.forEach((empresa, i) => {
         const r = resuelto(i);
+        const factor = i === 0 ? 1 : TARIFA.empresaAdicional.factorModulos;
         const casillas = MODULOS.map((m) => {
           const marcado = r.modulos.includes(m);
           const incluido = r.incluidos.includes(m);
           const anadido = r.anadidos.includes(m);
           const est = estadoModulo(estado.pais, m);
           const nota = incluido ? c.incluidoPaquete : anadido ? c.anadidoPor : '';
+          const precio = incluido ? '' : `${eur(TARIFA.modulos[m].cuota * factor)} ${c.alMes}`;
           return `<label class="conf-modulo${marcado ? ' marcado' : ''}">
               <input type="checkbox" data-k="modulo-${i}-${m}"${marcado ? ' checked' : ''}${incluido || anadido ? ' disabled' : ''}>
+              <span class="conf-check">${svgIcono('check', 14)}</span>
+              ${svgIcono(m as NombreIcono, 26)}
               <span class="conf-nombre">${esc(tx.modulos[m])}</span>
+              <span class="conf-precio">${esc(precio)}</span>
               <span class="conf-estado estado-${est}">${esc(c.estados[est])}</span>
               ${nota ? `<span class="conf-nota">${esc(nota)}</span>` : ''}
             </label>`;
         }).join('');
-        const personas = r.modulos.includes('rrhh')
-          ? `<label class="conf-campo">${esc(c.personas)}<input type="number" min="0" inputmode="numeric" data-k="personas-${i}" value="${empresa.personas}"></label>`
-          : '';
+        const personas = r.modulos.includes('rrhh') ? numeroConPasos(`personas-${i}`, c.personas, empresa.personas, 0) : '';
         const quitar = i > 0 ? `<button type="button" class="conf-quitar" data-k="quitar-${i}">${esc(c.quitarEmpresa)}</button>` : '';
+        const estBase = estadoModulo(estado.pais, 'base');
         html += `<fieldset class="conf-empresa"><legend>${esc(nombreEmpresa(i))}</legend>
-            <div class="conf-base"><span class="conf-nombre">${esc(tx.base)}</span>
-              <span class="conf-estado estado-${estadoModulo(estado.pais, 'base')}">${esc(c.estados[estadoModulo(estado.pais, 'base')])}</span></div>
+            <div class="conf-base">${svgIcono('base', 22)}<span class="conf-nombre">${esc(tx.base)}</span>
+              <span class="conf-estado estado-${estBase}">${esc(c.estados[estBase])}</span></div>
             <div class="conf-modulos">${casillas}</div>${personas}${quitar}</fieldset>`;
       });
       if (estado.empresas.length < MAX_EMPRESAS) {
-        html += `<button type="button" class="boton boton-contorno" data-k="anadir">${esc(c.anadirEmpresa)}</button>`;
+        html += `<button type="button" class="boton boton-contorno" data-k="anadir">+ ${esc(c.anadirEmpresa)}</button>`;
       }
     }
 
     if (!(estado.suite && estado.paquete)) {
-      html += `<label class="conf-campo">${esc(c.muvUsuarios)}<input type="number" min="0" inputmode="numeric" data-k="muv" value="${estado.muvUsuarios}"></label>`;
+      html += `<div class="conf-panel">${numeroConPasos('muv', c.muvUsuarios, estado.muvUsuarios, 0)}</div>`;
     }
     return html;
   }
@@ -178,9 +202,13 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
       <p class="conf-nota-pedido">${esc(c.pedidoNota)}</p>`;
   }
 
-  raiz.innerHTML = '<div class="conf-controles"></div><aside class="conf-resumen" aria-live="polite"></aside>';
+  raiz.innerHTML =
+    '<div class="conf-controles"></div><aside class="conf-resumen" id="resumen-configurador" aria-live="polite"></aside>' +
+    '<div class="conf-barra" aria-hidden="true"></div>';
   const zonaControles = raiz.querySelector<HTMLElement>('.conf-controles')!;
   const zonaResumen = raiz.querySelector<HTMLElement>('.conf-resumen')!;
+  const barra = raiz.querySelector<HTMLElement>('.conf-barra')!;
+  let totalAnterior: number | null = null;
 
   function pinta(todo: boolean) {
     if (todo) {
@@ -189,6 +217,17 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
       if (foco) zonaControles.querySelector<HTMLElement>(`[data-k="${foco}"]`)?.focus();
     }
     zonaResumen.innerHTML = resumen();
+    const total = calcula(seleccion()).totalMensual;
+    // En móvil, el total siempre a la vista (repite lo del resumen: por eso no se anuncia a los lectores de pantalla).
+    barra.innerHTML = `<div><small>${esc(c.total)}</small><strong>${esc(eur(total))}</strong></div>
+      <a class="boton boton-oro" href="#resumen-configurador" tabindex="-1">${esc(c.verResumen)}</a>`;
+    // El total «late» cuando cambia (solo visual; prefers-reduced-motion lo apaga en marca.css).
+    if (totalAnterior !== null && totalAnterior !== total) {
+      const fila = zonaResumen.querySelector('.conf-total');
+      fila?.classList.add('cambia');
+      setTimeout(() => fila?.classList.remove('cambia'), 600);
+    }
+    totalAnterior = total;
   }
 
   function aplica(el: HTMLElement): boolean {
@@ -218,8 +257,16 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
     if (el.type === 'number' && aplica(el)) pinta(false);
   });
   raiz.addEventListener('click', (ev) => {
-    const k = (ev.target as HTMLElement).dataset?.k ?? '';
-    if (k === 'anadir' && estado.empresas.length < MAX_EMPRESAS) {
+    const boton = (ev.target as HTMLElement).closest<HTMLElement>('[data-k]');
+    const k = boton?.dataset.k ?? '';
+    const paso = k.match(/^(menos|mas)-(.+)$/);
+    if (paso) {
+      const campo = zonaControles.querySelector<HTMLInputElement>(`input[data-k="${paso[2]}"]`);
+      if (!campo) return;
+      const min = Number(campo.min || '0');
+      campo.value = String(Math.max(min, numero(campo.value) + (paso[1] === 'mas' ? 1 : -1)));
+      if (aplica(campo)) pinta(true);
+    } else if (k === 'anadir' && estado.empresas.length < MAX_EMPRESAS) {
       estado.empresas.push({ modulos: [], personas: 0 });
       pinta(true);
     } else if (k.startsWith('quitar-')) {

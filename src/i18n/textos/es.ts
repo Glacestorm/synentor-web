@@ -51,6 +51,7 @@ export const es: Textos = {
       botonDemo: 'Pide una demostración',
       botonPrecio: 'Calcula tu precio',
       nota: 'Desde {base} al mes · {usuarios} usuarios incluidos · sin impuestos',
+      nodos: { compras: 'Compras', ventas: 'Ventas y CRM', rrhh: 'RRHH', contabilidad: 'Contabilidad', bancos: 'Bancos', muv: 'MUV' },
     },
     problema: {
       titulo: 'Demasiados programas. Demasiadas hojas de cálculo. Demasiado trabajo repetido.',
@@ -94,6 +95,11 @@ export const es: Textos = {
         'En España: nómina y lectura de convenios colectivos del registro oficial (REGCON y BOE), en desarrollo inminente y adaptación a medida del cliente.',
       dato:
         'En el obrador donde nació, al segundo mes casi 8 de cada 10 personas que trabajaron el mes entero ya fichaban desde el portal del empleado.',
+      cifra: {
+        etiqueta: 'fichaban desde el portal del empleado',
+        texto: '{fichan} de las {total} personas que trabajaron el mes entero ({mes}), en el obrador donde nació Synentor.',
+        fuente: 'Dato medido: recuento en la base del programa, sin datos de personas.',
+      },
     },
     multiempresa: {
       antetitulo: 'Multiempresa',
@@ -112,10 +118,12 @@ export const es: Textos = {
       titulo: 'Las facturas se leen solas.',
       texto:
         'Envíalas por correo o déjalas en una carpeta: Synentor las lee, da de alta al proveedor si hace falta y prepara el borrador para que solo tengas que revisarlo.',
+      pasos: ['Factura por correo', 'La IA la lee', 'Borrador para revisar', 'Contabilizada'],
     },
     bancos: {
       titulo: 'Cualquier banco, conciliado.',
       texto: 'Norma 43, OFX, MT940, CAMT.053, CSV o Excel: Synentor lee el extracto y te propone la conciliación.',
+      pasos: ['Extracto del banco', 'Movimientos leídos', 'Conciliación propuesta', 'La confirmas'],
     },
     juridico: {
       titulo: 'La ley andorrana, vigilada.',
@@ -150,6 +158,14 @@ export const es: Textos = {
     direccion: 'Dirección',
     horario: 'Horario',
     horarioTexto: 'De lunes a viernes, de 9:00 a 18:00 (hora de Andorra)',
+    despues: {
+      titulo: 'Qué pasa después',
+      pasos: [
+        'Recibimos tu mensaje en el correo de la empresa.',
+        'Te respondemos en un día laborable.',
+        'Si lo quieres, te preparamos una propuesta por escrito.',
+      ],
+    },
     formulario: {
       titulo: 'Envíanos un mensaje',
       nombre: 'Nombre',
@@ -174,6 +190,7 @@ export const es: Textos = {
       obligatorio: 'obligatorio',
       enviar: 'Enviar el mensaje',
       enviando: 'Enviando…',
+      contador: '{n} de {max}',
       ok: 'Enviado. Te responderemos en un día laborable.',
       errores: {
         datos: 'Revisa los campos marcados: falta algún dato o no es válido.',
@@ -381,6 +398,10 @@ export const es: Textos = {
       personas: 'Personas en plantilla',
       anadirEmpresa: 'Añade una empresa',
       quitarEmpresa: 'Quita esta empresa',
+      menos: 'Menos',
+      mas: 'Más',
+      verResumen: 'Ver el presupuesto',
+      alMes: 'al mes',
       muvUsuarios: 'Usuarios de MUV',
       anadidoPor: 'Añadido: lo requiere otro módulo',
       incluidoPaquete: 'Incluido en el paquete',
@@ -450,6 +471,13 @@ export const es: Textos = {
       texto:
         'Un programa de nómina en la nube cobra entre {nominaMin} y {nominaMax} por persona al mes, más una cuota fija. Un ERP internacional, unos {erp} por usuario al mes. Con Synentor pagas por empresa y los primeros {usuarios} usuarios están incluidos.',
       fuente: 'Fuentes: páginas oficiales de precios de los fabricantes, consultadas el {fecha}.',
+      grafico: {
+        titulo: 'Ejemplo: empresa de {personas} personas y {usuarios} usuarios, al mes',
+        synentor: 'Synentor: Base, Compras, RRHH, Fiscal, Productos y TPV',
+        separado: 'Programa de nómina en la nube + ERP internacional, por separado',
+        rango: 'de {min} a {max}',
+        nota: 'Sin impuestos. Por separado, ninguno de los dos lleva la nómina ni la CASS andorranas.',
+      },
     },
     faq: {
       titulo: 'Preguntas frecuentes',

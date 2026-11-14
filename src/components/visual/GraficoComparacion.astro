@@ -1,0 +1,53 @@
+---
+// Comparación de precios (diseño §7.1 y §15.3, sin nombres): el ejemplo de 20 personas y 5 usuarios. Synentor, calculado
+// con `calcula`; «por separado», el rango de src/datos/mercado.ts. Barras horizontales con su valor escrito al lado
+// (nunca solo el color), descripción para lectores de pantalla y colores validados (marca.css, --syn-grafico-*).
+import { textos, rellena } from '../../i18n/t';
+import type { Idioma } from '../../i18n/idiomas';
+import { MERCADO } from '../../datos/mercado';
+import { calcula } from '../../lib/precios/calcula';
+import { euros } from '../../lib/formato';
+
+interface Props {
+  idioma: Idioma;
+}
+const { idioma } = Astro.props;
+const tx = textos(idioma).precios.comparacion.grafico;
+const eur = (n: number) => euros(n, idioma);
+const ej = MERCADO.ejemplo;
+const synentor = calcula({
+  pais: 'AD',
+  modalidad: 'A',
+  pago: 'anual',
+  suite: true,
+  paquete: false,
+  empresas: [{ modulos: ['compras', 'rrhh', 'fiscal', 'productos', 'tpv'], personas: ej.personas }],
+  usuarios: ej.usuarios,
+  muvUsuarios: 0,
+}).cuotaMensual;
+const maximo = Math.max(synentor, ej.separadoMax) * 1.08;
+const pct = (n: number) => `${((n / maximo) * 100).toFixed(2)}%`;
+const rango = rellena(tx.rango, { min: eur(ej.separadoMin), max: eur(ej.separadoMax) });
+---
+
+<figure class="grafico">
+  <figcaption><strong>{rellena(tx.titulo, { personas: ej.personas, usuarios: ej.usuarios })}</strong></figcaption>
+  <div class="grafico-fila">
+    <span class="grafico-etiqueta">{tx.synentor}</span>
+    <svg class="grafico-barra" width="100%" height="34" role="img" aria-label={`${tx.synentor}: ${eur(synentor)}`}>
+      <title>{`${tx.synentor}: ${eur(synentor)}`}</title>
+      <rect x="0" y="4" height="26" width={pct(synentor)} style="fill:var(--syn-grafico-1)" rx="4" />
+    </svg>
+    <span class="grafico-valor">{eur(synentor)}</span>
+  </div>
+  <div class="grafico-fila">
+    <span class="grafico-etiqueta">{tx.separado}</span>
+    <svg class="grafico-barra" width="100%" height="34" role="img" aria-label={`${tx.separado}: ${rango}`}>
+      <title>{`${tx.separado}: ${rango}`}</title>
+      <rect x="0" y="4" height="26" width={pct(ej.separadoMin)} style="fill:var(--syn-grafico-2)" rx="4" />
+      <rect x={pct(ej.separadoMin)} y="4" height="26" width={pct(ej.separadoMax - ej.separadoMin)} style="fill:var(--syn-grafico-2)" opacity="0.45" rx="4" />
+    </svg>
+    <span class="grafico-valor">{rango}</span>
+  </div>
+  <p class="pequeno">{tx.nota}</p>
+</figure>

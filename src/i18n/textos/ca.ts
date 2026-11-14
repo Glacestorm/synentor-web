@@ -51,6 +51,7 @@ export const ca = {
       botonDemo: 'Demana una demostració',
       botonPrecio: 'Calcula el teu preu',
       nota: 'Des de {base} al mes · {usuarios} usuaris inclosos · sense impostos',
+      nodos: { compras: 'Compres', ventas: 'Vendes i CRM', rrhh: 'RRHH', contabilidad: 'Comptabilitat', bancos: 'Bancs', muv: 'MUV' },
     },
     problema: {
       titulo: 'Massa programes. Massa fulls de càlcul. Massa feina repetida.',
@@ -95,6 +96,11 @@ export const ca = {
         'A Espanya: nòmina i lectura de convenis col·lectius del registre oficial (REGCON i BOE), en desenvolupament imminent i adaptació a mida del client.',
       dato:
         'A l’obrador on va néixer, al segon mes gairebé 8 de cada 10 persones que van treballar el mes sencer ja fitxaven des del portal de l’empleat.',
+      cifra: {
+        etiqueta: 'fitxaven des del portal de l’empleat',
+        texto: '{fichan} de les {total} persones que van treballar el mes sencer ({mes}), a l’obrador on va néixer Synentor.',
+        fuente: 'Dada mesurada: recompte a la base del programa, sense dades de persones.',
+      },
     },
     multiempresa: {
       antetitulo: 'Multiempresa',
@@ -113,10 +119,12 @@ export const ca = {
       titulo: 'Les factures es llegeixen soles.',
       texto:
         'Envia-les per correu o deixa-les en una carpeta: Synentor les llegeix, dona d’alta el proveïdor si cal i prepara l’esborrany perquè només l’hagis de revisar.',
+      pasos: ['Factura per correu', 'La IA la llegeix', 'Esborrany per revisar', 'Comptabilitzada'],
     },
     bancos: {
       titulo: 'Qualsevol banc, conciliat.',
       texto: 'Norma 43, OFX, MT940, CAMT.053, CSV o Excel: Synentor llegeix l’extracte i et proposa la conciliació.',
+      pasos: ['Extracte del banc', 'Moviments llegits', 'Conciliació proposada', 'La confirmes'],
     },
     juridico: {
       titulo: 'La llei andorrana, vigilada.',
@@ -151,6 +159,14 @@ export const ca = {
     direccion: 'Adreça',
     horario: 'Horari',
     horarioTexto: 'De dilluns a divendres, de 9:00 a 18:00 (hora d’Andorra)',
+    despues: {
+      titulo: 'Què passa després',
+      pasos: [
+        'Rebem el teu missatge al correu de l’empresa.',
+        'Et responem en un dia laborable.',
+        'Si ho vols, et preparem una proposta per escrit.',
+      ],
+    },
     formulario: {
       titulo: 'Envia’ns un missatge',
       nombre: 'Nom',
@@ -175,6 +191,7 @@ export const ca = {
       obligatorio: 'obligatori',
       enviar: 'Envia el missatge',
       enviando: 'S’està enviant…',
+      contador: '{n} de {max}',
       ok: 'Enviat. Et respondrem en un dia laborable.',
       errores: {
         datos: 'Revisa els camps marcats: falta alguna dada o no és vàlida.',
@@ -382,6 +399,10 @@ export const ca = {
       personas: 'Persones en plantilla',
       anadirEmpresa: 'Afegeix una empresa',
       quitarEmpresa: 'Treu aquesta empresa',
+      menos: 'Menys',
+      mas: 'Més',
+      verResumen: 'Veure el pressupost',
+      alMes: 'al mes',
       muvUsuarios: 'Usuaris de MUV',
       anadidoPor: 'Afegit: el requereix un altre mòdul',
       incluidoPaquete: 'Inclòs al paquet',
@@ -451,6 +472,13 @@ export const ca = {
       texto:
         'Un programa de nòmina al núvol cobra entre {nominaMin} i {nominaMax} per persona al mes, més una quota fixa. Un ERP internacional, uns {erp} per usuari al mes. Amb Synentor pagues per empresa i els primers {usuarios} usuaris hi estan inclosos.',
       fuente: 'Fonts: pàgines oficials de preus dels fabricants, consultades el {fecha}.',
+      grafico: {
+        titulo: 'Exemple: empresa de {personas} persones i {usuarios} usuaris, al mes',
+        synentor: 'Synentor: Base, Compres, RRHH, Fiscal, Productes i TPV',
+        separado: 'Programa de nòmina al núvol + ERP internacional, per separat',
+        rango: 'de {min} a {max}',
+        nota: 'Sense impostos. Per separat, cap dels dos porta la nòmina ni la CASS andorranes.',
+      },
     },
     faq: {
       titulo: 'Preguntes freqüents',

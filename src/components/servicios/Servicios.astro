@@ -7,6 +7,10 @@ import { MODULOS, TARIFA, type ModuloId } from '../../lib/precios/tarifa';
 import { estadoModulo, type Producto } from '../../lib/precios/disponibilidad';
 import { porCategoria, FECHA_CATALOGO } from '../../lib/consultoria';
 import { euros, porcentaje } from '../../lib/formato';
+import Icono from '../Icono.astro';
+import CifraPortal from '../visual/CifraPortal.astro';
+import type { NombreIcono } from '../../lib/iconos';
+import type { Categoria } from '../../lib/consultoria';
 
 interface Props {
   idioma: Idioma;
@@ -46,6 +50,17 @@ const columnas = [
   { pais: 'FR', titulo: tx.columnas.otros },
 ] as const;
 const mon = TARIFA.energia.monitorizacion;
+const iconoCategoria: Record<Categoria, NombreIcono> = {
+  estrategia: 'consultoria',
+  formacion: 'rrhh',
+  asistentes: 'ia',
+  automatizacion: 'migracion',
+  documentos: 'compras',
+  datos: 'base',
+  medida: 'implantacion',
+  cumplimiento: 'pbc',
+  soporte: 'reloj',
+};
 const t1 = TARIFA.muv.tramos[0];
 const t2 = TARIFA.muv.tramos[1];
 ---
@@ -57,7 +72,7 @@ const t2 = TARIFA.muv.tramos[1];
   </div>
 </section>
 
-<section class="bloque" id="suite">
+<section class="bloque claro" id="suite">
   <div class="contenedor">
     <h2>{tx.suite.titulo}</h2>
     <p>{tx.suite.texto}</p>
@@ -75,7 +90,10 @@ const t2 = TARIFA.muv.tramos[1];
             filas.map((f) => (
               <tr id={f.id === 'electrica' ? 'electrica' : undefined}>
                 <th scope="row">
-                  <strong>{f.nombre}</strong>
+                  <span class="modulo-cabeza">
+                    <Icono nombre={f.id as NombreIcono} />
+                    <strong>{f.nombre}</strong>
+                  </span>
                   <span class="pequeno">{f.texto}</span>
                   {f.requiere && <span class="requiere">{f.requiere}</span>}
                 </th>
@@ -98,9 +116,10 @@ const t2 = TARIFA.muv.tramos[1];
   </div>
 </section>
 
-<section class="bloque claro" id="muv">
+<section class="bloque" id="muv">
   <div class="contenedor dos-col">
     <div>
+      <span class="icono-caja ia"><Icono nombre="muv" /></span>
       <h2>{tx.muv.titulo}</h2>
       <p>{tx.muv.texto}</p>
       <p class="pequeno">{tx.muv.enDesarrollo}</p>
@@ -131,14 +150,16 @@ const t2 = TARIFA.muv.tramos[1];
   </div>
 </section>
 
-<section class="bloque" id="consultoria">
+<section class="bloque claro" id="consultoria">
   <div class="contenedor">
-    <h2>{tx.consultoria.titulo}</h2>
+    <span class="icono-caja ia"><Icono nombre="consultoria" /></span>
+      <h2>{tx.consultoria.titulo}</h2>
     <p>{tx.consultoria.texto}</p>
     <div class="rejilla-3">
       {
         porCategoria().map((g) => (
           <article class="tarjeta">
+            <span class="icono-caja ia"><Icono nombre={iconoCategoria[g.clave]} /></span>
             <h3>{tx.consultoria.categorias[g.clave]}</h3>
             <p class="precio">
               {rellena(tx.consultoria.desde, { precio: eur(g.desde) })}
@@ -153,9 +174,10 @@ const t2 = TARIFA.muv.tramos[1];
   </div>
 </section>
 
-<section class="bloque claro" id="energia">
+<section class="bloque" id="energia">
   <div class="contenedor">
-    <h2>{tx.energia.titulo}</h2>
+    <span class="icono-caja"><Icono nombre="energia" /></span>
+      <h2>{tx.energia.titulo}</h2>
     <p>{tx.energia.texto}</p>
     <div class="rejilla-2">
       <article class="tarjeta">
@@ -202,9 +224,10 @@ const t2 = TARIFA.muv.tramos[1];
   </div>
 </section>
 
-<section class="bloque" id="migracion">
+<section class="bloque claro" id="migracion">
   <div class="contenedor">
-    <h2>{tx.migracion.titulo}</h2>
+    <span class="icono-caja"><Icono nombre="migracion" /></span>
+      <h2>{tx.migracion.titulo}</h2>
     <p>{tx.migracion.texto}</p>
     <div class="rejilla-3">
       <article class="tarjeta">
@@ -246,14 +269,12 @@ const t2 = TARIFA.muv.tramos[1];
   </div>
 </section>
 
-<section class="bloque claro" id="portal">
+<section class="bloque" id="portal">
   <div class="contenedor dos-col">
     <div>
+      <span class="icono-caja"><Icono nombre="portal" /></span>
       <h2>{tx.portal.titulo}</h2>
       <p>{tx.portal.texto}</p>
-      <p class="destacado">{tx.portal.dato}</p>
-    </div>
-    <div>
       <p>
         {
           rellena(tx.portal.precio, {
@@ -266,12 +287,17 @@ const t2 = TARIFA.muv.tramos[1];
       </p>
       <p class="pequeno">{tx.portal.incluido}</p>
     </div>
+    <div>
+      <CifraPortal idioma={idioma} />
+      
+    </div>
   </div>
 </section>
 
-<section class="bloque" id="webs">
+<section class="bloque claro" id="webs">
   <div class="contenedor">
-    <h2>{tx.webs.titulo}</h2>
+    <span class="icono-caja"><Icono nombre="webs" /></span>
+      <h2>{tx.webs.titulo}</h2>
     <p>{tx.webs.texto}</p>
     <div class="rejilla-3">
       <article class="tarjeta">
@@ -300,18 +326,20 @@ const t2 = TARIFA.muv.tramos[1];
   </div>
 </section>
 
-<section class="bloque claro" id="centralita">
+<section class="bloque" id="centralita">
   <div class="contenedor estrecho">
     <p class="etiqueta-proximamente">{tx.centralita.etiqueta}</p>
-    <h2>{tx.centralita.titulo}</h2>
+    <span class="icono-caja ia"><Icono nombre="centralita" /></span>
+      <h2>{tx.centralita.titulo}</h2>
     <p>{tx.centralita.texto}</p>
     <a class="boton boton-contorno" href={`${contacto}?asunto=centralita`}>{tx.centralita.boton}</a>
   </div>
 </section>
 
-<section class="bloque" id="implantacion">
+<section class="bloque claro" id="implantacion">
   <div class="contenedor estrecho">
-    <h2>{tx.implantacion.titulo}</h2>
+    <span class="icono-caja"><Icono nombre="implantacion" /></span>
+      <h2>{tx.implantacion.titulo}</h2>
     <p>{rellena(tx.implantacion.texto, { jornada: eur(TARIFA.implantacion.jornada), minimo: TARIFA.implantacion.minimoSuite })}</p>
     <p>{tx.implantacion.soporte}</p>
   </div>
