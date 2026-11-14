@@ -1,10 +1,12 @@
 ---
 // Ilustración de la portada (diseño §8: abstracta, claramente ilustrativa, nunca una captura): los módulos conectados
-// alrededor del símbolo de Synentor. Decorativa para los lectores de pantalla; el movimiento se apaga con
+// alrededor del cerebro sináptico de Synentor (el de la web anterior, gerencia 14/11/2026). Decorativa para los
+// lectores de pantalla; el movimiento se apaga con
 // prefers-reduced-motion (marca.css).
 import { textos } from '../../i18n/t';
 import type { Idioma } from '../../i18n/idiomas';
 import { svgIcono, type NombreIcono } from '../../lib/iconos';
+import CerebroSinaptico from './CerebroSinaptico.astro';
 
 interface Props {
   idioma: Idioma;
@@ -41,7 +43,7 @@ const posiciones = nodos.map((_, i) => {
       ))
     }
   </svg>
-  <div class="centro"><img src="/marca/simbol-cercle-perfecte.png" alt="" width="160" height="160" loading="eager" /></div>
+  <div class="centro con-cerebro"><CerebroSinaptico id="cerebro-portada" /></div>
   {
     nodos.map((nodo, i) => (
       <div class="nodo" style={`left:${posiciones[i].x.toFixed(2)}%;top:${posiciones[i].y.toFixed(2)}%`}>

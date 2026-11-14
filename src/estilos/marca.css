@@ -42,6 +42,17 @@
   /* Gráficos (validados con la guía de visualización sobre el azul noche, 14/11/2026). */
   --syn-grafico-1: #bf8a0f;
   --syn-grafico-2: #5c7fe8;
+  /* El cerebro sináptico de la web anterior (14/11/2026, gerencia: «cópialo íntegro con sus atributos»): los mismos
+     valores que el componente RRHHPulsingBrain del ERP, sin cambiar ninguno. */
+  --syn-cerebro-halo-1: rgba(139, 92, 246, 0.4);
+  --syn-cerebro-halo-1-sombra: 0 0 20px rgba(139, 92, 246, 0.5);
+  --syn-cerebro-halo-2: rgba(59, 130, 246, 0.35);
+  --syn-cerebro-halo-2-sombra: 0 0 15px rgba(59, 130, 246, 0.4);
+  --syn-cerebro-halo-3: rgba(139, 92, 246, 0.3);
+  --syn-cerebro-halo-3-sombra: 0 0 10px rgba(139, 92, 246, 0.35);
+  --syn-cerebro-resplandor: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.5) 0%, rgba(59, 130, 246, 0.3) 40%, transparent 70%);
+  --syn-cerebro-sombra: drop-shadow(0 0 15px rgba(139, 92, 246, 0.6)) drop-shadow(0 0 30px rgba(59, 130, 246, 0.4));
+  --syn-cerebro-mascara: radial-gradient(ellipse 100% 100% at center, black 50%, transparent 80%);
 
   --syn-fuente: Arial, Helvetica, sans-serif;
   /* Títulos en Manrope (gerencia, 14/11/2026), servida desde la propia web. */

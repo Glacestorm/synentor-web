@@ -160,7 +160,7 @@ const nombreMenu: Record<string, string> = {
         disponibles: idiomasConTextos,
         nombres: NOMBRE_IDIOMA,
         enlaces: Object.fromEntries(idiomasConTextos.map((i) => [i, ruta(pagina, i)])),
-        textoFranja: Object.fromEntries(idiomasConTextos.map((i) => [i, TEXTOS[i]?.franjaIdioma.texto ?? ''])),
+        franjas: Object.fromEntries(idiomasConTextos.map((i) => [i, TEXTOS[i]?.franjaIdioma ?? null])),
       }}
     >
       // Guarda la elección de idioma (cookie técnica «lang», un año) al usar el selector.
@@ -180,7 +180,13 @@ const nombreMenu: Record<string, string> = {
         var texto = document.getElementById('franja-texto');
         var aceptar = document.getElementById('franja-aceptar');
         var cerrar = document.getElementById('franja-cerrar');
-        texto.textContent = (textoFranja[pedido] || '').replace('{idioma}', nombres[pedido]);
+        // Toda la franja en el idioma que se propone (texto y botones), con su atributo lang.
+        var f = franjas[pedido];
+        if (!f) return;
+        texto.textContent = f.texto.replace('{idioma}', nombres[pedido]);
+        aceptar.textContent = f.aceptar;
+        cerrar.textContent = f.cerrar;
+        franja.setAttribute('lang', pedido);
         aceptar.setAttribute('href', enlaces[pedido]);
         aceptar.setAttribute('lang', pedido);
         var recuerda = function () { try { localStorage.setItem('synentor-franja-idioma', '1'); } catch (e) {} };
