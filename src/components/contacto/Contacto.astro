@@ -3,6 +3,7 @@
 // fichas, contador, «Qué pasa después» y los datos de la empresa. «Enviado» solo si el Worker lo confirma.
 // Llega rellenado desde el configurador (?asunto=pedido&seleccion=…).
 import { textos, rellena } from '../../i18n/t';
+import { TURNSTILE_SITEKEY } from '../../datos/turnstile';
 import { ruta, type Idioma } from '../../i18n/idiomas';
 import { EMPRESA } from '../../datos/empresa';
 import Icono from '../Icono.astro';
@@ -13,7 +14,8 @@ interface Props {
 const { idioma } = Astro.props;
 const tx = textos(idioma).contacto;
 const f = tx.formulario;
-const sitekey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY as string | undefined;
+// La clave del sitio de Turnstile (pública). Una variable de construcción la puede cambiar, p. ej. por la de pruebas.
+const sitekey = (import.meta.env.PUBLIC_TURNSTILE_SITEKEY as string | undefined) || TURNSTILE_SITEKEY;
 const correoEnlace = `<a href="mailto:${EMPRESA.correo}">${EMPRESA.correo}</a>`;
 const politica = `<a href="${ruta('privacidad', idioma)}">${f.politica}</a>`;
 const MAX = 5000;

@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { TEXTOS } from '../src/i18n/t';
 import { PAGINAS, ruta, type Idioma } from '../src/i18n/idiomas';
+import { TURNSTILE_SITEKEY } from '../src/datos/turnstile';
 
 const DIST = fileURLToPath(new URL('../dist', import.meta.url));
 const idiomas = Object.keys(TEXTOS) as Idioma[];
@@ -57,6 +58,15 @@ describe('páginas construidas', () => {
       'Strict-Transport-Security: max-age=31536000',
     ])
       expect(cab).toContain(`  ${linea}`);
+  });
+
+  it('Contacto lleva el widget de Turnstile con la clave del sitio (pública) en todos los idiomas', () => {
+    expect(TURNSTILE_SITEKEY).toMatch(/^0x4[A-Za-z0-9_-]{18,}$/);
+    for (const idioma of idiomas) {
+      const html = readFileSync(fichero(ruta('contacto', idioma)), 'utf8');
+      expect(html, idioma).toContain(`data-sitekey="${TURNSTILE_SITEKEY}"`);
+      expect(html, idioma).toContain('https://challenges.cloudflare.com/turnstile/v0/api.js');
+    }
   });
 
   it('Precios lleva el configurador con sus textos', () => {
