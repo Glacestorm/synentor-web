@@ -47,6 +47,16 @@ export const TARIFA = {
     usuariosIncluidos: 10,
     usuarioAdicional: 45,
   },
+  /** Diseño y creación de páginas web (aprobado por gerencia el 14/11/2026). Pago único salvo el mantenimiento (al mes). */
+  webs: {
+    esencial: 1200,
+    profesional: 2900,
+    premiumDesde: 6500,
+    paginaAdicional: 250,
+    idiomaAdicional: 350,
+    mantenimientoBasico: 49,
+    mantenimientoPlus: 99,
+  },
   muv: {
     gratisHasta: 5,
     tramos: [

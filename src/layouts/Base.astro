@@ -1,19 +1,32 @@
 ---
-// Plantilla común: metadatos, cabecera y pie. La tarea 3 añade el selector de idioma y los hreflang.
+// Plantilla común: metadatos (canonical, hreflang de los siete idiomas, Open Graph), cabecera con menú y selector de
+// idioma, franja que sugiere el idioma del navegador y pie con los datos de la empresa.
 import '../estilos/marca.css';
 import { EMPRESA } from '../datos/empresa';
 import { UMAMI } from '../datos/analitica';
+import { IDIOMAS, IDIOMA_PRINCIPAL, NOMBRE_IDIOMA, ruta, type Idioma, type Pagina } from '../i18n/idiomas';
+import { TEXTOS, textos } from '../i18n/t';
 
 interface Props {
-  idioma: string;
+  idioma: Idioma;
+  pagina: Pagina;
   titulo: string;
   descripcion: string;
-  ruta: string;
 }
 
-const { idioma, titulo, descripcion, ruta } = Astro.props;
-const canonica = new URL(ruta, EMPRESA.dominio).toString();
+const { idioma, pagina, titulo, descripcion } = Astro.props;
+const tx = textos(idioma);
+const url = (p: Pagina, i: Idioma) => new URL(ruta(p, i), EMPRESA.dominio).toString();
+/** Solo los idiomas que ya tienen sus textos se ofrecen y se anuncian a Google. */
+const idiomasConTextos = IDIOMAS.filter((i) => TEXTOS[i]);
 const anio = new Date().getFullYear();
+const menu: Pagina[] = ['inicio', 'servicios', 'precios', 'contacto'];
+const nombreMenu: Record<string, string> = {
+  inicio: tx.nav.inicio,
+  servicios: tx.nav.servicios,
+  precios: tx.nav.precios,
+  contacto: tx.nav.contacto,
+};
 ---
 
 <!doctype html>
@@ -23,16 +36,21 @@ const anio = new Date().getFullYear();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{titulo}</title>
     <meta name="description" content={descripcion} />
-    <link rel="canonical" href={canonica} />
+    <link rel="canonical" href={url(pagina, idioma)} />
+    {idiomasConTextos.map((i) => <link rel="alternate" hreflang={i} href={url(pagina, i)} />)}
+    <link rel="alternate" hreflang="x-default" href={url(pagina, IDIOMA_PRINCIPAL)} />
     <link rel="icon" href="/marca/icona-32.png" sizes="32x32" />
     <link rel="icon" href="/marca/icona-64.png" sizes="64x64" />
     <link rel="apple-touch-icon" href="/marca/icona-180.png" />
     <meta name="theme-color" content="#050918" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={EMPRESA.marca} />
+    <meta property="og:locale" content={idioma} />
     <meta property="og:title" content={titulo} />
     <meta property="og:description" content={descripcion} />
-    <meta property="og:url" content={canonica} />
+    <meta property="og:url" content={url(pagina, idioma)} />
     <meta property="og:image" content={new URL('/marca/portada.png', EMPRESA.dominio).toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
     <script
       is:inline
       defer
@@ -43,60 +61,331 @@ const anio = new Date().getFullYear();
     <slot name="cabeza" />
   </head>
   <body>
+    <a class="saltar solo-lector" href="#contenido">{tx.nav.saltar}</a>
+
+    <div class="franja" id="franja-idioma" hidden>
+      <div class="contenedor franja-fila">
+        <span id="franja-texto"></span>
+        <a class="boton boton-oro boton-pequeno" id="franja-aceptar" href="#">{tx.franjaIdioma.aceptar}</a>
+        <button type="button" class="franja-cerrar" id="franja-cerrar">{tx.franjaIdioma.cerrar}</button>
+      </div>
+    </div>
+
     <header class="cabecera">
       <div class="contenedor cabecera-fila">
-        <a href={`/${idioma}/`} class="logo" aria-label={EMPRESA.marca}>
-          <img src="/marca/or-fosc-sense-descriptor.png" alt={EMPRESA.marca} width="186" height="50" />
+        <a href={ruta('inicio', idioma)} class="logo" aria-label={EMPRESA.marca}>
+          <img src="/marca/or-fosc-sense-descriptor.png" alt={EMPRESA.marca} width="160" height="43" />
         </a>
-        <slot name="navegacion" />
+        <details class="menu-movil">
+          <summary class="boton boton-contorno boton-pequeno">{tx.nav.menu}</summary>
+          <nav aria-label={tx.nav.menu}>
+            {menu.map((p) => (
+              <a href={ruta(p, idioma)} aria-current={p === pagina ? 'page' : undefined}>
+                {nombreMenu[p]}
+              </a>
+            ))}
+          </nav>
+        </details>
+        <nav class="menu" aria-label={tx.nav.menu}>
+          {menu.map((p) => (
+            <a href={ruta(p, idioma)} aria-current={p === pagina ? 'page' : undefined}>
+              {nombreMenu[p]}
+            </a>
+          ))}
+        </nav>
+        <div class="cabecera-acciones">
+          <details class="idiomas">
+            <summary aria-label={tx.nav.idioma}>{idioma.toUpperCase()}</summary>
+            <ul>
+              {idiomasConTextos.map((i) => (
+                <li>
+                  <a href={ruta(pagina, i)} hreflang={i} lang={i} data-idioma={i} aria-current={i === idioma ? 'true' : undefined}>
+                    {NOMBRE_IDIOMA[i]}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+          <a class="boton boton-oro boton-pequeno cabecera-demo" href={ruta('contacto', idioma)}>{tx.nav.demo}</a>
+        </div>
       </div>
     </header>
+
     <main id="contenido">
       <slot />
     </main>
+
     <footer class="pie">
-      <div class="contenedor">
-        <slot name="pie" />
-        <p class="pie-legal">
-          © {anio} {EMPRESA.razonSocial} ({EMPRESA.estado}) · {EMPRESA.direccion.linea}, {EMPRESA.direccion.codigoPostal}
-          {EMPRESA.direccion.localidad} ({EMPRESA.direccion.pais}) ·
-          <a href={`mailto:${EMPRESA.correo}`}>{EMPRESA.correo}</a> ·
-          <a href={`tel:${EMPRESA.telefono.enlace}`}>{EMPRESA.telefono.texto}</a>
+      <div class="contenedor pie-rejilla">
+        <div>
+          <img src="/marca/or-fosc-amb-descriptor.png" alt={EMPRESA.marca} width="260" height="70" loading="lazy" />
+          <p class="pie-lema">{tx.meta.lema}</p>
+        </div>
+        <div>
+          <p class="pie-titulo">{tx.pie.empresa}</p>
+          <ul>
+            {menu.map((p) => <li><a href={ruta(p, idioma)}>{nombreMenu[p]}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <p class="pie-titulo">{tx.pie.legal}</p>
+          <ul>
+            <li><a href={ruta('aviso-legal', idioma)}>{tx.pie.avisoLegal}</a></li>
+            <li><a href={ruta('privacidad', idioma)}>{tx.pie.privacidad}</a></li>
+            <li><a href={ruta('cookies', idioma)}>{tx.pie.cookies}</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="pie-titulo">{tx.contacto.datos}</p>
+          <ul>
+            <li><a href={`mailto:${EMPRESA.correo}`}>{EMPRESA.correo}</a></li>
+            <li><a href={`tel:${EMPRESA.telefono.enlace}`}>{EMPRESA.telefono.texto}</a></li>
+            <li>{EMPRESA.direccion.linea}<br />{EMPRESA.direccion.codigoPostal} {EMPRESA.direccion.localidad} ({EMPRESA.direccion.pais})</li>
+          </ul>
+        </div>
+      </div>
+      <div class="contenedor pie-legal">
+        <p>
+          © {anio} {EMPRESA.razonSocial} ({tx.pie.enConstitucion}) · {tx.pie.nrt} · {tx.pie.estadisticas}
         </p>
       </div>
     </footer>
+
+    <script
+      is:inline
+      define:vars={{
+        idiomaPagina: idioma,
+        disponibles: idiomasConTextos,
+        nombres: NOMBRE_IDIOMA,
+        enlaces: Object.fromEntries(idiomasConTextos.map((i) => [i, ruta(pagina, i)])),
+        textoFranja: Object.fromEntries(idiomasConTextos.map((i) => [i, TEXTOS[i]?.franjaIdioma.texto ?? ''])),
+      }}
+    >
+      // Guarda la elección de idioma (cookie técnica «lang», un año) al usar el selector.
+      document.querySelectorAll('[data-idioma]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          document.cookie = 'lang=' + a.getAttribute('data-idioma') + '; Max-Age=31536000; Path=/; SameSite=Lax; Secure';
+        });
+      });
+      // La franja sugiere UNA vez el idioma del navegador si es otro y la web lo tiene.
+      (function () {
+        var vista = null;
+        try { vista = localStorage.getItem('synentor-franja-idioma'); } catch (e) {}
+        if (vista) return;
+        var pedido = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase().split('-')[0];
+        if (!pedido || pedido === idiomaPagina || disponibles.indexOf(pedido) < 0) return;
+        var franja = document.getElementById('franja-idioma');
+        var texto = document.getElementById('franja-texto');
+        var aceptar = document.getElementById('franja-aceptar');
+        var cerrar = document.getElementById('franja-cerrar');
+        texto.textContent = (textoFranja[pedido] || '').replace('{idioma}', nombres[pedido]);
+        aceptar.setAttribute('href', enlaces[pedido]);
+        aceptar.setAttribute('lang', pedido);
+        var recuerda = function () { try { localStorage.setItem('synentor-franja-idioma', '1'); } catch (e) {} };
+        aceptar.addEventListener('click', function () {
+          recuerda();
+          document.cookie = 'lang=' + pedido + '; Max-Age=31536000; Path=/; SameSite=Lax; Secure';
+        });
+        cerrar.addEventListener('click', function () { recuerda(); franja.hidden = true; });
+        franja.hidden = false;
+      })();
+    </script>
   </body>
 </html>
 
 <style>
+  .saltar:focus {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 50;
+    width: auto;
+    height: auto;
+    clip: auto;
+    padding: 8px 12px;
+    background: var(--syn-oro);
+    color: var(--syn-noche);
+  }
+  .franja {
+    background: var(--syn-noche-2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 14px;
+  }
+  .franja-fila {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  .franja-cerrar {
+    background: none;
+    border: 0;
+    color: var(--syn-gris);
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
   .cabecera {
     position: sticky;
     top: 0;
-    z-index: 10;
-    background: rgba(5, 9, 24, 0.86);
+    z-index: 20;
+    background: rgba(5, 9, 24, 0.88);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
   .cabecera-fila {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 16px;
     min-height: 68px;
   }
   .logo img {
     display: block;
-    width: 160px;
+    width: 140px;
     height: auto;
+  }
+  .menu {
+    display: none;
+    gap: 28px;
+    margin-left: auto;
+  }
+  .menu a,
+  .menu-movil nav a {
+    color: var(--syn-blanco);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .menu a[aria-current='page'] {
+    color: var(--syn-oro);
+  }
+  .cabecera-acciones {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+  }
+  .boton-pequeno {
+    min-height: 40px;
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+  .cabecera-demo {
+    display: none;
+  }
+  .menu-movil {
+    position: relative;
+    order: 3;
+  }
+  .menu-movil summary {
+    list-style: none;
+  }
+  .menu-movil nav {
+    position: absolute;
+    right: 0;
+    top: 48px;
+    display: grid;
+    gap: 14px;
+    min-width: 200px;
+    padding: 16px;
+    background: var(--syn-noche-2);
+    border-radius: var(--syn-radio);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+  .idiomas {
+    position: relative;
+  }
+  .idiomas summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .idiomas ul {
+    position: absolute;
+    right: 0;
+    top: 44px;
+    margin: 0;
+    padding: 8px;
+    list-style: none;
+    background: var(--syn-noche-2);
+    border-radius: var(--syn-radio);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    min-width: 160px;
+  }
+  .idiomas a {
+    display: block;
+    padding: 8px 10px;
+    color: var(--syn-blanco);
+    text-decoration: none;
+    border-radius: 8px;
+  }
+  .idiomas a[aria-current='true'],
+  .idiomas a:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  @media (min-width: 900px) {
+    .menu {
+      display: flex;
+    }
+    .menu-movil {
+      display: none;
+    }
+    .cabecera-acciones {
+      margin-left: 24px;
+    }
+    .cabecera-demo {
+      display: inline-flex;
+    }
   }
   .pie {
     margin-top: 96px;
-    padding: 40px 0 56px;
+    padding: 56px 0 32px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--syn-gris);
     font-size: 14px;
   }
+  .pie-rejilla {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 760px) {
+    .pie-rejilla {
+      grid-template-columns: 2fr 1fr 1fr 1.4fr;
+    }
+  }
+  .pie img {
+    width: 220px;
+    height: auto;
+  }
+  .pie ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 8px;
+  }
+  .pie a {
+    color: var(--syn-gris);
+  }
+  .pie-titulo {
+    margin: 0 0 12px;
+    color: var(--syn-blanco);
+    font-weight: 700;
+  }
+  .pie-lema {
+    margin: 12px 0 0;
+    color: var(--syn-blanco);
+  }
   .pie-legal {
-    margin: 24px 0 0;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 </style>

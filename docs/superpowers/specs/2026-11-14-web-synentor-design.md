@@ -227,6 +227,20 @@ ventas 2.400 € + 100 €/mes**; IA privada en servidor propio 2.400 € + 150 
 Kit Consulting/Kit Digital (España) y FUNDAE; la web solo dice «te ayudamos a buscar las ayudas a las que puedas optar»
 (las convocatorias cambian).
 
+### 7.4 bis Diseño y creación de páginas web (aprobado por gerencia el 14/11/2026)
+
+Sin IGI. Incluyen formulario que envía de verdad, estadísticas sin cookies (Umami) y alojamiento en Cloudflare.
+
+| Tipo | Qué incluye | Precio |
+|---|---|---|
+| Web Esencial | Una página de presentación, 1 o 2 idiomas | 1.200 € |
+| Web Profesional | Hasta 6 páginas, 3 idiomas, posicionamiento básico | 2.900 € |
+| Web Premium | Hasta 12 páginas, hasta 7 idiomas, diseño de marca, calculadora o configurador a medida | desde 6.500 € |
+| Tienda online | Pagos, catálogo, pedidos | a medida, según presupuesto |
+| Página adicional · idioma adicional | — | 250 € · 350 € (la revisión nativa, aparte) |
+| Mantenimiento Básico | Alojamiento, copias, actualizaciones, estadísticas, 1 h de cambios al mes | 49 € al mes |
+| Mantenimiento Plus | Lo mismo, 3 h de cambios al mes e informe mensual de visitas | 99 € al mes |
+
 ### 7.5 Nota para el ERP
 
 La base del ERP tiene planes de licencia de agosto (`license_plans`: 49 / 189 / 79 / 269 €) que no casan con esta tarifa y

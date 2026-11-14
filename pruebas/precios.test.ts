@@ -176,3 +176,18 @@ describe('disponibilidad por país (diseño §7.0)', () => {
     expect(estadoModulo('OTRO', 'fiscal')).toBe('a_medida');
   });
 });
+
+describe('tarifa de webs (aprobada el 14/11/2026)', () => {
+  it('los precios aprobados', async () => {
+    const { TARIFA } = await import('../src/lib/precios/tarifa');
+    expect(TARIFA.webs).toEqual({
+      esencial: 1200,
+      profesional: 2900,
+      premiumDesde: 6500,
+      paginaAdicional: 250,
+      idiomaAdicional: 350,
+      mantenimientoBasico: 49,
+      mantenimientoPlus: 99,
+    });
+  });
+});

@@ -1,0 +1,22 @@
+---
+// Portada de cada idioma con textos. Provisional hasta la tarea 4 del plan, que añade las secciones de la portada.
+// La raíz «/» no es una página: la atiende el Worker y lleva al idioma de la persona.
+import Base from '../../layouts/Base.astro';
+import { TEXTOS } from '../../i18n/t';
+import type { Idioma } from '../../i18n/idiomas';
+
+export function getStaticPaths() {
+  return (Object.keys(TEXTOS) as Idioma[]).map((idioma) => ({ params: { idioma } }));
+}
+
+const idioma = Astro.params.idioma as Idioma;
+const tx = TEXTOS[idioma] ?? TEXTOS.ca;
+---
+
+<Base idioma={idioma} pagina="inicio" titulo={tx.inicio.titulo} descripcion={tx.inicio.descripcion}>
+  <section class="contenedor" style="padding: 96px 16px;">
+    <p>{tx.inicio.portada.antetitulo}</p>
+    <h1 class="texto-oro">{tx.inicio.portada.titulo}</h1>
+    <p>{tx.inicio.portada.subtitulo}</p>
+  </section>
+</Base>
