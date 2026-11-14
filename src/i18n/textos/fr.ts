@@ -529,7 +529,7 @@ export const fr: Textos = {
       secciones: [
         {
           t: 'Éditeur',
-          p: 'Ce site appartient à {razon}, domiciliée à {direccion}. E-mail : {correo}. Téléphone : {telefono}. NRT et inscription au Registre des sociétés commerciales : en cours.',
+          p: 'Ce site appartient à {razon}, domiciliée à {direccion}. E-mail : {correo}. Téléphone : {telefono}. NRT : en cours d’attribution.',
         },
         {
           t: 'Utilisation du site',
@@ -547,6 +547,7 @@ export const fr: Textos = {
       encabezado: 'Politique de confidentialité',
       secciones: [
         { t: 'Qui est le responsable', p: '{razon}, {direccion}. E-mail : {correo}.' },
+        { t: 'Délégué à la protection des données', p: '{razon} n’a pas désigné de délégué à la protection des données. Pour toute question sur vos données, écrivez à {correo}.' },
         {
           t: 'Quelles données nous traitons',
           p: 'Celles du formulaire de contact : nom, e-mail, entreprise et téléphone (ces deux derniers, si vous les renseignez), objet et message. Le message nous parvient par e-mail : le site ne le conserve pas.',

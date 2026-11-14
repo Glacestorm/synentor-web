@@ -530,7 +530,7 @@ export const ca = {
       secciones: [
         {
           t: 'Titular',
-          p: 'Aquesta web és de {razon}, amb domicili a {direccion}. Correu: {correo}. Telèfon: {telefono}. NRT i inscripció al Registre de Societats Mercantils: en tràmit.',
+          p: 'Aquesta web és de {razon}, amb domicili a {direccion}. Correu: {correo}. Telèfon: {telefono}. NRT: en tràmit.',
         },
         {
           t: 'Ús de la web',
@@ -548,6 +548,7 @@ export const ca = {
       encabezado: 'Política de privacitat',
       secciones: [
         { t: 'Qui és el responsable', p: '{razon}, {direccion}. Correu: {correo}.' },
+        { t: 'Delegat de protecció de dades', p: '{razon} no ha designat delegat de protecció de dades. Per a qualsevol qüestió sobre les teves dades, escriu a {correo}.' },
         {
           t: 'Quines dades tractem',
           p: 'Les del formulari de contacte: nom, correu, empresa i telèfon (aquests dos, si els escrius), assumpte i missatge. El missatge ens arriba per correu: la web no el desa.',

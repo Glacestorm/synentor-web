@@ -529,7 +529,7 @@ export const en: Textos = {
       secciones: [
         {
           t: 'Owner',
-          p: 'This website belongs to {razon}, registered at {direccion}. Email: {correo}. Telephone: {telefono}. NRT and entry in the Register of Commercial Companies: pending.',
+          p: 'This website belongs to {razon}, registered at {direccion}. Email: {correo}. Telephone: {telefono}. NRT (Andorran tax number): pending.',
         },
         {
           t: 'Use of the website',
@@ -547,6 +547,7 @@ export const en: Textos = {
       encabezado: 'Privacy policy',
       secciones: [
         { t: 'Who is the controller', p: '{razon}, {direccion}. Email: {correo}.' },
+        { t: 'Data protection officer', p: '{razon} has not appointed a data protection officer. For any question about your data, write to {correo}.' },
         {
           t: 'What data we process',
           p: 'The data in the contact form: name, email, company and telephone (the last two, if you enter them), subject and message. The message reaches us by email: the website does not store it.',

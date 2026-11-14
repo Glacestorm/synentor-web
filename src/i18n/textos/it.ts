@@ -529,7 +529,7 @@ export const it: Textos = {
       secciones: [
         {
           t: 'Titolare',
-          p: 'Questo sito appartiene a {razon}, con sede in {direccion}. E-mail: {correo}. Telefono: {telefono}. NRT e iscrizione al Registro delle società commerciali: in corso di rilascio.',
+          p: 'Questo sito appartiene a {razon}, con sede in {direccion}. E-mail: {correo}. Telefono: {telefono}. NRT: in corso di rilascio.',
         },
         {
           t: 'Uso del sito',
@@ -547,6 +547,7 @@ export const it: Textos = {
       encabezado: 'Informativa sulla privacy',
       secciones: [
         { t: 'Chi è il responsabile', p: '{razon}, {direccion}. E-mail: {correo}.' },
+        { t: 'Responsabile della protezione dei dati', p: '{razon} non ha designato un responsabile della protezione dei dati. Per qualsiasi domanda sui suoi dati, scriva a {correo}.' },
         {
           t: 'Quali dati trattiamo',
           p: 'Quelli del modulo di contatto: nome, e-mail, azienda e telefono (questi ultimi due, se li inserisce), oggetto e messaggio. Il messaggio ci arriva per e-mail: il sito non lo conserva.',
