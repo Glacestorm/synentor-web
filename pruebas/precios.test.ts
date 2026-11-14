@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { calcula, type Seleccion } from '../src/lib/precios/calcula';
+import { calcula, type Seleccion, cuotaGestoria } from '../src/lib/precios/calcula';
 import { estadoModulo } from '../src/lib/precios/disponibilidad';
 import { resuelveDependencias } from '../src/lib/precios/calcula';
 
@@ -9,7 +9,7 @@ const base: Seleccion = {
   modalidad: 'A',
   pago: 'anual',
   suite: true,
-  paquete: false,
+  paquete: 'ninguno',
   empresas: [{ modulos: [], personas: 0 }],
   usuarios: 5,
   muvUsuarios: 0,
@@ -38,7 +38,7 @@ describe('motor de precios', () => {
   });
 
   it('el paquete «Synentor Completo» con 10 usuarios: 469 €; con 12, 559 €', () => {
-    const paquete = { ...base, paquete: true, usuarios: 10 };
+    const paquete = { ...base, paquete: 'completo' as const, usuarios: 10 };
     expect(calcula(paquete).cuotaMensual).toBe(469);
     expect(calcula({ ...paquete, usuarios: 12 }).cuotaMensual).toBe(559);
   });
@@ -54,7 +54,7 @@ describe('motor de precios', () => {
   });
 
   it('con el paquete, un módulo que requiere compras no la añade otra vez', () => {
-    const p = calcula({ ...base, paquete: true, usuarios: 10, empresas: [{ modulos: ['productos'], personas: 0 }] });
+    const p = calcula({ ...base, paquete: 'completo', usuarios: 10, empresas: [{ modulos: ['productos'], personas: 0 }] });
     expect(p.cuotaMensual).toBe(469 + 39);
     expect(p.anadidos).toEqual([]);
   });
@@ -189,5 +189,50 @@ describe('tarifa de webs (aprobada el 14/11/2026)', () => {
       mantenimientoBasico: 49,
       mantenimientoPlus: 99,
     });
+  });
+});
+
+describe('control de costes, paquete Obrador y gestorías (diseño §18)', () => {
+  const ad = { ...base, pais: 'AD' as const };
+
+  it('el control de costes añade Compras si no está: 69 + 59', () => {
+    const p = calcula({ ...ad, empresas: [{ modulos: ['costes'], personas: 0 }] });
+    expect(p.anadidos).toEqual(['compras']);
+    expect(p.lineas.find((l) => l.clave === 'modulo:costes')?.importe).toBe(59);
+    expect(p.cuotaMensual).toBe(149 + 69 + 59);
+  });
+
+  it('en una empresa adicional, el control de costes va al 50 %, como todos los módulos', () => {
+    const p = calcula({ ...ad, empresas: [{ modulos: [], personas: 0 }, { modulos: ['costes'], personas: 0 }] });
+    expect(p.lineas.find((l) => l.clave === 'modulo:costes' && l.empresa === 1)?.importe).toBe(29.5);
+    expect(p.lineas.find((l) => l.clave === 'modulo:compras' && l.empresa === 1)?.importe).toBe(34.5);
+  });
+
+  it('Obrador: 299 € con sus cuatro módulos incluidos; las personas, a 18 €', () => {
+    const p = calcula({ ...ad, paquete: 'obrador', empresas: [{ modulos: [], personas: 6 }] });
+    expect(p.lineas.map((l) => l.clave)).toEqual(['paquete-obrador', 'personas']);
+    expect(p.cuotaMensual).toBe(299 + 6 * 18);
+  });
+
+  it('Obrador con el control de costes: 329 €, sin la línea del módulo', () => {
+    const p = calcula({ ...ad, paquete: 'obrador', empresas: [{ modulos: ['costes'], personas: 0 }] });
+    expect(p.lineas.map((l) => [l.clave, l.importe])).toEqual([['paquete-obrador-costes', 329]]);
+    expect(p.cuotaMensual).toBe(329);
+  });
+
+  it('Obrador: 5 usuarios incluidos y el 6.º a la tarifa normal; MUV no va incluido', () => {
+    const p = calcula({ ...ad, paquete: 'obrador', usuarios: 6, muvUsuarios: 6 });
+    expect(p.lineas.find((l) => l.clave === 'usuarios-adicionales')?.importe).toBe(15);
+    expect(p.lineas.find((l) => l.clave === 'muv-usuarios')?.importe).toBe(39);
+  });
+
+  it('gestorías: 249 € hasta 10 empresas; 9 € por empresa más y 5 € por nómina', () => {
+    expect(cuotaGestoria(10, 0)).toBe(249);
+    expect(cuotaGestoria(1, 0)).toBe(249);
+    expect(cuotaGestoria(25, 100)).toBe(249 + 15 * 9 + 100 * 5);
+  });
+
+  it('gestorías: con más de 25 empresas no hay importe, bajo propuesta', () => {
+    expect(cuotaGestoria(26, 0)).toBeNull();
   });
 });

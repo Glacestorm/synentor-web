@@ -69,6 +69,30 @@ describe('páginas construidas', () => {
     }
   });
 
+  it('Servicios explica el control de costes y lleva la tarjeta de gestorías, en todos los idiomas (diseño §18)', () => {
+    for (const idioma of idiomas) {
+      const html = readFileSync(fichero(ruta('servicios', idioma)), 'utf8');
+      const t = TEXTOS[idioma]!.servicios;
+      expect(html, idioma).toContain('id="costes"');
+      expect(html, idioma).toContain('id="gestorias"');
+      expect(html, idioma).toContain(t.modulos.costes.nombre);
+      // El principio de cada punto (hasta un apóstrofo o un «&», que Astro escribe como entidad).
+      for (const punto of t.costes.puntos) expect(visible(html), idioma).toContain(punto.split(/['’&]/)[0].slice(0, 25));
+      expect(html, idioma).toContain(`${ruta('contacto', idioma)}?asunto=gestorias`);
+    }
+  });
+
+  it('Precios lleva las filas del Obrador y de las gestorías y la tarjeta de gestorías (diseño §18)', () => {
+    for (const idioma of idiomas) {
+      const html = readFileSync(fichero(ruta('precios', idioma)), 'utf8');
+      const t = TEXTOS[idioma]!;
+      expect(html, idioma).toContain(t.precios.tablas.paqueteObrador);
+      expect(html, idioma).toContain(t.precios.tablas.gestorias);
+      expect(html, idioma).toContain('id="gestorias"');
+      expect(html, idioma).toContain(`${ruta('contacto', idioma)}?asunto=gestorias`);
+    }
+  });
+
   it('Precios lleva el configurador con sus textos', () => {
     for (const idioma of idiomas) {
       const html = readFileSync(fichero(ruta('precios', idioma)), 'utf8');

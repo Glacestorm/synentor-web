@@ -9,6 +9,7 @@ import { euros, porcentaje } from '../../lib/formato';
 import { textosConfigurador } from '../../lib/textosConfigurador';
 import { MERCADO } from '../../datos/mercado';
 import GraficoComparacion from '../visual/GraficoComparacion.astro';
+import TarjetaGestorias from './TarjetaGestorias.astro';
 
 interface Props {
   idioma: Idioma;
@@ -90,6 +91,33 @@ const t2 = TARIFA.muv.tramos[1];
             </td>
           </tr>
           <tr>
+            <th scope="row">{tt.paqueteObrador}</th>
+            <td>
+              {
+                rellena(todo.precios.configurador.paqueteObradorTexto, {
+                  usuarios: TARIFA.paqueteObrador.usuariosIncluidos,
+                  precio: eur(TARIFA.paqueteObrador.cuota),
+                  conCostes: eur(TARIFA.paqueteObrador.conCostes),
+                })
+              }
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><a class="enlace" href="#gestorias">{tt.gestorias}</a></th>
+            <td>
+              {
+                rellena(tt.gestoriasPrecio, {
+                  precio: eur(TARIFA.gestorias.cuota),
+                  empresas: TARIFA.gestorias.empresasIncluidas,
+                  usuarios: TARIFA.gestorias.usuariosIncluidos,
+                  empresa: eur(TARIFA.gestorias.empresaAdicional),
+                  max: TARIFA.gestorias.maxEmpresas,
+                  nomina: eur(TARIFA.gestorias.porNomina),
+                })
+              }
+            </td>
+          </tr>
+          <tr>
             <th scope="row">{tt.muv}</th>
             <td>
               {
@@ -115,6 +143,7 @@ const t2 = TARIFA.muv.tramos[1];
         </tbody>
       </table>
     </div>
+    <div class="caja-gestorias"><TarjetaGestorias idioma={idioma} /></div>
     <p><a class="enlace" href={ruta('servicios', idioma)}>{tt.servicios}: {tt.verServicios} →</a></p>
   </div>
 </section>

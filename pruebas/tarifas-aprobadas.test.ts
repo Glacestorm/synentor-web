@@ -11,7 +11,7 @@ const base: Seleccion = {
   modalidad: 'A',
   pago: 'anual',
   suite: true,
-  paquete: false,
+  paquete: 'ninguno',
   empresas: [{ modulos: [], personas: 0 }],
   usuarios: 5,
   muvUsuarios: 0,
@@ -101,6 +101,45 @@ describe('tarifas de servicios aprobadas el 14/11/2026', () => {
         elite: { cuota: 890, implantacionDesde: 5900, minutos: 3500 },
       },
       minutoAdicional: 0.15,
+    });
+  });
+});
+
+// Aprobados por gerencia el 14/11/2026 (diseño §18). Escritos a mano a propósito.
+describe('Control de costes de compra', () => {
+  it('59 € al mes y requiere Compras', () => {
+    expect(MODULOS).toContain('costes');
+    expect(TARIFA.modulos.costes).toEqual({ cuota: 59, requiere: 'compras' });
+  });
+
+  it('disponible donde lo está Compras: Andorra sí; España, inminente; los demás, a medida', () => {
+    expect(estadoModulo('AD', 'costes')).toBe('disponible');
+    expect(estadoModulo('ES', 'costes')).toBe('inminente');
+    expect(estadoModulo('PT', 'costes')).toBe('a_medida');
+  });
+});
+
+describe('Paquete Obrador', () => {
+  it('299 €; con el control de costes, 329 €; Compras, Productos, TPV y RRHH con 5 usuarios', () => {
+    expect(TARIFA.paqueteObrador).toEqual({
+      cuota: 299,
+      conCostes: 329,
+      incluye: ['compras', 'productos', 'tpv', 'rrhh'],
+      usuariosIncluidos: 5,
+    });
+  });
+});
+
+describe('Paquete Despachos y gestorías', () => {
+  it('249 € con 10 empresas y 5 usuarios; 9 € por empresa hasta 25; 5 € por nómina', () => {
+    expect(TARIFA.gestorias).toEqual({
+      cuota: 249,
+      incluye: ['compras', 'ventas_crm', 'fiscal', 'rrhh'],
+      empresasIncluidas: 10,
+      usuariosIncluidos: 5,
+      empresaAdicional: 9,
+      porNomina: 5,
+      maxEmpresas: 25,
     });
   });
 });

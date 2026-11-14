@@ -1,7 +1,7 @@
 // El configurador de Precios (diseño §8, plan tarea 4). Pinta los controles y el presupuesto, y recalcula con cada cambio.
 // Toda cuenta es la de `calcula`: aquí no se suma nada. Los textos llegan en `data-textos` (solo los de su idioma) y la
 // dirección del formulario en `data-contacto`. «Envía mi selección» lleva al formulario con el resumen: sin pago.
-import { calcula, resuelveDependencias, type ModuloId, type Pais, type Seleccion } from '../lib/precios/calcula';
+import { calcula, resuelveDependencias, type ModuloId, type Paquete, type Pais, type Seleccion } from '../lib/precios/calcula';
 import { estadoModulo, PAISES } from '../lib/precios/disponibilidad';
 import { MODULOS, TARIFA } from '../lib/precios/tarifa';
 import { euros, porcentaje } from '../lib/formato';
@@ -31,7 +31,7 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
     modalidad: 'A',
     pago: 'anual',
     suite: true,
-    paquete: false,
+    paquete: 'ninguno',
     empresas: [{ modulos: [], personas: 0 }],
     usuarios: TARIFA.base.usuariosIncluidos,
     muvUsuarios: 0,
@@ -42,9 +42,13 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
     return Number.isFinite(n) && n > 0 ? Math.floor(n) : 0;
   };
 
+  const conCompleto = () => estado.suite && estado.paquete === 'completo';
+  const conObrador = () => estado.suite && estado.paquete === 'obrador';
+
   /** Los módulos de cada empresa: los que la persona marcó, los del paquete y los que se añaden por dependencia. */
   function resuelto(i: number) {
-    const incluidos: readonly ModuloId[] = i === 0 && estado.suite && estado.paquete ? TARIFA.paquete.incluye : [];
+    const incluidos: readonly ModuloId[] =
+      i !== 0 ? [] : conCompleto() ? TARIFA.paquete.incluye : conObrador() ? TARIFA.paqueteObrador.incluye : [];
     const pedidos = estado.empresas[i].modulos;
     const r = resuelveDependencias([...new Set([...pedidos, ...incluidos])]);
     return { modulos: r.modulos, incluidos, anadidos: r.modulos.filter((m) => !pedidos.includes(m) && !incluidos.includes(m)) };
@@ -85,13 +89,16 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
     <div class="conf-panel">${interruptor('suite', estado.suite, c.suite)}`;
 
     if (estado.suite) {
+      const o = TARIFA.paqueteObrador;
+      const opcion = (valor: Paquete, titulo: string, detalle: string) =>
+        `<label class="conf-op conf-paquete"><input type="radio" name="conf-paquete" data-k="paquete-${valor}" value="${valor}"${valor === estado.paquete ? ' checked' : ''}>
+          <span><strong>${esc(titulo)}</strong>${detalle ? `<small>${esc(detalle)}</small>` : ''}</span></label>`;
       html +=
-        interruptor(
-          'paquete',
-          estado.paquete,
-          c.paquete,
-          rellena(c.paqueteTexto, { usuarios: TARIFA.paquete.usuariosIncluidos, precio: eur(TARIFA.paquete.cuota) }),
-        ) + numeroConPasos('usuarios', c.usuarios, estado.usuarios, 1);
+        `<fieldset class="conf-grupo conf-paquetes"><legend>${esc(c.paqueteTitulo)}</legend>
+          ${opcion('ninguno', c.sinPaquete, '')}
+          ${opcion('completo', c.paquete, rellena(c.paqueteTexto, { usuarios: TARIFA.paquete.usuariosIncluidos, precio: eur(TARIFA.paquete.cuota) }))}
+          ${opcion('obrador', c.paqueteObrador, rellena(c.paqueteObradorTexto, { usuarios: o.usuariosIncluidos, precio: eur(o.cuota), conCostes: eur(o.conCostes) }))}
+        </fieldset>` + numeroConPasos('usuarios', c.usuarios, estado.usuarios, 1);
     }
     html += '</div>';
 
@@ -104,8 +111,14 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
           const incluido = r.incluidos.includes(m);
           const anadido = r.anadidos.includes(m);
           const est = estadoModulo(estado.pais, m);
-          const nota = incluido ? c.incluidoPaquete : anadido ? c.anadidoPor : '';
-          const precio = incluido ? '' : `${eur(TARIFA.modulos[m].cuota * factor)} ${c.alMes}`;
+          // Con el Obrador, el control de costes de la empresa principal cuesta la diferencia hasta `conCostes`.
+          const costesObrador = i === 0 && m === 'costes' && conObrador();
+          const nota = incluido ? c.incluidoPaquete : anadido ? c.anadidoPor : costesObrador ? c.conObrador : '';
+          const precio = incluido
+            ? ''
+            : costesObrador
+              ? `+${eur(TARIFA.paqueteObrador.conCostes - TARIFA.paqueteObrador.cuota)} ${c.alMes}`
+              : `${eur(TARIFA.modulos[m].cuota * factor)} ${c.alMes}`;
           return `<label class="conf-modulo${marcado ? ' marcado' : ''}">
               <input type="checkbox" data-k="modulo-${i}-${m}"${marcado ? ' checked' : ''}${incluido || anadido ? ' disabled' : ''}>
               <span class="conf-check">${svgIcono('check', 14)}</span>
@@ -129,7 +142,7 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
       }
     }
 
-    if (!(estado.suite && estado.paquete)) {
+    if (!conCompleto()) {
       html += `<div class="conf-panel">${numeroConPasos('muv', c.muvUsuarios, estado.muvUsuarios, 0)}</div>`;
     }
     return html;
@@ -154,6 +167,9 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
     const filas = [`${c.pais}: ${c.paises[estado.pais]}`];
     if (estado.suite) {
       filas.push(`${c.modalidad}: ${estado.modalidad === 'A' ? c.modalidadA : rellena(c.modalidadB, { precio: eur(TARIFA.modalidadB) })}`);
+      if (estado.paquete !== 'ninguno') {
+        filas.push(`${c.paqueteTitulo}: ${estado.paquete === 'completo' ? c.paquete : c.paqueteObrador}`);
+      }
       filas.push(`${c.usuarios}: ${estado.usuarios}`);
       estado.empresas.forEach((e, i) => {
         const r = resuelto(i);
@@ -161,7 +177,7 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
         filas.push(`${nombreEmpresa(i)}: ${mods}${r.modulos.includes('rrhh') ? ` · ${c.personas}: ${e.personas}` : ''}`);
       });
     }
-    if (!(estado.suite && estado.paquete) && estado.muvUsuarios > 0) filas.push(`${c.muvUsuarios}: ${estado.muvUsuarios}`);
+    if (!conCompleto() && estado.muvUsuarios > 0) filas.push(`${c.muvUsuarios}: ${estado.muvUsuarios}`);
     filas.push(`${c.pago}: ${estado.pago === 'anual' ? c.anual : rellena(c.mensual, { porcentaje: porcentaje(TARIFA.recargoMensual, idioma) })}`);
     filas.push(...p.lineas.map((l) => `- ${etiquetaLinea(l.clave, l.empresa)}${l.cantidad > 1 ? ` × ${l.cantidad}` : ''}: ${eur(l.importe)}`));
     filas.push(`${c.cuota}: ${eur(p.cuotaMensual)} (${c.sinImpuestos})`);
@@ -237,7 +253,7 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
     else if (k.startsWith('modalidad-')) estado.modalidad = input.value as 'A' | 'B';
     else if (k.startsWith('pago-')) estado.pago = input.value as 'anual' | 'mensual';
     else if (k === 'suite') estado.suite = input.checked;
-    else if (k === 'paquete') estado.paquete = input.checked;
+    else if (k.startsWith('paquete-')) estado.paquete = input.value as Paquete;
     else if (k === 'usuarios') estado.usuarios = Math.max(1, numero(input.value));
     else if (k === 'muv') estado.muvUsuarios = numero(input.value);
     else if (k.startsWith('personas-')) estado.empresas[Number(k.split('-')[1])].personas = numero(input.value);

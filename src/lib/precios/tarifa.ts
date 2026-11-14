@@ -9,6 +9,7 @@ export type ModuloId =
   | 'juridico'
   | 'pbc'
   | 'productos'
+  | 'costes'
   | 'tpv'
   | 'electrica';
 
@@ -20,6 +21,7 @@ export const MODULOS: readonly ModuloId[] = [
   'juridico',
   'pbc',
   'productos',
+  'costes',
   'tpv',
   'electrica',
 ];
@@ -44,6 +46,8 @@ export const TARIFA = {
     juridico: { cuota: 79, requiere: 'rrhh' },
     pbc: { cuota: 49, requiere: 'juridico' },
     productos: { cuota: 39, requiere: 'compras' },
+    /** Control de costes de compra (gerencia, 14/11/2026; diseño §18): complemento de Compras. */
+    costes: { cuota: 59, requiere: 'compras' },
     tpv: { cuota: 39 },
     /** C. Eléctrica para asesores energéticos: solo España (gerencia, 14/11/2026). */
     electrica: { cuota: 79 },
@@ -58,6 +62,30 @@ export const TARIFA = {
     incluye: ['compras', 'ventas_crm', 'fiscal'] as const satisfies readonly ModuloId[],
     usuariosIncluidos: 10,
     usuarioAdicional: 45,
+  },
+  /**
+   * Paquete Obrador (gerencia, 14/11/2026; diseño §18): la Base con sus 5 usuarios y estos módulos. Con el control de
+   * costes, `conCostes`. Usuarios y personas en plantilla, a la tarifa normal; MUV no va incluido.
+   */
+  paqueteObrador: {
+    cuota: 299,
+    conCostes: 329,
+    incluye: ['compras', 'productos', 'tpv', 'rrhh'] as const satisfies readonly ModuloId[],
+    usuariosIncluidos: 5,
+  },
+  /**
+   * Despachos y gestorías (gerencia, 14/11/2026; diseño §18): solo para despachos que llevan empresas de sus clientes.
+   * Contabilidad (la Base) y estos módulos; por empresa cliente más allá de las incluidas y por nómina. Fuera del
+   * configurador; con más de `maxEmpresas`, bajo propuesta.
+   */
+  gestorias: {
+    cuota: 249,
+    incluye: ['compras', 'ventas_crm', 'fiscal', 'rrhh'] as const satisfies readonly ModuloId[],
+    empresasIncluidas: 10,
+    usuariosIncluidos: 5,
+    empresaAdicional: 9,
+    porNomina: 5,
+    maxEmpresas: 25,
   },
   /** Diseño y creación de páginas web (aprobado por gerencia el 14/11/2026). Pago único salvo el mantenimiento (al mes). */
   webs: {

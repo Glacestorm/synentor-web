@@ -1,0 +1,50 @@
+---
+// Paquete Despachos y gestorías (diseño §18, aprobado por gerencia el 14/11/2026). Fuera del configurador: se cobra por
+// empresa cliente y por nómina. En Precios y en Servicios. Todas las cifras, de la tarifa y del motor.
+import { textos, rellena } from '../../i18n/t';
+import { ruta, type Idioma } from '../../i18n/idiomas';
+import { TARIFA } from '../../lib/precios/tarifa';
+import { cuotaGestoria } from '../../lib/precios/calcula';
+import { EJEMPLO_GESTORIA } from '../../lib/precios/ejemplos';
+import { euros } from '../../lib/formato';
+import Icono from '../Icono.astro';
+
+interface Props {
+  idioma: Idioma;
+}
+const { idioma } = Astro.props;
+const tx = textos(idioma).servicios.gestorias;
+const g = TARIFA.gestorias;
+const eur = (n: number) => euros(n, idioma);
+const valores = {
+  empresas: g.empresasIncluidas,
+  usuarios: g.usuariosIncluidos,
+  empresa: eur(g.empresaAdicional),
+  max: g.maxEmpresas,
+  nomina: eur(g.porNomina),
+  usuario: eur(TARIFA.usuarioAdicional),
+};
+const ejemplo = cuotaGestoria(EJEMPLO_GESTORIA.empresas, EJEMPLO_GESTORIA.personas)!;
+---
+
+<article class="tarjeta tarjeta-gestorias" id="gestorias">
+  <span class="icono-caja"><Icono nombre="multiempresa" /></span>
+  <h3>{tx.titulo}</h3>
+  <p><span class="conf-estado estado-inminente">{tx.estado}</span></p>
+  <p>{tx.texto}</p>
+  <p class="precio-grande">{rellena(tx.precio, { precio: eur(g.cuota) })}</p>
+  <ul class="lista-ok">
+    {tx.puntos.map((p) => <li>{rellena(p, valores)}</li>)}
+  </ul>
+  <p>
+    {
+      rellena(tx.ejemplo, {
+        empresasEj: EJEMPLO_GESTORIA.empresas,
+        personasEj: EJEMPLO_GESTORIA.personas,
+        totalEj: eur(ejemplo),
+      })
+    }
+  </p>
+  <p class="pequeno">{tx.condiciones}</p>
+  <a class="boton boton-oro" href={`${ruta('contacto', idioma)}?asunto=gestorias`}>{tx.boton}</a>
+</article>
