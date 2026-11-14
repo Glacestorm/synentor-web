@@ -1,0 +1,9 @@
+# Cabeceras de seguridad para todo lo que sirve el almacén de ficheros estáticos (las respuestas del Worker, «/» y
+# «/api/*», no pasan por aquí). Sin política de contenido (CSP) a propósito: hasta tener los identificadores de las
+# herramientas de cookies, una lista cerrada de orígenes rompería Turnstile, Umami o las herramientas al activarlas.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000

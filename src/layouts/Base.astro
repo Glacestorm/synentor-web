@@ -175,7 +175,6 @@ const opcionesCookies = hayCookies
       define:vars={{
         idiomaPagina: idioma,
         disponibles: idiomasConTextos,
-        nombres: NOMBRE_IDIOMA,
         enlaces: Object.fromEntries(idiomasConTextos.map((i) => [i, ruta(pagina, i)])),
         franjas: Object.fromEntries(idiomasConTextos.map((i) => [i, TEXTOS[i]?.franjaIdioma ?? null])),
       }}
@@ -213,7 +212,7 @@ const opcionesCookies = hayCookies
         // Toda la franja en el idioma que se propone (texto y botones), con su atributo lang.
         var f = franjas[pedido];
         if (!f) return;
-        texto.textContent = f.texto.replace('{idioma}', nombres[pedido]);
+        texto.textContent = f.texto.replace('{idioma}', f.idioma);
         aceptar.textContent = f.aceptar;
         cerrar.textContent = f.cerrar;
         franja.setAttribute('lang', pedido);

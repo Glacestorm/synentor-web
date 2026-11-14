@@ -19,6 +19,8 @@ export const ca = {
     saltar: 'Vés al contingut',
   },
   franjaIdioma: {
+    /** El nombre de este idioma tal como se escribe dentro de una frase (sustituye a {idioma}). */
+    idioma: 'català',
     texto: 'Vols veure aquesta pàgina en {idioma}?',
     aceptar: 'Sí, canvia',
     cerrar: 'No, gràcies',

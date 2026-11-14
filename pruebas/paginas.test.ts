@@ -40,6 +40,25 @@ describe('páginas construidas', () => {
     }
   }
 
+  it('la franja de idioma escribe el nombre del idioma como va en una frase («en español», no «en Español»)', () => {
+    const html = readFileSync(fichero(ruta('inicio', 'ca')), 'utf8');
+    expect(html).toContain('"idioma":"español"');
+    expect(html).not.toContain('nombres[pedido]');
+  });
+
+  it('cabeceras de seguridad para todo lo estático (_headers)', () => {
+    const cab = readFileSync(join(DIST, '_headers'), 'utf8');
+    expect(cab).toMatch(/^\/\*$/m);
+    for (const linea of [
+      'X-Content-Type-Options: nosniff',
+      'Referrer-Policy: strict-origin-when-cross-origin',
+      'X-Frame-Options: DENY',
+      'Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()',
+      'Strict-Transport-Security: max-age=31536000',
+    ])
+      expect(cab).toContain(`  ${linea}`);
+  });
+
   it('Precios lleva el configurador con sus textos', () => {
     for (const idioma of idiomas) {
       const html = readFileSync(fichero(ruta('precios', idioma)), 'utf8');

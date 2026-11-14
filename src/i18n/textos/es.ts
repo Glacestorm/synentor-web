@@ -19,6 +19,7 @@ export const es: Textos = {
     saltar: 'Ir al contenido',
   },
   franjaIdioma: {
+    idioma: 'español',
     texto: '¿Quieres ver esta página en {idioma}?',
     aceptar: 'Sí, cambiar',
     cerrar: 'No, gracias',

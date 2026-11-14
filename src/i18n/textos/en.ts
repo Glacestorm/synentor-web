@@ -19,6 +19,7 @@ export const en: Textos = {
     saltar: 'Skip to content',
   },
   franjaIdioma: {
+    idioma: 'English',
     texto: 'Would you like to view this page in {idioma}?',
     aceptar: 'Yes, switch',
     cerrar: 'No, thanks',
