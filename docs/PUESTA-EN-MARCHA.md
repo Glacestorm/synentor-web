@@ -47,15 +47,18 @@ cada registro, nunca a partir de la captura.
 
 1. En Cloudflare → Workers y Pages → Crear → importar un repositorio de GitHub: `Glacestorm/synentor-web`, rama `main`.
 2. Orden de construcción: `npm ci && npm run build`. Orden de despliegue: `npx wrangler deploy`.
-3. Antes del primer despliegue, en las variables de **construcción**, añade `PUBLIC_TURNSTILE_SITEKEY` (paso 3). Es la
-   clave pública del widget: va en la página.
+3. No hace falta ninguna variable de construcción: la clave pública del widget de Turnstile ya está en el código
+   (`src/datos/turnstile.ts`, paso 3).
 4. Prueba la web en la dirección `*.workers.dev` que da Cloudflare. Todavía no toca synentor.com.
 
 ## 3. Turnstile (el «no soy un robot» del formulario)
 
-1. Cloudflare → Turnstile → añadir un widget para `synentor.com` y `www.synentor.com`, modo «gestionado».
-2. Copia la **clave del sitio** a la variable de construcción del paso 2.3.
-3. Guarda la **clave secreta** como secreto del Worker (pide el valor sin enseñarlo):
+1. Cloudflare → Turnstile → añadir un widget «Web Synentor» para `synentor.com`, `www.synentor.com` y la dirección de
+   pruebas `synentor-web.glacestorm1969.workers.dev`, modo «gestionado» y sin autorización previa. **Hecho el 14/11/2026.**
+2. La **clave del sitio** es pública y está en `src/datos/turnstile.ts`. Si se cambia el widget, se cambia ahí.
+3. Guarda la **clave secreta** como secreto del Worker. Nunca en el repositorio ni en un chat. Desde el panel: Workers y
+   Pages → `synentor-web` → Configuración → Variables y secretos → Añadir → tipo «Secreto», nombre `TURNSTILE_SECRET`.
+   O desde la terminal (pide el valor sin enseñarlo):
 
 ```bash
 npx wrangler secret put TURNSTILE_SECRET
