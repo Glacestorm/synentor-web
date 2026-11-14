@@ -2,6 +2,7 @@
 // Plantilla común: metadatos, cabecera y pie. La tarea 3 añade el selector de idioma y los hreflang.
 import '../estilos/marca.css';
 import { EMPRESA } from '../datos/empresa';
+import { UMAMI } from '../datos/analitica';
 
 interface Props {
   idioma: string;
@@ -32,6 +33,13 @@ const anio = new Date().getFullYear();
     <meta property="og:description" content={descripcion} />
     <meta property="og:url" content={canonica} />
     <meta property="og:image" content={new URL('/marca/portada.png', EMPRESA.dominio).toString()} />
+    <script
+      is:inline
+      defer
+      src={UMAMI.script}
+      data-website-id={UMAMI.idWeb}
+      data-domains={UMAMI.dominios}
+      data-do-not-track="true"></script>
     <slot name="cabeza" />
   </head>
   <body>

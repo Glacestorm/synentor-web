@@ -283,8 +283,10 @@ cuentas (el kit las trae vacías).
 
 ## 12. Analítica, SEO y rendimiento
 
-- **Cloudflare Web Analytics** (sin cookies): no hace falta aviso de cookies. La analítica de Plausible de la web actual no
-  se traslada.
+- **Umami** (gerencia, 14/11/2026; sustituye a Cloudflare Web Analytics): código abierto, sin cookies (no hace falta aviso
+  de cookies), con API para la futura pestaña «Web» del ERP. Para synentor.com, su nube (`cloud.umami.is`), con el
+  identificador de la web en `src/datos/analitica.ts` y solo para los dominios de producción. La analítica de Plausible de
+  la web actual no se traslada.
 - Mapa del sitio, `robots.txt`, metadatos y Open Graph por idioma (imagen: la portada del kit).
 - Redirecciones 301 de las direcciones de la web actual (`/rrhh-espana`, `/precios`, `/contact`…) a su equivalente nuevo.
 - Objetivo: Lighthouse ≥ 95 en rendimiento, accesibilidad, buenas prácticas y SEO; contraste AA.

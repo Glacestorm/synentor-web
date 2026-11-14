@@ -387,3 +387,11 @@ usan a la vez las tablas, el configurador y las pruebas.
 - [ ] **Paso 5: comprobar.** `npm run build && npm run comprueba-contenido && npm test && npm run prueba-navegador`.
   Esperado: todo PASA. Contraste AA comprobado en Inicio y Precios.
 - [ ] **Paso 6: guardar el cambio, subir y abrir la propuesta de cambios** (borrador) contra `main`.
+
+## Ajustes durante la ejecución
+
+- **Tarea 2**: `Seleccion` lleva además `suite: boolean` (sin la Suite, solo MUV: así se puede presupuestar MUV solo). La
+  prueba de la empresa adicional usa RRHH (`['rrhh']`, 3 personas → 149 + 39 + 29,50 + 54 = 271,50): las personas solo se
+  cobran con RRHH, y el ejemplo del plan las cobraba con Compras. La Base fuera de Andorra no está «disponible» (lleva la
+  contabilidad del país): en España, «inminente»; en los demás, «a medida».
+- **Analítica**: Umami en lugar de Cloudflare Web Analytics (gerencia, 14/11/2026; diseño §12).
