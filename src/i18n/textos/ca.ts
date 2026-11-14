@@ -576,62 +576,302 @@ export const ca = {
   },
   legal: {
     actualizado: 'Darrera actualització: {fecha}',
+    enlaces: {
+      privacidad: 'política de privadesa',
+      cookies: 'política de galetes',
+    },
     aviso: {
       titulo: 'Avís legal · Synentor',
       encabezado: 'Avís legal',
       secciones: [
         {
-          t: 'Titular',
-          p: 'Aquesta web és de {razon}, amb domicili a {direccion}. Correu: {correo}. Telèfon: {telefono}. NRT: en tràmit.',
+          t: 'Qui n’és el titular',
+          p: [
+            'Aquest web, {web}, és de {razon}, societat andorrana amb domicili a {direccion}. NRT: en tràmit.',
+            'Per a qualsevol qüestió, escriu-nos a {correo} o truca’ns al {telefono}.',
+          ],
         },
         {
-          t: 'Ús de la web',
-          p: 'La informació d’aquesta web és orientativa. Els preus i les condicions que valen són els de la proposta que et fem per escrit.',
+          t: 'Per a què serveix aquest web',
+          p: [
+            'Informa dels nostres serveis de consultoria d’intel·ligència artificial i de vendes i dels nostres programes. Entrar-hi és gratuït i no cal registrar-se.',
+            'Al web no es compra ni es paga res. Els preus que s’hi mostren són orientatius i sense impostos: el que val és la proposta i el contracte que signem amb tu per escrit.',
+          ],
         },
         {
-          t: 'Propietat intel·lectual',
-          p: 'Els textos, el logotip i el disseny d’aquesta web són de {razon}. No els facis servir sense el nostre permís.',
+          t: 'Com el pots fer servir',
+          p: [
+            'Qui fa servir el web és responsable de l’ús que en fa. No està permès:',
+          ],
+          lista: [
+            'fer-lo servir contra la llei o contra els drets d’altres persones;',
+            'intentar entrar als seus servidors, canviar-ne la configuració o saltar-se’n les mesures de seguretat;',
+            'enviar pel formulari continguts il·legals o ofensius, publicitat que no hem demanat o dades d’altres persones sense el seu permís;',
+            'mostrar-lo dins d’un altre web o copiar-lo de manera automàtica.',
+          ],
+          despues: [
+            'Si algú no compleix aquestes condicions, li podem impedir l’accés.',
+          ],
         },
-        { t: 'Llei aplicable', p: 'S’aplica la llei andorrana. Per a qualsevol conflicte, els jutjats del Principat d’Andorra.' },
+        {
+          t: 'Responsabilitat',
+          p: [
+            'Vetllem perquè la informació sigui correcta i estigui al dia, però pot contenir errors o dades desactualitzades: els corregim tan bon punt els veiem. No responem dels danys que pugui causar l’ús de la informació del web, ni de les interrupcions per manteniment, avaries o causes alienes a nosaltres, tot i que prenem les mesures raonables per evitar-les.',
+          ],
+        },
+        {
+          t: 'Enllaços a altres webs',
+          p: [
+            'El web enllaça amb pàgines d’altres empreses i organismes. No les controlem ni responem del seu contingut, i enllaçar-les no vol dir que hi tinguem cap relació. Consulta’n les condicions pròpies.',
+          ],
+        },
+        {
+          t: 'Propietat intel·lectual i industrial',
+          p: [
+            'La marca i el logotip de Synentor, els textos, el disseny, les imatges i el codi d’aquest web són de {razon} o de qui ens ha donat permís per fer-los servir. Els pots veure i guardar-ne una còpia per al teu ús personal. Per a qualsevol altre ús (copiar-los, publicar-los, modificar-los o fer-los servir amb finalitats comercials) necessites el nostre permís per escrit.',
+          ],
+        },
+        {
+          t: 'Dades personals i galetes',
+          p: [
+            'Com tractem les dades que ens dones ho explica la {privacidad}, i quines galetes fem servir, la {cookies}.',
+          ],
+        },
+        {
+          t: 'Idiomes',
+          p: [
+            'El web és en català, castellà, anglès, francès, portuguès, italià i alemany. Si una traducció no diu el mateix que el text en català, val el català.',
+          ],
+        },
+        {
+          t: 'Llei aplicable i tribunals',
+          p: [
+            'Aquestes condicions es regeixen per la llei andorrana. Per a qualsevol conflicte són competents els tribunals del Principat d’Andorra, llevat que la llei et reconegui el dret d’anar a uns altres.',
+          ],
+        },
+        {
+          t: 'Canvis',
+          p: [
+            'Podem canviar aquest avís legal quan calgui. La data de dalt diu quan es va canviar per última vegada.',
+          ],
+        },
       ],
     },
     privacidad: {
-      titulo: 'Política de privacitat · Synentor',
-      encabezado: 'Política de privacitat',
+      titulo: 'Política de privadesa · Synentor',
+      encabezado: 'Política de privadesa',
       secciones: [
-        { t: 'Qui és el responsable', p: '{razon}, {direccion}. Correu: {correo}.' },
-        { t: 'Delegat de protecció de dades', p: '{razon} no ha designat delegat de protecció de dades. Per a qualsevol qüestió sobre les teves dades, escriu a {correo}.' },
         {
-          t: 'Quines dades tractem',
-          p: 'Les del formulari de contacte: nom, correu, empresa i telèfon (aquests dos, si els escrius), assumpte i missatge. El missatge ens arriba per correu: la web no el desa.',
+          t: 'Qui tracta les teves dades',
+          p: [
+            'El responsable és {razon}, societat andorrana amb domicili a {direccion}. NRT: en tràmit. Correu: {correo}. Telèfon: {telefono}.',
+            'No hem designat delegat de protecció de dades: per a qualsevol qüestió sobre les teves dades, escriu-nos a {correo}.',
+          ],
         },
-        { t: 'Per a què', p: 'Per respondre’t i, si ho demanes, preparar-te una proposta. La base és el teu consentiment.' },
-        { t: 'Quant de temps', p: 'El temps necessari per atendre’t i el que exigeixi la llei.' },
         {
-          t: 'Qui més les veu',
-          p: 'Els proveïdors que fan funcionar la web: l’allotjament i la comprovació antirobot (Cloudflare) i l’enviament del correu. Les estadístiques de visites (Umami) no fan servir galetes ni guarden dades que t’identifiquin.',
+          t: 'Quines dades tractem, per a què i durant quant de temps',
+          p: [
+            'Només les que calen per a cada cosa:',
+          ],
+          lista: [
+            'Formulari de contacte. Dades: nom, correu, assumpte i missatge, i l’empresa i el telèfon si els escrius. Per a què: respondre’t i, si ho demanes, preparar-te una proposta. Base: el teu consentiment, que dones en marcar la casella, i, si demanes una proposta, les mesures prèvies a un contracte. Termini: el missatge ens arriba per correu i el web no el guarda; el conservem {plazoContacto} des de l’últim contacte si no arribes a ser client i, si ho ets, mentre duri la relació i els terminis que exigeixi la llei.',
+            'Comprovació antirobots del formulari (Cloudflare Turnstile). Dades: l’adreça IP i dades tècniques del navegador. Per a què: comprovar que el formulari l’envia una persona. Base: el nostre interès legítim a protegir el web de l’abús. Nosaltres no les guardem.',
+            'Prova de la teva decisió sobre les galetes. Dades: un identificador a l’atzar que no t’identifica, la versió de la política, el que vas decidir i la data; mai la IP. Per a què: poder demostrar el teu consentiment. Base: l’obligació de poder-lo demostrar. Termini: 12 mesos.',
+            'Registres tècnics de l’allotjament (Cloudflare). Dades: l’adreça IP, la data i l’hora, la pàgina demanada i els errors. Per a què: la seguretat i el bon funcionament del web. Base: el nostre interès legítim. Termini: fins a {plazoRegistros}.',
+            'Estadístiques de visites (Umami). Sense galetes i sense dades que t’identifiquin: només xifres de conjunt, com les pàgines vistes, el país o el navegador.',
+            'Galetes d’altres empreses, només si les acceptes: ho explica la {cookies}.',
+            'Si ens escrius per correu o ens truques: les teves dades de contacte i el que ens expliquis, per respondre’t, amb la mateixa base i el mateix termini que el formulari.',
+          ],
+        },
+        {
+          t: 'Qui més veu les teves dades',
+          p: [
+            'No venem ni cedim les teves dades. Només les tracten, per encàrrec nostre, els proveïdors que fan funcionar el web i el correu, i les administracions quan la llei ho exigeix:',
+          ],
+          tabla: 'proveedores',
+        },
+        {
+          t: 'Dades fora d’Andorra',
+          p: [
+            'Alguns d’aquests proveïdors són dels Estats Units o hi tracten dades. Triem proveïdors adherits al Marc de Privadesa de Dades entre la Unió Europea i els Estats Units o que s’hi comprometen per contracte amb clàusules tipus. Tot i així, els Estats Units no ofereixen el mateix nivell de protecció que Andorra o la Unió Europea, i les seves autoritats podrien demanar accés a aquestes dades.',
+          ],
         },
         {
           t: 'Els teus drets',
-          p: 'Pots demanar accés, rectificació, supressió, oposició, limitació i portabilitat escrivint a {correo}. Si no hi estàs d’acord, pots reclamar a l’Agència Andorrana de Protecció de Dades (apda.ad).',
+          p: [
+            'Ens pots demanar accés a les teves dades, rectificar-les, suprimir-les, limitar-ne el tractament, endur-te-les (portabilitat) o oposar-te que les tractem. I pots retirar el teu consentiment quan vulguis, sense que això afecti el que s’ha fet abans.',
+            'Escriu-nos a {correo}. Si no podem saber que ets tu, et demanarem un document que t’identifiqui, que només farem servir per a això i després esborrarem. Et respondrem en el termini que marca la llei.',
+            'Si creus que no hem atès bé els teus drets, pots reclamar davant l’Agència Andorrana de Protecció de Dades ({apda}).',
+          ],
         },
         {
-          t: 'Lleis',
-          p: 'Llei 29/2021, del 28 d’octubre, qualificada de protecció de dades personals, i el Reglament general de protecció de dades de la Unió Europea per a les persones de la UE.',
+          t: 'Seguretat',
+          p: [
+            'Protegim les teves dades amb mesures tècniques i organitzatives: connexió xifrada, accés només de qui ho necessita i proveïdors amb garanties de seguretat.',
+          ],
+        },
+        {
+          t: 'Menors',
+          p: [
+            'El web està pensat per a empreses i professionals. Si tens menys de 16 anys, no ens enviïs dades sense el permís del teu pare, la teva mare o el teu tutor.',
+          ],
+        },
+        {
+          t: 'Lleis que apliquem',
+          p: [
+            'La Llei 29/2021, del 28 d’octubre, qualificada de protecció de dades personals (LQPD) i, per a les persones de la Unió Europea, el Reglament general de protecció de dades (RGPD).',
+          ],
+        },
+        {
+          t: 'Canvis',
+          p: [
+            'Si canviem aquesta política, ho direm aquí amb la data nova. Si el canvi afecta una cosa que vas consentir, t’ho tornarem a preguntar.',
+          ],
         },
       ],
     },
     cookies: {
       titulo: 'Política de galetes · Synentor',
       encabezado: 'Política de galetes',
+      ninguna: 'Avui no en fem servir cap. Si algun dia en fem servir, t’ho preguntarem abans i apareixeran aquí.',
       secciones: [
         {
-          t: 'Què fem servir',
-          p: 'Una sola galeta, «lang», que guarda l’idioma que tries (un any). I al teu navegador, una marca per no tornar-te a ensenyar l’avís d’idioma si el tanques.',
+          t: 'Què són',
+          p: [
+            'Les galetes (cookies) són petits fitxers que un web guarda al teu navegador per recordar alguna cosa de la teva visita. Aquí també anomenem galetes altres maneres de guardar dades al navegador, com l’emmagatzematge local.',
+          ],
         },
-        { t: 'Estadístiques', p: 'Comptem les visites amb Umami, sense galetes i sense guardar dades que t’identifiquin.' },
-        { t: 'Com treure-les', p: 'Pots esborrar-les quan vulguis des de la configuració del teu navegador.' },
+        {
+          t: 'Les que fem servir sempre',
+          p: [
+            'Són les imprescindibles perquè el web funcioni o per recordar el que tries. No necessiten el teu consentiment.',
+          ],
+          tabla: 'necesarias',
+        },
+        {
+          t: 'Estadístiques sense galetes',
+          p: [
+            'Comptem les visites amb Umami, que no fa servir galetes ni guarda dades que t’identifiquin.',
+          ],
+        },
+        {
+          t: 'Les que només fem servir si les acceptes',
+          p: [
+            'N’hi ha de dos tipus: estadístiques, per saber com es fa servir el web i millorar-lo, i publicitat, per mesurar els nostres anuncis i mostrar-te anuncis de Synentor en altres webs. Mentre no les acceptis, el web no carrega aquestes eines.',
+          ],
+          tabla: 'opcionales',
+        },
+        {
+          t: 'La teva decisió',
+          p: [
+            'La primera vegada t’ho preguntem amb un avís: les pots acceptar totes, rebutjar-les totes o triar. Les tres opcions estan igual d’a mà i cap no ve marcada.',
+            'Pots canviar d’opinió quan vulguis amb el botó «{boton}» del peu de pàgina. Si retires el consentiment, esborrem les galetes d’aquestes eines que són al nostre domini i el web les deixa de carregar; les que aquestes empreses posen al seu propi domini les pots esborrar des del navegador.',
+            'La teva decisió val 12 mesos; després t’ho tornem a preguntar. En guardem una prova sense la teva IP, com explica la {privacidad}.',
+          ],
+        },
+        {
+          t: 'Des del navegador',
+          p: [
+            'També pots bloquejar o esborrar les galetes des del teu navegador:',
+          ],
+          lista: [
+            '{chrome}',
+            '{firefox}',
+            '{safari}',
+            '{edge}',
+          ],
+        },
+        {
+          t: 'Revisió',
+          p: [
+            'Revisem aquesta política com a mínim un cop l’any i sempre que canviem les eines del web.',
+          ],
+        },
       ],
+    },
+    tablas: {
+      cookie: 'Galeta',
+      titular: 'Qui la posa',
+      finalidad: 'Per a què',
+      duracion: 'Durada',
+      tipo: 'Tipus',
+      propia: 'Pròpia',
+      terceros: 'D’una altra empresa',
+      sesion: 'Fins que tanques el navegador',
+      persistente: 'Fins que l’esborris',
+      proveedor: 'Proveïdor',
+      para: 'Per a què',
+      donde: 'On tracta les dades',
+      garantia: 'Garantia',
+    },
+    finalidades: {
+      lang: 'Recordar l’idioma que tries.',
+      consentimiento: 'Guardar la teva decisió sobre les galetes.',
+      franja: 'No tornar-te a mostrar l’avís d’idioma si l’has tancat (emmagatzematge local).',
+      cfBm: 'Seguretat: distingir les persones dels robots, només quan Cloudflare ho necessita.',
+      cfClearance: 'Seguretat: recordar que has superat una comprovació antirobots, només si Cloudflare te l’ha demanada.',
+      gaUsuario: 'Distingir els visitants per a les estadístiques.',
+      gaSesion: 'Mantenir l’estat de la visita per a les estadístiques.',
+      clarityUsuario: 'Guardar l’identificador de Clarity i les seves preferències, només per a aquest web.',
+      claritySesion: 'Unir en una sola gravació les pàgines d’una mateixa visita.',
+      clarityPrimeraVez: 'Saber la primera vegada que Clarity va veure aquest navegador en qualsevol web que el faci servir.',
+      msAnonchk: 'Ús intern de Microsoft sobre l’identificador MUID; Clarity no el fa servir per a publicitat.',
+      msMr: 'Saber si cal renovar l’identificador MUID.',
+      msMuid: 'Identificar el navegador als llocs de Microsoft.',
+      msSm: 'Sincronitzar l’identificador MUID entre els dominis de Microsoft.',
+      metaFbp: 'Identificar el navegador per mesurar i mostrar anuncis de Meta.',
+      metaFbc: 'Guardar l’anunci de Meta pel qual has arribat.',
+      metaFr: 'Mostrar i mesurar anuncis de Meta.',
+      liFatId: 'Mesurar els resultats dels anuncis de LinkedIn.',
+      liSugr: 'Relacionar la visita amb membres de LinkedIn per a la publicitat.',
+      liBcookie: 'Identificar el navegador per detectar abusos.',
+      liLidc: 'Triar el centre de dades de LinkedIn.',
+      liUserMatch: 'Sincronitzar identificadors per a la publicitat.',
+      liAnalyticsSync: 'Registrar quan es va sincronitzar amb la galeta d’analítica de LinkedIn.',
+      liLmsAds: 'Reconèixer membres de LinkedIn fora de LinkedIn per a la publicitat.',
+      liLmsAnalytics: 'Reconèixer membres de LinkedIn fora de LinkedIn per a l’analítica.',
+    },
+    proveedores: {
+      cloudflare: {
+        para: 'Allotjament del web, comprovació antirobots del formulari, prova dels consentiments i registres tècnics.',
+        donde: 'La seva xarxa mundial, amb seu als Estats Units. Les proves de consentiment es guarden a la Unió Europea.',
+        garantia: 'Marc de Privadesa de Dades UE-EUA i clàusules contractuals tipus.',
+      },
+      resend: {
+        para: 'Enviar a la nostra bústia el missatge del formulari.',
+        donde: 'Estats Units.',
+        garantia: 'Clàusules contractuals tipus i Marc de Privadesa de Dades UE-EUA.',
+      },
+      microsoft365: {
+        para: 'El correu de l’empresa, on rebem i guardem els missatges.',
+        donde: 'Unió Europea i Estats Units.',
+        garantia: 'Marc de Privadesa de Dades UE-EUA i clàusules contractuals tipus.',
+      },
+      umami: {
+        para: 'Estadístiques de visites sense galetes.',
+        donde: 'Unió Europea (Frankfurt, Alemanya). L’empresa és dels Estats Units.',
+        garantia: 'Clàusules contractuals tipus.',
+      },
+      google: {
+        para: 'Estadístiques de visites (Google Analytics), si les acceptes.',
+        donde: 'Estats Units i altres països.',
+        garantia: 'Marc de Privadesa de Dades UE-EUA i clàusules contractuals tipus.',
+      },
+      clarity: {
+        para: 'Veure com es fa servir el web (Microsoft Clarity), si ho acceptes.',
+        donde: 'Estats Units.',
+        garantia: 'Marc de Privadesa de Dades UE-EUA.',
+      },
+      meta: {
+        para: 'Mesurar i mostrar anuncis (píxel de Meta), si ho acceptes.',
+        donde: 'Irlanda i Estats Units.',
+        garantia: 'Marc de Privadesa de Dades UE-EUA i clàusules contractuals tipus.',
+      },
+      linkedin: {
+        para: 'Mesurar i mostrar anuncis (LinkedIn Insight Tag), si ho acceptes.',
+        donde: 'Estats Units.',
+        garantia: 'Marc de Privadesa de Dades UE-EUA i clàusules contractuals tipus.',
+      },
     },
   },
 } as const;

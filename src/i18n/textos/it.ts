@@ -574,62 +574,302 @@ export const it: Textos = {
   },
   legal: {
     actualizado: 'Ultimo aggiornamento: {fecha}',
+    enlaces: {
+      privacidad: 'informativa sulla privacy',
+      cookies: 'cookie policy',
+    },
     aviso: {
       titulo: 'Avviso legale · Synentor',
       encabezado: 'Avviso legale',
       secciones: [
         {
-          t: 'Titolare',
-          p: 'Questo sito appartiene a {razon}, con sede in {direccion}. E-mail: {correo}. Telefono: {telefono}. NRT: in corso di rilascio.',
+          t: 'Chi è il titolare',
+          p: [
+            'Questo sito, {web}, appartiene a {razon}, società andorrana con sede in {direccion}. NRT (codice fiscale andorrano): in corso di rilascio.',
+            'Per qualsiasi questione, ci scriva a {correo} o ci chiami al {telefono}.',
+          ],
         },
         {
-          t: 'Uso del sito',
-          p: 'Le informazioni di questo sito sono indicative. I prezzi e le condizioni validi sono quelli della proposta che Le inviamo per iscritto.',
+          t: 'A cosa serve questo sito',
+          p: [
+            'Informa sui nostri servizi di consulenza in intelligenza artificiale e vendite e sui nostri programmi. L’accesso è gratuito e non è necessario registrarsi.',
+            'Sul sito non si compra né si paga nulla. I prezzi mostrati sono indicativi e al netto delle imposte: ciò che vale sono la proposta e il contratto che firmiamo con Lei per iscritto.',
+          ],
         },
         {
-          t: 'Proprietà intellettuale',
-          p: 'I testi, il logotipo e il design di questo sito appartengono a {razon}. Non li utilizzi senza il nostro permesso.',
+          t: 'Come può usarlo',
+          p: [
+            'Chi usa il sito è responsabile dell’uso che ne fa. Non è consentito:',
+          ],
+          lista: [
+            'usarlo contro la legge o contro i diritti di altre persone;',
+            'tentare di entrare nei suoi server, modificarne la configurazione o aggirarne le misure di sicurezza;',
+            'inviare tramite il modulo contenuti illeciti od offensivi, pubblicità che non abbiamo richiesto o dati di altre persone senza il loro permesso;',
+            'mostrarlo all’interno di un altro sito o copiarlo in modo automatico.',
+          ],
+          despues: [
+            'Se qualcuno non rispetta queste condizioni, possiamo impedirgli l’accesso.',
+          ],
         },
-        { t: 'Legge applicabile', p: 'Si applica la legge andorrana. Per qualsiasi controversia, sono competenti i tribunali del Principato di Andorra.' },
+        {
+          t: 'Responsabilità',
+          p: [
+            'Ci impegniamo affinché le informazioni siano corrette e aggiornate, ma possono contenere errori o dati non aggiornati: li correggiamo non appena li notiamo. Non rispondiamo dei danni che possano derivare dall’uso delle informazioni del sito, né delle interruzioni dovute a manutenzione, guasti o cause a noi non imputabili, anche se adottiamo misure ragionevoli per evitarle.',
+          ],
+        },
+        {
+          t: 'Link ad altri siti',
+          p: [
+            'Il sito contiene link a pagine di altre aziende ed enti. Non le controlliamo né rispondiamo del loro contenuto, e il fatto di inserire un link non significa che abbiamo rapporti con loro. Consulti le loro condizioni.',
+          ],
+        },
+        {
+          t: 'Proprietà intellettuale e industriale',
+          p: [
+            'Il marchio e il logo di Synentor, i testi, il design, le immagini e il codice di questo sito appartengono a {razon} o a chi ci ha autorizzato a usarli. Può visualizzarli e salvarne una copia per uso personale. Per qualsiasi altro uso (copiarli, pubblicarli, modificarli o usarli a fini commerciali) occorre la nostra autorizzazione scritta.',
+          ],
+        },
+        {
+          t: 'Dati personali e cookie',
+          p: [
+            'Come trattiamo i dati che ci fornisce è spiegato nell’{privacidad}; quali cookie usiamo, nella {cookies}.',
+          ],
+        },
+        {
+          t: 'Lingue',
+          p: [
+            'Il sito è disponibile in catalano, spagnolo, inglese, francese, portoghese, italiano e tedesco. Se una traduzione non dice la stessa cosa del testo in catalano, prevale il catalano.',
+          ],
+        },
+        {
+          t: 'Legge applicabile e tribunali',
+          p: [
+            'Queste condizioni sono regolate dalla legge andorrana. Per qualsiasi controversia sono competenti i tribunali del Principato di Andorra, salvo che la legge Le riconosca il diritto di rivolgersi ad altri.',
+          ],
+        },
+        {
+          t: 'Modifiche',
+          p: [
+            'Possiamo modificare questo avviso legale quando necessario. La data in alto indica quando è stato modificato l’ultima volta.',
+          ],
+        },
       ],
     },
     privacidad: {
       titulo: 'Informativa sulla privacy · Synentor',
       encabezado: 'Informativa sulla privacy',
       secciones: [
-        { t: 'Chi è il responsabile', p: '{razon}, {direccion}. E-mail: {correo}.' },
-        { t: 'Responsabile della protezione dei dati', p: '{razon} non ha designato un responsabile della protezione dei dati. Per qualsiasi domanda sui suoi dati, scriva a {correo}.' },
         {
-          t: 'Quali dati trattiamo',
-          p: 'Quelli del modulo di contatto: nome, e-mail, azienda e telefono (questi ultimi due, se li inserisce), oggetto e messaggio. Il messaggio ci arriva per e-mail: il sito non lo conserva.',
+          t: 'Chi tratta i Suoi dati',
+          p: [
+            'Il titolare del trattamento è {razon}, società andorrana con sede in {direccion}. NRT (codice fiscale andorrano): in corso di rilascio. E-mail: {correo}. Telefono: {telefono}.',
+            'Non abbiamo nominato un responsabile della protezione dei dati: per qualsiasi questione sui Suoi dati, ci scriva a {correo}.',
+          ],
         },
-        { t: 'Per quale scopo', p: 'Per risponderLe e, se lo richiede, prepararLe una proposta. La base giuridica è il Suo consenso.' },
-        { t: 'Per quanto tempo', p: 'Il tempo necessario per assisterLa e quello richiesto dalla legge.' },
         {
-          t: 'Chi altro li vede',
-          p: 'I fornitori che fanno funzionare il sito: l’hosting e il controllo anti-robot (Cloudflare) e l’invio dell’e-mail. Le statistiche delle visite (Umami) non usano cookie né conservano dati che La identifichino.',
+          t: 'Quali dati trattiamo, per quale scopo e per quanto tempo',
+          p: [
+            'Solo quelli necessari per ciascuna finalità:',
+          ],
+          lista: [
+            'Modulo di contatto. Dati: nome, e-mail, oggetto e messaggio e, se li indica, l’azienda e il telefono. Finalità: risponderLe e, se lo richiede, prepararLe una proposta. Base giuridica: il Suo consenso, che presta spuntando la casella, e, se richiede una proposta, le misure precontrattuali. Durata: il messaggio ci arriva per e-mail e il sito non lo conserva; lo conserviamo per {plazoContacto} dall’ultimo contatto se non diventa cliente e, se lo diventa, per tutta la durata del rapporto e per i termini previsti dalla legge.',
+            'Verifica antirobot del modulo (Cloudflare Turnstile). Dati: l’indirizzo IP e dati tecnici del browser. Finalità: verificare che il modulo sia inviato da una persona. Base giuridica: il nostro legittimo interesse a proteggere il sito dagli abusi. Noi non li conserviamo.',
+            'Prova della Sua scelta sui cookie. Dati: un identificativo casuale che non La identifica, la versione dell’informativa, ciò che ha deciso e la data; mai l’IP. Finalità: poter dimostrare il Suo consenso. Base giuridica: l’obbligo di poterlo dimostrare. Durata: 12 mesi.',
+            'Log tecnici dell’hosting (Cloudflare). Dati: l’indirizzo IP, la data e l’ora, la pagina richiesta e gli errori. Finalità: la sicurezza e il corretto funzionamento del sito. Base giuridica: il nostro legittimo interesse. Durata: fino a {plazoRegistros}.',
+            'Statistiche delle visite (Umami). Senza cookie e senza dati che La identifichino: solo dati aggregati, come le pagine viste, il Paese o il browser.',
+            'Cookie di altre aziende, solo se li accetta: è spiegato nella {cookies}.',
+            'Se ci scrive per e-mail o ci telefona: i Suoi dati di contatto e ciò che ci racconta, per risponderLe, con la stessa base giuridica e la stessa durata del modulo.',
+          ],
+        },
+        {
+          t: 'Chi altro vede i Suoi dati',
+          p: [
+            'Non vendiamo né cediamo i Suoi dati. Li trattano soltanto i fornitori che, per nostro conto, fanno funzionare il sito e la posta elettronica, e le pubbliche amministrazioni quando la legge lo richiede:',
+          ],
+          tabla: 'proveedores',
+        },
+        {
+          t: 'Dati fuori da Andorra',
+          p: [
+            'Alcuni di questi fornitori hanno sede negli Stati Uniti o vi trattano dati. Scegliamo fornitori che aderiscono al quadro UE-USA per la protezione dei dati personali o che si impegnano contrattualmente tramite clausole contrattuali standard. Ciononostante, gli Stati Uniti non offrono lo stesso livello di protezione di Andorra o dell’Unione europea, e le loro autorità potrebbero chiedere l’accesso a tali dati.',
+          ],
         },
         {
           t: 'I Suoi diritti',
-          p: 'Può chiedere accesso, rettifica, cancellazione, opposizione, limitazione e portabilità scrivendo a {correo}. Se non è d’accordo, può presentare reclamo all’Agenzia andorrana per la protezione dei dati (apda.ad).',
+          p: [
+            'Può chiederci di accedere ai Suoi dati, di rettificarli, di cancellarli, di limitarne il trattamento, di portarli con sé (portabilità) oppure opporsi al loro trattamento. E può revocare il Suo consenso quando vuole, senza che ciò incida su quanto fatto in precedenza.',
+            'Ci scriva a {correo}. Se non possiamo verificare che sia Lei, Le chiederemo un documento che La identifichi, che useremo solo a questo scopo e poi cancelleremo. Le risponderemo entro il termine previsto dalla legge.',
+            'Se ritiene che non abbiamo dato seguito correttamente ai Suoi diritti, può presentare reclamo all’Agència Andorrana de Protecció de Dades (Agenzia andorrana per la protezione dei dati, APDA): {apda}.',
+          ],
         },
         {
-          t: 'Leggi',
-          p: 'Legge andorrana sulla protezione dei dati personali (Llei 29/2021, del 28 d’octubre, qualificada de protecció de dades personals) e Regolamento generale sulla protezione dei dati (GDPR) dell’Unione europea per le persone dell’UE.',
+          t: 'Sicurezza',
+          p: [
+            'Proteggiamo i Suoi dati con misure tecniche e organizzative: connessione cifrata, accesso riservato a chi ne ha bisogno e fornitori con garanzie di sicurezza.',
+          ],
+        },
+        {
+          t: 'Minori',
+          p: [
+            'Il sito è rivolto ad aziende e professionisti. Se ha meno di 16 anni, non ci invii dati senza il permesso di Suo padre, di Sua madre o del Suo tutore.',
+          ],
+        },
+        {
+          t: 'Leggi che applichiamo',
+          p: [
+            'La Llei 29/2021, del 28 d’octubre, qualificada de protecció de dades personals (legge qualificata andorrana 29/2021, del 28 ottobre, sulla protezione dei dati personali, LQPD) e, per le persone dell’Unione europea, il Regolamento generale sulla protezione dei dati (GDPR).',
+          ],
+        },
+        {
+          t: 'Modifiche',
+          p: [
+            'Se modifichiamo questa informativa, lo indicheremo qui con la nuova data. Se la modifica riguarda qualcosa a cui ha acconsentito, Glielo chiederemo di nuovo.',
+          ],
         },
       ],
     },
     cookies: {
       titulo: 'Cookie policy · Synentor',
       encabezado: 'Cookie policy',
+      ninguna: 'Al momento non ne usiamo nessuno. Se un giorno li useremo, Glielo chiederemo prima e compariranno qui.',
       secciones: [
         {
-          t: 'Cosa utilizziamo',
-          p: 'Un solo cookie, «lang», che memorizza la lingua scelta (un anno). E, nel Suo browser, un segno per non mostrarLe di nuovo l’avviso sulla lingua se lo chiude.',
+          t: 'Cosa sono',
+          p: [
+            'I cookie sono piccoli file che un sito salva nel Suo browser per ricordare qualcosa della Sua visita. Qui chiamiamo cookie anche altri modi di salvare dati nel browser, come la memoria locale.',
+          ],
         },
-        { t: 'Statistiche', p: 'Contiamo le visite con Umami, senza cookie e senza conservare dati che La identifichino.' },
-        { t: 'Come eliminarli', p: 'Può cancellarli quando vuole dalle impostazioni del Suo browser.' },
+        {
+          t: 'Quelli che usiamo sempre',
+          p: [
+            'Sono quelli indispensabili perché il sito funzioni o per ricordare ciò che sceglie. Non richiedono il Suo consenso.',
+          ],
+          tabla: 'necesarias',
+        },
+        {
+          t: 'Statistiche senza cookie',
+          p: [
+            'Contiamo le visite con Umami, che non usa cookie né conserva dati che La identifichino.',
+          ],
+        },
+        {
+          t: 'Quelli che usiamo solo se li accetta',
+          p: [
+            'Sono di due tipi: statistiche, per sapere come viene usato il sito e migliorarlo, e pubblicità, per misurare i nostri annunci e mostrarLe annunci di Synentor su altri siti. Finché non li accetta, il sito non carica questi strumenti.',
+          ],
+          tabla: 'opcionales',
+        },
+        {
+          t: 'La Sua scelta',
+          p: [
+            'La prima volta Glielo chiediamo con un avviso: può accettarli tutti, rifiutarli tutti o scegliere. Le tre opzioni sono ugualmente a portata di mano e nessuna è preselezionata.',
+            'Può cambiare idea quando vuole con il pulsante «{boton}» a piè di pagina. Se revoca il consenso, cancelliamo i cookie di questi strumenti che si trovano sul nostro dominio e il sito smette di caricarli; quelli che queste aziende mettono sul proprio dominio può cancellarli dal browser.',
+            'La Sua scelta vale 12 mesi; poi Glielo chiediamo di nuovo. Ne conserviamo una prova senza il Suo IP, come spiegato nell’{privacidad}.',
+          ],
+        },
+        {
+          t: 'Dal browser',
+          p: [
+            'Può anche bloccare o cancellare i cookie dal Suo browser:',
+          ],
+          lista: [
+            '{chrome}',
+            '{firefox}',
+            '{safari}',
+            '{edge}',
+          ],
+        },
+        {
+          t: 'Revisione',
+          p: [
+            'Rivediamo questa cookie policy almeno una volta all’anno e ogni volta che cambiamo gli strumenti del sito.',
+          ],
+        },
       ],
+    },
+    tablas: {
+      cookie: 'Cookie',
+      titular: 'Chi lo installa',
+      finalidad: 'Finalità',
+      duracion: 'Durata',
+      tipo: 'Tipo',
+      propia: 'Nostro',
+      terceros: 'Di un’altra azienda',
+      sesion: 'Fino alla chiusura del browser',
+      persistente: 'Finché non lo cancella',
+      proveedor: 'Fornitore',
+      para: 'Finalità',
+      donde: 'Dove tratta i dati',
+      garantia: 'Garanzia',
+    },
+    finalidades: {
+      lang: 'Ricordare la lingua che sceglie.',
+      consentimiento: 'Salvare la Sua scelta sui cookie.',
+      franja: 'Non mostrarLe più l’avviso della lingua se lo ha chiuso (memoria locale).',
+      cfBm: 'Sicurezza: distinguere le persone dai robot, solo quando Cloudflare ne ha bisogno.',
+      cfClearance: 'Sicurezza: ricordare che ha superato una verifica antirobot, solo se Cloudflare l’ha richiesta.',
+      gaUsuario: 'Distinguere i visitatori per le statistiche.',
+      gaSesion: 'Mantenere lo stato della visita per le statistiche.',
+      clarityUsuario: 'Salvare l’identificativo di Clarity e le sue preferenze, solo per questo sito.',
+      claritySesion: 'Riunire in un’unica registrazione le pagine di una stessa visita.',
+      clarityPrimeraVez: 'Sapere quando Clarity ha visto per la prima volta questo browser su qualsiasi sito che lo utilizzi.',
+      msAnonchk: 'Uso interno di Microsoft relativo all’identificativo MUID; Clarity non lo usa per la pubblicità.',
+      msMr: 'Sapere se occorre rinnovare l’identificativo MUID.',
+      msMuid: 'Identificare il browser sui siti di Microsoft.',
+      msSm: 'Sincronizzare l’identificativo MUID tra i domini di Microsoft.',
+      metaFbp: 'Identificare il browser per misurare e mostrare annunci di Meta.',
+      metaFbc: 'Salvare l’annuncio di Meta da cui proviene la visita.',
+      metaFr: 'Mostrare e misurare annunci di Meta.',
+      liFatId: 'Misurare i risultati degli annunci di LinkedIn.',
+      liSugr: 'Collegare la visita a membri di LinkedIn per la pubblicità.',
+      liBcookie: 'Identificare il browser per rilevare abusi.',
+      liLidc: 'Scegliere il data center di LinkedIn.',
+      liUserMatch: 'Sincronizzare identificativi per la pubblicità.',
+      liAnalyticsSync: 'Registrare quando è avvenuta la sincronizzazione con il cookie di analisi di LinkedIn.',
+      liLmsAds: 'Riconoscere membri di LinkedIn fuori da LinkedIn per la pubblicità.',
+      liLmsAnalytics: 'Riconoscere membri di LinkedIn fuori da LinkedIn per l’analisi.',
+    },
+    proveedores: {
+      cloudflare: {
+        para: 'Hosting del sito, verifica antirobot del modulo, prova dei consensi e log tecnici.',
+        donde: 'La sua rete mondiale, con sede negli Stati Uniti. Le prove del consenso sono conservate nell’Unione europea.',
+        garantia: 'Quadro UE-USA per la protezione dei dati personali e clausole contrattuali standard.',
+      },
+      resend: {
+        para: 'Inviare alla nostra casella di posta il messaggio del modulo.',
+        donde: 'Stati Uniti.',
+        garantia: 'Clausole contrattuali standard e quadro UE-USA per la protezione dei dati personali.',
+      },
+      microsoft365: {
+        para: 'La posta elettronica aziendale, dove riceviamo e conserviamo i messaggi.',
+        donde: 'Unione europea e Stati Uniti.',
+        garantia: 'Quadro UE-USA per la protezione dei dati personali e clausole contrattuali standard.',
+      },
+      umami: {
+        para: 'Statistiche delle visite senza cookie.',
+        donde: 'Unione europea (Francoforte, Germania). L’azienda ha sede negli Stati Uniti.',
+        garantia: 'Clausole contrattuali standard.',
+      },
+      google: {
+        para: 'Statistiche delle visite (Google Analytics), se le accetta.',
+        donde: 'Stati Uniti e altri Paesi.',
+        garantia: 'Quadro UE-USA per la protezione dei dati personali e clausole contrattuali standard.',
+      },
+      clarity: {
+        para: 'Vedere come viene usato il sito (Microsoft Clarity), se lo accetta.',
+        donde: 'Stati Uniti.',
+        garantia: 'Quadro UE-USA per la protezione dei dati personali.',
+      },
+      meta: {
+        para: 'Misurare e mostrare annunci (pixel di Meta), se lo accetta.',
+        donde: 'Irlanda e Stati Uniti.',
+        garantia: 'Quadro UE-USA per la protezione dei dati personali e clausole contrattuali standard.',
+      },
+      linkedin: {
+        para: 'Misurare e mostrare annunci (LinkedIn Insight Tag), se lo accetta.',
+        donde: 'Stati Uniti.',
+        garantia: 'Quadro UE-USA per la protezione dei dati personali e clausole contrattuali standard.',
+      },
     },
   },
 };

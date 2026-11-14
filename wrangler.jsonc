@@ -17,8 +17,8 @@
     "PUBLIC_TURNSTILE_SITEKEY": ""
   },
   "observability": { "enabled": true },
-  // La prueba de cada consentimiento de cookies (diseño §17): base D1 creada por gerencia el 14/11/2026, con los datos en
-  // la jurisdicción de la UE. El identificador no es secreto. La tabla, en migraciones/ (guía de puesta en marcha, §9.5).
+  // La prueba de cada consentimiento de cookies (diseño §17): base D1 creada por gerencia el 14/11/2026 con la
+  // jurisdicción de la Unión Europea (confirmado ese día). El identificador no es secreto. La tabla, en migraciones/ (guía, §9.5).
   "d1_databases": [
     {
       "binding": "CONSENTIMIENTOS",

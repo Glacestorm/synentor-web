@@ -8,6 +8,9 @@ import { describe, expect, it } from 'vitest';
 import { TEXTOS } from '../src/i18n/t';
 import { PAGINAS, ruta, type Idioma } from '../src/i18n/idiomas';
 import { TURNSTILE_SITEKEY } from '../src/datos/turnstile';
+import { HERRAMIENTAS } from '../src/datos/analitica';
+import { COOKIES, PROVEEDORES } from '../src/datos/legal';
+import { herramientasValidas } from '../src/lib/consentimiento';
 
 const DIST = fileURLToPath(new URL('../dist', import.meta.url));
 const idiomas = Object.keys(TEXTOS) as Idioma[];
@@ -90,6 +93,43 @@ describe('páginas construidas', () => {
       expect(html, idioma).toContain(t.precios.tablas.gestorias);
       expect(html, idioma).toContain('id="gestorias"');
       expect(html, idioma).toContain(`${ruta('contacto', idioma)}?asunto=gestorias`);
+    }
+  });
+
+  it('las páginas legales siguen el modelo de la APDA y solo enseñan lo que está activo (diseño §19)', () => {
+    for (const idioma of idiomas) {
+      const cookies = readFileSync(fichero(ruta('cookies', idioma)), 'utf8');
+      // Las necesarias, siempre; las de una herramienta, solo si la web la tiene activa (src/datos/analitica.ts).
+      const activas = herramientasValidas(HERRAMIENTAS);
+      const esta = (h: keyof typeof activas | null) => h === null || activas[h] !== null;
+      for (const c of COOKIES) {
+        const celda = `<code>${c.nombre.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code>`;
+        if (esta(c.herramienta)) expect(cookies, `${idioma} ${c.nombre}`).toContain(celda);
+        else expect(cookies, `${idioma} ${c.nombre}`).not.toContain(celda);
+      }
+      const ninguna = TEXTOS[idioma]!.legal.cookies.ninguna;
+      if (Object.values(activas).some((v) => v !== null)) expect(cookies, idioma).not.toContain(ninguna);
+      else expect(cookies, idioma).toContain(ninguna);
+      expect(cookies, idioma).toContain('href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer"');
+      // En el móvil cada fila sale como una ficha: cada celda lleva el nombre de su columna.
+      const col = TEXTOS[idioma]!.legal.tablas;
+      expect(cookies, idioma).toContain(`data-etiqueta="${col.finalidad}"`);
+      expect(cookies, idioma).toContain(`data-etiqueta="${col.duracion}"`);
+
+      const privacidad = readFileSync(fichero(ruta('privacidad', idioma)), 'utf8');
+      for (const p of ['Cloudflare', 'Resend', 'Umami']) expect(privacidad, idioma).toContain(p);
+      // Cada proveedor de una herramienta, solo si está activa (por su política: la de Microsoft es la misma que la de Clarity).
+      for (const p of PROVEEDORES.filter((q) => q.herramienta && !PROVEEDORES.some((o) => o.herramienta === null && o.politica === q.politica))) {
+        if (esta(p.herramienta)) expect(privacidad, `${idioma} ${p.id}`).toContain(`href="${p.politica}"`);
+        else expect(privacidad, `${idioma} ${p.id}`).not.toContain(`href="${p.politica}"`);
+      }
+      expect(privacidad, idioma).toContain(`data-etiqueta="${col.garantia}"`);
+      expect(privacidad, idioma).toContain('href="https://www.apda.ad/"');
+      expect(privacidad, idioma).toContain(`href="${ruta('cookies', idioma)}"`);
+
+      const aviso = readFileSync(fichero(ruta('aviso-legal', idioma)), 'utf8');
+      expect(aviso, idioma).toContain(`href="${ruta('privacidad', idioma)}"`);
+      expect(visible(aviso), idioma).not.toMatch(/\{[a-zA-Z]+\}/);
     }
   });
 

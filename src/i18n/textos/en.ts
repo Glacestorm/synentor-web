@@ -574,62 +574,302 @@ export const en: Textos = {
   },
   legal: {
     actualizado: 'Last updated: {fecha}',
+    enlaces: {
+      privacidad: 'privacy policy',
+      cookies: 'cookie policy',
+    },
     aviso: {
       titulo: 'Legal notice · Synentor',
       encabezado: 'Legal notice',
       secciones: [
         {
-          t: 'Owner',
-          p: 'This website belongs to {razon}, registered at {direccion}. Email: {correo}. Telephone: {telefono}. NRT (Andorran tax number): pending.',
+          t: 'Who owns this website',
+          p: [
+            'This website, {web}, belongs to {razon}, an Andorran company with its registered office at {direccion}. NRT (Andorran tax number): pending.',
+            'For any question, write to us at {correo} or call us on {telefono}.',
+          ],
         },
         {
-          t: 'Use of the website',
-          p: 'The information on this website is indicative. The prices and terms that apply are those in the written proposal we send you.',
+          t: 'What this website is for',
+          p: [
+            'It provides information about our artificial intelligence and sales consultancy services and our software. Visiting it is free and you do not need to register.',
+            'Nothing is bought or paid for on the website. The prices shown are indicative and exclude taxes: what counts is the proposal and the contract we sign with you in writing.',
+          ],
         },
         {
-          t: 'Intellectual property',
-          p: 'The texts, logo and design of this website belong to {razon}. Please do not use them without our permission.',
+          t: 'How you may use it',
+          p: [
+            'Whoever uses the website is responsible for how they use it. It is not permitted to:',
+          ],
+          lista: [
+            'use it against the law or against the rights of other people;',
+            'try to get into its servers, change its configuration or get around its security measures;',
+            'send through the form illegal or offensive content, advertising we have not asked for, or other people’s data without their permission;',
+            'display it inside another website or copy it automatically.',
+          ],
+          despues: [
+            'If someone does not comply with these conditions, we may block their access.',
+          ],
         },
-        { t: 'Governing law', p: 'Andorran law applies. Any dispute falls under the courts of the Principality of Andorra.' },
+        {
+          t: 'Liability',
+          p: [
+            'We take care that the information is correct and up to date, but it may contain errors or outdated data: we correct them as soon as we notice them. We are not liable for any damage that may be caused by the use of the information on the website, or for interruptions due to maintenance, breakdowns or causes beyond our control, although we take reasonable measures to prevent them.',
+          ],
+        },
+        {
+          t: 'Links to other websites',
+          p: [
+            'The website links to pages of other companies and organisations. We do not control them and are not responsible for their content, and linking to them does not mean that we have any relationship with them. Please check their own terms.',
+          ],
+        },
+        {
+          t: 'Intellectual and industrial property',
+          p: [
+            'The Synentor brand and logo, and the texts, design, images and code of this website, belong to {razon} or to whoever has given us permission to use them. You may view them and save a copy for your personal use. For any other use (copying, publishing or modifying them, or using them for commercial purposes) you need our written permission.',
+          ],
+        },
+        {
+          t: 'Personal data and cookies',
+          p: [
+            'How we process the data you give us is explained in the {privacidad}, and which cookies we use, in the {cookies}.',
+          ],
+        },
+        {
+          t: 'Languages',
+          p: [
+            'The website is available in Catalan, Spanish, English, French, Portuguese, Italian and German. If a translation does not say the same as the Catalan text, the Catalan text prevails.',
+          ],
+        },
+        {
+          t: 'Governing law and courts',
+          p: [
+            'These terms are governed by Andorran law. The courts of the Principality of Andorra have jurisdiction over any dispute, unless the law gives you the right to go to other courts.',
+          ],
+        },
+        {
+          t: 'Changes',
+          p: [
+            'We may change this legal notice when necessary. The date at the top shows when it was last changed.',
+          ],
+        },
       ],
     },
     privacidad: {
       titulo: 'Privacy policy · Synentor',
       encabezado: 'Privacy policy',
       secciones: [
-        { t: 'Who is the controller', p: '{razon}, {direccion}. Email: {correo}.' },
-        { t: 'Data protection officer', p: '{razon} has not appointed a data protection officer. For any question about your data, write to {correo}.' },
         {
-          t: 'What data we process',
-          p: 'The data in the contact form: name, email, company and telephone (the last two, if you enter them), subject and message. The message reaches us by email: the website does not store it.',
+          t: 'Who processes your data',
+          p: [
+            'The controller is {razon}, an Andorran company with its registered office at {direccion}. NRT (Andorran tax number): pending. Email: {correo}. Telephone: {telefono}.',
+            'We have not appointed a data protection officer: for any question about your data, write to us at {correo}.',
+          ],
         },
-        { t: 'Why', p: 'To reply to you and, if you ask, to prepare a proposal for you. The legal basis is your consent.' },
-        { t: 'For how long', p: 'For as long as needed to deal with your request and as long as the law requires.' },
         {
-          t: 'Who else sees it',
-          p: 'The providers that keep the website running: hosting and the anti-robot check (Cloudflare) and email delivery. Visit statistics (Umami) use no cookies and store no data that identifies you.',
+          t: 'What data we process, why and for how long',
+          p: [
+            'Only what is needed for each purpose:',
+          ],
+          lista: [
+            'Contact form. Data: name, email, subject and message, and your company and telephone if you enter them. Purpose: to reply to you and, if you ask, to prepare a proposal for you. Legal basis: your consent, which you give by ticking the box, and, if you ask for a proposal, steps taken before entering into a contract. Retention: the message reaches us by email and the website does not store it; we keep it for {plazoContacto} from the last contact if you do not become a client and, if you do, for as long as the relationship lasts and for the periods required by law.',
+            'Anti-bot check on the form (Cloudflare Turnstile). Data: your IP address and technical data from your browser. Purpose: to check that the form is sent by a person. Legal basis: our legitimate interest in protecting the website from abuse. We do not keep this data.',
+            'Record of your cookie choice. Data: a random identifier that does not identify you, the version of the policy, what you decided and the date; never your IP address. Purpose: to be able to prove your consent. Legal basis: the obligation to be able to prove it. Retention: 12 months.',
+            'Technical logs from our hosting (Cloudflare). Data: the IP address, the date and time, the page requested and any errors. Purpose: the security and proper functioning of the website. Legal basis: our legitimate interest. Retention: up to {plazoRegistros}.',
+            'Visit statistics (Umami). No cookies and no data that identifies you: only aggregate figures, such as the pages viewed, the country or the browser.',
+            'Cookies from other companies, only if you accept them: these are explained in the {cookies}.',
+            'If you email or call us: your contact details and what you tell us, in order to reply to you, with the same legal basis and retention period as the form.',
+          ],
+        },
+        {
+          t: 'Who else sees your data',
+          p: [
+            'We do not sell or pass on your data. It is processed only by the providers that run the website and email on our behalf, and by public authorities when the law requires it:',
+          ],
+          tabla: 'proveedores',
+        },
+        {
+          t: 'Data outside Andorra',
+          p: [
+            'Some of these providers are based in the United States or process data there. We choose providers that participate in the EU-U.S. Data Privacy Framework or that commit themselves contractually through standard contractual clauses. Even so, the United States does not offer the same level of protection as Andorra or the European Union, and its authorities could request access to that data.',
+          ],
         },
         {
           t: 'Your rights',
-          p: 'You may request access, rectification, erasure, objection, restriction and portability by writing to {correo}. If you disagree, you may complain to the Andorran Data Protection Agency (apda.ad).',
+          p: [
+            'You may ask us for access to your data, and to rectify it, erase it, restrict its processing, take it with you (portability) or object to our processing it. You may also withdraw your consent whenever you wish, without this affecting what was done before.',
+            'Write to us at {correo}. If we cannot tell that it is you, we will ask you for a document that identifies you, which we will use only for that purpose and then delete. We will reply within the period set by law.',
+            'If you believe we have not handled your rights properly, you may lodge a complaint with the Agència Andorrana de Protecció de Dades (Andorran Data Protection Agency, APDA) at {apda}.',
+          ],
         },
         {
-          t: 'Laws',
-          p: 'The Andorran qualified law on the protection of personal data (Llei 29/2021, del 28 d’octubre, qualificada de protecció de dades personals), and the European Union General Data Protection Regulation (GDPR) for people in the EU.',
+          t: 'Security',
+          p: [
+            'We protect your data with technical and organisational measures: an encrypted connection, access only for those who need it, and providers with security guarantees.',
+          ],
+        },
+        {
+          t: 'Minors',
+          p: [
+            'The website is intended for businesses and professionals. If you are under 16, do not send us any data without the permission of your father, your mother or your guardian.',
+          ],
+        },
+        {
+          t: 'Laws we apply',
+          p: [
+            'The Llei 29/2021, del 28 d’octubre, qualificada de protecció de dades personals (Andorran Qualified Law 29/2021 of 28 October on the protection of personal data, LQPD) and, for people in the European Union, the General Data Protection Regulation (GDPR).',
+          ],
+        },
+        {
+          t: 'Changes',
+          p: [
+            'If we change this policy, we will say so here with the new date. If the change affects something you consented to, we will ask you again.',
+          ],
         },
       ],
     },
     cookies: {
       titulo: 'Cookie policy · Synentor',
       encabezado: 'Cookie policy',
+      ninguna: 'We do not use any at the moment. If we ever do, we will ask you first and they will appear here.',
       secciones: [
         {
-          t: 'What we use',
-          p: 'A single cookie, “lang”, which stores the language you choose (one year). And, in your browser, a flag so we do not show you the language notice again if you close it.',
+          t: 'What they are',
+          p: [
+            'Cookies are small files that a website stores in your browser to remember something about your visit. Here we also use the word cookies for other ways of storing data in the browser, such as local storage.',
+          ],
         },
-        { t: 'Statistics', p: 'We count visits with Umami, with no cookies and without storing data that identifies you.' },
-        { t: 'How to remove them', p: 'You can delete them at any time from your browser settings.' },
+        {
+          t: 'The ones we always use',
+          p: [
+            'These are the ones essential for the website to work or to remember what you choose. They do not need your consent.',
+          ],
+          tabla: 'necesarias',
+        },
+        {
+          t: 'Statistics without cookies',
+          p: [
+            'We count visits with Umami, which does not use cookies or store data that identifies you.',
+          ],
+        },
+        {
+          t: 'The ones we only use if you accept them',
+          p: [
+            'There are two types: statistics, to find out how the website is used and improve it, and advertising, to measure our ads and show you Synentor ads on other websites. Until you accept them, the website does not load these tools.',
+          ],
+          tabla: 'opcionales',
+        },
+        {
+          t: 'Your choice',
+          p: [
+            'The first time, we ask you with a notice: you can accept them all, reject them all or choose. The three options are equally easy to reach and none is preselected.',
+            'You can change your mind at any time with the “{boton}” button in the footer. If you withdraw your consent, we delete the cookies of those tools that are on our domain and the website stops loading them; the ones those companies place on their own domain you can delete from your browser.',
+            'Your choice is valid for 12 months; after that we ask you again. We keep proof of it without your IP address, as explained in the {privacidad}.',
+          ],
+        },
+        {
+          t: 'From your browser',
+          p: [
+            'You can also block or delete cookies from your browser:',
+          ],
+          lista: [
+            '{chrome}',
+            '{firefox}',
+            '{safari}',
+            '{edge}',
+          ],
+        },
+        {
+          t: 'Review',
+          p: [
+            'We review this policy at least once a year and whenever we change the tools on the website.',
+          ],
+        },
       ],
+    },
+    tablas: {
+      cookie: 'Cookie',
+      titular: 'Set by',
+      finalidad: 'Purpose',
+      duracion: 'Duration',
+      tipo: 'Type',
+      propia: 'Our own',
+      terceros: 'From another company',
+      sesion: 'Until you close your browser',
+      persistente: 'Until you delete it',
+      proveedor: 'Provider',
+      para: 'Purpose',
+      donde: 'Where it processes the data',
+      garantia: 'Safeguard',
+    },
+    finalidades: {
+      lang: 'Remember the language you choose.',
+      consentimiento: 'Store your cookie choice.',
+      franja: 'Avoid showing you the language notice again if you have closed it (local storage).',
+      cfBm: 'Security: tell people apart from bots, only when Cloudflare needs to.',
+      cfClearance: 'Security: remember that you have passed an anti-bot check, only if Cloudflare has asked you to take one.',
+      gaUsuario: 'Tell visitors apart for statistics.',
+      gaSesion: 'Keep the state of the visit for statistics.',
+      clarityUsuario: 'Store the Clarity identifier and its preferences, for this website only.',
+      claritySesion: 'Combine the pages of a single visit into one recording.',
+      clarityPrimeraVez: 'Know when Clarity first saw this browser on any website that uses it.',
+      msAnonchk: 'Internal Microsoft use relating to the MUID identifier; Clarity does not use it for advertising.',
+      msMr: 'Know whether the MUID identifier needs to be renewed.',
+      msMuid: 'Identify the browser on Microsoft sites.',
+      msSm: 'Synchronise the MUID identifier across Microsoft domains.',
+      metaFbp: 'Identify the browser to measure and show Meta ads.',
+      metaFbc: 'Store the Meta ad through which you arrived.',
+      metaFr: 'Show and measure Meta ads.',
+      liFatId: 'Measure the results of LinkedIn ads.',
+      liSugr: 'Match the visit with LinkedIn members for advertising.',
+      liBcookie: 'Identify the browser to detect abuse.',
+      liLidc: 'Choose the LinkedIn data centre.',
+      liUserMatch: 'Synchronise identifiers for advertising.',
+      liAnalyticsSync: 'Record when it was synchronised with the LinkedIn analytics cookie.',
+      liLmsAds: 'Recognise LinkedIn members outside LinkedIn for advertising.',
+      liLmsAnalytics: 'Recognise LinkedIn members outside LinkedIn for analytics.',
+    },
+    proveedores: {
+      cloudflare: {
+        para: 'Website hosting, anti-bot check on the form, record of consents and technical logs.',
+        donde: 'Its global network, headquartered in the United States. Consent records are stored in the European Union.',
+        garantia: 'EU-U.S. Data Privacy Framework and standard contractual clauses.',
+      },
+      resend: {
+        para: 'Sending the form message to our mailbox.',
+        donde: 'United States.',
+        garantia: 'Standard contractual clauses and EU-U.S. Data Privacy Framework.',
+      },
+      microsoft365: {
+        para: 'The company email, where we receive and keep messages.',
+        donde: 'European Union and United States.',
+        garantia: 'EU-U.S. Data Privacy Framework and standard contractual clauses.',
+      },
+      umami: {
+        para: 'Visit statistics without cookies.',
+        donde: 'European Union (Frankfurt, Germany). The company is based in the United States.',
+        garantia: 'Standard contractual clauses.',
+      },
+      google: {
+        para: 'Visit statistics (Google Analytics), if you accept them.',
+        donde: 'United States and other countries.',
+        garantia: 'EU-U.S. Data Privacy Framework and standard contractual clauses.',
+      },
+      clarity: {
+        para: 'Seeing how the website is used (Microsoft Clarity), if you accept it.',
+        donde: 'United States.',
+        garantia: 'EU-U.S. Data Privacy Framework.',
+      },
+      meta: {
+        para: 'Measuring and showing ads (Meta Pixel), if you accept it.',
+        donde: 'Ireland and United States.',
+        garantia: 'EU-U.S. Data Privacy Framework and standard contractual clauses.',
+      },
+      linkedin: {
+        para: 'Measuring and showing ads (LinkedIn Insight Tag), if you accept it.',
+        donde: 'United States.',
+        garantia: 'EU-U.S. Data Privacy Framework and standard contractual clauses.',
+      },
     },
   },
 };

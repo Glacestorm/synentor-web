@@ -1,0 +1,83 @@
+---
+// Las tablas de los textos legales (diseño §19): cookies que se usan siempre, cookies que solo se usan si se aceptan y
+// proveedores. Salen de src/datos/legal.ts y solo muestran las herramientas que la web tiene activas de verdad.
+import { textos } from '../../i18n/t';
+import type { Idioma } from '../../i18n/idiomas';
+import { HERRAMIENTAS } from '../../datos/analitica';
+import { COOKIES, PROVEEDORES, cookiesDe, proveedoresDe, type Duracion } from '../../datos/legal';
+import { duracion } from '../../lib/duracion';
+
+interface Props {
+  idioma: Idioma;
+  tipo: string;
+}
+const { idioma, tipo } = Astro.props;
+const tx = textos(idioma).legal;
+const col = tx.tablas;
+const dura = (d: Duracion) => duracion(d, idioma, { sesion: col.sesion, persistente: col.persistente });
+const filas = tipo === 'necesarias' || tipo === 'opcionales' ? cookiesDe(COOKIES, HERRAMIENTAS, tipo) : [];
+const proveedores = tipo === 'proveedores' ? proveedoresDe(PROVEEDORES, HERRAMIENTAS) : [];
+---
+
+{
+  (tipo === 'necesarias' || tipo === 'opcionales') &&
+    (filas.length === 0 ? (
+      <p>{tx.cookies.ninguna}</p>
+    ) : (
+      <div class="tabla-envoltura" tabindex="0" role="region" aria-label={col.cookie}>
+        <table class="tabla-legal">
+          <thead>
+            <tr>
+              <th scope="col">{col.cookie}</th>
+              <th scope="col">{col.titular}</th>
+              <th scope="col">{col.finalidad}</th>
+              <th scope="col">{col.duracion}</th>
+              <th scope="col">{col.tipo}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filas.map((c) => (
+              <tr>
+                <th scope="row" data-etiqueta={col.cookie}><code>{c.nombre}</code></th>
+                <td data-etiqueta={col.titular}>{c.titular}</td>
+                <td data-etiqueta={col.finalidad}>{tx.finalidades[c.finalidad as keyof typeof tx.finalidades]}</td>
+                <td data-etiqueta={col.duracion}>{dura(c.duracion)}</td>
+                <td data-etiqueta={col.tipo}>{c.terceros ? col.terceros : col.propia}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ))
+}
+{
+  tipo === 'proveedores' && (
+    <div class="tabla-envoltura" tabindex="0" role="region" aria-label={col.proveedor}>
+      <table class="tabla-legal">
+        <thead>
+          <tr>
+            <th scope="col">{col.proveedor}</th>
+            <th scope="col">{col.para}</th>
+            <th scope="col">{col.donde}</th>
+            <th scope="col">{col.garantia}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {proveedores.map((p) => {
+            const t = tx.proveedores[p.id as keyof typeof tx.proveedores];
+            return (
+              <tr>
+                <th scope="row" data-etiqueta={col.proveedor}>
+                  <a class="enlace" href={p.politica} target="_blank" rel="noopener noreferrer">{p.nombre}</a>
+                </th>
+                <td data-etiqueta={col.para}>{t.para}</td>
+                <td data-etiqueta={col.donde}>{t.donde}</td>
+                <td data-etiqueta={col.garantia}>{t.garantia}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  )
+}
