@@ -474,3 +474,21 @@ bloque dentro de las páginas.
 
 **Para el ERP** (no es de la web): vender el control de costes aparte obliga a que esas pantallas pidan su propia clave
 (hoy las ve cualquiera con Compras). Se hará después del aislamiento entre empresas.
+
+## 19. Textos legales con el modelo de la APDA — en curso (gerencia: «empieza con los textos legales», 14/11/2026)
+
+**Por qué**: antes de poner los identificadores de las cuatro herramientas de cookies, el aviso legal y las políticas de
+privacidad y de cookies tienen que decir con exactitud qué se trata, para qué, cuánto tiempo, quién más lo ve y dónde.
+
+**Lo decidido**:
+1. Estructura de la guía de la APDA «Ús de cookies, política de privadesa i avís legal», versión 4 (23/01/2024), anexos
+   1 a 3, y lo útil de andornet.ad (el catalán prevalece, enlaces, responsabilidad, propiedad intelectual, ley aplicable).
+2. Las tablas (cookies y proveedores) salen de `src/datos/legal.ts` y solo enseñan las herramientas con identificador:
+   la web nunca dice que usa una herramienta que no usa.
+3. Lo que no se pudo comprobar en la página oficial del proveedor lleva `verificado: false`, y una prueba impide activar
+   esa herramienta hasta comprobarlo.
+4. El asesor revisa `docs/legal/REVISION-TEXTOS-LEGALES.md` (catalán y castellano, con todas las herramientas y los
+   puntos a confirmar), generado con `npm run revision-legal` de los mismos textos y datos. **No se publica sin su visto
+   bueno.**
+5. Plazo de los mensajes de quien no llega a ser cliente: 1 año desde el último contacto (propuesta de Claude, pendiente
+   de gerencia).
