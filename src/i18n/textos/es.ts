@@ -574,62 +574,302 @@ export const es: Textos = {
   },
   legal: {
     actualizado: 'Última actualización: {fecha}',
+    enlaces: {
+      privacidad: 'política de privacidad',
+      cookies: 'política de cookies',
+    },
     aviso: {
       titulo: 'Aviso legal · Synentor',
       encabezado: 'Aviso legal',
       secciones: [
         {
-          t: 'Titular',
-          p: 'Esta web es de {razon}, con domicilio en {direccion}. Correo: {correo}. Teléfono: {telefono}. NRT: en trámite.',
+          t: 'Quién es el titular',
+          p: [
+            'Esta web, {web}, es de {razon}, sociedad andorrana con domicilio en {direccion}. NRT: en trámite.',
+            'Para cualquier cuestión, escríbenos a {correo} o llámanos al {telefono}.',
+          ],
         },
         {
-          t: 'Uso de la web',
-          p: 'La información de esta web es orientativa. Los precios y las condiciones que valen son los de la propuesta que te hacemos por escrito.',
+          t: 'Para qué sirve esta web',
+          p: [
+            'Informa de nuestros servicios de consultoría de inteligencia artificial y de ventas y de nuestros programas. Entrar es gratis y no hace falta registrarse.',
+            'En la web no se compra ni se paga nada. Los precios que se enseñan son orientativos y sin impuestos: lo que vale es la propuesta y el contrato que firmamos contigo por escrito.',
+          ],
         },
         {
-          t: 'Propiedad intelectual',
-          p: 'Los textos, el logotipo y el diseño de esta web son de {razon}. No los uses sin nuestro permiso.',
+          t: 'Cómo puedes usarla',
+          p: [
+            'Quien usa la web es responsable de cómo la usa. No está permitido:',
+          ],
+          lista: [
+            'usarla contra la ley o contra los derechos de otras personas;',
+            'intentar entrar en sus servidores, cambiar su configuración o saltarse sus medidas de seguridad;',
+            'enviar por el formulario contenidos ilegales u ofensivos, publicidad que no hemos pedido o datos de otras personas sin su permiso;',
+            'mostrarla dentro de otra web o copiarla de forma automática.',
+          ],
+          despues: [
+            'Si alguien no cumple estas condiciones, podemos impedirle el acceso.',
+          ],
         },
-        { t: 'Ley aplicable', p: 'Se aplica la ley andorrana. Para cualquier conflicto, los juzgados del Principado de Andorra.' },
+        {
+          t: 'Responsabilidad',
+          p: [
+            'Cuidamos que la información sea correcta y esté al día, pero puede contener errores o datos desactualizados: los corregimos en cuanto los vemos. No respondemos de los daños que pueda causar el uso de la información de la web, ni de las interrupciones por mantenimiento, averías o causas ajenas a nosotros, aunque tomamos las medidas razonables para evitarlas.',
+          ],
+        },
+        {
+          t: 'Enlaces a otras webs',
+          p: [
+            'La web enlaza con páginas de otras empresas y organismos. No las controlamos ni respondemos de su contenido, y enlazarlas no quiere decir que tengamos relación con ellas. Consulta sus propias condiciones.',
+          ],
+        },
+        {
+          t: 'Propiedad intelectual e industrial',
+          p: [
+            'La marca y el logotipo de Synentor, los textos, el diseño, las imágenes y el código de esta web son de {razon} o de quien nos ha dado permiso para usarlos. Puedes verlos y guardar una copia para tu uso personal. Para cualquier otro uso (copiarlos, publicarlos, modificarlos o usarlos con fines comerciales) necesitas nuestro permiso por escrito.',
+          ],
+        },
+        {
+          t: 'Datos personales y cookies',
+          p: [
+            'Cómo tratamos los datos que nos das lo explica la {privacidad}, y qué cookies usamos, la {cookies}.',
+          ],
+        },
+        {
+          t: 'Idiomas',
+          p: [
+            'La web está en catalán, castellano, inglés, francés, portugués, italiano y alemán. Si una traducción no dice lo mismo que el texto en catalán, vale el catalán.',
+          ],
+        },
+        {
+          t: 'Ley aplicable y tribunales',
+          p: [
+            'Estas condiciones se rigen por la ley andorrana. Para cualquier conflicto son competentes los tribunales del Principado de Andorra, salvo que la ley te reconozca el derecho a acudir a otros.',
+          ],
+        },
+        {
+          t: 'Cambios',
+          p: [
+            'Podemos cambiar este aviso legal cuando haga falta. La fecha de arriba dice cuándo se cambió por última vez.',
+          ],
+        },
       ],
     },
     privacidad: {
       titulo: 'Política de privacidad · Synentor',
       encabezado: 'Política de privacidad',
       secciones: [
-        { t: 'Quién es el responsable', p: '{razon}, {direccion}. Correo: {correo}.' },
-        { t: 'Delegado de protección de datos', p: '{razon} no ha designado delegado de protección de datos. Para cualquier cuestión sobre tus datos, escribe a {correo}.' },
         {
-          t: 'Qué datos tratamos',
-          p: 'Los del formulario de contacto: nombre, correo, empresa y teléfono (estos dos, si los escribes), asunto y mensaje. El mensaje nos llega por correo: la web no lo guarda.',
+          t: 'Quién trata tus datos',
+          p: [
+            'El responsable es {razon}, sociedad andorrana con domicilio en {direccion}. NRT: en trámite. Correo: {correo}. Teléfono: {telefono}.',
+            'No hemos designado delegado de protección de datos: para cualquier cuestión sobre tus datos, escríbenos a {correo}.',
+          ],
         },
-        { t: 'Para qué', p: 'Para responderte y, si lo pides, prepararte una propuesta. La base es tu consentimiento.' },
-        { t: 'Cuánto tiempo', p: 'El tiempo necesario para atenderte y el que exija la ley.' },
         {
-          t: 'Quién más los ve',
-          p: 'Los proveedores que hacen funcionar la web: el alojamiento y la comprobación antirrobot (Cloudflare) y el envío del correo. Las estadísticas de visitas (Umami) no usan cookies ni guardan datos que te identifiquen.',
+          t: 'Qué datos tratamos, para qué y durante cuánto tiempo',
+          p: [
+            'Solo los que hacen falta para cada cosa:',
+          ],
+          lista: [
+            'Formulario de contacto. Datos: nombre, correo, asunto y mensaje, y la empresa y el teléfono si los escribes. Para qué: responderte y, si lo pides, prepararte una propuesta. Base: tu consentimiento, que das al marcar la casilla, y, si pides una propuesta, las medidas previas a un contrato. Plazo: el mensaje nos llega por correo y la web no lo guarda; lo conservamos {plazoContacto} desde el último contacto si no llegas a ser cliente y, si lo eres, mientras dure la relación y los plazos que exija la ley.',
+            'Comprobación antirrobot del formulario (Cloudflare Turnstile). Datos: la dirección IP y datos técnicos del navegador. Para qué: comprobar que el formulario lo envía una persona. Base: nuestro interés legítimo en proteger la web del abuso. Nosotros no los guardamos.',
+            'Prueba de tu decisión sobre las cookies. Datos: un identificador al azar que no te identifica, la versión de la política, lo que decidiste y la fecha; nunca la IP. Para qué: poder demostrar tu consentimiento. Base: la obligación de poder demostrarlo. Plazo: 12 meses.',
+            'Registros técnicos del alojamiento (Cloudflare). Datos: la dirección IP, la fecha y la hora, la página pedida y los errores. Para qué: la seguridad y el buen funcionamiento de la web. Base: nuestro interés legítimo. Plazo: hasta {plazoRegistros}.',
+            'Estadísticas de visitas (Umami). Sin cookies y sin datos que te identifiquen: solo cifras de conjunto, como las páginas vistas, el país o el navegador.',
+            'Cookies de otras empresas, solo si las aceptas: lo explica la {cookies}.',
+            'Si nos escribes por correo o nos llamas: tus datos de contacto y lo que nos cuentes, para responderte, con la misma base y el mismo plazo que el formulario.',
+          ],
+        },
+        {
+          t: 'Quién más ve tus datos',
+          p: [
+            'No vendemos ni cedemos tus datos. Solo los tratan, por encargo nuestro, los proveedores que hacen funcionar la web y el correo, y las administraciones cuando la ley lo exige:',
+          ],
+          tabla: 'proveedores',
+        },
+        {
+          t: 'Datos fuera de Andorra',
+          p: [
+            'Algunos de estos proveedores son de Estados Unidos o tratan datos allí. Elegimos proveedores adheridos al Marco de Privacidad de Datos entre la Unión Europea y Estados Unidos o que se comprometen por contrato con cláusulas tipo. Aun así, Estados Unidos no ofrece el mismo nivel de protección que Andorra o la Unión Europea, y sus autoridades podrían pedir acceso a esos datos.',
+          ],
         },
         {
           t: 'Tus derechos',
-          p: 'Puedes pedir acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a {correo}. Si no estás de acuerdo, puedes reclamar ante la Agencia Andorrana de Protección de Datos (apda.ad).',
+          p: [
+            'Puedes pedirnos acceso a tus datos, rectificarlos, suprimirlos, limitar su tratamiento, llevártelos (portabilidad) u oponerte a que los tratemos. Y puedes retirar tu consentimiento cuando quieras, sin que eso afecte a lo hecho antes.',
+            'Escríbenos a {correo}. Si no podemos saber que eres tú, te pediremos un documento que te identifique, que solo usaremos para eso y borraremos después. Te responderemos en el plazo que marca la ley.',
+            'Si crees que no hemos atendido bien tus derechos, puedes reclamar ante la Agencia Andorrana de Protección de Datos ({apda}).',
+          ],
         },
         {
-          t: 'Leyes',
-          p: 'Llei 29/2021, de 28 de octubre, cualificada de protección de datos personales, y el Reglamento general de protección de datos de la Unión Europea para las personas de la UE.',
+          t: 'Seguridad',
+          p: [
+            'Protegemos tus datos con medidas técnicas y organizativas: conexión cifrada, acceso solo de quien lo necesita y proveedores con garantías de seguridad.',
+          ],
+        },
+        {
+          t: 'Menores',
+          p: [
+            'La web está pensada para empresas y profesionales. Si tienes menos de 16 años, no nos envíes datos sin el permiso de tu padre, tu madre o tu tutor.',
+          ],
+        },
+        {
+          t: 'Leyes que aplicamos',
+          p: [
+            'La Llei 29/2021, del 28 de octubre, cualificada de protección de datos personales (LQPD) y, para las personas de la Unión Europea, el Reglamento general de protección de datos (RGPD).',
+          ],
+        },
+        {
+          t: 'Cambios',
+          p: [
+            'Si cambiamos esta política, lo diremos aquí con la fecha nueva. Si el cambio afecta a algo que consentiste, te lo volveremos a preguntar.',
+          ],
         },
       ],
     },
     cookies: {
       titulo: 'Política de cookies · Synentor',
       encabezado: 'Política de cookies',
+      ninguna: 'Hoy no usamos ninguna. Si un día las usamos, te lo preguntaremos antes y aparecerán aquí.',
       secciones: [
         {
-          t: 'Qué usamos',
-          p: 'Una sola cookie, «lang», que guarda el idioma que eliges (un año). Y en tu navegador, una marca para no volver a enseñarte el aviso de idioma si lo cierras.',
+          t: 'Qué son',
+          p: [
+            'Las cookies son pequeños ficheros que una web guarda en tu navegador para recordar algo de tu visita. Aquí también llamamos cookies a otras formas de guardar datos en el navegador, como el almacenamiento local.',
+          ],
         },
-        { t: 'Estadísticas', p: 'Contamos las visitas con Umami, sin cookies y sin guardar datos que te identifiquen.' },
-        { t: 'Cómo quitarlas', p: 'Puedes borrarlas cuando quieras desde la configuración de tu navegador.' },
+        {
+          t: 'Las que usamos siempre',
+          p: [
+            'Son las imprescindibles para que la web funcione o para recordar lo que eliges. No necesitan tu consentimiento.',
+          ],
+          tabla: 'necesarias',
+        },
+        {
+          t: 'Estadísticas sin cookies',
+          p: [
+            'Contamos las visitas con Umami, que no usa cookies ni guarda datos que te identifiquen.',
+          ],
+        },
+        {
+          t: 'Las que solo usamos si las aceptas',
+          p: [
+            'Son de dos tipos: estadísticas, para saber cómo se usa la web y mejorarla, y publicidad, para medir nuestros anuncios y mostrarte anuncios de Synentor en otras webs. Mientras no las aceptes, la web no carga estas herramientas.',
+          ],
+          tabla: 'opcionales',
+        },
+        {
+          t: 'Tu decisión',
+          p: [
+            'La primera vez te lo preguntamos con un aviso: puedes aceptarlas todas, rechazarlas todas o elegir. Las tres opciones están igual de a mano y ninguna viene marcada.',
+            'Puedes cambiar de opinión cuando quieras con el botón «{boton}» del pie de página. Si retiras el consentimiento, borramos las cookies de esas herramientas que están en nuestro dominio y la web deja de cargarlas; las que esas empresas ponen en su propio dominio puedes borrarlas desde el navegador.',
+            'Tu decisión vale 12 meses; después te lo volvemos a preguntar. Guardamos una prueba de ella sin tu IP, como explica la {privacidad}.',
+          ],
+        },
+        {
+          t: 'Desde el navegador',
+          p: [
+            'También puedes bloquear o borrar las cookies desde tu navegador:',
+          ],
+          lista: [
+            '{chrome}',
+            '{firefox}',
+            '{safari}',
+            '{edge}',
+          ],
+        },
+        {
+          t: 'Revisión',
+          p: [
+            'Revisamos esta política al menos una vez al año y siempre que cambiamos las herramientas de la web.',
+          ],
+        },
       ],
+    },
+    tablas: {
+      cookie: 'Cookie',
+      titular: 'Quién la pone',
+      finalidad: 'Para qué',
+      duracion: 'Duración',
+      tipo: 'Tipo',
+      propia: 'Propia',
+      terceros: 'De otra empresa',
+      sesion: 'Hasta que cierras el navegador',
+      persistente: 'Hasta que la borres',
+      proveedor: 'Proveedor',
+      para: 'Para qué',
+      donde: 'Dónde trata los datos',
+      garantia: 'Garantía',
+    },
+    finalidades: {
+      lang: 'Recordar el idioma que eliges.',
+      consentimiento: 'Guardar tu decisión sobre las cookies.',
+      franja: 'No volver a enseñarte el aviso de idioma si lo has cerrado (almacenamiento local).',
+      cfBm: 'Seguridad: distinguir a las personas de los robots, solo cuando Cloudflare lo necesita.',
+      cfClearance: 'Seguridad: recordar que has superado una comprobación antirrobot, solo si Cloudflare te la ha pedido.',
+      gaUsuario: 'Distinguir a los visitantes para las estadísticas.',
+      gaSesion: 'Mantener el estado de la visita para las estadísticas.',
+      clarityUsuario: 'Guardar el identificador de Clarity y sus preferencias, solo para esta web.',
+      claritySesion: 'Unir en una sola grabación las páginas de una misma visita.',
+      clarityPrimeraVez: 'Saber la primera vez que Clarity vio este navegador en cualquier web que lo use.',
+      msAnonchk: 'Uso interno de Microsoft sobre el identificador MUID; Clarity no lo usa para publicidad.',
+      msMr: 'Saber si hay que renovar el identificador MUID.',
+      msMuid: 'Identificar el navegador en los sitios de Microsoft.',
+      msSm: 'Sincronizar el identificador MUID entre los dominios de Microsoft.',
+      metaFbp: 'Identificar el navegador para medir y mostrar anuncios de Meta.',
+      metaFbc: 'Guardar el anuncio de Meta por el que has llegado.',
+      metaFr: 'Mostrar y medir anuncios de Meta.',
+      liFatId: 'Medir los resultados de los anuncios de LinkedIn.',
+      liSugr: 'Relacionar la visita con miembros de LinkedIn para la publicidad.',
+      liBcookie: 'Identificar el navegador para detectar abusos.',
+      liLidc: 'Elegir el centro de datos de LinkedIn.',
+      liUserMatch: 'Sincronizar identificadores para la publicidad.',
+      liAnalyticsSync: 'Registrar cuándo se sincronizó con la cookie de analítica de LinkedIn.',
+      liLmsAds: 'Reconocer a miembros de LinkedIn fuera de LinkedIn para la publicidad.',
+      liLmsAnalytics: 'Reconocer a miembros de LinkedIn fuera de LinkedIn para la analítica.',
+    },
+    proveedores: {
+      cloudflare: {
+        para: 'Alojamiento de la web, comprobación antirrobot del formulario, prueba de los consentimientos y registros técnicos.',
+        donde: 'Su red mundial, con sede en Estados Unidos. Las pruebas de consentimiento se guardan en la Unión Europea.',
+        garantia: 'Marco de Privacidad de Datos UE-EE. UU. y cláusulas contractuales tipo.',
+      },
+      resend: {
+        para: 'Enviar a nuestro buzón el mensaje del formulario.',
+        donde: 'Estados Unidos.',
+        garantia: 'Cláusulas contractuales tipo y Marco de Privacidad de Datos UE-EE. UU.',
+      },
+      microsoft365: {
+        para: 'El correo de la empresa, donde recibimos y guardamos los mensajes.',
+        donde: 'Unión Europea y Estados Unidos.',
+        garantia: 'Marco de Privacidad de Datos UE-EE. UU. y cláusulas contractuales tipo.',
+      },
+      umami: {
+        para: 'Estadísticas de visitas sin cookies.',
+        donde: 'Estados Unidos y Alemania.',
+        garantia: 'Cláusulas contractuales tipo.',
+      },
+      google: {
+        para: 'Estadísticas de visitas (Google Analytics), si las aceptas.',
+        donde: 'Estados Unidos y otros países.',
+        garantia: 'Marco de Privacidad de Datos UE-EE. UU. y cláusulas contractuales tipo.',
+      },
+      clarity: {
+        para: 'Ver cómo se usa la web (Microsoft Clarity), si lo aceptas.',
+        donde: 'Estados Unidos.',
+        garantia: 'Marco de Privacidad de Datos UE-EE. UU.',
+      },
+      meta: {
+        para: 'Medir y mostrar anuncios (píxel de Meta), si lo aceptas.',
+        donde: 'Irlanda y Estados Unidos.',
+        garantia: 'Marco de Privacidad de Datos UE-EE. UU. y cláusulas contractuales tipo.',
+      },
+      linkedin: {
+        para: 'Medir y mostrar anuncios (LinkedIn Insight Tag), si lo aceptas.',
+        donde: 'Estados Unidos.',
+        garantia: 'Marco de Privacidad de Datos UE-EE. UU. y cláusulas contractuales tipo.',
+      },
     },
   },
 };

@@ -93,6 +93,32 @@ describe('páginas construidas', () => {
     }
   });
 
+  it('las páginas legales siguen el modelo de la APDA y solo enseñan lo que está activo (diseño §19)', () => {
+    for (const idioma of idiomas) {
+      const cookies = readFileSync(fichero(ruta('cookies', idioma)), 'utf8');
+      // Las propias, siempre; sin identificadores de herramientas, ninguna cookie de Google, Microsoft, Meta ni LinkedIn.
+      for (const c of ['<code>lang</code>', '<code>synentor_consentimiento</code>', '<code>__cf_bm</code>']) expect(cookies, idioma).toContain(c);
+      for (const c of ['<code>_ga</code>', '<code>_clck</code>', '<code>_fbp</code>', '<code>li_fat_id</code>']) expect(cookies, idioma).not.toContain(c);
+      expect(cookies, idioma).toContain(TEXTOS[idioma]!.legal.cookies.ninguna);
+      expect(cookies, idioma).toContain('href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer"');
+      // En el móvil cada fila sale como una ficha: cada celda lleva el nombre de su columna.
+      const col = TEXTOS[idioma]!.legal.tablas;
+      expect(cookies, idioma).toContain(`data-etiqueta="${col.finalidad}"`);
+      expect(cookies, idioma).toContain(`data-etiqueta="${col.duracion}"`);
+
+      const privacidad = readFileSync(fichero(ruta('privacidad', idioma)), 'utf8');
+      for (const p of ['Cloudflare', 'Resend', 'Umami']) expect(privacidad, idioma).toContain(p);
+      expect(privacidad, idioma).not.toContain('LinkedIn');
+      expect(privacidad, idioma).toContain(`data-etiqueta="${col.garantia}"`);
+      expect(privacidad, idioma).toContain('href="https://www.apda.ad/"');
+      expect(privacidad, idioma).toContain(`href="${ruta('cookies', idioma)}"`);
+
+      const aviso = readFileSync(fichero(ruta('aviso-legal', idioma)), 'utf8');
+      expect(aviso, idioma).toContain(`href="${ruta('privacidad', idioma)}"`);
+      expect(visible(aviso), idioma).not.toMatch(/\{[a-zA-Z]+\}/);
+    }
+  });
+
   it('Precios lleva el configurador con sus textos', () => {
     for (const idioma of idiomas) {
       const html = readFileSync(fichero(ruta('precios', idioma)), 'utf8');

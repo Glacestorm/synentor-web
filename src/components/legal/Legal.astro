@@ -1,9 +1,13 @@
 ---
-// Avís legal, privacitat i galetes (diseño §3): borrador pendiente del asesor jurídico; se publica con el visto bueno de
-// gerencia. Solo datos de la empresa. Solo se citan la LQPD y el RGPD.
-import { textos, rellena } from '../../i18n/t';
-import type { Idioma } from '../../i18n/idiomas';
+// Avís legal, privacitat i galetes (diseño §19; modelos de la guía de la APDA, versión 4, anexos 1 a 3). Borrador pendiente
+// del asesor jurídico. Solo datos de la empresa. Solo se citan la LQPD y el RGPD. Las tablas salen de src/datos/legal.ts.
+import { textos } from '../../i18n/t';
+import { ruta, type Idioma } from '../../i18n/idiomas';
 import { EMPRESA } from '../../datos/empresa';
+import { NAVEGADORES, PLAZOS } from '../../datos/legal';
+import { rellenaHtml, type Enlace } from '../../lib/textoHtml';
+import { duracion } from '../../lib/duracion';
+import TablaLegal from './TablaLegal.astro';
 
 interface Props {
   idioma: Idioma;
@@ -11,23 +15,38 @@ interface Props {
 }
 const { idioma, pagina } = Astro.props;
 const todo = textos(idioma);
-const tx = pagina === 'aviso-legal' ? todo.legal.aviso : pagina === 'privacidad' ? todo.legal.privacidad : todo.legal.cookies;
+const lg = todo.legal;
+const tx = pagina === 'aviso-legal' ? lg.aviso : pagina === 'privacidad' ? lg.privacidad : lg.cookies;
 /** Fecha del texto (cámbiala al cambiar el texto). */
 const ACTUALIZADO = '2026-11-14';
 const d = EMPRESA.direccion;
+const fijos = { sesion: lg.tablas.sesion, persistente: lg.tablas.persistente };
 const valores = {
+  web: 'synentor.com',
   razon: EMPRESA.razonSocial,
   direccion: `${d.linea}, ${d.codigoPostal} ${d.localidad} (${d.pais})`,
   correo: EMPRESA.correo,
   telefono: EMPRESA.telefono.texto,
+  plazoContacto: duracion(PLAZOS.contacto, idioma, fijos),
+  plazoRegistros: duracion(PLAZOS.registros, idioma, fijos),
+  boton: todo.cookiesAviso.flotante,
 };
+const enlaces: Record<string, Enlace> = {
+  privacidad: { href: ruta('privacidad', idioma), texto: lg.enlaces.privacidad },
+  cookies: { href: ruta('cookies', idioma), texto: lg.enlaces.cookies },
+  apda: { href: 'https://www.apda.ad/', texto: 'apda.ad', externo: true },
+  ...Object.fromEntries(
+    Object.entries(NAVEGADORES).map(([k, n]) => [k, { href: n.ayuda, texto: n.nombre, externo: true }]),
+  ),
+};
+const html = (t: string) => rellenaHtml(t, valores, enlaces);
 const fecha = new Date(`${ACTUALIZADO}T12:00:00Z`).toLocaleDateString(idioma, { timeZone: 'UTC' });
 ---
 
 <section class="cabecera-pagina">
   <div class="contenedor estrecho">
     <h1>{tx.encabezado}</h1>
-    <p class="pequeno">{rellena(todo.legal.actualizado, { fecha })}</p>
+    <p class="pequeno" set:html={rellenaHtml(lg.actualizado, { fecha })} />
   </div>
 </section>
 <section class="bloque">
@@ -36,7 +55,14 @@ const fecha = new Date(`${ACTUALIZADO}T12:00:00Z`).toLocaleDateString(idioma, { 
       tx.secciones.map((s) => (
         <section>
           <h2>{s.t}</h2>
-          <p>{rellena(s.p, valores)}</p>
+          {s.p.map((p) => <p set:html={html(p)} />)}
+          {'lista' in s && s.lista && (
+            <ul>
+              {s.lista.map((li) => <li set:html={html(li)} />)}
+            </ul>
+          )}
+          {'tabla' in s && s.tabla && <TablaLegal idioma={idioma} tipo={s.tabla} />}
+          {'despues' in s && s.despues && s.despues.map((p) => <p set:html={html(p)} />)}
         </section>
       ))
     }
