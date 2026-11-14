@@ -76,7 +76,7 @@ const t2 = TARIFA.muv.tramos[1];
   <div class="contenedor">
     <h2>{tx.suite.titulo}</h2>
     <p>{tx.suite.texto}</p>
-    <div class="tabla-envoltura">
+    <div class="tabla-envoltura" tabindex="0" role="region" aria-label={tx.suite.titulo}>
       <table class="tabla-modulos">
         <thead>
           <tr>
@@ -199,7 +199,7 @@ const t2 = TARIFA.muv.tramos[1];
     <p class="destacado">{tx.energia.comisiones}</p>
     <h3>{tx.energia.monitorizacion.titulo}</h3>
     <p>{tx.energia.monitorizacion.texto}</p>
-    <div class="tabla-envoltura">
+    <div class="tabla-envoltura" tabindex="0" role="region" aria-label={tx.energia.monitorizacion.titulo}>
       <table class="tabla-simple">
         <tbody>
           {
@@ -328,9 +328,11 @@ const t2 = TARIFA.muv.tramos[1];
 
 <section class="bloque" id="centralita">
   <div class="contenedor estrecho">
-    <p class="etiqueta-proximamente">{tx.centralita.etiqueta}</p>
-    <span class="icono-caja ia"><Icono nombre="centralita" /></span>
-      <h2>{tx.centralita.titulo}</h2>
+    <div class="fila-icono">
+      <span class="icono-caja ia"><Icono nombre="centralita" /></span>
+      <p class="etiqueta-proximamente">{tx.centralita.etiqueta}</p>
+    </div>
+    <h2>{tx.centralita.titulo}</h2>
     <p>{tx.centralita.texto}</p>
     <a class="boton boton-contorno" href={`${contacto}?asunto=centralita`}>{tx.centralita.boton}</a>
   </div>

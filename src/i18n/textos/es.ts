@@ -51,6 +51,7 @@ export const es: Textos = {
       botonDemo: 'Pide una demostración',
       botonPrecio: 'Calcula tu precio',
       nota: 'Desde {base} al mes · {usuarios} usuarios incluidos · sin impuestos',
+      animacion: { pausa: 'Detener la animación', reanuda: 'Reanudar la animación' },
       nodos: { compras: 'Compras', ventas: 'Ventas y CRM', rrhh: 'RRHH', contabilidad: 'Contabilidad', bancos: 'Bancos', muv: 'MUV' },
     },
     problema: {

@@ -4,21 +4,28 @@
 /* ---------- Secciones ---------- */
 .bloque { position: relative; padding: 88px 0; }
 .bloque.claro { background: var(--syn-claro); color: var(--syn-tinta); }
-.bloque.final { padding: 112px 0; background: var(--syn-aurora), var(--syn-noche); overflow: hidden; }
-.cabecera-pagina { position: relative; padding: 96px 0 48px; background: var(--syn-aurora), var(--syn-noche); overflow: hidden; }
-.cabecera-pagina h1, .portada h1 { font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.04; margin: 0 0 18px; }
-h2 { font-size: clamp(1.7rem, 3.8vw, 2.6rem); line-height: 1.1; margin: 0 0 18px; }
-h3 { font-size: 1.18rem; line-height: 1.25; margin: 0 0 8px; }
-p { line-height: 1.65; }
+.bloque.final { padding: 112px 0; background: var(--syn-noche); overflow: hidden; }
+.cabecera-pagina { position: relative; padding: 96px 0 32px; background: var(--syn-noche); overflow: hidden; }
+.cabecera-pagina h1 { font-size: clamp(2.5rem, 3.8vw + 0.8rem, 4.25rem); font-weight: 800; line-height: 1.04; margin: 0 0 18px; }
+.portada h1 { font-size: clamp(2.75rem, 4.6vw + 1rem, 5.25rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1; margin: 0 0 22px; }
+h2 { font-size: clamp(1.9rem, 2.4vw + 1rem, 3rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; margin: 0 0 18px; max-width: 20ch; }
+.centrado h2 { margin-left: auto; margin-right: auto; }
+h3 { font-size: 1.25rem; font-weight: 700; line-height: 1.25; margin: 0 0 8px; }
+p { line-height: 1.6; max-width: 64ch; }
+.centrado p { margin-left: auto; margin-right: auto; }
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
 .estrecho { max-width: 860px; }
 .centrado { text-align: center; }
 .centrado .subtitulo { margin-left: auto; margin-right: auto; }
-.subtitulo { font-size: 1.18rem; color: var(--syn-tenue); max-width: 720px; }
-.antetitulo { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.78rem; font-weight: 700; color: var(--syn-oro); margin: 0 0 14px; }
+.subtitulo { font-size: 1.25rem; color: var(--syn-tenue-2); max-width: 720px; }
+.antetitulo { display: flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.82rem; font-weight: 700; color: var(--syn-oro); margin: 0 0 14px; }
+.antetitulo::before { content: ''; flex: none; width: 24px; height: 2px; background: currentColor; }
+.centrado .antetitulo { justify-content: center; }
 .pequeno { font-size: 0.92rem; color: var(--syn-tenue); }
 .precio { font-weight: 700; color: var(--syn-oro); font-family: var(--syn-fuente-titulos); }
 .precio-grande { font-size: 1.3rem; font-weight: 700; }
-.enlace { color: var(--syn-hielo); text-decoration: none; font-weight: 700; }
+.enlace { color: var(--syn-blanco); text-decoration: none; font-weight: 700; }
 .enlace:hover { text-decoration: underline; }
 .botones { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 14px; }
 .nota { font-size: 0.92rem; color: var(--syn-tenue); }
@@ -37,10 +44,10 @@ p { line-height: 1.65; }
 }
 
 /* ---------- Portada ---------- */
-.portada { position: relative; overflow: hidden; padding: 104px 0 96px; background: var(--syn-aurora), var(--syn-noche); }
+.portada { position: relative; overflow: hidden; padding: 104px 0 96px; background: var(--syn-noche); }
 .portada-dentro { position: relative; z-index: 1; display: grid; gap: 48px; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); align-items: center; }
 @media (max-width: 900px) { .portada-dentro { grid-template-columns: 1fr; } }
-.portada .subtitulo { font-size: 1.22rem; }
+.portada .subtitulo { font-size: 1.25rem; }
 
 /* ---------- Rejillas y tarjetas ---------- */
 .rejilla-2, .rejilla-3 { display: grid; gap: 22px; margin: 32px 0; }
@@ -52,9 +59,9 @@ p { line-height: 1.65; }
   position: relative; border-radius: 18px; padding: 28px;
   background: var(--syn-cristal); border: 1px solid var(--syn-cristal-borde);
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.22s ease, box-shadow 0.22s ease;
 }
-.tarjeta:hover { transform: perspective(900px) translateY(-4px) rotateX(1.5deg); border-color: var(--syn-oro); box-shadow: var(--syn-sombra-oscura); }
+.tarjeta:hover { transform: translateY(-3px); border-color: var(--syn-oro-borde); box-shadow: var(--syn-sombra-oscura); }
 .claro .tarjeta { background: var(--syn-blanco); border-color: var(--syn-borde-claro); box-shadow: var(--syn-sombra-clara); backdrop-filter: none; }
 .claro .tarjeta:hover { border-color: var(--syn-oro-legible); }
 .icono-caja {
@@ -82,18 +89,20 @@ th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--syn-cri
 .tabla-modulos .modulo-cabeza { display: flex; gap: 12px; align-items: center; margin-bottom: 6px; }
 .tabla-modulos .modulo-cabeza .icono { color: var(--syn-oro); }
 .tabla-modulos th[scope='row'] .pequeno { display: block; }
-.requiere { display: inline-block; margin-top: 8px; font-size: 0.8rem; color: var(--syn-hielo); }
-.claro .requiere { color: var(--syn-azul-legible); }
+.requiere { display: inline-block; margin-top: 8px; font-size: 0.82rem; color: var(--syn-tenue); }
+.claro .requiere { color: var(--syn-tinta-2); }
 
 /* ---------- Etiquetas de estado ---------- */
-.conf-estado { display: inline-block; font-size: 0.74rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; white-space: nowrap; border: 1px solid currentColor; }
+.conf-estado { display: inline-block; font-size: 0.82rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; white-space: nowrap; border: 1px solid currentColor; }
 .estado-disponible { color: var(--syn-oro); }
-.estado-inminente { color: var(--syn-hielo); }
+.estado-inminente { color: var(--syn-azul); }
 .estado-a_medida { color: var(--syn-tenue); }
 .claro .estado-disponible { color: var(--syn-oro-legible); }
 .claro .estado-inminente { color: var(--syn-azul-legible); }
 .claro .estado-a_medida { color: var(--syn-tinta-2); }
-.etiqueta-proximamente { display: inline-block; background: var(--syn-degradado-alt); color: var(--syn-blanco); font-weight: 700; padding: 5px 14px; border-radius: 999px; font-size: 0.85rem; }
+.etiqueta-proximamente { display: inline-block; margin: 0; background: var(--syn-noche-2); color: var(--syn-blanco); font-weight: 700; padding: 5px 14px; border-radius: 999px; font-size: 0.85rem; box-shadow: inset 0 0 0 1.5px var(--syn-violeta); }
+.fila-icono { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.fila-icono .icono-caja { margin: 0; }
 
 /* ---------- Cifra destacada (dato medido del portal) ---------- */
 .cifra { border-radius: 18px; padding: 26px; background: var(--syn-cristal); border: 1px solid var(--syn-cristal-borde); }
@@ -127,23 +136,23 @@ th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--syn-cri
 .campo { position: relative; }
 .campo input, .campo textarea, .campo select, .conf-campo input, .conf-campo select {
   font: inherit; width: 100%; color: var(--syn-blanco); background: var(--syn-cristal);
-  border: 1px solid var(--syn-cristal-borde); border-radius: 14px; padding: 22px 16px 10px; transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--syn-borde-control); border-radius: 14px; padding: 22px 16px 10px; transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .conf-campo input, .conf-campo select { padding: 12px 14px; }
 .campo textarea { resize: vertical; min-height: 150px; }
 .campo label { position: absolute; left: 17px; top: 16px; color: var(--syn-tenue); pointer-events: none; transition: all 0.15s ease; }
 .campo input:focus + label, .campo input:not(:placeholder-shown) + label,
-.campo textarea:focus + label, .campo textarea:not(:placeholder-shown) + label { top: 7px; font-size: 0.74rem; color: var(--syn-oro); font-weight: 700; }
+.campo textarea:focus + label, .campo textarea:not(:placeholder-shown) + label { top: 6px; font-size: 0.8rem; color: var(--syn-oro); font-weight: 700; }
 .campo input:focus, .campo textarea:focus, .conf-campo input:focus, .conf-campo select:focus { border-color: var(--syn-oro); box-shadow: var(--syn-anillo-oro); outline: none; }
 .campo input:user-invalid, .campo textarea:user-invalid { border-color: var(--syn-oro-final); }
-.campo .contador { position: absolute; right: 14px; bottom: 10px; font-size: 0.75rem; color: var(--syn-tenue); }
+.campo .contador { position: absolute; right: 14px; bottom: 10px; font-size: 0.82rem; color: var(--syn-tenue); }
 .obligatorio { font-weight: 400; color: var(--syn-tenue); font-size: 0.8rem; }
 
 /* Fichas (asunto) y píldoras (modalidad, pago): un radio escondido y su etiqueta. */
 .fichas { display: flex; flex-wrap: wrap; gap: 8px; border: 0; padding: 0; margin: 0; }
 .fichas legend, .conf-grupo legend { font-weight: 700; margin-bottom: 10px; padding: 0; }
 .ficha, .conf-op { position: relative; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 9px 15px; border-radius: 999px;
-  border: 1px solid var(--syn-cristal-borde); background: var(--syn-cristal); font-size: 0.92rem; transition: all 0.18s ease; }
+  border: 1px solid var(--syn-borde-control); background: var(--syn-cristal); font-size: 0.92rem; font-family: var(--syn-fuente-titulos); font-weight: 600; transition: all 0.18s ease; }
 .ficha input, .conf-op input[type='radio'] { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .ficha:has(input:checked), .conf-op:has(input:checked) { border-color: var(--syn-oro); background: var(--syn-oro-suave); color: var(--syn-oro); font-weight: 700; }
 .ficha:has(input:focus-visible), .conf-op:has(input:focus-visible) { outline: 3px solid var(--syn-hielo); outline-offset: 2px; }
@@ -151,7 +160,7 @@ th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--syn-cri
 /* Interruptores (Suite, paquete): una casilla con forma de interruptor. */
 .interruptor { display: flex; align-items: flex-start; gap: 14px; cursor: pointer; padding: 12px 0; }
 .interruptor input { appearance: none; -webkit-appearance: none; flex: none; width: 46px; height: 26px; margin: 0; border-radius: 999px; background: var(--syn-cristal-2);
-  border: 1px solid var(--syn-cristal-borde); position: relative; cursor: pointer; transition: background 0.2s ease; }
+  border: 1px solid var(--syn-borde-control); position: relative; cursor: pointer; transition: background 0.2s ease; }
 .interruptor input::after { content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--syn-blanco); transition: transform 0.2s ease; }
 .interruptor input:checked { background: var(--syn-degradado-oro); border-color: transparent; }
 .interruptor input:checked::after { transform: translateX(20px); background: var(--syn-noche); }
@@ -169,7 +178,7 @@ th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--syn-cri
 .conf-numero { display: flex; align-items: stretch; gap: 0; max-width: 220px; }
 .conf-numero input { text-align: center; border-radius: 0; -moz-appearance: textfield; }
 .conf-numero input::-webkit-inner-spin-button, .conf-numero input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-.conf-paso { flex: none; width: 46px; border: 1px solid var(--syn-cristal-borde); background: var(--syn-cristal-2); color: var(--syn-blanco); font: 700 1.2rem var(--syn-fuente-titulos); cursor: pointer; }
+.conf-paso { flex: none; width: 46px; border: 1px solid var(--syn-borde-control); background: var(--syn-cristal-2); color: var(--syn-blanco); font: 700 1.2rem var(--syn-fuente-titulos); cursor: pointer; }
 .conf-paso:first-child { border-radius: 14px 0 0 14px; }
 .conf-paso:last-child { border-radius: 0 14px 14px 0; }
 .conf-paso:hover { background: var(--syn-oro-suave); color: var(--syn-oro); }
@@ -185,14 +194,13 @@ th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--syn-cri
 .conf-modulo .conf-nombre { font-weight: 700; padding-right: 28px; overflow-wrap: anywhere; hyphens: auto; }
 .conf-modulo .conf-precio { font-size: 0.85rem; color: var(--syn-tenue); grid-column: 2; }
 .conf-modulo .conf-estado, .conf-modulo .conf-nota { justify-self: start; grid-column: 2; }
-.conf-modulo .conf-nota { font-size: 0.78rem; color: var(--syn-hielo); }
-.conf-modulo .conf-check { position: absolute; top: 10px; right: 10px; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--syn-cristal-borde); display: grid; place-items: center; color: transparent; }
+.conf-modulo .conf-nota { font-size: 0.82rem; color: var(--syn-tenue); }
+.conf-modulo .conf-check { position: absolute; top: 10px; right: 10px; width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--syn-borde-control); display: grid; place-items: center; color: transparent; }
 .conf-modulo.marcado { border-color: var(--syn-oro); background: var(--syn-oro-tenue); }
 .conf-modulo.marcado > .icono { color: var(--syn-oro); }
 .conf-modulo.marcado .conf-check { background: var(--syn-degradado-oro); border-color: transparent; color: var(--syn-noche); }
 .conf-modulo:has(input:focus-visible) { outline: 3px solid var(--syn-hielo); outline-offset: 2px; }
 .conf-modulo:has(input:disabled) { cursor: default; }
-.conf-modulo .conf-precio { grid-column: 3; grid-row: 1; margin-right: 26px; }
 .conf-quitar { margin-top: 14px; background: none; border: none; color: var(--syn-tenue); text-decoration: underline; cursor: pointer; font: inherit; padding: 0; }
 
 .conf-resumen { position: sticky; top: 92px; border-radius: 22px; padding: 26px; display: grid; gap: 14px;
@@ -209,7 +217,7 @@ th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--syn-cri
 .conf-total dd { background: var(--syn-degradado-oro); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .conf-total.cambia dd { animation: pulso 0.5s ease; }
 @keyframes pulso { 0% { transform: scale(1); } 40% { transform: scale(1.06); } 100% { transform: scale(1); } }
-.conf-avisos { margin: 0; padding-left: 18px; color: var(--syn-hielo); font-size: 0.9rem; }
+.conf-avisos { margin: 0; padding: 12px 14px 12px 34px; color: var(--syn-gris); font-size: 0.9rem; border-radius: 12px; background: var(--syn-cristal); border: 1px solid var(--syn-cristal-borde); }
 .conf-nota-pedido, .conf-implantacion { font-size: 0.86rem; color: var(--syn-tenue); margin: 0; }
 .conf-resumen .boton { width: 100%; }
 
@@ -220,7 +228,7 @@ th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--syn-cri
     padding: 12px 14px 12px 18px; border-radius: 18px; background: var(--syn-noche-velo); border: 1px solid var(--syn-cristal-borde);
     backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: var(--syn-sombra-oscura); }
   .conf-barra strong { font: 800 1.35rem var(--syn-fuente-titulos); }
-  .conf-barra small { display: block; color: var(--syn-tenue); font-size: 0.75rem; }
+  .conf-barra small { display: block; color: var(--syn-tenue); font-size: 0.82rem; }
   .conf-barra .boton { min-height: 42px; padding: 10px 16px; font-size: 0.92rem; }
   .configurador { padding-bottom: 90px; }
 }
@@ -228,11 +236,15 @@ th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--syn-cri
 /* ---------- Contacto ---------- */
 .contacto { align-items: start; }
 .formulario { display: grid; gap: 16px; padding: 30px; border-radius: 22px; background: var(--syn-cristal); border: 1px solid var(--syn-cristal-borde); }
-.formulario h2 { font-size: 1.6rem; }
+.formulario h2, .datos-contacto h2 { font-size: 1.6rem; margin: 0; }
 .formulario .dos { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 .formulario .consentimiento { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-size: 0.92rem; }
-.formulario .consentimiento input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--syn-oro); }
-.formulario a, .datos-contacto a, .texto-legal a { color: var(--syn-hielo); }
+/* Casilla propia: la nativa salía gris sobre gris. */
+.formulario .consentimiento input { appearance: none; -webkit-appearance: none; flex: none; width: 20px; height: 20px; margin: 2px 0 0; border-radius: 6px;
+  border: 1.5px solid var(--syn-borde-secundario); background: var(--syn-cristal); display: grid; place-items: center; cursor: pointer; }
+.formulario .consentimiento input:checked { background: var(--syn-degradado-oro); border-color: transparent; }
+.formulario .consentimiento input:checked::after { content: '✓'; color: var(--syn-noche); font-weight: 800; font-size: 0.8rem; line-height: 1; }
+.formulario a, .datos-contacto a, .texto-legal a { color: var(--syn-blanco); text-decoration: underline; }
 .trampa { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .estado-envio { min-height: 1.5em; font-weight: 700; margin: 0; }
 .estado-envio.error { color: var(--syn-oro-final); }
@@ -291,3 +303,43 @@ th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--syn-cri
   mask-image: var(--syn-cerebro-mascara); -webkit-mask-image: var(--syn-cerebro-mascara); }
 .cerebro .cb-mascara img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; transform: scale(1.25); filter: var(--syn-cerebro-sombra); }
 .cerebro .cb-chispas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+/* ---------- Revisión de diseño (14/11/2026): costuras, rejilla y contacto ---------- */
+/* El brillo de fondo se desvanece hacia abajo en vez de cortarse en seco. */
+.portada::before, .cabecera-pagina::before, .bloque.final::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; background: var(--syn-aurora);
+  -webkit-mask-image: var(--syn-desvanece); mask-image: var(--syn-desvanece);
+}
+.cabecera-pagina > .contenedor, .bloque.final > .contenedor { position: relative; z-index: 1; }
+.cabecera-pagina + .bloque { padding-top: 32px; }
+/* Una sola rejilla: el contenedor estrecho conserva el borde izquierdo y limita sus hijos. */
+.contenedor.estrecho { max-width: var(--syn-ancho); }
+.contenedor.estrecho > * { max-width: 760px; }
+.contenedor.estrecho.centrado > * { margin-left: auto; margin-right: auto; }
+figure { margin: 0; }
+.dos-col:has(> * > h2):has(> * + * > h2) { align-items: start; }
+/* Los enlaces de las tarjetas, alineados abajo. */
+.tarjeta:has(> .enlace:last-child) { display: flex; flex-direction: column; align-items: flex-start; }
+.tarjeta > .enlace:last-child { margin-top: auto; padding-top: 8px; }
+.enlace:hover { text-decoration: underline; text-underline-offset: 3px; }
+.claro .icono-caja:not(.ia) { box-shadow: var(--syn-sombra-icono-claro); }
+/* Cifras alineadas en precios, totales y tablas. */
+.precio, .precio-grande, .conf-total dd, .conf-lineas, .conf-precio, table, .cifra-valor, .grafico-valor { font-variant-numeric: tabular-nums; }
+/* Contacto: la columna de datos acompaña al formulario; fichas del asunto en rejilla. */
+@media (min-width: 900px) {
+  .datos-contacto { position: sticky; top: 96px; }
+  .formulario .fichas { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .formulario .fichas legend { grid-column: 1 / -1; }
+  .formulario .ficha { justify-content: center; text-align: center; }
+}
+@media (max-width: 900px) {
+  html:has(.conf-barra) { scroll-padding-bottom: 96px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta:hover, .conf-modulo:hover, .boton:hover { transform: none; }
+}
+.ilustracion-marco { position: relative; display: grid; justify-items: center; width: 100%; }
+.ilustracion-marco.pausada *, .ilustracion-marco.pausada *::before, .ilustracion-marco.pausada *::after { animation-play-state: paused !important; }
+.ilustracion-pausa { position: absolute; right: 0; bottom: 0; z-index: 2; background: var(--syn-cristal); color: var(--syn-gris); border: 1px solid var(--syn-borde-control);
+  border-radius: 999px; padding: 6px 12px; font: 600 0.82rem var(--syn-fuente-titulos); cursor: pointer; }
+.ilustracion-pausa:hover { color: var(--syn-blanco); }

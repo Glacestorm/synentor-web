@@ -6,7 +6,7 @@ export const ca = {
     marca: 'Synentor',
     lema: 'La teva empresa, connectada.',
     descripcion:
-      "Consultoria d'IA i vendes amb programari propi fet a Andorra: Synentor Suite ERP-CRM multiempresa, MUV i treballs d'IA a mida.",
+      'Consultoria d’IA i vendes amb programari propi fet a Andorra: Synentor Suite ERP-CRM multiempresa, MUV i treballs d’IA a mida.',
   },
   nav: {
     inicio: 'Inici',
@@ -40,23 +40,24 @@ export const ca = {
     inminenteLargo: 'En desenvolupament imminent i adaptació a mida del client',
   },
   inicio: {
-    titulo: "Synentor · Consultoria d'IA i vendes amb programari propi",
+    titulo: 'Synentor · Consultoria d’IA i vendes amb programari propi',
     descripcion:
-      "ERP-CRM multiempresa fet a Andorra, MUV i consultoria d'IA i vendes. Comptabilitat, nòmines, compres, vendes i tràmits en un sol lloc.",
+      'ERP-CRM multiempresa fet a Andorra, MUV i consultoria d’IA i vendes. Comptabilitat, nòmines, compres, vendes i tràmits en un sol lloc.',
     portada: {
-      antetitulo: "Consultoria d'IA i vendes · Programari propi fet a Andorra",
+      antetitulo: 'Consultoria d’IA i vendes · Programari propi fet a Andorra',
       titulo: 'La teva empresa, connectada.',
       subtitulo:
         'Comptabilitat, nòmines, compres, vendes i tràmits en un sol lloc. Amb una IA que fa la feina repetitiva i una consultoria que t’acompanya.',
       botonDemo: 'Demana una demostració',
       botonPrecio: 'Calcula el teu preu',
       nota: 'Des de {base} al mes · {usuarios} usuaris inclosos · sense impostos',
+      animacion: { pausa: 'Atura l’animació', reanuda: 'Reprèn l’animació' },
       nodos: { compras: 'Compres', ventas: 'Vendes i CRM', rrhh: 'RRHH', contabilidad: 'Comptabilitat', bancos: 'Bancs', muv: 'MUV' },
     },
     problema: {
       titulo: 'Massa programes. Massa fulls de càlcul. Massa feina repetida.',
       puntos: [
-        "Factures que algú ha de teclejar una a una.",
+        'Factures que algú ha de teclejar una a una.',
         'Nòmines i CASS que depenen d’una sola persona.',
         'Bancs que no quadren fins a final de mes.',
         'Lleis que canvien al BOPA sense que te n’adonis.',
@@ -76,20 +77,20 @@ export const ca = {
           'El cervell operatiu de l’empresa: mapes de coneixement, tasques amb responsables, dates i dependències, i una IA privada que funciona a la teva oficina.',
       },
       consultoria: {
-        titulo: "Consultoria d'IA i vendes",
+        titulo: 'Consultoria d’IA i vendes',
         texto:
-          "Diagnòstic, formació, assistents i automatitzacions. I treballs d'IA a mida, segons el teu pressupost.",
+          'Diagnòstic, formació, assistents i automatitzacions. I treballs d’IA a mida, segons el teu pressupost.',
       },
       mas: 'Descobreix-ho',
     },
     rrhh: {
       antetitulo: 'Recursos humans',
-      titulo: "Recursos humans d'Andorra, de debò.",
+      titulo: 'Recursos humans d’Andorra, de debò.',
       texto:
         'Fitxa, contractes, alta a la CASS, nòmina i IRPF andorrà, vacances, horaris, fitxatge amb portal de l’empleat i finiquits. Tot connectat amb la comptabilitat.',
       puntos: [
         'Els documents de les persones es llegeixen amb una IA que funciona a les teves instal·lacions.',
-        "Lectura dels documents d'identitat per omplir la fitxa en segons.",
+        'Lectura dels documents d’identitat per omplir la fitxa en segons.',
         'Cada canvi queda registrat.',
       ],
       espana:
@@ -180,7 +181,7 @@ export const ca = {
         pedido: 'Sol·licitud de comanda',
         centralita: 'Centraleta amb IA per a consultoris',
         precios: 'Preus i pressupost',
-        consultoria: "Consultoria d'IA i vendes",
+        consultoria: 'Consultoria d’IA i vendes',
         muv: 'MUV',
         web: 'Disseny de pàgines web',
         otro: 'Altres',
@@ -206,7 +207,7 @@ export const ca = {
   servicios: {
     titulo: 'Serveis · Synentor',
     descripcion:
-      "Synentor Suite ERP-CRM mòdul a mòdul, MUV, consultoria d'IA i vendes, energia, migracions, portal de l'empleat i pàgines web.",
+      'Synentor Suite ERP-CRM mòdul a mòdul, MUV, consultoria d’IA i vendes, energia, migracions, portal de l’empleat i pàgines web.',
     encabezado: 'Tot el que fem, sense lletra petita.',
     entrada:
       'Programari propi i consultoria. A cada mòdul et diem si funciona avui al teu país, si està en desenvolupament imminent o si s’adapta a mida.',
@@ -267,9 +268,9 @@ export const ca = {
       enDesarrollo: 'Encara no té edició simultània en temps real ni aplicació mòbil: en desenvolupament.',
     },
     consultoria: {
-      titulo: "Consultoria d'IA i vendes",
+      titulo: 'Consultoria d’IA i vendes',
       texto:
-        "Som una consultoria d'IA i de vendes. Diagnòstic, formació, assistents, automatitzacions i treballs d'IA a mida, segons el teu pressupost.",
+        'Som una consultoria d’IA i de vendes. Diagnòstic, formació, assistents, automatitzacions i treballs d’IA a mida, segons el teu pressupost.',
       categorias: {
         estrategia: 'Estratègia i diagnòstic',
         formacion: 'Formació',
@@ -284,7 +285,7 @@ export const ca = {
       desde: 'des de {precio}',
       cuota: 'i des de {cuota} al mes',
       nota: 'Preus per a una microempresa, sense impostos (catàleg del {fecha}). Per a empreses més grans, segons la proposta.',
-      medida: "Treballs d'IA a mida: et fem el pressupost.",
+      medida: 'Treballs d’IA a mida: et fem el pressupost.',
     },
     energia: {
       titulo: 'Energia',
@@ -452,7 +453,7 @@ export const ca = {
       paquete: 'Paquet Synentor Complet',
       paqueteUsuario: 'Usuari addicional del paquet: {precio} al mes',
       muv: 'MUV',
-      consultoria: "Consultoria d'IA i vendes",
+      consultoria: 'Consultoria d’IA i vendes',
       servicios: 'Energia, migracions, portal i webs',
       verServicios: 'Tots els detalls, a Serveis',
       implantacion: 'Implantació: {precio} la jornada',

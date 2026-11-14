@@ -54,6 +54,21 @@
   --syn-cerebro-sombra: drop-shadow(0 0 15px rgba(139, 92, 246, 0.6)) drop-shadow(0 0 30px rgba(59, 130, 246, 0.4));
   --syn-cerebro-mascara: radial-gradient(ellipse 100% 100% at center, black 50%, transparent 80%);
 
+  /* Revisión de diseño (14/11/2026). */
+  --syn-linea: rgba(255, 255, 255, 0.08);
+  /* Bordes de los controles (campos, botones ±, interruptores, fichas): 3,5:1 sobre el azul noche (WCAG 1.4.11). */
+  --syn-borde-control: rgba(255, 255, 255, 0.38);
+  --syn-borde-secundario: rgba(255, 255, 255, 0.45);
+  --syn-tenue-2: rgba(201, 207, 221, 0.85);
+  --syn-sombra-cabecera: 0 10px 30px -18px rgba(0, 0, 0, 0.7);
+  --syn-sombra-menu: 0 20px 40px rgba(0, 0, 0, 0.5);
+  --syn-sombra-icono-claro: 0 6px 16px -8px rgba(251, 151, 58, 0.45);
+  --syn-pie-fondo: linear-gradient(var(--syn-noche), #03060f);
+  --syn-desvanece: linear-gradient(to bottom, black 55%, transparent);
+  --syn-tarjeta-oscura: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  --syn-tarjeta-oscura-sombra: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 24px 60px -32px rgba(0, 0, 0, 0.8);
+  --syn-oro-borde: rgba(251, 191, 36, 0.45);
+
   --syn-fuente: Arial, Helvetica, sans-serif;
   /* Títulos en Manrope (gerencia, 14/11/2026), servida desde la propia web. */
   --syn-fuente-titulos: 'Manrope Variable', Arial, Helvetica, sans-serif;
@@ -90,6 +105,12 @@ body {
   line-height: 1.45;
 }
 
+@media (min-width: 900px) {
+  body {
+    font-size: 17px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -115,7 +136,7 @@ img {
   width: 100%;
   max-width: var(--syn-ancho);
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 clamp(20px, 4vw, 40px);
 }
 
 .texto-oro {
@@ -153,7 +174,11 @@ img {
 .boton-contorno {
   background: transparent;
   color: var(--syn-blanco);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 0 0 1px var(--syn-borde-secundario);
+}
+
+.boton-contorno:hover {
+  background: var(--syn-cristal);
 }
 
 .boton:focus-visible,
@@ -164,6 +189,24 @@ select:focus-visible,
 textarea:focus-visible {
   outline: 3px solid var(--syn-hielo);
   outline-offset: 2px;
+}
+
+/* Sobre lo claro, el hielo no se ve (1,4:1): el foco pasa al azul legible (5,6:1). */
+.claro :focus-visible {
+  outline-color: var(--syn-azul-legible);
+}
+
+/* La cabecera fija no tapa el destino de un ancla ni el foco. */
+html {
+  scroll-padding-top: 88px;
+}
+
+/* Alto contraste del sistema: el texto con degradado se ve en su color. */
+@media (forced-colors: active) {
+  .texto-oro {
+    background: none;
+    color: CanvasText;
+  }
 }
 
 .solo-lector {

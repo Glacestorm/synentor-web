@@ -51,6 +51,7 @@ export const en: Textos = {
       botonDemo: 'Request a demo',
       botonPrecio: 'Work out your price',
       nota: 'From {base} a month · {usuarios} users included · excluding taxes',
+      animacion: { pausa: 'Pause the animation', reanuda: 'Play the animation' },
       nodos: { compras: 'Purchasing', ventas: 'Sales and CRM', rrhh: 'HR', contabilidad: 'Accounting', bancos: 'Banks', muv: 'MUV' },
     },
     problema: {

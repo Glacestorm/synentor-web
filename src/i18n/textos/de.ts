@@ -51,6 +51,7 @@ export const de: Textos = {
       botonDemo: 'Demo anfragen',
       botonPrecio: 'Preis berechnen',
       nota: 'Ab {base} pro Monat · {usuarios} Nutzer inklusive · zzgl. Steuern',
+      animacion: { pausa: 'Animation anhalten', reanuda: 'Animation fortsetzen' },
       nodos: { compras: 'Einkauf', ventas: 'Vertrieb und CRM', rrhh: 'Personal', contabilidad: 'Buchhaltung', bancos: 'Banken', muv: 'MUV' },
     },
     problema: {
