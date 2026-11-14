@@ -12,9 +12,9 @@ guía, se busca por su nombre en el buscador del panel.
 
 1. En IONOS → Dominios → synentor.com → DNS: haz una captura o copia de **todos** los registros (A, AAAA, CNAME, MX, TXT,
    SRV). Es la lista con la que se comprueba el paso 1.
-2. Decide qué pasa con las pantallas del ERP que hoy sirve también synentor.com (`/auth`, `/obelixia-admin`…): con la web
-   nueva dejan de existir en ese dominio y dan «no existe». Si alguien entra al ERP por ahí, hay que darle otra dirección
-   antes.
+2. **Decidido (gerencia, 14/11/2026): synentor.com es solo la página web.** Las pantallas del ERP que hoy sirve también
+   (`/auth`, `/obelixia-admin`…) dejan de estar en ese dominio y dan «no existe». Nadie entra al ERP por ahí: cada
+   instalación del ERP tiene su propia dirección.
 
 ### Los registros de synentor.com (captura de IONOS del 14/11/2026: 14 registros)
 
@@ -89,7 +89,10 @@ Es el momento en que la web anterior deja de verse.
    los del correo**.
 3. Para que `www.synentor.com` pueda redirigir (paso 7), añade un registro AAAA `www` → `100::` **con el proxy activado**
    (nube naranja): es una dirección vacía que Cloudflare usa para los nombres que solo redirigen.
-4. Comprueba:
+4. En Lovable, **despublica el proyecto** (y, si ya no lo usáis, dalo de baja): su dirección propia (`*.lovable.app`)
+   seguiría enseñando el código de las pantallas del ERP. Solo después de este paso 6: antes, synentor.com se quedaría sin
+   web.
+5. Comprueba:
    - `https://synentor.com/` lleva a la portada del idioma del visitante;
    - `https://synentor.com/rrhh-espana` lleva a «Servicios», y una dirección inventada da la página de «no existe»;
    - el formulario funciona;
