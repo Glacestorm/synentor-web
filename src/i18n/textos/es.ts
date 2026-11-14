@@ -160,6 +160,8 @@ export const es: Textos = {
       asuntos: {
         informacion: 'Información general',
         demostracion: 'Pedir una demostración',
+        pedido: 'Solicitud de pedido',
+        centralita: 'Centralita con IA para consultorios',
         precios: 'Precios y presupuesto',
         consultoria: 'Consultoría de IA y ventas',
         muv: 'MUV',

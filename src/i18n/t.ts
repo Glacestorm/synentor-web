@@ -10,10 +10,4 @@ export function textos(idioma: Idioma): Textos {
   return TEXTOS[idioma] ?? TEXTOS.ca;
 }
 
-/** Sustituye los {marcadores} de un texto. Un marcador sin valor es un error al construir: nunca sale «{base}». */
-export function rellena(texto: string, valores: Record<string, string | number>): string {
-  return texto.replace(/\{([a-zA-Z]+)\}/g, (_, clave: string) => {
-    if (!(clave in valores)) throw new Error(`Falta el valor de {${clave}} en «${texto}»`);
-    return String(valores[clave]);
-  });
-}
+export { rellena } from './rellena';

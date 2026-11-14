@@ -27,7 +27,7 @@ jobs:
         run: npm ci
       - name: Tipos
         run: npm run typecheck
-      - name: Pruebas
-        run: npm test
       - name: Construir
         run: npm run build
+      - name: Pruebas
+        run: npm test

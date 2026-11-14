@@ -1,0 +1,318 @@
+---
+// Servicios (diseño §8 y §7.4 ter): la Suite módulo a módulo con su estado en cada país, MUV, la consultoría por
+// categorías, energía, migraciones, portal, webs, la centralita (próximamente) e implantación. Precios de la tarifa.
+import { textos, rellena } from '../../i18n/t';
+import { ruta, type Idioma } from '../../i18n/idiomas';
+import { MODULOS, TARIFA, type ModuloId } from '../../lib/precios/tarifa';
+import { estadoModulo, type Producto } from '../../lib/precios/disponibilidad';
+import { porCategoria, FECHA_CATALOGO } from '../../lib/consultoria';
+import { euros, porcentaje } from '../../lib/formato';
+
+interface Props {
+  idioma: Idioma;
+}
+const { idioma } = Astro.props;
+const todo = textos(idioma);
+const tx = todo.servicios;
+const tt = todo.precios.tablas;
+const estados = todo.precios.configurador.estados;
+const eur = (n: number) => euros(n, idioma);
+const contacto = ruta('contacto', idioma);
+const fechaLocal = (iso: string) => new Date(`${iso}T12:00:00Z`).toLocaleDateString(idioma, { timeZone: 'UTC' });
+
+const filas: { id: Producto; nombre: string; texto: string; precio: string; requiere?: string }[] = [
+  {
+    id: 'base',
+    nombre: tx.modulos.base.nombre,
+    texto: tx.modulos.base.texto,
+    precio: rellena(tt.alMes, { precio: eur(TARIFA.base.cuota) }),
+  },
+  ...MODULOS.map((m: ModuloId) => {
+    const def = TARIFA.modulos[m] as { cuota: number; porPersona?: number; requiere?: ModuloId };
+    return {
+      id: m,
+      nombre: tx.modulos[m].nombre,
+      texto: tx.modulos[m].texto,
+      precio:
+        rellena(tt.alMes, { precio: eur(def.cuota) }) +
+        (def.porPersona ? ` ${rellena(tt.porPersona, { precio: eur(def.porPersona) })}` : ''),
+      requiere: def.requiere ? rellena(tx.suite.requiere, { modulo: tx.modulos[def.requiere].nombre }) : undefined,
+    };
+  }),
+];
+const columnas = [
+  { pais: 'AD', titulo: tx.columnas.andorra },
+  { pais: 'ES', titulo: tx.columnas.espana },
+  { pais: 'FR', titulo: tx.columnas.otros },
+] as const;
+const mon = TARIFA.energia.monitorizacion;
+const t1 = TARIFA.muv.tramos[0];
+const t2 = TARIFA.muv.tramos[1];
+---
+
+<section class="cabecera-pagina">
+  <div class="contenedor estrecho">
+    <h1>{tx.encabezado}</h1>
+    <p class="subtitulo">{tx.entrada}</p>
+  </div>
+</section>
+
+<section class="bloque" id="suite">
+  <div class="contenedor">
+    <h2>{tx.suite.titulo}</h2>
+    <p>{tx.suite.texto}</p>
+    <div class="tabla-envoltura">
+      <table class="tabla-modulos">
+        <thead>
+          <tr>
+            <th scope="col">{tt.concepto}</th>
+            <th scope="col">{tt.precio}</th>
+            {columnas.map((c) => <th scope="col">{c.titulo}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {
+            filas.map((f) => (
+              <tr id={f.id === 'electrica' ? 'electrica' : undefined}>
+                <th scope="row">
+                  <strong>{f.nombre}</strong>
+                  <span class="pequeno">{f.texto}</span>
+                  {f.requiere && <span class="requiere">{f.requiere}</span>}
+                </th>
+                <td class="precio">{f.precio}</td>
+                {columnas.map((c) => {
+                  const e = estadoModulo(c.pais, f.id);
+                  return (
+                    <td>
+                      <span class={`conf-estado estado-${e}`}>{estados[e]}</span>
+                    </td>
+                  );
+                })}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="pequeno">{tx.suite.idiomaPrograma}</p>
+  </div>
+</section>
+
+<section class="bloque claro" id="muv">
+  <div class="contenedor dos-col">
+    <div>
+      <h2>{tx.muv.titulo}</h2>
+      <p>{tx.muv.texto}</p>
+      <p class="pequeno">{tx.muv.enDesarrollo}</p>
+    </div>
+    <div>
+      <p class="destacado">
+        {
+          rellena(tx.muv.precio, {
+            gratis: TARIFA.muv.gratisHasta,
+            desde1: TARIFA.muv.gratisHasta + 1,
+            hasta1: t1.hasta,
+            precio1: eur(t1.precio),
+            hasta2: t2.hasta,
+            precio2: eur(t2.precio),
+          })
+        }
+      </p>
+      <p>
+        {
+          rellena(tx.muv.equipos, {
+            basico: eur(TARIFA.muv.equipos.basico),
+            ia: eur(TARIFA.muv.equipos.ia),
+            iaPlus: eur(TARIFA.muv.equipos.iaPlus),
+          })
+        }
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="bloque" id="consultoria">
+  <div class="contenedor">
+    <h2>{tx.consultoria.titulo}</h2>
+    <p>{tx.consultoria.texto}</p>
+    <div class="rejilla-3">
+      {
+        porCategoria().map((g) => (
+          <article class="tarjeta">
+            <h3>{tx.consultoria.categorias[g.clave]}</h3>
+            <p class="precio">
+              {rellena(tx.consultoria.desde, { precio: eur(g.desde) })}
+              {g.cuotaDesde !== null && ` ${rellena(tx.consultoria.cuota, { cuota: eur(g.cuotaDesde) })}`}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+    <p class="pequeno">{rellena(tx.consultoria.nota, { fecha: fechaLocal(FECHA_CATALOGO) })}</p>
+    <p><a class="enlace" href={`${contacto}?asunto=consultoria`}>{tx.consultoria.medida} →</a></p>
+  </div>
+</section>
+
+<section class="bloque claro" id="energia">
+  <div class="contenedor">
+    <h2>{tx.energia.titulo}</h2>
+    <p>{tx.energia.texto}</p>
+    <div class="rejilla-2">
+      <article class="tarjeta">
+        <h3>{tx.energia.particulares.titulo}</h3>
+        <p>{rellena(tx.energia.particulares.texto, { precio: eur(TARIFA.energia.estudioParticular) })}</p>
+      </article>
+      <article class="tarjeta">
+        <h3>{tx.energia.empresas.titulo}</h3>
+        <p>
+          {
+            rellena(tx.energia.empresas.texto, {
+              precio: eur(TARIFA.energia.estudioEmpresaPorSuministro),
+              porcentaje: porcentaje(TARIFA.energia.exito, idioma),
+            })
+          }
+        </p>
+      </article>
+    </div>
+    <p class="destacado">{tx.energia.comisiones}</p>
+    <h3>{tx.energia.monitorizacion.titulo}</h3>
+    <p>{tx.energia.monitorizacion.texto}</p>
+    <div class="tabla-envoltura">
+      <table class="tabla-simple">
+        <tbody>
+          {
+            (['vivienda', 'pyme', 'edificio'] as const).map((k) => (
+              <tr>
+                <th scope="row">{tx.energia.monitorizacion[k]}</th>
+                <td>{rellena(tx.energia.monitorizacion.instalacionDesde, { precio: eur(mon[k].instalacionDesde) })}</td>
+                <td>{rellena(tx.energia.monitorizacion.cuota, { precio: eur(mon[k].cuota) })}</td>
+              </tr>
+            ))
+          }
+          <tr>
+            <th scope="row">{tx.energia.monitorizacion.granConsumidor}</th>
+            <td>{tx.energia.monitorizacion.instalacionMedida}</td>
+            <td>{rellena(tx.energia.monitorizacion.cuotaDesde, { precio: eur(mon.granConsumidor.cuotaDesde) })}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pequeno">{tx.energia.monitorizacion.incluye}</p>
+    <p><a class="enlace" href="#electrica">{tx.energia.programa} →</a></p>
+  </div>
+</section>
+
+<section class="bloque" id="migracion">
+  <div class="contenedor">
+    <h2>{tx.migracion.titulo}</h2>
+    <p>{tx.migracion.texto}</p>
+    <div class="rejilla-3">
+      <article class="tarjeta">
+        <h3>{tx.migracion.arranque.nombre}</h3>
+        <p>{tx.migracion.arranque.texto}</p>
+        <p class="precio">{rellena(tx.migracion.arranque.precio, { precio: eur(TARIFA.migracion.arranque) })}</p>
+      </article>
+      <article class="tarjeta">
+        <h3>{tx.migracion.contabilidad.nombre}</h3>
+        <p>{tx.migracion.contabilidad.texto}</p>
+        <p class="precio">
+          {
+            rellena(tx.migracion.contabilidad.precio, {
+              precio: eur(TARIFA.migracion.contabilidadPrimerEjercicio),
+              adicional: eur(TARIFA.migracion.contabilidadEjercicioAdicional),
+            })
+          }
+        </p>
+      </article>
+      <article class="tarjeta">
+        <h3>{tx.migracion.personal.nombre}</h3>
+        <p>{tx.migracion.personal.texto}</p>
+        <p class="precio">
+          {rellena(tx.migracion.personal.precio, { precio: eur(TARIFA.migracion.personal), personas: TARIFA.migracion.personalHasta })}
+        </p>
+      </article>
+    </div>
+    <p class="pequeno">{tx.migracion.aMedida}</p>
+    <h3>{tx.migracion.convivencia.titulo}</h3>
+    <p>
+      {
+        rellena(tx.migracion.convivencia.texto, {
+          puesta: eur(TARIFA.convivencia.puestaEnMarcha),
+          cuota: eur(TARIFA.convivencia.cuota),
+          cargas: TARIFA.convivencia.cargasAlMes,
+        })
+      }
+    </p>
+  </div>
+</section>
+
+<section class="bloque claro" id="portal">
+  <div class="contenedor dos-col">
+    <div>
+      <h2>{tx.portal.titulo}</h2>
+      <p>{tx.portal.texto}</p>
+      <p class="destacado">{tx.portal.dato}</p>
+    </div>
+    <div>
+      <p>
+        {
+          rellena(tx.portal.precio, {
+            cuota: eur(TARIFA.portalEmpleado.cuota),
+            personas: TARIFA.portalEmpleado.personasIncluidas,
+            adicional: eur(TARIFA.portalEmpleado.personaAdicional),
+            implantacion: eur(TARIFA.portalEmpleado.implantacion),
+          })
+        }
+      </p>
+      <p class="pequeno">{tx.portal.incluido}</p>
+    </div>
+  </div>
+</section>
+
+<section class="bloque" id="webs">
+  <div class="contenedor">
+    <h2>{tx.webs.titulo}</h2>
+    <p>{tx.webs.texto}</p>
+    <div class="rejilla-3">
+      <article class="tarjeta">
+        <h3>{tx.webs.esencial.nombre}</h3>
+        <p>{tx.webs.esencial.texto}</p>
+        <p class="precio">{eur(TARIFA.webs.esencial)}</p>
+      </article>
+      <article class="tarjeta">
+        <h3>{tx.webs.profesional.nombre}</h3>
+        <p>{tx.webs.profesional.texto}</p>
+        <p class="precio">{eur(TARIFA.webs.profesional)}</p>
+      </article>
+      <article class="tarjeta">
+        <h3>{tx.webs.premium.nombre}</h3>
+        <p>{tx.webs.premium.texto}</p>
+        <p class="precio">{rellena(tx.webs.desde, { precio: eur(TARIFA.webs.premiumDesde) })}</p>
+      </article>
+    </div>
+    <p>{tx.webs.tienda}</p>
+    <p class="pequeno">
+      {rellena(tx.webs.extras, { pagina: eur(TARIFA.webs.paginaAdicional), idioma: eur(TARIFA.webs.idiomaAdicional) })}
+    </p>
+    <p class="pequeno">
+      {rellena(tx.webs.mantenimiento, { basico: eur(TARIFA.webs.mantenimientoBasico), plus: eur(TARIFA.webs.mantenimientoPlus) })}
+    </p>
+  </div>
+</section>
+
+<section class="bloque claro" id="centralita">
+  <div class="contenedor estrecho">
+    <p class="etiqueta-proximamente">{tx.centralita.etiqueta}</p>
+    <h2>{tx.centralita.titulo}</h2>
+    <p>{tx.centralita.texto}</p>
+    <a class="boton boton-contorno" href={`${contacto}?asunto=centralita`}>{tx.centralita.boton}</a>
+  </div>
+</section>
+
+<section class="bloque" id="implantacion">
+  <div class="contenedor estrecho">
+    <h2>{tx.implantacion.titulo}</h2>
+    <p>{rellena(tx.implantacion.texto, { jornada: eur(TARIFA.implantacion.jornada), minimo: TARIFA.implantacion.minimoSuite })}</p>
+    <p>{tx.implantacion.soporte}</p>
+  </div>
+</section>

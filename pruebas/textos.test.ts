@@ -29,8 +29,8 @@ describe('textos de la web', () => {
       const porClave = (o: unknown, ruta: string): string =>
         ruta.split(/\.|\[(\d+)\]/).filter(Boolean).reduce((v: any, k) => v?.[k], o) as string;
       for (const ruta of referencia) {
-        const enCa = (porClave(TEXTOS.ca, ruta).match(/\{[a-zA-Z]+\}/g) ?? []).sort();
-        const aqui = (porClave(textos, ruta).match(/\{[a-zA-Z]+\}/g) ?? []).sort();
+        const enCa = (porClave(TEXTOS.ca, ruta).match(/\{[a-zA-Z0-9]+\}/g) ?? []).sort();
+        const aqui = (porClave(textos, ruta).match(/\{[a-zA-Z0-9]+\}/g) ?? []).sort();
         expect(aqui, `${idioma} ${ruta}`).toEqual(enCa);
       }
     });

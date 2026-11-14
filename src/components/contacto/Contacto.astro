@@ -1,0 +1,94 @@
+---
+// Contacto (diseño §8 y §9): el formulario y los datos de la empresa. «Enviado» solo si el Worker lo confirma (tarea 5);
+// si no, se dice y se ofrece el correo. Llega rellenado desde el configurador (?asunto=pedido&seleccion=…).
+import { textos, rellena } from '../../i18n/t';
+import { ruta, type Idioma } from '../../i18n/idiomas';
+import { EMPRESA } from '../../datos/empresa';
+
+interface Props {
+  idioma: Idioma;
+}
+const { idioma } = Astro.props;
+const tx = textos(idioma).contacto;
+const enConstitucion = textos(idioma).pie.enConstitucion;
+const f = tx.formulario;
+const sitekey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY as string | undefined;
+const correoEnlace = `<a href="mailto:${EMPRESA.correo}">${EMPRESA.correo}</a>`;
+const politica = `<a href="${ruta('privacidad', idioma)}">${f.politica}</a>`;
+const mensajes = {
+  ok: f.ok,
+  datos: f.errores.datos,
+  robot: f.errores.robot,
+  envio: f.errores.envio,
+  red: f.errores.red,
+  enviando: f.enviando,
+};
+---
+
+<section class="cabecera-pagina">
+  <div class="contenedor estrecho">
+    <h1>{tx.encabezado}</h1>
+    <p class="subtitulo">{tx.entrada}</p>
+  </div>
+</section>
+
+<section class="bloque">
+  <div class="contenedor dos-col contacto">
+    <form id="formulario" class="formulario" novalidate data-mensajes={JSON.stringify(mensajes)} data-idioma={idioma}>
+      <h2>{f.titulo}</h2>
+      <label>{f.nombre} <span class="obligatorio">({f.obligatorio})</span>
+        <input name="nombre" autocomplete="name" required maxlength="120" />
+      </label>
+      <label>{f.correo} <span class="obligatorio">({f.obligatorio})</span>
+        <input name="correo" type="email" autocomplete="email" required maxlength="200" />
+      </label>
+      <label>{f.empresa}<input name="empresa" autocomplete="organization" maxlength="160" /></label>
+      <label>{f.telefono}<input name="telefono" type="tel" autocomplete="tel" maxlength="40" /></label>
+      <label>{f.asunto}
+        <select name="asunto">
+          {Object.entries(f.asuntos).map(([k, v]) => <option value={k}>{v}</option>)}
+        </select>
+      </label>
+      <label>{f.mensaje} <span class="obligatorio">({f.obligatorio})</span>
+        <textarea name="mensaje" rows="8" required maxlength="5000"></textarea>
+      </label>
+      <label class="trampa" aria-hidden="true">Web<input name="web" tabindex="-1" autocomplete="off" /></label>
+      <label class="consentimiento">
+        <input name="consentimiento" type="checkbox" required />
+        <span set:html={rellena(f.consentimiento, { politica })} />
+      </label>
+      {sitekey && <div class="cf-turnstile" data-sitekey={sitekey} data-language={idioma}></div>}
+      <button class="boton boton-oro" type="submit">{f.enviar}</button>
+      <p class="estado-envio" role="status" aria-live="polite"></p>
+      <p class="pequeno alternativa" hidden set:html={rellena(f.alternativa, { correo: correoEnlace })} />
+      <noscript><p set:html={rellena(f.sinJs, { correo: correoEnlace })} /></noscript>
+    </form>
+
+    <aside class="datos-contacto">
+      <h2>{tx.datos}</h2>
+      <dl>
+        <dt>{tx.correo}</dt>
+        <dd><a href={`mailto:${EMPRESA.correo}`}>{EMPRESA.correo}</a></dd>
+        <dt>{tx.telefono}</dt>
+        <dd><a href={`tel:${EMPRESA.telefono.enlace}`}>{EMPRESA.telefono.texto}</a></dd>
+        <dt>{tx.direccion}</dt>
+        <dd>
+          {EMPRESA.razonSocial} ({enConstitucion})<br />
+          {EMPRESA.direccion.linea}<br />
+          {EMPRESA.direccion.codigoPostal} {EMPRESA.direccion.localidad}<br />
+          {EMPRESA.direccion.pais}
+        </dd>
+        <dt>{tx.horario}</dt>
+        <dd>{tx.horarioTexto}</dd>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+{sitekey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+
+<script>
+  import { montaFormulario } from '../../scripts/formulario';
+  const form = document.getElementById('formulario') as HTMLFormElement | null;
+  if (form) montaFormulario(form, new URLSearchParams(location.search));
+</script>

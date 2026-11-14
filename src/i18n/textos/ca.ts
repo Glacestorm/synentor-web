@@ -161,6 +161,8 @@ export const ca = {
       asuntos: {
         informacion: 'Informació general',
         demostracion: 'Demanar una demostració',
+        pedido: 'Sol·licitud de comanda',
+        centralita: 'Centraleta amb IA per a consultoris',
         precios: 'Preus i pressupost',
         consultoria: "Consultoria d'IA i vendes",
         muv: 'MUV',

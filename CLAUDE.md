@@ -39,5 +39,6 @@ entrada) y `/api/*` (formulario); lo demás lo sirve el almacén de ficheros est
 
 - Instalar: `npm ci` (el `.npmrc` lleva `legacy-peer-deps=true`: npm 10 se rompe resolviendo las dependencias de vitest 4
   con «Cannot read properties of null (reading 'edgesOut')»).
-- Pruebas: `npm test`. Construir: `npm run build`. Probar el Worker en local: `npm run preview`.
+- Construir: `npm run build`. Pruebas: `npm test`, **después de construir** (`pruebas/paginas.test.ts` lee `dist/`; la CI
+  construye antes de probar). Probar el Worker en local: `npm run preview`.
 - Versiones fijadas exactas en `package.json`; Node 22.
