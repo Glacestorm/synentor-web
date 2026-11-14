@@ -7,3 +7,6 @@ dist/
 .env.*
 test-results/
 playwright-report/
+
+# Capturas de pantalla para revisar (no van al repositorio)
+capturas-idiomas/
