@@ -9,6 +9,8 @@ todas (Google Analytics, Microsoft Clarity, píxel de Meta y LinkedIn Insight Ta
 Las duraciones marcadas «(sin verificar)» no se han podido comprobar en la página oficial del proveedor: la web no deja
 activar esa herramienta hasta comprobarlas.
 
+**Activas en esta versión**: Google Analytics.
+
 ## Puntos que hay que confirmar
 
 **Asesor jurídico**

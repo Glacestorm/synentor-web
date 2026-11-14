@@ -8,6 +8,8 @@ import { EMPRESA } from '../src/datos/empresa';
 import { COOKIES, PROVEEDORES, NAVEGADORES, PLAZOS } from '../src/datos/legal';
 import { duracion } from '../src/lib/duracion';
 import { rellena } from '../src/i18n/rellena';
+import { HERRAMIENTAS } from '../src/datos/analitica';
+import { herramientasValidas } from '../src/lib/consentimiento';
 
 function md(idioma: Idioma): string {
   const todo = textos(idioma);
@@ -65,6 +67,11 @@ function md(idioma: Idioma): string {
   return [`## ${idioma === 'ca' ? 'Català (prevalece)' : 'Castellano'}`, pagina(lg.aviso), pagina(lg.privacidad), pagina(lg.cookies)].join('\n\n');
 }
 
+const NOMBRES = { ga4: 'Google Analytics', clarity: 'Microsoft Clarity', metaPixel: 'píxel de Meta', linkedin: 'LinkedIn Insight Tag' } as const;
+const validas = herramientasValidas(HERRAMIENTAS);
+const lista = (Object.keys(NOMBRES) as (keyof typeof NOMBRES)[]).filter((k) => validas[k] !== null).map((k) => NOMBRES[k]);
+const activas = lista.length ? lista.join(', ') : 'ninguna (solo las cookies necesarias y Umami, sin cookies)';
+
 const cabecera = `# Textos legales de synentor.com — para la revisión del asesor jurídico
 
 Generado con \`npm run revision-legal\` desde los textos y datos de la web (no se edita a mano). Fecha de los textos:
@@ -75,6 +82,8 @@ Generado con \`npm run revision-legal\` desde los textos y datos de la web (no s
 todas (Google Analytics, Microsoft Clarity, píxel de Meta y LinkedIn Insight Tag), para revisarlas antes de activarlas.
 Las duraciones marcadas «(sin verificar)» no se han podido comprobar en la página oficial del proveedor: la web no deja
 activar esa herramienta hasta comprobarlas.
+
+**Activas en esta versión**: ${activas}.
 
 ## Puntos que hay que confirmar
 

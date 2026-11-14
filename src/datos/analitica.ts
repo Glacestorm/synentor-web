@@ -12,7 +12,7 @@ export const UMAMI = {
 // identificador: docs/PUESTA-EN-MARCHA.md, §9. No son secretos (van en la página).
 export const HERRAMIENTAS = {
   /** Google Analytics 4: «ID de medición», G- y 10 caracteres. */
-  ga4: '',
+  ga4: 'G-KB0654M7HP',
   /** Microsoft Clarity: «ID del proyecto». */
   clarity: '',
   /** Píxel de Meta: «identificador del conjunto de datos». */
