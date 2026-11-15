@@ -149,6 +149,9 @@ th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--syn-cri
   border: 1px solid var(--syn-borde-control); border-radius: 14px; padding: 22px 16px 10px; transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .conf-campo input, .conf-campo select { padding: 12px 14px; }
+/* La lista que abre el navegador hereda el texto blanco del campo y, en Windows, pinta su fondo blanco: sin esto, las
+   opciones no se leen («Andorra» en el país del configurador). */
+.campo select option, .conf-campo select option { background-color: var(--syn-noche-2); color: var(--syn-blanco); }
 .campo textarea { resize: vertical; min-height: 150px; }
 .campo label { position: absolute; left: 17px; top: 16px; color: var(--syn-tenue); pointer-events: none; transition: all 0.15s ease; }
 .campo input:focus + label, .campo input:not(:placeholder-shown) + label,
