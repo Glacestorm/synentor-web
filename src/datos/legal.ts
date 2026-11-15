@@ -20,7 +20,8 @@ export interface CookieLegal {
   terceros: boolean;
   /** La herramienta que la pone; `null` = se usa siempre (necesaria). */
   herramienta: Herramienta | null;
-  /** Nombre y duración comprobados en la página oficial del proveedor. */
+  /** Nombre y finalidad comprobados en la página oficial del proveedor, y la duración comprobada (allí o medida en la
+   * web) o declarada como «la fija el proveedor» si no se ha podido medir. */
   verificado: boolean;
 }
 
@@ -40,14 +41,17 @@ export const COOKIES: readonly CookieLegal[] = [
   // Google Analytics 4: la web fija cookie_expires a 395 días (unos 13 meses), que afecta a _ga y _ga_<id>.
   { nombre: '_ga', titular: 'Google', finalidad: 'gaUsuario', duracion: meses(13), terceros: false, herramienta: 'ga4', verificado: true },
   { nombre: '_ga_<ID>', titular: 'Google', finalidad: 'gaSesion', duracion: meses(13), terceros: false, herramienta: 'ga4', verificado: true },
-  // Microsoft Clarity: nombres y finalidades oficiales; duraciones sin comprobar.
-  { nombre: '_clck', titular: 'Microsoft', finalidad: 'clarityUsuario', duracion: año(1), terceros: false, herramienta: 'clarity', verificado: false },
-  { nombre: '_clsk', titular: 'Microsoft', finalidad: 'claritySesion', duracion: dias(1), terceros: false, herramienta: 'clarity', verificado: false },
-  { nombre: 'CLID', titular: 'Microsoft', finalidad: 'clarityPrimeraVez', duracion: año(1), terceros: true, herramienta: 'clarity', verificado: false },
-  { nombre: 'ANONCHK', titular: 'Microsoft', finalidad: 'msAnonchk', duracion: minutos(10), terceros: true, herramienta: 'clarity', verificado: false },
-  { nombre: 'MR', titular: 'Microsoft', finalidad: 'msMr', duracion: dias(7), terceros: true, herramienta: 'clarity', verificado: false },
-  { nombre: 'MUID', titular: 'Microsoft', finalidad: 'msMuid', duracion: año(1), terceros: true, herramienta: 'clarity', verificado: false },
-  { nombre: 'SM', titular: 'Microsoft', finalidad: 'msSm', duracion: 'sesion', terceros: true, herramienta: 'clarity', verificado: false },
+  // Microsoft Clarity: nombres y finalidades de su página oficial. Duraciones medidas por gerencia el 15/11/2026 en Chrome,
+  // en la vista previa de la web: _clck caduca a 1 año y _clsk antes de 5 días (1 día según la documentación de terceros;
+  // Clarity la renueva con la visita). Las cinco de los dominios de Microsoft no se pusieron al medir: su duración la fija
+  // Microsoft y no se inventa («proveedor»).
+  { nombre: '_clck', titular: 'Microsoft', finalidad: 'clarityUsuario', duracion: año(1), terceros: false, herramienta: 'clarity', verificado: true },
+  { nombre: '_clsk', titular: 'Microsoft', finalidad: 'claritySesion', duracion: dias(1), terceros: false, herramienta: 'clarity', verificado: true },
+  { nombre: 'CLID', titular: 'Microsoft', finalidad: 'clarityPrimeraVez', duracion: 'proveedor', terceros: true, herramienta: 'clarity', verificado: true },
+  { nombre: 'ANONCHK', titular: 'Microsoft', finalidad: 'msAnonchk', duracion: 'proveedor', terceros: true, herramienta: 'clarity', verificado: true },
+  { nombre: 'MR', titular: 'Microsoft', finalidad: 'msMr', duracion: 'proveedor', terceros: true, herramienta: 'clarity', verificado: true },
+  { nombre: 'MUID', titular: 'Microsoft', finalidad: 'msMuid', duracion: 'proveedor', terceros: true, herramienta: 'clarity', verificado: true },
+  { nombre: 'SM', titular: 'Microsoft', finalidad: 'msSm', duracion: 'proveedor', terceros: true, herramienta: 'clarity', verificado: true },
   // Píxel de Meta.
   { nombre: '_fbp', titular: 'Meta', finalidad: 'metaFbp', duracion: dias(90), terceros: false, herramienta: 'metaPixel', verificado: true },
   { nombre: '_fbc', titular: 'Meta', finalidad: 'metaFbc', duracion: dias(90), terceros: false, herramienta: 'metaPixel', verificado: false },

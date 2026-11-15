@@ -797,6 +797,7 @@ export const pt: Textos = {
       terceros: 'De outra empresa',
       sesion: 'Até fechar o navegador',
       persistente: 'Até o apagar',
+      fijaProveedor: 'Definida pelo fornecedor',
       proveedor: 'Fornecedor',
       para: 'Para quê',
       donde: 'Onde trata os dados',

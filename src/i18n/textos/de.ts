@@ -797,6 +797,7 @@ export const de: Textos = {
       terceros: 'Von einem anderen Unternehmen',
       sesion: 'Bis Sie den Browser schließen',
       persistente: 'Bis Sie es löschen',
+      fijaProveedor: 'Vom Anbieter festgelegt',
       proveedor: 'Dienstleister',
       para: 'Zweck',
       donde: 'Wo die Daten verarbeitet werden',

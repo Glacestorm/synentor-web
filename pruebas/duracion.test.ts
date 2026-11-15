@@ -2,7 +2,7 @@
 import { describe, expect, it } from 'vitest';
 import { duracion } from '../src/lib/duracion';
 
-const fijos = { sesion: 'Hasta cerrar el navegador', persistente: 'Hasta que la borres' };
+const fijos = { sesion: 'Hasta cerrar el navegador', persistente: 'Hasta que la borres', proveedor: 'La fija el proveedor' };
 
 describe('duracion', () => {
   it('cifras y unidades en cada idioma', () => {
@@ -16,5 +16,7 @@ describe('duracion', () => {
   it('las duraciones sin cifra salen del texto de la página', () => {
     expect(duracion('sesion', 'es', fijos)).toBe('Hasta cerrar el navegador');
     expect(duracion('persistente', 'es', fijos)).toBe('Hasta que la borres');
+    // Una cookie de otro dominio que no se ha podido medir: no se inventa la duración.
+    expect(duracion('proveedor', 'es', fijos)).toBe('La fija el proveedor');
   });
 });

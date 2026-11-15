@@ -15,7 +15,7 @@ export const HERRAMIENTAS = {
   /** Google Analytics 4: «ID de medición», G- y 10 caracteres. */
   ga4: 'G-KB0654M7HP',
   /** Microsoft Clarity: «ID del proyecto». */
-  clarity: '',
+  clarity: 'zds517srkg',
   /** Píxel de Meta: «identificador del conjunto de datos». */
   metaPixel: '',
   /** LinkedIn Insight Tag: «ID de socio». */
