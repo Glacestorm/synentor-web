@@ -14,7 +14,8 @@
     "test": "vitest run",
     "deploy": "astro build && wrangler deploy",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "revision-legal": "esbuild scripts/revision-legal.ts --bundle --platform=node --format=esm --log-level=warning --outfile=node_modules/.cache/revision-legal.mjs && node node_modules/.cache/revision-legal.mjs"
+    "revision-legal": "esbuild scripts/revision-legal.ts --bundle --platform=node --format=esm --log-level=warning --outfile=node_modules/.cache/revision-legal.mjs && node node_modules/.cache/revision-legal.mjs",
+    "articulos-erp": "esbuild scripts/articulos-erp.ts --bundle --platform=node --format=esm --log-level=warning --outfile=node_modules/.cache/articulos-erp.mjs && node node_modules/.cache/articulos-erp.mjs"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "5.20261030.1",
