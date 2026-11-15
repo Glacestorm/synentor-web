@@ -842,7 +842,7 @@ export const en: Textos = {
       },
       microsoft365: {
         para: 'The company email, where we receive and keep messages.',
-        donde: 'European Union and United States.',
+        donde: 'European Union (Microsoft’s European region). The company is based in the United States.',
         garantia: 'EU-U.S. Data Privacy Framework and standard contractual clauses.',
       },
       umami: {

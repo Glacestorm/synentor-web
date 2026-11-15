@@ -34,15 +34,16 @@ activar esa herramienta hasta comprobarlas.
 
 **Gerencia**
 7. Número de inscripción en el Registre de Societats: el aviso legal solo dice «NRT: en trámite».
-8. Dónde guarda Microsoft 365 el correo de la empresa (centro de administración → Configuración de la organización →
-   Ubicación de los datos); el texto dice «Unión Europea y Estados Unidos».
 
-**Confirmado por gerencia (14/11/2026)**
+**Confirmado (gerencia y comprobaciones, 14 y 15/11/2026)**
 - Plazo para los mensajes de quien no llega a ser cliente: **1 año** desde el último contacto.
 - La base de datos de las pruebas de consentimiento (Cloudflare D1) se creó con la **jurisdicción de la Unión Europea**:
   los registros se guardan en la UE.
 - La cuenta de Umami está en la región **Unión Europea (Fráncfort)**: las estadísticas sin cookies se guardan en la UE;
   la empresa es de Estados Unidos.
+- Microsoft 365 (el correo de la empresa): la organización de synentor.com está en la **región «EU»** de Microsoft
+  (`tenant_region_scope: EU` en https://login.microsoftonline.com/synentor.com/v2.0/.well-known/openid-configuration,
+  15/11/2026; la tarjeta «Ubicación de los datos» del centro de administración no cargó ese día).
 
 **Comprobado y su fuente** (búsqueda en las páginas oficiales del 14/11/2026; abrir cada una antes de activar):
 - Google Analytics: `_ga` y `_ga_<ID>`; la web las limita a 395 días (unos 13 meses) con `cookie_expires`:
@@ -145,7 +146,7 @@ No venem ni cedim les teves dades. Només les tracten, per encàrrec nostre, els
 |---|---|---|---|---|
 | Cloudflare | Allotjament del web, comprovació antirobots del formulari, prova dels consentiments i registres tècnics. | La seva xarxa mundial, amb seu als Estats Units. Les proves de consentiment es guarden a la Unió Europea. | Marc de Privadesa de Dades UE-EUA i clàusules contractuals tipus. | siempre |
 | Resend | Enviar a la nostra bústia el missatge del formulari. | Estats Units. | Clàusules contractuals tipus i Marc de Privadesa de Dades UE-EUA. | siempre |
-| Microsoft | El correu de l’empresa, on rebem i guardem els missatges. | Unió Europea i Estats Units. | Marc de Privadesa de Dades UE-EUA i clàusules contractuals tipus. | siempre |
+| Microsoft | El correu de l’empresa, on rebem i guardem els missatges. | Unió Europea (regió europea de Microsoft). L’empresa és dels Estats Units. | Marc de Privadesa de Dades UE-EUA i clàusules contractuals tipus. | siempre |
 | Umami | Estadístiques de visites sense galetes. | Unió Europea (Frankfurt, Alemanya). L’empresa és dels Estats Units. | Clàusules contractuals tipus. | siempre |
 | Google | Estadístiques de visites (Google Analytics), si les acceptes. | Estats Units i altres països. | Marc de Privadesa de Dades UE-EUA i clàusules contractuals tipus. | ga4 |
 | Microsoft | Veure com es fa servir el web (Microsoft Clarity), si ho acceptes. | Estats Units. | Marc de Privadesa de Dades UE-EUA. | clarity |
@@ -333,7 +334,7 @@ No vendemos ni cedemos tus datos. Solo los tratan, por encargo nuestro, los prov
 |---|---|---|---|---|
 | Cloudflare | Alojamiento de la web, comprobación antirrobot del formulario, prueba de los consentimientos y registros técnicos. | Su red mundial, con sede en Estados Unidos. Las pruebas de consentimiento se guardan en la Unión Europea. | Marco de Privacidad de Datos UE-EE. UU. y cláusulas contractuales tipo. | siempre |
 | Resend | Enviar a nuestro buzón el mensaje del formulario. | Estados Unidos. | Cláusulas contractuales tipo y Marco de Privacidad de Datos UE-EE. UU. | siempre |
-| Microsoft | El correo de la empresa, donde recibimos y guardamos los mensajes. | Unión Europea y Estados Unidos. | Marco de Privacidad de Datos UE-EE. UU. y cláusulas contractuales tipo. | siempre |
+| Microsoft | El correo de la empresa, donde recibimos y guardamos los mensajes. | Unión Europea (región europea de Microsoft). La empresa es de Estados Unidos. | Marco de Privacidad de Datos UE-EE. UU. y cláusulas contractuales tipo. | siempre |
 | Umami | Estadísticas de visitas sin cookies. | Unión Europea (Fráncfort, Alemania). La empresa es de Estados Unidos. | Cláusulas contractuales tipo. | siempre |
 | Google | Estadísticas de visitas (Google Analytics), si las aceptas. | Estados Unidos y otros países. | Marco de Privacidad de Datos UE-EE. UU. y cláusulas contractuales tipo. | ga4 |
 | Microsoft | Ver cómo se usa la web (Microsoft Clarity), si lo aceptas. | Estados Unidos. | Marco de Privacidad de Datos UE-EE. UU. | clarity |

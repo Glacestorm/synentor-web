@@ -108,15 +108,16 @@ activar esa herramienta hasta comprobarlas.
 
 **Gerencia**
 7. Número de inscripción en el Registre de Societats: el aviso legal solo dice «NRT: en trámite».
-8. Dónde guarda Microsoft 365 el correo de la empresa (centro de administración → Configuración de la organización →
-   Ubicación de los datos); el texto dice «Unión Europea y Estados Unidos».
 
-**Confirmado por gerencia (14/11/2026)**
+**Confirmado (gerencia y comprobaciones, 14 y 15/11/2026)**
 - Plazo para los mensajes de quien no llega a ser cliente: **1 año** desde el último contacto.
 - La base de datos de las pruebas de consentimiento (Cloudflare D1) se creó con la **jurisdicción de la Unión Europea**:
   los registros se guardan en la UE.
 - La cuenta de Umami está en la región **Unión Europea (Fráncfort)**: las estadísticas sin cookies se guardan en la UE;
   la empresa es de Estados Unidos.
+- Microsoft 365 (el correo de la empresa): la organización de synentor.com está en la **región «EU»** de Microsoft
+  (\`tenant_region_scope: EU\` en https://login.microsoftonline.com/synentor.com/v2.0/.well-known/openid-configuration,
+  15/11/2026; la tarjeta «Ubicación de los datos» del centro de administración no cargó ese día).
 
 **Comprobado y su fuente** (búsqueda en las páginas oficiales del 14/11/2026; abrir cada una antes de activar):
 - Google Analytics: \`_ga\` y \`_ga_<ID>\`; la web las limita a 395 días (unos 13 meses) con \`cookie_expires\`:

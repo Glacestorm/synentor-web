@@ -844,7 +844,7 @@ export const ca = {
       },
       microsoft365: {
         para: 'El correu de l’empresa, on rebem i guardem els missatges.',
-        donde: 'Unió Europea i Estats Units.',
+        donde: 'Unió Europea (regió europea de Microsoft). L’empresa és dels Estats Units.',
         garantia: 'Marc de Privadesa de Dades UE-EUA i clàusules contractuals tipus.',
       },
       umami: {
