@@ -81,6 +81,15 @@ describe('páginas construidas', () => {
     }
   }
 
+  it('los dos botones «Pide una demostración» de la portada llevan el evento de Umami, en todos los idiomas', () => {
+    for (const idioma of idiomas) {
+      const html = readFileSync(fichero(ruta('inicio', idioma)), 'utf8');
+      const botones = html.match(/<a\b[^>]*data-umami-event="demostracion"[^>]*>/g) ?? [];
+      expect(botones.length, idioma).toBe(2);
+      for (const b of botones) expect(b, idioma).toContain('asunto=demostracion');
+    }
+  });
+
   it('la portada dice qué es y dónde: Andorra, España y Europa en el título y el antetítulo dentro del H1, en todos los idiomas', () => {
     const espana: Record<string, RegExp> = { ca: /Espanya/, es: /España/, en: /Spain/, fr: /Espagne/, pt: /Espanha/, it: /Spagna/, de: /Spanien/ };
     for (const idioma of idiomas) {
