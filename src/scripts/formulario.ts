@@ -62,6 +62,10 @@ export function montaFormulario(form: HTMLFormElement, params: URLSearchParams):
       });
       const cuerpo = (await r.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
       if (r.ok && cuerpo?.ok === true) {
+        // Estadística sin datos de nadie: solo el asunto, de la lista cerrada del formulario (Umami puede no estar).
+        (window as { umami?: { track?: (n: string, d?: Record<string, string>) => void } }).umami?.track?.('contacto-enviado', {
+          asunto: datos.asunto ?? '',
+        });
         form.reset();
         cuenta();
         form.classList.add('enviado');
