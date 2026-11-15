@@ -64,29 +64,35 @@ cada registro, nunca a partir de la captura.
 npx wrangler secret put TURNSTILE_SECRET
 ```
 
-## 4. Resend (el envío del correo del formulario)
+## 4. Resend (el envío del correo del formulario) — hecho el 15/11/2026
 
 1. Crea la cuenta de Resend y añade el dominio `synentor.com`.
-2. Resend pide unos registros en Cloudflare: el DKIM (`resend._domainkey`) y, en el subdominio `send`, un MX y un TXT de SPF.
-   Añádelos tal cual.
-   - **No cambian los MX de synentor.com**: el MX de Resend va en `send.synentor.com`, no en el dominio.
+2. Resend pide unos registros en Cloudflare. Con la configuración automática de Resend (la que se usó el 15/11/2026), los
+   pone él mismo: el DKIM (TXT `resend._domainkey`) y los CNAME `send` y `rsend` → `forge.rmta.net`. Si se añaden a mano,
+   Resend da un DKIM y, en el subdominio `send`, un MX y un TXT de SPF: se añaden tal cual.
+   - **No cambian los MX de synentor.com**: lo de Resend va en `send` (y `rsend`), no en el dominio.
 3. Espera a que Resend marque el dominio como verificado.
-4. Crea una clave de la API con permiso solo de envío y guárdala como secreto del Worker:
+4. Crea una clave de la API con permiso solo de envío y guárdala como secreto del Worker. El 15/11/2026 quedaron puestos
+   los dos secretos, `TURNSTILE_SECRET` y `RESEND_API_KEY`:
 
 ```bash
 npx wrangler secret put RESEND_API_KEY
 ```
 
-## 5. Prueba de punta a punta (en la dirección `*.workers.dev`)
+## 5. Prueba de punta a punta (en la dirección `*.workers.dev`) — hecho el 15/11/2026
+
+Comprobado ese día: el mensaje llega y la respuesta va a la dirección escrita en el formulario.
 
 1. Envía el formulario de contacto. Tiene que decir «enviado» y el mensaje tiene que llegar a `admin@synentor.com` (alias del buzón de
    `administracion@synentor.com`: llega al mismo sitio).
 2. Contesta a ese correo: la respuesta tiene que ir a la dirección que se escribió en el formulario.
 3. Sin los secretos, el formulario dice que no se ha podido enviar y ofrece el correo: nunca dice «enviado» si no lo está.
 
-## 6. Pasar synentor.com a la web nueva
+## 6. Pasar synentor.com a la web nueva — hecho el 15/11/2026
 
-Es el momento en que la web anterior deja de verse.
+Es el momento en que la web anterior deja de verse. Comprobado desde fuera ese día: la portada lleva al idioma, las
+direcciones de la web anterior redirigen, una inventada da 404 y salen las cabeceras de seguridad. **Queda el punto 4**
+(despublicar el proyecto de Lovable) hasta que gerencia confirme que está hecho.
 
 1. Quita de Cloudflare los cuatro registros de Lovable: A `@`, A `www`, TXT `_lovable` y TXT `_lovable.www`, **sin tocar
    los del correo**. Primero esto: Cloudflare no deja poner un dominio en el Worker si ya hay un registro con ese nombre.
@@ -102,11 +108,49 @@ Es el momento en que la web anterior deja de verse.
    - el formulario funciona;
    - el correo sigue llegando.
 
-## 7. www, synentor.es y synentor.eu
+## 7. www, synentor.es y synentor.eu — hecho el 15/11/2026
 
-1. Añade synentor.es y synentor.eu a Cloudflare (como el paso 1, conservando sus registros de correo si los tienen).
-2. Crea una regla de redirección para `www.synentor.com`, `synentor.es` y `synentor.eu` (y sus `www`): todo, con 301, a
-   `https://synentor.com` conservando el camino. La dirección buena es siempre `synentor.com`, sin `www`.
+La dirección buena es siempre `synentor.com`, sin `www`. Todo lo demás va a ella con un 301, conservando el camino y la
+consulta (`?…`). Las reglas de redirección son de cada dominio: cada una se crea con su dominio elegido arriba a la
+izquierda del panel.
+
+**www.synentor.com** (en el dominio synentor.com): Reglas → Reglas de redireccionamiento → regla con «Patrón comodín»:
+
+| Campo | Valor |
+|---|---|
+| URL de solicitud | `https://www.*` |
+| URL de destino | `https://${1}` |
+| Código de estado | 301 |
+| Conservar cadena de consulta | marcado |
+
+**synentor.es y synentor.eu** (cada uno en su dominio; aquí, el de .es):
+
+1. Añade el dominio a Cloudflare. De lo que lee de IONOS, **borra** lo de la web de IONOS (A `@`, AAAA `@` y CNAME
+   `_domainconnect`) y no copies el TXT `_dep_ws_mutex` (interno de IONOS). **Conserva lo del correo** (MX, TXT de SPF,
+   `_dmarc` y los CNAME de Microsoft) en «Solo DNS» (nube gris).
+2. Añade dos AAAA → `100::` **con el proxy** (nube naranja): uno `@` y otro `www`.
+3. En IONOS → el dominio → «Servidores de nombres»: deja **solo** los dos de Cloudflare (ninguno `ui-dns.*`). Si el dominio
+   tiene DNSSEC activado en IONOS, desactívalo antes; se puede volver a activar desde Cloudflare cuando esté activo.
+4. Espera a que Cloudflare lo dé por **«Activo»**. Mientras tanto, los dos AAAA salen con un triángulo («Este nombre de host
+   no está cubierto por un certificado»): el certificado gratuito solo se emite con el dominio activo. El 15/11/2026, .eu
+   quedó activo antes y .es tardó unas horas más.
+5. Regla de redirección con «Patrón comodín»:
+
+| Campo | Valor |
+|---|---|
+| URL de solicitud | `https://*synentor.es/*` |
+| URL de destino | `https://synentor.com/${2}` |
+| Código de estado | 301 |
+| Conservar cadena de consulta | marcado |
+
+   El primer `*` es lo de delante (nada o `www.`), así que una regla vale para la raíz y para `www`; `${2}` es el camino.
+   **No** se usa la plantilla «de www a la raíz»: llevaría `www.synentor.es` a `synentor.es`, que no tiene web.
+6. SSL/TLS → Certificados perimetrales → **«Usar siempre HTTPS»** activado (en los tres dominios), para que `http://`
+   pase antes a `https://`.
+
+**Comprobado desde fuera el 15/11/2026** (en `https`): `synentor.es`, `www.synentor.es`, `synentor.eu` y `www.synentor.eu`,
+con y sin camino y consulta, dan 301 a `https://synentor.com/…` con el mismo camino y la misma consulta; `www.synentor.com`
+también. Las direcciones `http://` se comprueban en el navegador (ventana privada).
 
 ## 8. Estadísticas
 
