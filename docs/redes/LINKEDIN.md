@@ -155,6 +155,27 @@ Resumen (máximo 500 caracteres; este tiene 499):
 Ayudamos a empresas de Andorra, España y otros países a dedicar menos tiempo a lo que se repite: consultoría de IA y ventas, con software de gestión propio (Synentor Suite ERP-CRM y MUV). Diagnóstico, formación, asistentes, automatizaciones y trabajos de IA a medida según tu presupuesto. Implantamos el programa, cargamos los datos del anterior y formamos al equipo. Nació gestionando un obrador con tiendas en Andorra. Precios publicados en synentor.com: calcula el tuyo antes de hablar con nadie.
 ```
 
+### Ejemplos de trabajo («Carga ejemplos de tu trabajo»)
+
+Capturas reales a 1200 × 627 (en alta resolución): tres de synentor.com y una de un cliente. **Nunca** capturas del
+programa con datos de una empresa real, ni pantallas inventadas. El campo «Cargo laboral» de LinkedIn es el título (58
+caracteres como mucho).
+
+| Imagen | Título | Enlace |
+|---|---|---|
+| Portada de synentor.com | Web de Synentor: diseño y desarrollo propios | `https://synentor.com/es/` |
+| Calculadora de precios (Andorra) | Precios a la vista: calcula el tuyo | `https://synentor.com/es/precios/` |
+| Página de servicios | Todo lo que hacemos, sin letra pequeña | `https://synentor.com/es/servicios/` |
+| Portada de flytoandorra.com | FlytoAndorra: portal para llegar a Andorra por aire | `https://flytoandorra.com/` |
+
+**FlytoAndorra** la hizo Synentor y el cliente está de acuerdo en enseñarla (gerencia, 15/11/2026). No es la web de un
+helipuerto: es un portal independiente de información («No somos operador de ningún aeropuerto, heliport ni aerolínea»).
+Descripción (473 caracteres), comprobada contra la web ese día:
+
+```text
+Diseño y creación de flytoandorra.com, hecho por Synentor: un portal independiente para llegar a Andorra por aire. Eliges el aeropuerto de origen (18, de Barcelona a Londres o París) y ves la distancia, el tiempo por carretera y las opciones: avión, helicóptero, jet privado, bus o traslado. Con el tiempo, las noticias, la agenda, el esquí, un blog, un directorio de socios y espacios de patrocinio por aeropuerto. En cuatro idiomas: castellano, catalán, francés e inglés.
+```
+
 ## 3. Las tres primeras publicaciones
 
 Una por semana, mejor por la mañana de martes a jueves. La primera, con la portada como imagen.
@@ -204,6 +225,22 @@ Detrás del portal: la ficha y los contratos, el alta en la CASS, la nómina y e
 Y los documentos de las personas se leen con una IA que funciona en la propia empresa.
 
 #Andorra #RRHH #nóminas
+```
+
+### 4. Un proyecto: FlytoAndorra
+
+```text
+Nuevo proyecto: flytoandorra.com.
+
+Hemos diseñado y creado FlytoAndorra, un portal independiente para llegar a Andorra por aire.
+
+Eliges tu aeropuerto de origen (18, de Barcelona y Toulouse a Londres, París o las Baleares) y ves la distancia, el tiempo por carretera y las formas de llegar: avión, helicóptero, jet privado, bus o traslado. Además, el tiempo, las noticias, la agenda, el esquí, un blog y un directorio de socios. En castellano, catalán, francés e inglés.
+
+Gracias al equipo de FlytoAndorra por la confianza.
+
+¿Necesitas una web así? synentor.com/es/servicios/
+
+#Andorra #DiseñoWeb
 ```
 
 ## 4. Vincularla
