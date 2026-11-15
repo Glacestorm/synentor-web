@@ -141,7 +141,7 @@ describe('formulario de contacto', () => {
     intruso.type = 'hidden';
     intruso.name = 'asunto';
     intruso.value = 'persona@ejemplo.test';
-    form.append(intruso);
+    form.appendChild(intruso);
     await envia(form);
     expect(track).toHaveBeenCalledTimes(1);
     expect(track).toHaveBeenCalledWith('contacto-enviado', {});
