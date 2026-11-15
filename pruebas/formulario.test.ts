@@ -131,4 +131,20 @@ describe('formulario de contacto', () => {
     await envia(form);
     expect(form.classList.contains('enviado')).toBe(true);
   });
+
+  it('un asunto fuera de la lista cerrada del formulario no llega a Umami (el evento sale sin asunto)', async () => {
+    const track = conUmami();
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(Response.json({ ok: true }));
+    const form = monta();
+    form.querySelector('textarea')!.value = 'Hola';
+    const intruso = document.createElement('input');
+    intruso.type = 'hidden';
+    intruso.name = 'asunto';
+    intruso.value = 'persona@ejemplo.test';
+    form.append(intruso);
+    await envia(form);
+    expect(track).toHaveBeenCalledTimes(1);
+    expect(track).toHaveBeenCalledWith('contacto-enviado', {});
+    expect(JSON.stringify(track.mock.calls)).not.toContain('ejemplo.test');
+  });
 });
