@@ -17,7 +17,11 @@ export const CABECERAS_ERP = [
   'is_active',
   'type',
   'tax_code',
+  'periodicidad',
 ] as const;
+
+/** El código del artículo de un módulo de la Suite (también lo usan las reglas). */
+export const codigoDeModulo = (m: ModuloId) => `SYN-MOD-${m.toUpperCase().replace('_', '-')}`;
 
 export const RUTA_CSV = 'docs/articulos-erp/articulos-synentor.csv';
 
@@ -33,6 +37,8 @@ export interface ArticuloErp {
   is_active: boolean;
   type: 'service';
   tax_code: string;
+  /** `mensual` si se cobra al mes (la unidad es «mes» o acaba en «/mes»); si no, `unica`. La anual no la usa nadie hoy. */
+  periodicidad: 'unica' | 'mensual' | 'anual';
 }
 
 const SIN_IMPUESTOS = 'Sin impuestos';
@@ -50,7 +56,8 @@ function articulo(
   description: string,
   is_active = true,
 ): ArticuloErp {
-  return { code, name, description, unit, sale_price, is_active, type: 'service', tax_code: IGI_GENERAL };
+  const periodicidad = unit === 'mes' || unit.endsWith('/mes') ? 'mensual' : 'unica';
+  return { code, name, description, unit, sale_price, is_active, type: 'service', tax_code: IGI_GENERAL, periodicidad };
 }
 
 export function articulosErp(): ArticuloErp[] {
@@ -58,7 +65,7 @@ export function articulosErp(): ArticuloErp[] {
   const tt = t.precios.tablas;
   const mod = t.servicios.modulos;
   const nombreModulo = (m: ModuloId) => mod[m].nombre;
-  const codigoModulo = (m: ModuloId) => `SYN-MOD-${m.toUpperCase().replace('_', '-')}`;
+  const codigoModulo = codigoDeModulo;
   const pct = (n: number) => `${Math.round(n * 100)} %`;
   const e = TARIFA.energia;
   const mon = e.monitorizacion;
@@ -171,6 +178,7 @@ export function csvArticulos(): string {
       a.is_active ? 'true' : 'false',
       a.type,
       a.tax_code,
+      a.periodicidad,
     ]
       .map(celda)
       .join(','),

@@ -13,8 +13,22 @@ describe('artículos de la tarifa para el ERP', () => {
   it('lleva las columnas del importador del ERP, en su orden', () => {
     expect(CABECERAS_ERP).toEqual([
       'code', 'name', 'description', 'unit', 'sale_price', 'purchase_price', 'is_active', 'type', 'tax_code',
+      'periodicidad',
     ]);
     expect(csvArticulos().split('\n')[0]).toBe(CABECERAS_ERP.join(','));
+  });
+
+  it('la periodicidad: mensual si es una cuota al mes, única si no', () => {
+    expect(porCodigo.get('SYN-BASE')?.periodicidad).toBe('mensual');
+    expect(porCodigo.get('SYN-USUARIO')?.periodicidad).toBe('mensual');
+    expect(porCodigo.get('SYN-IMPLANTACION')?.periodicidad).toBe('unica');
+    expect(porCodigo.get('SYN-WEB-ESENCIAL')?.periodicidad).toBe('unica');
+    for (const a of articulosErp()) {
+      const mensual = a.unit === 'mes' || a.unit.endsWith('/mes');
+      expect(a.periodicidad).toBe(mensual ? 'mensual' : 'unica');
+    }
+    const base = csvArticulos().split('\n').find((l) => l.startsWith('SYN-BASE,'))!;
+    expect(base.endsWith(',mensual')).toBe(true);
   });
 
   it('no repite ningún código y todos empiezan por SYN-', () => {
@@ -111,7 +125,7 @@ describe('artículos de la tarifa para el ERP', () => {
     expect(readFileSync(RUTA_CSV, 'utf8')).toBe(csvArticulos());
   });
 
-  it('al leerlo como CSV, cada línea da sus 9 campos (lo que lleva comas va entre comillas)', () => {
+  it('al leerlo como CSV, cada línea da sus 10 campos (lo que lleva comas va entre comillas)', () => {
     const campos = (linea: string) => {
       const salida: string[] = [];
       let actual = '';
