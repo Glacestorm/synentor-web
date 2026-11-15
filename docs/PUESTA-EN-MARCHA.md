@@ -79,7 +79,8 @@ npx wrangler secret put RESEND_API_KEY
 
 ## 5. Prueba de punta a punta (en la dirección `*.workers.dev`)
 
-1. Envía el formulario de contacto. Tiene que decir «enviado» y el mensaje tiene que llegar a `administracion@synentor.com`.
+1. Envía el formulario de contacto. Tiene que decir «enviado» y el mensaje tiene que llegar a `admin@synentor.com` (alias del buzón de
+   `administracion@synentor.com`: llega al mismo sitio).
 2. Contesta a ese correo: la respuesta tiene que ir a la dirección que se escribió en el formulario.
 3. Sin los secretos, el formulario dice que no se ha podido enviar y ofrece el correo: nunca dice «enviado» si no lo está.
 
@@ -124,7 +125,8 @@ Ninguno es un secreto: van dentro de la página. Pásalos por el chat y se ponen
 el aviso de cookies no sale y la web no carga esas herramientas.
 
 **Antes de empezar**:
-- Abre las cuatro cuentas con el correo de la empresa (`administracion@synentor.com`), no con uno personal: así son de la
+- Abre las cuatro cuentas con el correo de la empresa (`admin@synentor.com`; las ya abiertas usan
+  `administracion@synentor.com`, el mismo buzón), no con uno personal: así son de la
   empresa y no de una persona.
 - **No pegues en la web ningún código que te den** (etiqueta, fragmento, «snippet»). Solo hace falta el identificador:
   el aviso de cookies carga cada herramienta después de que el visitante acepte.

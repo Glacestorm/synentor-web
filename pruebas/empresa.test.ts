@@ -4,7 +4,7 @@ import { EMPRESA } from '../src/datos/empresa';
 // Los datos de contacto de la web son SIEMPRE los de la empresa (diseño, §9 y §15.6).
 describe('datos de la empresa', () => {
   it('el correo es el de la empresa', () => {
-    expect(EMPRESA.correo).toBe('administracion@synentor.com');
+    expect(EMPRESA.correo).toBe('admin@synentor.com');
   });
 
   it('el teléfono es el de la empresa', () => {

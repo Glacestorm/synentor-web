@@ -70,7 +70,7 @@ activar esa herramienta hasta comprobarlas.
 
 Aquest web, synentor.com, és de SYNENTOR, S.L.U., societat andorrana amb domicili a Avgda. Carlemany, 117, 3-1, AD700 Les Escaldes-Engordany (Andorra). NRT: en tràmit.
 
-Per a qualsevol qüestió, escriu-nos a administracion@synentor.com o truca’ns al +376 692 069.
+Per a qualsevol qüestió, escriu-nos a admin@synentor.com o truca’ns al +376 692 069.
 
 #### Per a què serveix aquest web
 
@@ -121,9 +121,9 @@ Podem canviar aquest avís legal quan calgui. La data de dalt diu quan es va can
 
 #### Qui tracta les teves dades
 
-El responsable és SYNENTOR, S.L.U., societat andorrana amb domicili a Avgda. Carlemany, 117, 3-1, AD700 Les Escaldes-Engordany (Andorra). NRT: en tràmit. Correu: administracion@synentor.com. Telèfon: +376 692 069.
+El responsable és SYNENTOR, S.L.U., societat andorrana amb domicili a Avgda. Carlemany, 117, 3-1, AD700 Les Escaldes-Engordany (Andorra). NRT: en tràmit. Correu: admin@synentor.com. Telèfon: +376 692 069.
 
-No hem designat delegat de protecció de dades: per a qualsevol qüestió sobre les teves dades, escriu-nos a administracion@synentor.com.
+No hem designat delegat de protecció de dades: per a qualsevol qüestió sobre les teves dades, escriu-nos a admin@synentor.com.
 
 #### Quines dades tractem, per a què i durant quant de temps
 
@@ -160,7 +160,7 @@ Alguns d’aquests proveïdors són dels Estats Units o hi tracten dades. Triem 
 
 Ens pots demanar accés a les teves dades, rectificar-les, suprimir-les, limitar-ne el tractament, endur-te-les (portabilitat) o oposar-te que les tractem. I pots retirar el teu consentiment quan vulguis, sense que això afecti el que s’ha fet abans.
 
-Escriu-nos a administracion@synentor.com. Si no podem saber que ets tu, et demanarem un document que t’identifiqui, que només farem servir per a això i després esborrarem. Et respondrem en el termini que marca la llei.
+Escriu-nos a admin@synentor.com. Si no podem saber que ets tu, et demanarem un document que t’identifiqui, que només farem servir per a això i després esborrarem. Et respondrem en el termini que marca la llei.
 
 Si creus que no hem atès bé els teus drets, pots reclamar davant l’Agència Andorrana de Protecció de Dades (apda.ad).
 
@@ -258,7 +258,7 @@ Revisem aquesta política com a mínim un cop l’any i sempre que canviem les e
 
 Esta web, synentor.com, es de SYNENTOR, S.L.U., sociedad andorrana con domicilio en Avgda. Carlemany, 117, 3-1, AD700 Les Escaldes-Engordany (Andorra). NRT: en trámite.
 
-Para cualquier cuestión, escríbenos a administracion@synentor.com o llámanos al +376 692 069.
+Para cualquier cuestión, escríbenos a admin@synentor.com o llámanos al +376 692 069.
 
 #### Para qué sirve esta web
 
@@ -309,9 +309,9 @@ Podemos cambiar este aviso legal cuando haga falta. La fecha de arriba dice cuá
 
 #### Quién trata tus datos
 
-El responsable es SYNENTOR, S.L.U., sociedad andorrana con domicilio en Avgda. Carlemany, 117, 3-1, AD700 Les Escaldes-Engordany (Andorra). NRT: en trámite. Correo: administracion@synentor.com. Teléfono: +376 692 069.
+El responsable es SYNENTOR, S.L.U., sociedad andorrana con domicilio en Avgda. Carlemany, 117, 3-1, AD700 Les Escaldes-Engordany (Andorra). NRT: en trámite. Correo: admin@synentor.com. Teléfono: +376 692 069.
 
-No hemos designado delegado de protección de datos: para cualquier cuestión sobre tus datos, escríbenos a administracion@synentor.com.
+No hemos designado delegado de protección de datos: para cualquier cuestión sobre tus datos, escríbenos a admin@synentor.com.
 
 #### Qué datos tratamos, para qué y durante cuánto tiempo
 
@@ -348,7 +348,7 @@ Algunos de estos proveedores son de Estados Unidos o tratan datos allí. Elegimo
 
 Puedes pedirnos acceso a tus datos, rectificarlos, suprimirlos, limitar su tratamiento, llevártelos (portabilidad) u oponerte a que los tratemos. Y puedes retirar tu consentimiento cuando quieras, sin que eso afecte a lo hecho antes.
 
-Escríbenos a administracion@synentor.com. Si no podemos saber que eres tú, te pediremos un documento que te identifique, que solo usaremos para eso y borraremos después. Te responderemos en el plazo que marca la ley.
+Escríbenos a admin@synentor.com. Si no podemos saber que eres tú, te pediremos un documento que te identifique, que solo usaremos para eso y borraremos después. Te responderemos en el plazo que marca la ley.
 
 Si crees que no hemos atendido bien tus derechos, puedes reclamar ante la Agencia Andorrana de Protección de Datos (apda.ad).
 
