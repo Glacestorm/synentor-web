@@ -62,9 +62,9 @@ export const de: Textos = {
     inminenteLargo: 'Entwicklung steht unmittelbar bevor, mit individueller Anpassung an den Kunden',
   },
   inicio: {
-    titulo: 'Synentor · KI- und Vertriebsberatung mit eigener Software',
+    titulo: 'KI-Beratung und ERP-CRM in Andorra, Spanien und Europa',
     descripcion:
-      'Mehrmandanten-ERP-CRM aus Andorra, MUV sowie KI- und Vertriebsberatung. Buchhaltung, Lohnabrechnung, Einkauf, Vertrieb und Behördengänge an einem Ort.',
+      'Mehrmandanten-ERP-CRM aus Andorra, MUV sowie KI- und Vertriebsberatung für Andorra, Spanien und Europa. Was in Ihrem Land verfügbar ist, Modul für Modul.',
     portada: {
       antetitulo: 'KI- und Vertriebsberatung · Eigene Software aus Andorra',
       titulo: 'Ihr Unternehmen, vernetzt.',
@@ -171,8 +171,8 @@ export const de: Textos = {
     },
   },
   contacto: {
-    titulo: 'Kontakt · Synentor',
-    descripcion: 'Schreiben Sie uns, wir antworten innerhalb eines Werktags.',
+    titulo: 'Kontakt: Demo anfragen · Synentor',
+    descripcion: 'Schreiben Sie uns, wir antworten innerhalb eines Werktags, montags bis freitags von 9:00 bis 18:00 Uhr. Wir sind in Escaldes-Engordany (Andorra).',
     encabezado: 'Sprechen wir miteinander.',
     entrada: 'Sagen Sie uns, was Sie brauchen. Wir antworten innerhalb eines Werktags, montags bis freitags von 9:00 bis 18:00 Uhr (Ortszeit Andorra).',
     datos: 'Kontaktdaten',
@@ -227,9 +227,9 @@ export const de: Textos = {
     },
   },
   servicios: {
-    titulo: 'Leistungen · Synentor',
+    titulo: 'ERP-CRM, KI und Webseiten in Andorra, Spanien und Europa',
     descripcion:
-      'Synentor Suite ERP-CRM Modul für Modul, MUV, KI- und Vertriebsberatung, Energie, Migrationen, Mitarbeiterportal und Webseiten.',
+      'Synentor Suite ERP-CRM Modul für Modul und was in Andorra, Spanien und Europa verfügbar ist. MUV, KI- und Vertriebsberatung, Energie, Migrationen, Webseiten.',
     encabezado: 'Alles, was wir tun, ohne Kleingedrucktes.',
     entrada:
       'Eigene Software und Beratung. Bei jedem Modul sagen wir Ihnen, ob es heute in Ihrem Land funktioniert, ob die Entwicklung unmittelbar bevorsteht oder ob es individuell angepasst wird.',
@@ -439,8 +439,8 @@ export const de: Textos = {
     },
   },
   precios: {
-    titulo: 'Preise · Synentor',
-    descripcion: 'Berechnen Sie den Preis von Synentor Suite ERP-CRM und MUV sofort, ohne Überraschungen.',
+    titulo: 'Preise für ERP-CRM und MUV in Andorra, Spanien und Europa',
+    descripcion: 'Wählen Sie Land, Module und Personen und berechnen Sie sofort den Preis von Synentor Suite ERP-CRM und MUV. Ohne Steuern, in Andorra auch mit IGI.',
     encabezado: 'Berechnen Sie Ihren Preis.',
     entrada: 'Wählen Sie Land, Module und Personen. Die Summe erscheint sofort, zzgl. Steuern; in Andorra auch inklusive IGI.',
     configurador: {

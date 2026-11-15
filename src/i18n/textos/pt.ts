@@ -62,9 +62,9 @@ export const pt: Textos = {
     inminenteLargo: 'Em desenvolvimento iminente e adaptação por medida ao cliente',
   },
   inicio: {
-    titulo: 'Synentor · Consultoria de IA e vendas com software próprio',
+    titulo: 'Consultoria de IA e ERP-CRM em Andorra, Espanha e Europa',
     descripcion:
-      'ERP-CRM multiempresa feito em Andorra, MUV e consultoria de IA e vendas. Contabilidade, salários, compras, vendas e tramitações num só lugar.',
+      'ERP-CRM multiempresa feito em Andorra, MUV e consultoria de IA e vendas para Andorra, Espanha e Europa. Veja o que está disponível no seu país, módulo a módulo.',
     portada: {
       antetitulo: 'Consultoria de IA e vendas · Software próprio feito em Andorra',
       titulo: 'A sua empresa, ligada.',
@@ -171,8 +171,8 @@ export const pt: Textos = {
     },
   },
   contacto: {
-    titulo: 'Contacto · Synentor',
-    descripcion: 'Escreva-nos e respondemos num dia útil.',
+    titulo: 'Contacto: peça uma demonstração · Synentor',
+    descripcion: 'Escreva-nos e respondemos num dia útil, de segunda a sexta-feira, das 9:00 às 18:00. Estamos em Escaldes-Engordany (Andorra).',
     encabezado: 'Falemos.',
     entrada: 'Conte-nos do que precisa. Respondemos num dia útil, de segunda a sexta-feira, das 9:00 às 18:00 (hora de Andorra).',
     datos: 'Dados de contacto',
@@ -227,9 +227,9 @@ export const pt: Textos = {
     },
   },
   servicios: {
-    titulo: 'Serviços · Synentor',
+    titulo: 'ERP-CRM, IA e sites em Andorra, Espanha e Europa · Synentor',
     descripcion:
-      'Synentor Suite ERP-CRM módulo a módulo, MUV, consultoria de IA e vendas, energia, migrações, portal do colaborador e páginas web.',
+      'Synentor Suite ERP-CRM módulo a módulo e o que está disponível em Andorra, Espanha e Europa. MUV, consultoria de IA e vendas, energia, migrações e sites.',
     encabezado: 'Tudo o que fazemos, sem letras pequenas.',
     entrada:
       'Software próprio e consultoria. Em cada módulo dizemos-lhe se funciona hoje no seu país, se está em desenvolvimento iminente ou se se adapta por medida.',
@@ -439,8 +439,8 @@ export const pt: Textos = {
     },
   },
   precios: {
-    titulo: 'Preços · Synentor',
-    descripcion: 'Calcule na hora o preço da Synentor Suite ERP-CRM e do MUV, sem surpresas.',
+    titulo: 'Preços do ERP-CRM e do MUV em Andorra, Espanha e Europa',
+    descripcion: 'Escolha o país, os módulos e as pessoas e calcule na hora o preço da Synentor Suite ERP-CRM e do MUV. Sem impostos e, em Andorra, também com o IGI.',
     encabezado: 'Calcule o seu preço.',
     entrada: 'Escolha o país, os módulos e as pessoas. O total aparece na hora, sem impostos; em Andorra, também com o IGI.',
     configurador: {

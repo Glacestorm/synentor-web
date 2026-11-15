@@ -63,9 +63,9 @@ export const ca = {
     inminenteLargo: 'En desenvolupament imminent i adaptació a mida del client',
   },
   inicio: {
-    titulo: 'Synentor · Consultoria d’IA i vendes amb programari propi',
+    titulo: 'Consultoria d’IA i ERP-CRM a Andorra, Espanya i Europa',
     descripcion:
-      'ERP-CRM multiempresa fet a Andorra, MUV i consultoria d’IA i vendes. Comptabilitat, nòmines, compres, vendes i tràmits en un sol lloc.',
+      'ERP-CRM multiempresa fet a Andorra, MUV i consultoria d’IA i vendes per a Andorra, Espanya i Europa. Mira què hi ha disponible al teu país, mòdul a mòdul.',
     portada: {
       antetitulo: 'Consultoria d’IA i vendes · Programari propi fet a Andorra',
       titulo: 'La teva empresa, connectada.',
@@ -173,8 +173,8 @@ export const ca = {
     },
   },
   contacto: {
-    titulo: 'Contacte · Synentor',
-    descripcion: 'Escriu-nos i et responem en un dia laborable.',
+    titulo: 'Contacte: demana una demostració · Synentor',
+    descripcion: 'Escriu-nos i et responem en un dia laborable, de dilluns a divendres de 9:00 a 18:00. Som a les Escaldes-Engordany (Andorra).',
     encabezado: 'Parlem.',
     entrada: 'Explica’ns què necessites. Et responem en un dia laborable, de dilluns a divendres de 9:00 a 18:00 (hora d’Andorra).',
     datos: 'Dades de contacte',
@@ -229,9 +229,9 @@ export const ca = {
     },
   },
   servicios: {
-    titulo: 'Serveis · Synentor',
+    titulo: 'ERP-CRM, IA i webs a Andorra, Espanya i Europa · Synentor',
     descripcion:
-      'Synentor Suite ERP-CRM mòdul a mòdul, MUV, consultoria d’IA i vendes, energia, migracions, portal de l’empleat i pàgines web.',
+      'Synentor Suite ERP-CRM mòdul a mòdul i què hi ha disponible a Andorra, Espanya i Europa. MUV, consultoria d’IA i vendes, energia, migracions i webs.',
     encabezado: 'Tot el que fem, sense lletra petita.',
     entrada:
       'Programari propi i consultoria. A cada mòdul et diem si funciona avui al teu país, si està en desenvolupament imminent o si s’adapta a mida.',
@@ -441,8 +441,8 @@ export const ca = {
     },
   },
   precios: {
-    titulo: 'Preus · Synentor',
-    descripcion: 'Calcula el preu de Synentor Suite ERP-CRM i de MUV al moment, sense sorpreses.',
+    titulo: 'Preus de l’ERP-CRM i de MUV a Andorra, Espanya i Europa',
+    descripcion: 'Tria país, mòduls i persones i calcula al moment el preu de Synentor Suite ERP-CRM i de MUV. Sense impostos i, a Andorra, també amb l’IGI.',
     encabezado: 'Calcula el teu preu.',
     entrada: 'Tria el país, els mòduls i les persones. El total surt al moment, sense impostos; a Andorra, també amb l’IGI.',
     configurador: {

@@ -11,6 +11,11 @@ const LOCALE: Record<Idioma, string> = {
   de: 'de-DE',
 };
 
+/** La etiqueta de idioma y país de cada idioma de la web (ca-AD, es-ES…): la de los formatos y la de Open Graph. */
+export function etiquetaLocal(idioma: Idioma): string {
+  return LOCALE[idioma];
+}
+
 export function euros(importe: number, idioma: Idioma): string {
   const decimales = Number.isInteger(importe) ? 0 : 2;
   return new Intl.NumberFormat(LOCALE[idioma], {

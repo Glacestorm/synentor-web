@@ -19,6 +19,9 @@ export const EMPRESA = {
   dominio: 'https://synentor.com',
   // La página de empresa (gerencia, 15/11/2026). Por su número, que no cambia aunque se cambie la dirección corta.
   redes: { linkedin: 'https://www.linkedin.com/company/145468024/' },
+  // Cuándo respondemos (lo que dice Contacto en cada idioma: de lunes a viernes, hora de Andorra). No es un horario de
+  // apertura de oficina: ese no se publica mientras gerencia no lo dé.
+  atencion: { abre: '09:00', cierra: '18:00' },
 } as const;
 
 export type Empresa = typeof EMPRESA;

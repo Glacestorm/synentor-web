@@ -266,3 +266,8 @@ CREATE INDEX IF NOT EXISTS consentimientos_fecha ON consentimientos (fecha);
    - sin aceptar, ninguna de las cuatro herramientas se carga;
    - al aceptar, empiezan a llegar datos (Google Analytics → «Tiempo real»; Clarity y Meta tardan unos minutos);
    - «Configuración de cookies», en el pie, deja cambiar la decisión.
+
+## 10. Buscadores e IA (SEO)
+
+Search Console, Bing Webmaster Tools, el Perfil de Empresa de Google, directorios, la nota de prensa y la comprobación
+mensual: `docs/SEO.md`.
