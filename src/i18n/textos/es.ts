@@ -842,7 +842,7 @@ export const es: Textos = {
       },
       microsoft365: {
         para: 'El correo de la empresa, donde recibimos y guardamos los mensajes.',
-        donde: 'Unión Europea y Estados Unidos.',
+        donde: 'Unión Europea (región europea de Microsoft). La empresa es de Estados Unidos.',
         garantia: 'Marco de Privacidad de Datos UE-EE. UU. y cláusulas contractuales tipo.',
       },
       umami: {
