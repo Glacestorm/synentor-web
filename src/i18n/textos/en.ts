@@ -62,7 +62,7 @@ export const en: Textos = {
     inminenteLargo: 'Coming very soon, with adaptation tailored to the client',
   },
   inicio: {
-    titulo: 'Synentor · AI and sales consultancy with our own software',
+    titulo: 'AI consultancy and ERP-CRM software in Andorra · Synentor',
     descripcion:
       'Multi-company ERP-CRM made in Andorra, MUV, and AI and sales consultancy. Accounting, payroll, purchasing, sales and official procedures in one place.',
     portada: {
@@ -171,8 +171,8 @@ export const en: Textos = {
     },
   },
   contacto: {
-    titulo: 'Contact · Synentor',
-    descripcion: 'Write to us and we will reply within one working day.',
+    titulo: 'Contact us: request a demo · Synentor',
+    descripcion: 'Write to us and we will reply within one working day, Monday to Friday, 9:00 to 18:00. We are in Escaldes-Engordany, Andorra.',
     encabezado: 'Let’s talk.',
     entrada: 'Tell us what you need. We reply within one working day, Monday to Friday, 9:00 to 18:00 (Andorra time).',
     datos: 'Contact details',
@@ -227,7 +227,7 @@ export const en: Textos = {
     },
   },
   servicios: {
-    titulo: 'Services · Synentor',
+    titulo: 'ERP-CRM, Andorran payroll, AI and websites · Synentor',
     descripcion:
       'Synentor Suite ERP-CRM module by module, MUV, AI and sales consultancy, energy, migrations, the employee portal and websites.',
     encabezado: 'Everything we do, no small print.',
@@ -439,8 +439,8 @@ export const en: Textos = {
     },
   },
   precios: {
-    titulo: 'Pricing · Synentor',
-    descripcion: 'Work out the price of Synentor Suite ERP-CRM and MUV instantly, with no surprises.',
+    titulo: 'ERP-CRM and MUV pricing, worked out instantly · Synentor',
+    descripcion: 'Choose the country, modules and people and see the price of Synentor Suite ERP-CRM and MUV instantly. Excluding taxes and, in Andorra, with IGI too.',
     encabezado: 'Work out your price.',
     entrada: 'Choose the country, the modules and the number of people. The total appears instantly, excluding taxes; in Andorra, also with IGI.',
     configurador: {

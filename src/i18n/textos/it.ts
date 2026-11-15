@@ -62,7 +62,7 @@ export const it: Textos = {
     inminenteLargo: 'In sviluppo imminente e adattamento su misura per il cliente',
   },
   inicio: {
-    titulo: 'Synentor · Consulenza di IA e vendite con software proprio',
+    titulo: 'Consulenza di IA e software ERP-CRM in Andorra · Synentor',
     descripcion:
       'ERP-CRM multiazienda sviluppato in Andorra, MUV e consulenza di IA e vendite. Contabilità, buste paga, acquisti, vendite e pratiche in un unico posto.',
     portada: {
@@ -171,8 +171,8 @@ export const it: Textos = {
     },
   },
   contacto: {
-    titulo: 'Contatti · Synentor',
-    descripcion: 'Ci scriva e Le risponderemo entro un giorno lavorativo.',
+    titulo: 'Contatti: richieda una demo · Synentor',
+    descripcion: 'Ci scriva e Le risponderemo entro un giorno lavorativo, dal lunedì al venerdì dalle 9:00 alle 18:00. Siamo a Escaldes-Engordany (Andorra).',
     encabezado: 'Parliamone.',
     entrada: 'Ci racconti di cosa ha bisogno. Rispondiamo entro un giorno lavorativo, dal lunedì al venerdì dalle 9:00 alle 18:00 (ora dell’Andorra).',
     datos: 'Dati di contatto',
@@ -227,7 +227,7 @@ export const it: Textos = {
     },
   },
   servicios: {
-    titulo: 'Servizi · Synentor',
+    titulo: 'ERP-CRM, buste paga di Andorra, IA e siti · Synentor',
     descripcion:
       'Synentor Suite ERP-CRM modulo per modulo, MUV, consulenza di IA e vendite, energia, migrazioni, portale del dipendente e siti web.',
     encabezado: 'Tutto ciò che facciamo, senza clausole nascoste.',
@@ -439,8 +439,8 @@ export const it: Textos = {
     },
   },
   precios: {
-    titulo: 'Prezzi · Synentor',
-    descripcion: 'Calcoli subito il prezzo di Synentor Suite ERP-CRM e di MUV, senza sorprese.',
+    titulo: 'Prezzi dell’ERP-CRM e di MUV, subito · Synentor',
+    descripcion: 'Scelga il paese, i moduli e le persone e calcoli subito il prezzo di Synentor Suite ERP-CRM e di MUV. Senza imposte e, in Andorra, anche con l’IGI.',
     encabezado: 'Calcoli il suo prezzo.',
     entrada: 'Scelga il Paese, i moduli e le persone. Il totale appare subito, imposte escluse; in Andorra anche con l’IGI.',
     configurador: {

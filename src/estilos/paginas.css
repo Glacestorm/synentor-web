@@ -21,6 +21,8 @@ p, li { text-wrap: pretty; }
 .subtitulo { font-size: 1.25rem; color: var(--syn-tenue-2); max-width: 720px; }
 .antetitulo { display: flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.82rem; font-weight: 700; color: var(--syn-oro); margin: 0 0 14px; }
 .antetitulo::before { content: ''; flex: none; width: 24px; height: 2px; background: currentColor; }
+/* El antetítulo de la portada vive dentro del H1: la letra y el interlineado del texto, no los del titular. */
+.portada h1 .antetitulo { font-family: var(--syn-fuente); line-height: 1.6; max-width: 64ch; text-wrap: pretty; }
 .centrado .antetitulo { justify-content: center; }
 .pequeno { font-size: 0.92rem; color: var(--syn-tenue); }
 .precio { font-weight: 700; color: var(--syn-oro); font-family: var(--syn-fuente-titulos); }

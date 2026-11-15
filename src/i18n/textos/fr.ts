@@ -62,7 +62,7 @@ export const fr: Textos = {
     inminenteLargo: 'En développement imminent et adaptation sur mesure au client',
   },
   inicio: {
-    titulo: 'Synentor · Conseil en IA et en ventes avec un logiciel propre',
+    titulo: 'Conseil en IA et logiciel ERP-CRM en Andorre · Synentor',
     descripcion:
       'ERP-CRM multi-entreprises conçu en Andorre, MUV et conseil en IA et en ventes. Comptabilité, paie, achats, ventes et démarches au même endroit.',
     portada: {
@@ -171,8 +171,8 @@ export const fr: Textos = {
     },
   },
   contacto: {
-    titulo: 'Contact · Synentor',
-    descripcion: 'Écrivez-nous et nous vous répondons sous un jour ouvré.',
+    titulo: 'Contact : demandez une démonstration · Synentor',
+    descripcion: 'Écrivez-nous et nous vous répondons sous un jour ouvré, du lundi au vendredi de 9 h 00 à 18 h 00. Nous sommes à Escaldes-Engordany (Andorre).',
     encabezado: 'Parlons-nous.',
     entrada: 'Dites-nous ce dont vous avez besoin. Nous vous répondons sous un jour ouvré, du lundi au vendredi de 9 h 00 à 18 h 00 (heure d’Andorre).',
     datos: 'Coordonnées',
@@ -227,7 +227,7 @@ export const fr: Textos = {
     },
   },
   servicios: {
-    titulo: 'Services · Synentor',
+    titulo: 'ERP-CRM, paie andorrane, IA et sites web · Synentor',
     descripcion:
       'Synentor Suite ERP-CRM module par module, MUV, conseil en IA et en ventes, énergie, migrations, portail du salarié et sites web.',
     encabezado: 'Tout ce que nous faisons, sans lignes en petits caractères.',
@@ -439,8 +439,8 @@ export const fr: Textos = {
     },
   },
   precios: {
-    titulo: 'Tarifs · Synentor',
-    descripcion: 'Calculez à l’instant le prix de Synentor Suite ERP-CRM et de MUV, sans surprise.',
+    titulo: 'Tarifs de l’ERP-CRM et de MUV, à l’instant · Synentor',
+    descripcion: 'Choisissez pays, modules et personnes : le prix de Synentor Suite ERP-CRM et de MUV s’affiche à l’instant. Hors taxes et, en Andorre, avec l’IGI.',
     encabezado: 'Calculez votre prix.',
     entrada: 'Choisissez le pays, les modules et le nombre de personnes. Le total s’affiche à l’instant, hors taxes ; en Andorre, également avec l’IGI.',
     configurador: {

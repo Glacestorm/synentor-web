@@ -7,6 +7,8 @@ import '../estilos/paginas.css';
 import { EMPRESA } from '../datos/empresa';
 import { UMAMI, HERRAMIENTAS, VERSION_POLITICA_COOKIES } from '../datos/analitica';
 import { categoriasConHerramientas } from '../lib/consentimiento';
+import { grafoPagina, jsonParaScript } from '../lib/datosEstructurados';
+import { etiquetaLocal } from '../lib/formato';
 import { IDIOMAS, IDIOMA_PRINCIPAL, NOMBRE_IDIOMA, ruta, type Idioma, type Pagina } from '../i18n/idiomas';
 import { TEXTOS, textos } from '../i18n/t';
 
@@ -32,6 +34,8 @@ const nombreMenu: Record<string, string> = {
 };
 // Aviso de cookies (diseño §17): solo si hay alguna herramienta con su identificador.
 const hayCookies = categoriasConHerramientas(HERRAMIENTAS).length > 0;
+// Datos estructurados (schema.org): quién somos, qué página es y, donde se enseñan, servicios, precios y preguntas.
+const datosEstructurados = jsonParaScript(grafoPagina({ idioma, pagina, titulo, descripcion }));
 const opcionesCookies = hayCookies
   ? JSON.stringify({ herramientas: HERRAMIENTAS, version: VERSION_POLITICA_COOKIES, politica: ruta('cookies', idioma), textos: tx.cookiesAviso })
   : '';
@@ -53,12 +57,13 @@ const opcionesCookies = hayCookies
     <meta name="theme-color" content="#050918" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={EMPRESA.marca} />
-    <meta property="og:locale" content={idioma} />
+    <meta property="og:locale" content={etiquetaLocal(idioma).replace('-', '_')} />
     <meta property="og:title" content={titulo} />
     <meta property="og:description" content={descripcion} />
     <meta property="og:url" content={url(pagina, idioma)} />
     <meta property="og:image" content={new URL('/marca/portada.png', EMPRESA.dominio).toString()} />
     <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" is:inline set:html={datosEstructurados} />
     <script
       is:inline
       defer

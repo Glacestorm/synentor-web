@@ -18,6 +18,15 @@ const idiomas = Object.keys(TEXTOS) as Idioma[];
 const fichero = (r: string) => join(DIST, r, 'index.html');
 /** El HTML visible: sin scripts ni atributos data-* (donde van los textos que rellena el navegador). */
 const visible = (html: string) => html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/\sdata-[a-z-]+="[^"]*"/g, '');
+/** El texto tal como lo lee una persona: sin las entidades con que Astro escribe «&», «'» o «"». */
+const desescapa = (html: string) =>
+  html
+    .replace(/&#(\d+);/g, (_, n: string) => String.fromCodePoint(Number(n)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, n: string) => String.fromCodePoint(parseInt(n, 16)))
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&');
 
 describe('páginas construidas', () => {
   it('la web está construida (si no: npm run build)', () => {
@@ -50,6 +59,20 @@ describe('páginas construidas', () => {
         );
       });
 
+      it(`${r}: título y descripción de buscador (≤60 y ≤160 caracteres), og:locale y un bloque de datos estructurados`, () => {
+        const html = readFileSync(fichero(r), 'utf8');
+        const titulo = html.match(/<title>([^<]*)<\/title>/)![1]!;
+        const descripcion = html.match(/<meta name="description" content="([^"]*)"/)![1]!;
+        expect([...desescapa(titulo)].length, titulo).toBeLessThanOrEqual(60);
+        expect([...desescapa(descripcion)].length, descripcion).toBeLessThanOrEqual(160);
+        expect(html).toMatch(/<meta property="og:locale" content="[a-z]{2}_[A-Z]{2}"/);
+        const bloques = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+        expect(bloques).toHaveLength(1);
+        const grafo = JSON.parse(bloques[0]![1]!) as { '@context': string; '@graph': { '@type': string; name?: string }[] };
+        expect(grafo['@context']).toBe('https://schema.org');
+        expect(grafo['@graph'].find((n) => n['@type'] === 'WebPage')?.name).toBe(desescapa(titulo));
+      });
+
       it(`${r}: ningún marcador sin rellenar, «undefined» ni «NaN» a la vista`, () => {
         const v = visible(readFileSync(fichero(r), 'utf8'));
         expect(v.match(/\{[a-zA-Z0-9]+\}/g) ?? []).toEqual([]);
@@ -57,6 +80,29 @@ describe('páginas construidas', () => {
       });
     }
   }
+
+  it('la portada dice qué es y dónde: «Andorra» en el título y el antetítulo dentro del H1, en todos los idiomas', () => {
+    for (const idioma of idiomas) {
+      const html = readFileSync(fichero(ruta('inicio', idioma)), 'utf8');
+      expect(desescapa(html.match(/<title>([^<]*)<\/title>/)![1]!), idioma).toMatch(/Andorr/);
+      const h1 = desescapa(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)![1]!.replace(/<[^>]+>/g, ' '));
+      expect(h1, idioma).toContain(TEXTOS[idioma]!.inicio.portada.antetitulo);
+      expect(h1, idioma).toContain(TEXTOS[idioma]!.inicio.portada.titulo);
+      expect((html.match(/<h1\b/g) ?? []).length, idioma).toBe(1);
+    }
+  });
+
+  it('llms.txt: los datos de la empresa y ningún importe que no esté en las páginas de Precios o Servicios', () => {
+    const llms = readFileSync(join(DIST, 'llms.txt'), 'utf8');
+    expect(llms.startsWith(`# ${EMPRESA.marca}\n`)).toBe(true);
+    for (const dato of [EMPRESA.razonSocial, EMPRESA.correo, EMPRESA.telefono.texto, EMPRESA.direccion.linea, EMPRESA.redes.linkedin])
+      expect(llms, dato).toContain(dato);
+    const paginas = ['precios', 'servicios'].map((p) => desescapa(readFileSync(fichero(ruta(p as 'precios', 'es')), 'utf8'))).join('\n');
+    const importes = llms.match(/\d[\d.,]* €/g) ?? [];
+    expect(importes.length).toBeGreaterThan(10);
+    for (const importe of importes) expect(paginas, importe).toContain(importe);
+    expect(llms).not.toMatch(/gmail|hotmail|outlook|yahoo/i);
+  });
 
   it('la franja de idioma escribe el nombre del idioma como va en una frase («en español», no «en Español»)', () => {
     const html = readFileSync(fichero(ruta('inicio', 'ca')), 'utf8');

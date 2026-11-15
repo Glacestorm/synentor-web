@@ -62,7 +62,7 @@ export const de: Textos = {
     inminenteLargo: 'Entwicklung steht unmittelbar bevor, mit individueller Anpassung an den Kunden',
   },
   inicio: {
-    titulo: 'Synentor · KI- und Vertriebsberatung mit eigener Software',
+    titulo: 'KI-Beratung und ERP-CRM-Software in Andorra · Synentor',
     descripcion:
       'Mehrmandanten-ERP-CRM aus Andorra, MUV sowie KI- und Vertriebsberatung. Buchhaltung, Lohnabrechnung, Einkauf, Vertrieb und Behördengänge an einem Ort.',
     portada: {
@@ -171,8 +171,8 @@ export const de: Textos = {
     },
   },
   contacto: {
-    titulo: 'Kontakt · Synentor',
-    descripcion: 'Schreiben Sie uns, wir antworten innerhalb eines Werktags.',
+    titulo: 'Kontakt: Demo anfragen · Synentor',
+    descripcion: 'Schreiben Sie uns, wir antworten innerhalb eines Werktags, montags bis freitags von 9:00 bis 18:00 Uhr. Wir sind in Escaldes-Engordany (Andorra).',
     encabezado: 'Sprechen wir miteinander.',
     entrada: 'Sagen Sie uns, was Sie brauchen. Wir antworten innerhalb eines Werktags, montags bis freitags von 9:00 bis 18:00 Uhr (Ortszeit Andorra).',
     datos: 'Kontaktdaten',
@@ -227,7 +227,7 @@ export const de: Textos = {
     },
   },
   servicios: {
-    titulo: 'Leistungen · Synentor',
+    titulo: 'ERP-CRM, Lohnabrechnung Andorra, KI, Webseiten · Synentor',
     descripcion:
       'Synentor Suite ERP-CRM Modul für Modul, MUV, KI- und Vertriebsberatung, Energie, Migrationen, Mitarbeiterportal und Webseiten.',
     encabezado: 'Alles, was wir tun, ohne Kleingedrucktes.',
@@ -439,8 +439,8 @@ export const de: Textos = {
     },
   },
   precios: {
-    titulo: 'Preise · Synentor',
-    descripcion: 'Berechnen Sie den Preis von Synentor Suite ERP-CRM und MUV sofort, ohne Überraschungen.',
+    titulo: 'Preise für ERP-CRM und MUV, sofort berechnet · Synentor',
+    descripcion: 'Wählen Sie Land, Module und Personen und berechnen Sie sofort den Preis von Synentor Suite ERP-CRM und MUV. Ohne Steuern, in Andorra auch mit IGI.',
     encabezado: 'Berechnen Sie Ihren Preis.',
     entrada: 'Wählen Sie Land, Module und Personen. Die Summe erscheint sofort, zzgl. Steuern; in Andorra auch inklusive IGI.',
     configurador: {

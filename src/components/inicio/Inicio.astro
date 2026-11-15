@@ -30,8 +30,8 @@ const pilares = [
 <section class="portada">
   <div class="contenedor portada-dentro">
     <div>
-      <p class="antetitulo">{tx.portada.antetitulo}</p>
-      <h1><span class="texto-oro">{tx.portada.titulo}</span></h1>
+      <!-- El antetítulo va dentro del H1: el H1 dice qué hacemos y dónde (guía SEO, 15/11/2026); se ve igual que antes. -->
+      <h1><span class="antetitulo">{tx.portada.antetitulo}</span> <span class="texto-oro">{tx.portada.titulo}</span></h1>
       <p class="subtitulo">{tx.portada.subtitulo}</p>
       <div class="botones">
         <a class="boton boton-oro" href={`${contacto}?asunto=demostracion`}>{tx.portada.botonDemo}</a>
