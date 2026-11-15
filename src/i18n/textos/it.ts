@@ -62,9 +62,9 @@ export const it: Textos = {
     inminenteLargo: 'In sviluppo imminente e adattamento su misura per il cliente',
   },
   inicio: {
-    titulo: 'Consulenza di IA e software ERP-CRM in Andorra · Synentor',
+    titulo: 'Consulenza di IA ed ERP-CRM in Andorra, Spagna ed Europa',
     descripcion:
-      'ERP-CRM multiazienda sviluppato in Andorra, MUV e consulenza di IA e vendite. Contabilità, buste paga, acquisti, vendite e pratiche in un unico posto.',
+      'ERP-CRM multiazienda sviluppato in Andorra, MUV e consulenza di IA e vendite per Andorra, Spagna ed Europa. Veda cosa è disponibile nel Suo paese.',
     portada: {
       antetitulo: 'Consulenza di IA e vendite · Software proprio sviluppato in Andorra',
       titulo: 'La sua azienda, connessa.',
@@ -227,9 +227,9 @@ export const it: Textos = {
     },
   },
   servicios: {
-    titulo: 'ERP-CRM, buste paga di Andorra, IA e siti · Synentor',
+    titulo: 'ERP-CRM, IA e siti in Andorra, Spagna ed Europa · Synentor',
     descripcion:
-      'Synentor Suite ERP-CRM modulo per modulo, MUV, consulenza di IA e vendite, energia, migrazioni, portale del dipendente e siti web.',
+      'Synentor Suite ERP-CRM modulo per modulo e cosa è disponibile in Andorra, Spagna ed Europa. MUV, consulenza di IA e vendite, energia, migrazioni e siti web.',
     encabezado: 'Tutto ciò che facciamo, senza clausole nascoste.',
     entrada:
       'Software proprio e consulenza. Per ogni modulo Le diciamo se funziona oggi nel Suo Paese, se è in sviluppo imminente o se viene adattato su misura.',
@@ -439,7 +439,7 @@ export const it: Textos = {
     },
   },
   precios: {
-    titulo: 'Prezzi dell’ERP-CRM e di MUV, subito · Synentor',
+    titulo: 'Prezzi dell’ERP-CRM e di MUV in Andorra, Spagna ed Europa',
     descripcion: 'Scelga il paese, i moduli e le persone e calcoli subito il prezzo di Synentor Suite ERP-CRM e di MUV. Senza imposte e, in Andorra, anche con l’IGI.',
     encabezado: 'Calcoli il suo prezzo.',
     entrada: 'Scelga il Paese, i moduli e le persone. Il totale appare subito, imposte escluse; in Andorra anche con l’IGI.',

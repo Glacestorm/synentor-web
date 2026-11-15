@@ -62,9 +62,9 @@ export const en: Textos = {
     inminenteLargo: 'Coming very soon, with adaptation tailored to the client',
   },
   inicio: {
-    titulo: 'AI consultancy and ERP-CRM software in Andorra · Synentor',
+    titulo: 'AI consultancy and ERP-CRM in Andorra, Spain and Europe',
     descripcion:
-      'Multi-company ERP-CRM made in Andorra, MUV, and AI and sales consultancy. Accounting, payroll, purchasing, sales and official procedures in one place.',
+      'Multi-company ERP-CRM made in Andorra, MUV, and AI and sales consultancy for Andorra, Spain and Europe. See what is available in your country, module by module.',
     portada: {
       antetitulo: 'AI and sales consultancy · Our own software, made in Andorra',
       titulo: 'Your business, connected.',
@@ -227,9 +227,9 @@ export const en: Textos = {
     },
   },
   servicios: {
-    titulo: 'ERP-CRM, Andorran payroll, AI and websites · Synentor',
+    titulo: 'ERP-CRM, AI and websites in Andorra, Spain and Europe',
     descripcion:
-      'Synentor Suite ERP-CRM module by module, MUV, AI and sales consultancy, energy, migrations, the employee portal and websites.',
+      'Synentor Suite ERP-CRM module by module and what is available in Andorra, Spain and Europe. MUV, AI and sales consultancy, energy, migrations and websites.',
     encabezado: 'Everything we do, no small print.',
     entrada:
       'Our own software and consultancy. For each module we tell you whether it works today in your country, is coming very soon, or is adapted to order.',
@@ -439,7 +439,7 @@ export const en: Textos = {
     },
   },
   precios: {
-    titulo: 'ERP-CRM and MUV pricing, worked out instantly · Synentor',
+    titulo: 'ERP-CRM and MUV pricing in Andorra, Spain and Europe',
     descripcion: 'Choose the country, modules and people and see the price of Synentor Suite ERP-CRM and MUV instantly. Excluding taxes and, in Andorra, with IGI too.',
     encabezado: 'Work out your price.',
     entrada: 'Choose the country, the modules and the number of people. The total appears instantly, excluding taxes; in Andorra, also with IGI.',

@@ -81,10 +81,16 @@ describe('páginas construidas', () => {
     }
   }
 
-  it('la portada dice qué es y dónde: «Andorra» en el título y el antetítulo dentro del H1, en todos los idiomas', () => {
+  it('la portada dice qué es y dónde: Andorra, España y Europa en el título y el antetítulo dentro del H1, en todos los idiomas', () => {
+    const espana: Record<string, RegExp> = { ca: /Espanya/, es: /España/, en: /Spain/, fr: /Espagne/, pt: /Espanha/, it: /Spagna/, de: /Spanien/ };
     for (const idioma of idiomas) {
       const html = readFileSync(fichero(ruta('inicio', idioma)), 'utf8');
-      expect(desescapa(html.match(/<title>([^<]*)<\/title>/)![1]!), idioma).toMatch(/Andorr/);
+      const titulo = desescapa(html.match(/<title>([^<]*)<\/title>/)![1]!);
+      expect(titulo, idioma).toMatch(/Andorr/);
+      expect(titulo, idioma).toMatch(espana[idioma]!);
+      expect(titulo, idioma).toMatch(/Europ/);
+      // Lo que está disponible cambia de un país a otro: la descripción remite a la web en vez de prometerlo todo.
+      expect(desescapa(html.match(/<meta name="description" content="([^"]*)"/)![1]!), idioma).toMatch(espana[idioma]!);
       const h1 = desescapa(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)![1]!.replace(/<[^>]+>/g, ' '));
       expect(h1, idioma).toContain(TEXTOS[idioma]!.inicio.portada.antetitulo);
       expect(h1, idioma).toContain(TEXTOS[idioma]!.inicio.portada.titulo);

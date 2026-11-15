@@ -8,7 +8,7 @@ que sí se puede hacer es no tener nada roto y escribir lo que la gente busca me
 
 | Qué | Dónde | Regla |
 |---|---|---|
-| Título y descripción de cada página, en 7 idiomas | `src/i18n/textos/*.ts` (`titulo`, `descripcion`) | Título ≤ 60 caracteres, descripción ≤ 160. La portada dice qué hacemos y «Andorra». Lo vigila `pruebas/paginas.test.ts`. |
+| Título y descripción de cada página, en 7 idiomas | `src/i18n/textos/*.ts` (`titulo`, `descripcion`) | Título ≤ 60 caracteres, descripción ≤ 160. La portada, Servicios y Precios dicen qué hacemos y dónde: Andorra, España y Europa (gerencia, 15/11/2026). Como lo disponible cambia de un país a otro, las descripciones remiten a la web para verlo. Lo vigila `pruebas/paginas.test.ts`. |
 | El H1 de la portada | `src/components/inicio/Inicio.astro` | Lleva dentro el antetítulo («Consultoría de IA y ventas · Software propio hecho en Andorra»), con el mismo aspecto. Un solo H1 por página. |
 | Datos estructurados (schema.org) | `src/lib/datosEstructurados.ts` | Empresa, web y página en todas; los tres servicios en Servicios; precios y preguntas frecuentes en Precios; horario de respuesta solo en Contacto. **Solo lo que la página enseña y es verdad**: sin NRT mientras no lo haya, sin valoraciones ni reseñas, sin horario de oficina. |
 | `llms.txt` (resumen para las IA) | `src/pages/llms.txt.ts` | Se genera de los textos en castellano, de la tabla de tarifas (`src/lib/precios/filasTarifa.ts`, la misma que la página de Precios) y de `src/datos/empresa.ts`. Ningún importe escrito a mano: la prueba exige que cada importe esté en Precios o en Servicios. |
@@ -160,6 +160,7 @@ Search y las IA se mueven despacio: nada cambia de forma visible antes de unos 3
    - «programa de gestión para empresas de Andorra»
    - «software de nóminas Andorra CASS»
    - «ERP con el plan contable andorrano»
+   - «consultoría de IA para empresas en España»
    - «Synentor Andorra»
 
 Las respuestas cambian de una vez a otra: es una foto, no una clasificación. Lo que importa es la dirección.
