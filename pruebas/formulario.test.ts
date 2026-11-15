@@ -38,7 +38,16 @@ const envia = async (form: HTMLFormElement) => {
   await new Promise((r) => setTimeout(r, 0));
 };
 
-afterEach(() => vi.restoreAllMocks());
+afterEach(() => {
+  vi.restoreAllMocks();
+  delete (window as unknown as { umami?: unknown }).umami;
+});
+
+const conUmami = () => {
+  const track = vi.fn();
+  (window as unknown as { umami?: unknown }).umami = { track };
+  return track;
+};
 
 describe('formulario de contacto', () => {
   it('llega del configurador con el asunto «pedido» marcado y la selección en el mensaje', () => {
@@ -87,5 +96,55 @@ describe('formulario de contacto', () => {
     form.querySelector('textarea')!.value = 'Hola';
     await envia(form);
     expect(form.querySelector('.estado-envio')!.textContent).toBe('No hay conexión.');
+  });
+
+  it('«contacto-enviado» sale solo con { ok: true }, con el asunto y sin ningún otro dato', async () => {
+    const track = conUmami();
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(Response.json({ ok: true }));
+    const form = monta('asunto=pedido');
+    form.querySelector('textarea')!.value = 'Mensaje privado';
+    await envia(form);
+    expect(track).toHaveBeenCalledTimes(1);
+    expect(track).toHaveBeenCalledWith('contacto-enviado', { asunto: 'pedido' });
+    expect(JSON.stringify(track.mock.calls)).not.toMatch(/Persona|ejemplo\.test|privado/);
+  });
+
+  it('sin ok:true (respuesta vacía, 502, fallo de red) no se cuenta ningún evento', async () => {
+    const track = conUmami();
+    for (const r of [Response.json({}), Response.json({ ok: false, error: 'envio' }, { status: 502 })]) {
+      vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(r);
+      const form = monta();
+      form.querySelector('textarea')!.value = 'Hola';
+      await envia(form);
+    }
+    vi.spyOn(globalThis, 'fetch').mockRejectedValueOnce(new Error('red'));
+    const form = monta();
+    form.querySelector('textarea')!.value = 'Hola';
+    await envia(form);
+    expect(track).not.toHaveBeenCalled();
+  });
+
+  it('sin Umami (bloqueador, no-rastrear) el envío funciona igual', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(Response.json({ ok: true }));
+    const form = monta();
+    form.querySelector('textarea')!.value = 'Hola';
+    await envia(form);
+    expect(form.classList.contains('enviado')).toBe(true);
+  });
+
+  it('un asunto fuera de la lista cerrada del formulario no llega a Umami (el evento sale sin asunto)', async () => {
+    const track = conUmami();
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(Response.json({ ok: true }));
+    const form = monta();
+    form.querySelector('textarea')!.value = 'Hola';
+    const intruso = document.createElement('input');
+    intruso.type = 'hidden';
+    intruso.name = 'asunto';
+    intruso.value = 'persona@ejemplo.test';
+    form.appendChild(intruso);
+    await envia(form);
+    expect(track).toHaveBeenCalledTimes(1);
+    expect(track).toHaveBeenCalledWith('contacto-enviado', {});
+    expect(JSON.stringify(track.mock.calls)).not.toContain('ejemplo.test');
   });
 });

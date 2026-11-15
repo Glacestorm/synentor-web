@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 // El configurador de Precios: pinta y recalcula, y toda cuenta es la de calcula (aquí no hay ninguna).
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { montaConfigurador } from '../src/scripts/configurador';
 import { textosConfigurador } from '../src/lib/textosConfigurador';
 import { calcula } from '../src/lib/precios/calcula';
@@ -149,5 +149,36 @@ describe('configurador', () => {
     expect(raiz.querySelector('input[data-k="muv"]')).toBeNull();
     elige(raiz, 'obrador');
     expect(raiz.querySelector('input[data-k="muv"]')).not.toBeNull();
+  });
+
+  describe('eventos de Umami', () => {
+    const conUmami = () => {
+      const track = vi.fn();
+      (window as unknown as { umami?: unknown }).umami = { track };
+      return track;
+    };
+    afterEach(() => {
+      delete (window as unknown as { umami?: unknown }).umami;
+    });
+
+    it('«calculadora» sale una sola vez por visita, en el primer cambio', () => {
+      const track = conUmami();
+      const raiz = monta();
+      expect(track).not.toHaveBeenCalled();
+      marca(casilla(raiz, 0, 'compras'));
+      marca(casilla(raiz, 0, 'fiscal'));
+      elige(raiz, 'completo');
+      expect(track.mock.calls.filter((c) => c[0] === 'calculadora')).toHaveLength(1);
+    });
+
+    it('«Envía mi selección» lleva el evento «pedido-calculadora»', () => {
+      const raiz = monta();
+      expect(raiz.querySelector('[data-k="pedido"]')!.getAttribute('data-umami-event')).toBe('pedido-calculadora');
+    });
+
+    it('sin Umami, el configurador sigue funcionando', () => {
+      const raiz = monta();
+      expect(() => marca(casilla(raiz, 0, 'compras'))).not.toThrow();
+    });
   });
 });

@@ -245,6 +245,26 @@ Gracias al equipo de FlytoAndorra por la confianza.
 #Andorra #DiseñoWeb
 ```
 
+## Etiquetas de campaña (UTM)
+
+Todo enlace que se ponga en una publicación, un correo o un anuncio y lleve a synentor.com lleva las tres etiquetas, para
+que las estadísticas (Umami) digan de dónde llega cada visita:
+
+`?utm_source=<red>&utm_medium=<social|email|anuncio>&utm_campaign=<slug>`
+
+- `utm_source`: la red o el origen, en minúsculas (`linkedin`, `boletin`, `google`).
+- `utm_medium`: solo uno de tres: `social`, `email` o `anuncio`.
+- `utm_campaign`: un nombre corto en minúsculas y con guiones, sin datos de nadie (`lanzamiento`, `precios-andorra`).
+
+Un ejemplo por canal:
+
+- Publicación en LinkedIn: `https://synentor.com/es/precios/?utm_source=linkedin&utm_medium=social&utm_campaign=precios-a-la-vista`
+- Correo a clientes: `https://synentor.com/es/contacto/?utm_source=boletin&utm_medium=email&utm_campaign=novedades-noviembre`
+- Anuncio: `https://synentor.com/es/?utm_source=linkedin&utm_medium=anuncio&utm_campaign=lanzamiento`
+
+Las campañas cumplen siempre la ley: correo solo con consentimiento previo o a clientes; ningún envío masivo automatizado
+en LinkedIn ni en WhatsApp.
+
 ## 4. Vincularla
 
 1. **De LinkedIn a la web**: el sitio web y el botón «Contactar» de la tabla de arriba.

@@ -149,6 +149,26 @@ Páginas que respondan a lo que buscan las empresas de Andorra y que Synentor re
 IGI y el Modelo 900, el plan contable andorrano, la protección de datos (LQPD)… Lo legal lo revisa el asesor antes de
 publicarlo. Los temas se ordenan con lo que diga Search Console (punto 2.1).
 
+## Etiquetas de campaña (UTM)
+
+Todo enlace que se ponga en una publicación, un correo o un anuncio y lleve a synentor.com lleva las tres etiquetas, para
+que las estadísticas (Umami) digan de dónde llega cada visita:
+
+`?utm_source=<red>&utm_medium=<social|email|anuncio>&utm_campaign=<slug>`
+
+- `utm_source`: la red o el origen, en minúsculas (`linkedin`, `boletin`, `google`).
+- `utm_medium`: solo uno de tres: `social`, `email` o `anuncio`.
+- `utm_campaign`: un nombre corto en minúsculas y con guiones, sin datos de nadie (`lanzamiento`, `precios-andorra`).
+
+Un ejemplo por canal:
+
+- Publicación en LinkedIn: `https://synentor.com/es/precios/?utm_source=linkedin&utm_medium=social&utm_campaign=precios-a-la-vista`
+- Correo a clientes: `https://synentor.com/es/contacto/?utm_source=boletin&utm_medium=email&utm_campaign=novedades-noviembre`
+- Anuncio: `https://synentor.com/es/?utm_source=linkedin&utm_medium=anuncio&utm_campaign=lanzamiento`
+
+Las campañas cumplen siempre la ley: correo solo con consentimiento previo o a clientes; ningún envío masivo automatizado
+en LinkedIn ni en WhatsApp.
+
 ## 5. Comprobación mensual
 
 Search y las IA se mueven despacio: nada cambia de forma visible antes de unos 30 días. Una vez al mes:
