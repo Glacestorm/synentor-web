@@ -178,7 +178,9 @@ Diseño y creación de flytoandorra.com, hecho por Synentor: un portal independi
 
 ## 3. Las tres primeras publicaciones
 
-Una por semana, mejor por la mañana de martes a jueves. La primera, con la portada como imagen.
+Una por semana, mejor por la mañana de martes a jueves. La primera, con la imagen vertical
+`docs/redes/linkedin-publicacion-1.png` (1080 × 1350, la idea de la portada en el formato que más ocupa en el móvil;
+sale de `docs/redes/linkedin-publicacion-1.html`). La portada (4200 × 700) en el muro saldría como una tira fina.
 
 ### 1. Presentación
 
