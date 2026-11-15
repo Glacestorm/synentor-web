@@ -91,8 +91,8 @@ Comprobado ese día: el mensaje llega y la respuesta va a la dirección escrita 
 ## 6. Pasar synentor.com a la web nueva — hecho el 15/11/2026
 
 Es el momento en que la web anterior deja de verse. Comprobado desde fuera ese día: la portada lleva al idioma, las
-direcciones de la web anterior redirigen, una inventada da 404 y salen las cabeceras de seguridad. **Queda el punto 4**
-(despublicar el proyecto de Lovable) hasta que gerencia confirme que está hecho.
+direcciones de la web anterior redirigen, una inventada da 404 y salen las cabeceras de seguridad. El proyecto de
+Lovable quedó despublicado el 15/11/2026 (gerencia).
 
 1. Quita de Cloudflare los cuatro registros de Lovable: A `@`, A `www`, TXT `_lovable` y TXT `_lovable.www`, **sin tocar
    los del correo**. Primero esto: Cloudflare no deja poner un dominio en el Worker si ya hay un registro con ese nombre.
@@ -146,7 +146,7 @@ izquierda del panel.
    El primer `*` es lo de delante (nada o `www.`), así que una regla vale para la raíz y para `www`; `${2}` es el camino.
    **No** se usa la plantilla «de www a la raíz»: llevaría `www.synentor.es` a `synentor.es`, que no tiene web.
 6. SSL/TLS → Certificados perimetrales → **«Usar siempre HTTPS»** activado (en los tres dominios), para que `http://`
-   pase antes a `https://`.
+   pase antes a `https://`. Activado en los tres el 15/11/2026 (gerencia).
 
 **Comprobado desde fuera el 15/11/2026** (en `https`): `synentor.es`, `www.synentor.es`, `synentor.eu` y `www.synentor.eu`,
 con y sin camino y consulta, dan 301 a `https://synentor.com/…` con el mismo camino y la misma consulta; `www.synentor.com`
