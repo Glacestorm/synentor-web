@@ -299,7 +299,7 @@ más adelante y con datos de ejemplo.
 ## 9. Datos de la empresa en la web
 
 Razón social «SYNENTOR, S.L.U.» (constituida; gerencia, 14/11/2026); NRT «en trámite»; dirección la que dio gerencia el 14/11/2026 (en
-`src/datos/empresa.ts`); correo administracion@synentor.com; teléfono de la empresa confirmado por gerencia el 14/11/2026.
+`src/datos/empresa.ts`); correo admin@synentor.com (desde el 15/11/2026, alias del buzón de administracion@synentor.com); teléfono de la empresa confirmado por gerencia el 14/11/2026.
 **Ningún nombre de persona.** WhatsApp no (el kit lo trae desactivado). Redes sociales: ninguna hasta que existan las
 cuentas (el kit las trae vacías).
 
@@ -320,7 +320,7 @@ cuentas (el kit las trae vacías).
 - Campos (los de la web actual): nombre*, correo*, empresa, teléfono, asunto (información, demostración, precios,
   consultoría de IA, MUV, otro), mensaje*, **consentimiento** de privacidad* (casilla sin marcar).
 - Protección: **Cloudflare Turnstile** y un campo trampa; límite de tamaño.
-- Envío: el Worker valida, comprueba Turnstile y **envía el mensaje a administracion@synentor.com**. Proveedor del envío:
+- Envío: el Worker valida, comprueba Turnstile y **envía el mensaje a admin@synentor.com**. Proveedor del envío:
   el servicio de correo de Cloudflare si la cuenta lo permite sin tocar los MX; si no, Resend (plan gratuito). Las claves,
   como secretos de Cloudflare. **No se guarda el mensaje en ninguna base**.
 - Respuesta honesta: «Enviat» solo si el proveedor confirma; si falla, el error y el correo de la empresa. Nunca un éxito

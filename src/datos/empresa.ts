@@ -12,7 +12,9 @@ export const EMPRESA = {
     localidad: 'Les Escaldes-Engordany',
     pais: 'Andorra',
   },
-  correo: 'administracion@synentor.com',
+  // admin@ (gerencia, 15/11/2026) es un alias del buzón de administracion@, que sigue funcionando y es el usuario de las
+  // cuentas ya abiertas (Google Analytics, Cloudflare…).
+  correo: 'admin@synentor.com',
   telefono: { enlace: '+376692069', texto: '+376 692 069' },
   dominio: 'https://synentor.com',
 } as const;
