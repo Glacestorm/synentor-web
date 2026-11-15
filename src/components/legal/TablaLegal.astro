@@ -14,7 +14,7 @@ interface Props {
 const { idioma, tipo } = Astro.props;
 const tx = textos(idioma).legal;
 const col = tx.tablas;
-const dura = (d: Duracion) => duracion(d, idioma, { sesion: col.sesion, persistente: col.persistente });
+const dura = (d: Duracion) => duracion(d, idioma, { sesion: col.sesion, persistente: col.persistente, proveedor: col.fijaProveedor });
 const filas = tipo === 'necesarias' || tipo === 'opcionales' ? cookiesDe(COOKIES, HERRAMIENTAS, tipo) : [];
 const proveedores = tipo === 'proveedores' ? proveedoresDe(PROVEEDORES, HERRAMIENTAS) : [];
 ---

@@ -799,6 +799,7 @@ export const ca = {
       terceros: 'D’una altra empresa',
       sesion: 'Fins que tanques el navegador',
       persistente: 'Fins que l’esborris',
+      fijaProveedor: 'La fixa el proveïdor',
       proveedor: 'Proveïdor',
       para: 'Per a què',
       donde: 'On tracta les dades',

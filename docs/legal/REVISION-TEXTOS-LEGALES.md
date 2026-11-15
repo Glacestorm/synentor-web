@@ -9,7 +9,7 @@ todas (Google Analytics, Microsoft Clarity, píxel de Meta y LinkedIn Insight Ta
 Las duraciones marcadas «(sin verificar)» no se han podido comprobar en la página oficial del proveedor: la web no deja
 activar esa herramienta hasta comprobarlas.
 
-**Activas en esta versión**: Google Analytics.
+**Activas en esta versión**: Google Analytics, Microsoft Clarity.
 
 ## Puntos que hay que confirmar
 
@@ -48,7 +48,9 @@ activar esa herramienta hasta comprobarlas.
 **Comprobado y su fuente** (búsqueda en las páginas oficiales del 14/11/2026; abrir cada una antes de activar):
 - Google Analytics: `_ga` y `_ga_<ID>`; la web las limita a 395 días (unos 13 meses) con `cookie_expires`:
   https://support.google.com/analytics/answer/11397207 · https://developers.google.com/analytics/devguides/collection/ga4/cookie-usage
-- Microsoft Clarity (nombres y finalidades; **duraciones sin verificar**):
+- Microsoft Clarity: nombres y finalidades de su página oficial (que no da duraciones). Duraciones **medidas por gerencia
+  el 15/11/2026** en Chrome en la vista previa: `_clck` 1 año y `_clsk` 1 día; las cinco de los dominios de Microsoft
+  (CLID, ANONCHK, MR, MUID, SM) no se pusieron, y su duración figura como «la fija el proveedor»:
   https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-cookies
 - Meta: `_fbp` 90 días (página de ayuda de Meta; `_fbc` y `fr` **sin verificar**):
   https://developers.facebook.com/documentation/ads-commerce/conversions-api/parameters/fbp-and-fbc ·
@@ -211,13 +213,13 @@ N’hi ha de dos tipus: estadístiques, per saber com es fa servir el web i mill
 |---|---|---|---|---|---|
 | `_ga` | Google | Distingir els visitants per a les estadístiques. | 13 mesos | Pròpia | ga4 |
 | `_ga_<ID>` | Google | Mantenir l’estat de la visita per a les estadístiques. | 13 mesos | Pròpia | ga4 |
-| `_clck` | Microsoft | Guardar l’identificador de Clarity i les seves preferències, només per a aquest web. | 1 any **(sin verificar)** | Pròpia | clarity |
-| `_clsk` | Microsoft | Unir en una sola gravació les pàgines d’una mateixa visita. | 1 dia **(sin verificar)** | Pròpia | clarity |
-| `CLID` | Microsoft | Saber la primera vegada que Clarity va veure aquest navegador en qualsevol web que el faci servir. | 1 any **(sin verificar)** | D’una altra empresa | clarity |
-| `ANONCHK` | Microsoft | Ús intern de Microsoft sobre l’identificador MUID; Clarity no el fa servir per a publicitat. | 10 minuts **(sin verificar)** | D’una altra empresa | clarity |
-| `MR` | Microsoft | Saber si cal renovar l’identificador MUID. | 7 dies **(sin verificar)** | D’una altra empresa | clarity |
-| `MUID` | Microsoft | Identificar el navegador als llocs de Microsoft. | 1 any **(sin verificar)** | D’una altra empresa | clarity |
-| `SM` | Microsoft | Sincronitzar l’identificador MUID entre els dominis de Microsoft. | Fins que tanques el navegador **(sin verificar)** | D’una altra empresa | clarity |
+| `_clck` | Microsoft | Guardar l’identificador de Clarity i les seves preferències, només per a aquest web. | 1 any | Pròpia | clarity |
+| `_clsk` | Microsoft | Unir en una sola gravació les pàgines d’una mateixa visita. | 1 dia | Pròpia | clarity |
+| `CLID` | Microsoft | Saber la primera vegada que Clarity va veure aquest navegador en qualsevol web que el faci servir. | La fixa el proveïdor | D’una altra empresa | clarity |
+| `ANONCHK` | Microsoft | Ús intern de Microsoft sobre l’identificador MUID; Clarity no el fa servir per a publicitat. | La fixa el proveïdor | D’una altra empresa | clarity |
+| `MR` | Microsoft | Saber si cal renovar l’identificador MUID. | La fixa el proveïdor | D’una altra empresa | clarity |
+| `MUID` | Microsoft | Identificar el navegador als llocs de Microsoft. | La fixa el proveïdor | D’una altra empresa | clarity |
+| `SM` | Microsoft | Sincronitzar l’identificador MUID entre els dominis de Microsoft. | La fixa el proveïdor | D’una altra empresa | clarity |
 | `_fbp` | Meta | Identificar el navegador per mesurar i mostrar anuncis de Meta. | 90 dies | Pròpia | metaPixel |
 | `_fbc` | Meta | Guardar l’anunci de Meta pel qual has arribat. | 90 dies **(sin verificar)** | Pròpia | metaPixel |
 | `fr` | Meta | Mostrar i mesurar anuncis de Meta. | 90 dies **(sin verificar)** | D’una altra empresa | metaPixel |
@@ -399,13 +401,13 @@ Son de dos tipos: estadísticas, para saber cómo se usa la web y mejorarla, y p
 |---|---|---|---|---|---|
 | `_ga` | Google | Distinguir a los visitantes para las estadísticas. | 13 meses | Propia | ga4 |
 | `_ga_<ID>` | Google | Mantener el estado de la visita para las estadísticas. | 13 meses | Propia | ga4 |
-| `_clck` | Microsoft | Guardar el identificador de Clarity y sus preferencias, solo para esta web. | 1 año **(sin verificar)** | Propia | clarity |
-| `_clsk` | Microsoft | Unir en una sola grabación las páginas de una misma visita. | 1 día **(sin verificar)** | Propia | clarity |
-| `CLID` | Microsoft | Saber la primera vez que Clarity vio este navegador en cualquier web que lo use. | 1 año **(sin verificar)** | De otra empresa | clarity |
-| `ANONCHK` | Microsoft | Uso interno de Microsoft sobre el identificador MUID; Clarity no lo usa para publicidad. | 10 minutos **(sin verificar)** | De otra empresa | clarity |
-| `MR` | Microsoft | Saber si hay que renovar el identificador MUID. | 7 días **(sin verificar)** | De otra empresa | clarity |
-| `MUID` | Microsoft | Identificar el navegador en los sitios de Microsoft. | 1 año **(sin verificar)** | De otra empresa | clarity |
-| `SM` | Microsoft | Sincronizar el identificador MUID entre los dominios de Microsoft. | Hasta que cierras el navegador **(sin verificar)** | De otra empresa | clarity |
+| `_clck` | Microsoft | Guardar el identificador de Clarity y sus preferencias, solo para esta web. | 1 año | Propia | clarity |
+| `_clsk` | Microsoft | Unir en una sola grabación las páginas de una misma visita. | 1 día | Propia | clarity |
+| `CLID` | Microsoft | Saber la primera vez que Clarity vio este navegador en cualquier web que lo use. | La fija el proveedor | De otra empresa | clarity |
+| `ANONCHK` | Microsoft | Uso interno de Microsoft sobre el identificador MUID; Clarity no lo usa para publicidad. | La fija el proveedor | De otra empresa | clarity |
+| `MR` | Microsoft | Saber si hay que renovar el identificador MUID. | La fija el proveedor | De otra empresa | clarity |
+| `MUID` | Microsoft | Identificar el navegador en los sitios de Microsoft. | La fija el proveedor | De otra empresa | clarity |
+| `SM` | Microsoft | Sincronizar el identificador MUID entre los dominios de Microsoft. | La fija el proveedor | De otra empresa | clarity |
 | `_fbp` | Meta | Identificar el navegador para medir y mostrar anuncios de Meta. | 90 días | Propia | metaPixel |
 | `_fbc` | Meta | Guardar el anuncio de Meta por el que has llegado. | 90 días **(sin verificar)** | Propia | metaPixel |
 | `fr` | Meta | Mostrar y medir anuncios de Meta. | 90 días **(sin verificar)** | De otra empresa | metaPixel |

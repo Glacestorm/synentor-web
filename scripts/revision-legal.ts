@@ -15,7 +15,7 @@ function md(idioma: Idioma): string {
   const todo = textos(idioma);
   const lg = todo.legal;
   const d = EMPRESA.direccion;
-  const fijos = { sesion: lg.tablas.sesion, persistente: lg.tablas.persistente };
+  const fijos = { sesion: lg.tablas.sesion, persistente: lg.tablas.persistente, proveedor: lg.tablas.fijaProveedor };
   const valores: Record<string, string> = {
     web: 'synentor.com',
     razon: EMPRESA.razonSocial,
@@ -122,7 +122,9 @@ activar esa herramienta hasta comprobarlas.
 **Comprobado y su fuente** (búsqueda en las páginas oficiales del 14/11/2026; abrir cada una antes de activar):
 - Google Analytics: \`_ga\` y \`_ga_<ID>\`; la web las limita a 395 días (unos 13 meses) con \`cookie_expires\`:
   https://support.google.com/analytics/answer/11397207 · https://developers.google.com/analytics/devguides/collection/ga4/cookie-usage
-- Microsoft Clarity (nombres y finalidades; **duraciones sin verificar**):
+- Microsoft Clarity: nombres y finalidades de su página oficial (que no da duraciones). Duraciones **medidas por gerencia
+  el 15/11/2026** en Chrome en la vista previa: \`_clck\` 1 año y \`_clsk\` 1 día; las cinco de los dominios de Microsoft
+  (CLID, ANONCHK, MR, MUID, SM) no se pusieron, y su duración figura como «la fija el proveedor»:
   https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-cookies
 - Meta: \`_fbp\` 90 días (página de ayuda de Meta; \`_fbc\` y \`fr\` **sin verificar**):
   https://developers.facebook.com/documentation/ads-commerce/conversions-api/parameters/fbp-and-fbc ·

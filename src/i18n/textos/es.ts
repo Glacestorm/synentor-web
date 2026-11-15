@@ -797,6 +797,7 @@ export const es: Textos = {
       terceros: 'De otra empresa',
       sesion: 'Hasta que cierras el navegador',
       persistente: 'Hasta que la borres',
+      fijaProveedor: 'La fija el proveedor',
       proveedor: 'Proveedor',
       para: 'Para qué',
       donde: 'Dónde trata los datos',
