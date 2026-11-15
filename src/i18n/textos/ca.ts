@@ -33,6 +33,7 @@ export const ca = {
     cookies: 'Galetes',
     nrt: 'NRT en tràmit',
     estadisticas: 'Estadístiques de visites sense galetes (Umami).',
+    linkedin: 'Synentor a LinkedIn (s’obre en una pestanya nova)',
   },
   cookiesAviso: {
     titulo: 'Galetes',

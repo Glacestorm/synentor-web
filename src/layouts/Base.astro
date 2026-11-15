@@ -153,6 +153,7 @@ const opcionesCookies = hayCookies
           <ul>
             <li><a href={`mailto:${EMPRESA.correo}`}>{EMPRESA.correo}</a></li>
             <li><a href={`tel:${EMPRESA.telefono.enlace}`}>{EMPRESA.telefono.texto}</a></li>
+            <li><a href={EMPRESA.redes.linkedin} target="_blank" rel="noopener noreferrer" aria-label={tx.pie.linkedin}>LinkedIn</a></li>
             <li>{EMPRESA.direccion.linea}<br />{EMPRESA.direccion.codigoPostal} {EMPRESA.direccion.localidad} ({EMPRESA.direccion.pais})</li>
           </ul>
         </div>

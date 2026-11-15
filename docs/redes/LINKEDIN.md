@@ -19,7 +19,7 @@ tarifa cambia, se cambian también aquí.
 |---|---|---|
 | Logotipo | `public/marca/simbol-cercle-perfecte.png` (el que ya tiene la página) | 512 × 512 (LinkedIn recomienda 400 × 400, mínimo 268 × 268) |
 | Portada, en castellano | `docs/redes/portada-linkedin-es.png` | 4200 × 700 (la medida que da la ayuda de LinkedIn) |
-| Portada, en catalán | `docs/redes/portada-linkedin-ca.png` | 4200 × 700 |
+| Portada, en catalán (de reserva) | `docs/redes/portada-linkedin-ca.png` | 4200 × 700 |
 
 LinkedIn tiene **una sola portada** para todos los idiomas: la castellana, si la página está en castellano. El logotipo tapa
 la esquina de abajo a la izquierda y en el móvil la portada se recorta por los lados: por eso el texto va en el centro.
@@ -37,27 +37,25 @@ fichero y se captura a 4200 × 700 con el navegador (`?idioma=es` o `?idioma=ca`
 | Campo | Valor |
 |---|---|
 | Nombre | `Synentor` (la marca; la razón social va en la descripción) |
-| URL pública | `linkedin.com/company/synentor`, si está libre |
+| URL pública | hoy `linkedin.com/company/145468024/` (la que enlaza la web, por su número, que no cambia). Se puede añadir `linkedin.com/company/synentor`, si está libre: el número sigue funcionando |
 | Sitio web | `https://synentor.com` |
 | Sector | **Servicios y consultoría empresarial** |
 | Tamaño de la empresa | el real |
 | Tipo de empresa | Empresa privada |
-| Año de fundación | se deja vacío hasta que conste la inscripción en el Registre de Societats |
-| Ubicación | Andorra, con la localidad real |
+| Año de fundación | 2026 (la sociedad está constituida; el NRT, en trámite) |
+| Ubicación | Avgda. Carlemany, 117, 3-1 · AD700 Les Escaldes-Engordany · Andorra (la dirección que publica la web) |
 | Botón | «Contactar» → `https://synentor.com/es/contacto/` |
 
 ### Eslogan (máximo 120 caracteres)
+
+**LinkedIn no ofrece el catalán** entre los idiomas de una página (comprobado por gerencia el 15/11/2026): la página va en
+castellano, con el inglés como segundo idioma (Editar página → «Gestionar idiomas»). El catalán queda para la web y, si
+se quiere, para alguna publicación.
 
 Castellano (107):
 
 ```text
 Nació gestionando un obrador de Andorra. Gestión, nóminas e IA para tu empresa, con los precios a la vista.
-```
-
-Catalán (112):
-
-```text
-Va néixer gestionant un obrador d'Andorra. Gestió, nòmines i IA per a la teva empresa, amb els preus a la vista.
 ```
 
 Inglés (107):
@@ -87,29 +85,7 @@ Cómo trabajamos:
 
 En España, la nómina y los convenios colectivos están en desarrollo inminente, con adaptación a medida del cliente.
 
-SYNENTOR, S.L.U. (en constitución) · Andorra · admin@synentor.com
-```
-
-Catalán:
-
-```text
-Synentor no va néixer a Silicon Valley. Va néixer gestionant un obrador amb botigues, a Andorra: torns, factures de proveïdors, nòmines, la CASS, l'IGI i els bancs de cada dia. El que va funcionar allà és el que oferim avui.
-
-Synentor Suite ERP-CRM. Tota la gestió de l'empresa, feta per a Andorra: comptabilitat amb el pla comptable andorrà, tresoreria i conciliació amb els fitxers de qualsevol banc, compres que es llegeixen soles, vendes i CRM, recursos humans i nòmines d'Andorra, fiscal (IGI, IS) i jurídic. Moltes empreses en una sola instal·lació, cadascuna aïllada de les altres.
-
-MUV. El cervell operatiu de l'empresa: mapes de coneixement i tasques amb responsables, dates i dependències.
-
-Consultoria d'IA i vendes. Diagnòstic, formació, assistents i automatitzacions, i treballs d'IA a mida segons el teu pressupost.
-
-Com treballem:
-• Que la feina que es repeteix la faci el programa, i les persones, el que importa.
-• Els documents de les persones es llegeixen amb una IA que funciona a les teves instal·lacions.
-• Preus publicats: a synentor.com calcules el teu abans de parlar amb ningú.
-• Diem el que el programa fa avui i el que encara no.
-
-A Espanya, la nòmina i els convenis col·lectius estan en desenvolupament imminent, amb adaptació a mida del client.
-
-SYNENTOR, S.L.U. (en constitució) · Andorra · admin@synentor.com
+SYNENTOR, S.L.U. · Les Escaldes-Engordany (Andorra) · admin@synentor.com
 ```
 
 Inglés:
@@ -131,7 +107,7 @@ How we work:
 
 In Spain, payroll and collective agreements are in imminent development, with custom adaptation for each client.
 
-SYNENTOR, S.L.U. (being incorporated) · Andorra · admin@synentor.com
+SYNENTOR, S.L.U. · Les Escaldes-Engordany (Andorra) · admin@synentor.com
 ```
 
 ### Especialidades (máximo 20; se escriben una a una)
@@ -213,8 +189,8 @@ Y los documentos de las personas se leen con una IA que funciona en la propia em
 ## 4. Vincularla
 
 1. **De LinkedIn a la web**: el sitio web y el botón «Contactar» de la tabla de arriba.
-2. **De la web a LinkedIn**: un enlace a la página en el pie de la web, en los siete idiomas. Hace falta la URL pública
-   definitiva de la página.
+2. **De la web a LinkedIn**: el pie de todas las páginas, en los siete idiomas, enlaza a
+   `https://www.linkedin.com/company/145468024/` (15/11/2026; el dato está en `src/datos/empresa.ts`).
 3. **Los perfiles personales**: en «Experiencia», elegir «Synentor» de la lista (no escribirlo a mano): así sale el
    logotipo y la persona aparece en la página.
 4. **La Insight Tag** (opcional, para medir visitas que llegan de anuncios): guía de puesta en marcha, §9.4. La web ya

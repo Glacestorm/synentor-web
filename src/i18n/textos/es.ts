@@ -32,6 +32,7 @@ export const es: Textos = {
     cookies: 'Cookies',
     nrt: 'NRT en trámite',
     estadisticas: 'Estadísticas de visitas sin cookies (Umami).',
+    linkedin: 'Synentor en LinkedIn (se abre en una pestaña nueva)',
   },
   cookiesAviso: {
     titulo: 'Cookies',
