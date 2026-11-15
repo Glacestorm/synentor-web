@@ -214,7 +214,7 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
       ${p.implantacionDesde > 0 ? `<p class="conf-implantacion">${esc(rellena(c.implantacion, { precio: eur(p.implantacionDesde) }))}</p>` : ''}
       ${avisos ? `<ul class="conf-avisos">${avisos}</ul>` : ''}
       <a class="boton boton-oro" data-k="cta" href="${esc(`${contacto}?asunto=${asunto}`)}">${esc(cta)}</a>
-      <a class="boton boton-contorno" data-k="pedido" href="${esc(pedido)}">${esc(c.botonPedido)}</a>
+      <a class="boton boton-contorno" data-k="pedido" data-umami-event="pedido-calculadora" href="${esc(pedido)}">${esc(c.botonPedido)}</a>
       <p class="conf-nota-pedido">${esc(c.pedidoNota)}</p>`;
   }
 
@@ -246,6 +246,14 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
     totalAnterior = total;
   }
 
+  // «calculadora»: una sola vez por visita, en el primer cambio (Umami puede no estar: bloqueador o no-rastrear).
+  let contado = false;
+  const cuentaUso = () => {
+    if (contado) return;
+    contado = true;
+    (window as { umami?: { track?: (n: string) => void } }).umami?.track?.('calculadora');
+  };
+
   function aplica(el: HTMLElement): boolean {
     const k = el.dataset.k ?? '';
     const input = el as HTMLInputElement;
@@ -266,11 +274,17 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
   }
 
   raiz.addEventListener('change', (ev) => {
-    if (aplica(ev.target as HTMLElement)) pinta(true);
+    if (aplica(ev.target as HTMLElement)) {
+      cuentaUso();
+      pinta(true);
+    }
   });
   raiz.addEventListener('input', (ev) => {
     const el = ev.target as HTMLInputElement;
-    if (el.type === 'number' && aplica(el)) pinta(false);
+    if (el.type === 'number' && aplica(el)) {
+      cuentaUso();
+      pinta(false);
+    }
   });
   raiz.addEventListener('click', (ev) => {
     const boton = (ev.target as HTMLElement).closest<HTMLElement>('[data-k]');
@@ -281,12 +295,17 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
       if (!campo) return;
       const min = Number(campo.min || '0');
       campo.value = String(Math.max(min, numero(campo.value) + (paso[1] === 'mas' ? 1 : -1)));
-      if (aplica(campo)) pinta(true);
+      if (aplica(campo)) {
+        cuentaUso();
+        pinta(true);
+      }
     } else if (k === 'anadir' && estado.empresas.length < MAX_EMPRESAS) {
       estado.empresas.push({ modulos: [], personas: 0 });
+      cuentaUso();
       pinta(true);
     } else if (k.startsWith('quitar-')) {
       estado.empresas.splice(Number(k.split('-')[1]), 1);
+      cuentaUso();
       pinta(true);
     }
   });
