@@ -135,6 +135,26 @@ Pymes
 Andorra
 ```
 
+## 2 bis. La página de servicios (publicada el 15/11/2026)
+
+LinkedIn solo deja elegir servicios de su lista (hasta 10). Los publicados: Consultoría empresarial, Consultoría de
+gestión, Planificación estratégica, Formación, Generación de contactos, Elaboración de informes de datos, Marketing
+digital, Desarrollo de software personalizado, Desarrollo web y Diseño web. En la lista de LinkedIn no hay nada de ventas
+(salvo «Generación de contactos»), transformación digital, automatización ni energía. Ni «Contabilidad» ni «Recursos
+humanos»: Synentor da el programa, no lleva la contabilidad ni las nóminas de nadie.
+
+- **Ubicación**: Escaldes-Engordany y «Ofrecemos servicios a distancia».
+- **Precios**: «Consultar precios». LinkedIn solo admite una tarifa por hora y Synentor no tiene ninguna aprobada (sus
+  precios son cuotas al mes, proyectos y la jornada de implantación); una tarifa por hora la decide gerencia y, si se pone,
+  va también a `src/lib/precios/tarifa.ts`.
+- **Mensajes**: con los servicios publicados, los mensajes de la página quedan activados y alguien tiene que contestarlos.
+
+Resumen (máximo 500 caracteres; este tiene 499):
+
+```text
+Ayudamos a empresas de Andorra, España y otros países a dedicar menos tiempo a lo que se repite: consultoría de IA y ventas, con software de gestión propio (Synentor Suite ERP-CRM y MUV). Diagnóstico, formación, asistentes, automatizaciones y trabajos de IA a medida según tu presupuesto. Implantamos el programa, cargamos los datos del anterior y formamos al equipo. Nació gestionando un obrador con tiendas en Andorra. Precios publicados en synentor.com: calcula el tuyo antes de hablar con nadie.
+```
+
 ## 3. Las tres primeras publicaciones
 
 Una por semana, mejor por la mañana de martes a jueves. La primera, con la portada como imagen.
