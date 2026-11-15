@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face {
+    font-family: 'Manrope Variable';
+    src: url('../../node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2') format('woff2');
+    font-weight: 200 800;
+  }
+  @font-face {
+    font-family: 'Manrope Variable';
+    src: url('../../node_modules/@fontsource-variable/manrope/files/manrope-latin-ext-wght-normal.woff2') format('woff2');
+    font-weight: 200 800;
+    unicode-range: U+0100-024F, U+1E00-1EFF;
+  }
+  /* Colores del kit de marca (src/estilos/marca.css); el papel es blanco con el oro de la marca encima. */
+  :root {
+    --tinta: #17233f; --tinta-2: #4a5878; --oro-legible: #8b6500;
+    --oro-inicio: #fed44c; --oro: #fbbf24; --oro-final: #fb973a;
+  }
+  html, body { margin: 0; padding: 0; }
+  body { width: 4200px; height: 700px; overflow: hidden; font-family: 'Manrope Variable', Arial, sans-serif; }
+  .lienzo {
+    position: relative; width: 4200px; height: 700px; overflow: hidden;
+    background:
+      radial-gradient(22% 70% at 87% 40%, rgba(251, 191, 36, 0.22), transparent 70%),
+      linear-gradient(180deg, #fffdf8 0%, #fff6e3 100%);
+  }
+  svg { position: absolute; inset: 0; }
+  .texto {
+    position: absolute; left: 2050px; top: 62px; transform: translateX(-50%);
+    width: 2600px; text-align: center;
+  }
+  .ante { color: var(--oro-legible); font-weight: 700; font-size: 40px; letter-spacing: 0.14em; text-transform: uppercase; }
+  h1 { margin: 22px 0 0; color: var(--tinta); font-weight: 800; font-size: 150px; line-height: 1.02; letter-spacing: -0.025em; }
+  h2 { margin: 6px 0 0; color: var(--oro-legible); font-weight: 600; font-style: italic; font-size: 104px; line-height: 1.05; letter-spacing: -0.02em; }
+  .pie { margin-top: 30px; color: var(--tinta-2); font-weight: 600; font-size: 46px; }
+  .web { position: absolute; right: 130px; bottom: 60px; color: var(--tinta); font-weight: 800; font-size: 44px; letter-spacing: 0.01em; }
+  .web span { color: var(--oro-legible); }
+</style>
+</head>
+<body>
+<div class="lienzo">
+  <svg viewBox="0 0 4200 700" aria-hidden="true">
+    <defs>
+      <linearGradient id="oro" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0" stop-color="#fed44c"/><stop offset="0.5" stop-color="#fbbf24"/><stop offset="1" stop-color="#fb973a"/>
+      </linearGradient>
+    </defs>
+    <!-- El anillo de oro del símbolo, como un sol que sale detrás de las montañas de Andorra. -->
+    <circle cx="3660" cy="380" r="190" fill="none" stroke="url(#oro)" stroke-width="16"/>
+    <!-- Cordilleras: la del fondo, más clara; la de delante tapa la mitad del sol. -->
+    <path d="M0 560 L60 545 L120 541 L180 517 L240 516 L300 505 L365 510 L430 527 L495 531 L560 548 L617 536 L673 524 L730 522 L787 522 L843 504 L900 500 L956 513 L1012 534 L1068 538 L1124 547 L1180 560 L1240 549 L1300 556 L1360 537 L1420 532 L1480 530 L1548 539 L1615 561 L1682 559 L1750 575 L1810 569 L1870 556 L1930 552 L1990 538 L2050 535 L2106 539 L2162 553 L2218 554 L2274 561 L2330 570 L2394 557 L2458 542 L2522 541 L2586 524 L2650 510 L2710 513 L2770 515 L2830 524 L2890 521 L2950 520 L3010 501 L3070 463 L3130 446 L3190 427 L3250 400 L3306 411 L3362 412 L3418 437 L3474 447 L3530 455 L3588 440 L3646 413 L3704 402 L3762 380 L3820 360 L3878 374 L3935 400 L3992 411 L4050 420 L4100 415 L4150 395 L4200 395 L4200 700 L0 700 Z"
+          fill="rgba(251,191,36,0.12)" stroke="rgba(139,101,0,0.22)" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M0 650 L63 642 L127 639 L190 624 L253 617 L317 609 L380 600 L444 608 L508 618 L572 629 L636 629 L700 640 L758 628 L817 626 L875 616 L933 597 L992 597 L1050 585 L1105 594 L1160 602 L1215 601 L1270 609 L1325 623 L1380 630 L1437 619 L1493 608 L1550 593 L1607 593 L1663 584 L1720 575 L1784 585 L1848 596 L1912 603 L1976 614 L2040 622 L2097 610 L2153 608 L2210 601 L2267 585 L2323 572 L2380 560 L2444 568 L2508 577 L2572 583 L2636 602 L2700 610 L2760 599 L2820 580 L2880 575 L2940 557 L3000 540 L3060 548 L3120 567 L3180 570 L3240 584 L3300 590 L3365 560 L3430 542 L3495 516 L3560 488 L3627 501 L3693 524 L3760 545 L3818 529 L3875 500 L3932 486 L3990 470 L4060 481 L4130 507 L4200 520 L4200 700 L0 700 Z"
+          fill="#fff6e3" stroke="rgba(139,101,0,0.45)" stroke-width="6" stroke-linejoin="round"/>
+  </svg>
+  <div class="texto">
+    <div class="ante" data-t="ante"></div>
+    <h1 data-t="h1"></h1>
+    <h2 data-t="h2"></h2>
+    <div class="pie" data-t="pie"></div>
+  </div>
+  <div class="web"><span>synentor</span>.com</div>
+</div>
+<script>
+  const TEXTOS = {
+    es: { ante: 'Consultoría de IA y ventas · Andorra', h1: 'Nació en un obrador de Andorra.', h2: 'No en Silicon Valley.',
+          pie: 'Gestión, nóminas e IA, de quien sabe lo que es llevar una empresa.' },
+    ca: { ante: "Consultoria d'IA i vendes · Andorra", h1: "Va néixer en un obrador d'Andorra.", h2: 'No a Silicon Valley.',
+          pie: "Gestió, nòmines i IA, de qui sap què és portar una empresa." },
+  };
+  const t = TEXTOS[new URLSearchParams(location.search).get('idioma') || 'es'];
+  document.documentElement.lang = new URLSearchParams(location.search).get('idioma') || 'es';
+  for (const el of document.querySelectorAll('[data-t]')) el.textContent = t[el.dataset.t];
+</script>
+</body>
+</html>
