@@ -11,6 +11,7 @@ import { TURNSTILE_SITEKEY } from '../src/datos/turnstile';
 import { HERRAMIENTAS } from '../src/datos/analitica';
 import { COOKIES, PROVEEDORES } from '../src/datos/legal';
 import { herramientasValidas } from '../src/lib/consentimiento';
+import { EMPRESA } from '../src/datos/empresa';
 
 const DIST = fileURLToPath(new URL('../dist', import.meta.url));
 const idiomas = Object.keys(TEXTOS) as Idioma[];
@@ -34,6 +35,19 @@ describe('páginas construidas', () => {
         expect(html).toContain(`<link rel="canonical" href="https://synentor.com${r}">`);
         expect((html.match(/<link rel="alternate" hreflang="/g) ?? []).length).toBe(idiomas.length + 1);
         expect(html).toContain(`<html lang="${idioma}"`);
+      });
+
+      it(`${r}: el pie enlaza a la página de LinkedIn de la empresa, en otra pestaña y con su texto para lectores de pantalla`, () => {
+        const html = readFileSync(fichero(r), 'utf8');
+        const pie = html.slice(html.indexOf('<footer'));
+        const escapa = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        // Astro añade su atributo de estilos con ámbito (data-astro-cid-…) a los enlaces del pie.
+        expect(pie).toMatch(
+          new RegExp(
+            `<a href="${escapa(EMPRESA.redes.linkedin)}" target="_blank" rel="noopener noreferrer" ` +
+              `aria-label="${escapa(TEXTOS[idioma]!.pie.linkedin)}"( data-astro-cid-[a-z0-9]+)?>LinkedIn</a>`,
+          ),
+        );
       });
 
       it(`${r}: ningún marcador sin rellenar, «undefined» ni «NaN» a la vista`, () => {

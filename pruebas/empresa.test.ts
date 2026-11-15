@@ -17,6 +17,10 @@ describe('datos de la empresa', () => {
     expect(EMPRESA.nrt).toBeNull();
   });
 
+  it('la página de LinkedIn es la de la empresa (gerencia, 15/11/2026)', () => {
+    expect(EMPRESA.redes.linkedin).toBe('https://www.linkedin.com/company/145468024/');
+  });
+
   it('ningún dato apunta a un correo personal', () => {
     expect(JSON.stringify(EMPRESA)).not.toMatch(/gmail|hotmail|outlook|yahoo/i);
   });

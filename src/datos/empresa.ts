@@ -17,6 +17,8 @@ export const EMPRESA = {
   correo: 'admin@synentor.com',
   telefono: { enlace: '+376692069', texto: '+376 692 069' },
   dominio: 'https://synentor.com',
+  // La página de empresa (gerencia, 15/11/2026). Por su número, que no cambia aunque se cambie la dirección corta.
+  redes: { linkedin: 'https://www.linkedin.com/company/145468024/' },
 } as const;
 
 export type Empresa = typeof EMPRESA;
