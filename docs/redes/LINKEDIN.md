@@ -24,6 +24,11 @@ tarifa cambia, se cambian también aquí.
 LinkedIn tiene **una sola portada** para todos los idiomas: la castellana, si la página está en castellano. El logotipo tapa
 la esquina de abajo a la izquierda y en el móvil la portada se recorta por los lados: por eso el texto va en el centro.
 
+LinkedIn pone el logotipo sobre un **cuadro blanco** (rellena de blanco lo transparente). Para que ese cuadro no se vea,
+la portada lleva una niebla blanca en el valle de la izquierda: debajo del logotipo es blanco puro (`#ffffff`), como el
+cuadro y como la página, y el paisaje aparece poco a poco hacia la derecha (15/11/2026, a petición de gerencia). Si se
+cambia la portada, esa esquina tiene que seguir siendo blanca.
+
 La portada sale de `docs/redes/linkedin-portada.html` (con la tipografía Manrope de la web): para cambiarla, se edita ese
 fichero y se captura a 4200 × 700 con el navegador (`?idioma=es` o `?idioma=ca`).
 
