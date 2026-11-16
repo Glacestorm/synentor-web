@@ -1,107 +1,107 @@
-code,name,description,unit,sale_price,purchase_price,is_active,type,tax_code
-SYN-BASE,Synentor Base,"Contabilidad y 5 usuarios incluidos. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,149,,true,service,IGI_GEN
-SYN-USUARIO,Usuario adicional,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",usuario/mes,15,,true,service,IGI_GEN
-SYN-EMPRESA,Empresa adicional,"Más sus módulos, al 50 % de su cuota. Con más de 10 empresas, bajo propuesta. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",empresa/mes,39,,true,service,IGI_GEN
-SYN-MOD-COMPRAS,Módulo Compras inteligentes,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,69,,true,service,IGI_GEN
-SYN-MOD-VENTAS-CRM,Módulo Ventas y CRM,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,59,,true,service,IGI_GEN
-SYN-MOD-RRHH,Módulo Recursos humanos y nóminas,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,59,,true,service,IGI_GEN
-SYN-MOD-FISCAL,Módulo Fiscal,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,39,,true,service,IGI_GEN
-SYN-MOD-JURIDICO,Módulo Jurídico y trámites,"Requiere Recursos humanos y nóminas. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,79,,true,service,IGI_GEN
-SYN-MOD-PBC,Módulo Prevención del blanqueo,"Requiere Jurídico y trámites. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,49,,true,service,IGI_GEN
-SYN-MOD-PRODUCTOS,"Módulo Productos, escandallos y stock","Requiere Compras inteligentes. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,39,,true,service,IGI_GEN
-SYN-MOD-COSTES,Módulo Control de costes de compra,"Requiere Compras inteligentes. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,59,,true,service,IGI_GEN
-SYN-MOD-TPV,Módulo TPV y caja,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,39,,true,service,IGI_GEN
-SYN-MOD-ELECTRICA,Módulo C. Eléctrica,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,79,,true,service,IGI_GEN
-SYN-MOD-RRHH-PERSONA,Módulo Recursos humanos y nóminas: por persona en plantilla,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",persona/mes,18,,true,service,IGI_GEN
-SYN-PAQ-GESTION,Paquete Synentor Completo,"Synentor Base · Compras inteligentes · Ventas y CRM · Fiscal; 10 usuarios incluidos. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,469,,true,service,IGI_GEN
-SYN-PAQ-GESTION-USUARIO,Paquete Synentor Completo: usuario adicional,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",usuario/mes,45,,true,service,IGI_GEN
-SYN-PAQ-OBRADOR,Paquete Obrador,"Synentor Base · Compras inteligentes · Productos, escandallos y stock · TPV y caja · Recursos humanos y nóminas; 5 usuarios incluidos. Usuarios y personas en plantilla, a la tarifa normal. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,299,,true,service,IGI_GEN
-SYN-PAQ-OBRADOR-COSTES,Paquete Obrador con Control de costes de compra,"Como el Paquete Obrador, con Control de costes de compra. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,329,,true,service,IGI_GEN
-SYN-GESTORIAS,Paquete Despachos y gestorías,"Solo para despachos que llevan empresas de sus clientes. Contabilidad · Compras inteligentes · Ventas y CRM · Fiscal · Recursos humanos y nóminas; 10 empresas y 5 usuarios incluidos. Con más de 25 empresas, bajo propuesta. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,249,,true,service,IGI_GEN
-SYN-GESTORIAS-EMPRESA,Paquete Despachos y gestorías: empresa cliente adicional,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",empresa/mes,9,,true,service,IGI_GEN
-SYN-GESTORIAS-NOMINA,Paquete Despachos y gestorías: por nómina,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",nómina/mes,5,,true,service,IGI_GEN
-SYN-PORTAL,Portal del empleado (sin la Base),"10 personas incluidas. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,59,,true,service,IGI_GEN
-SYN-PORTAL-PERSONA,Portal del empleado: persona adicional,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",persona/mes,4,,true,service,IGI_GEN
-SYN-PORTAL-IMPLANTACION,Portal del empleado: implantación,Pago único. Sin impuestos.,ud,720,,true,service,IGI_GEN
-SYN-MODALIDAD-B,Modalidad alojada por Synentor en Andorra,"En desarrollo inminente: desactivado hasta que se pueda vender. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",instalación/mes,50,,false,service,IGI_GEN
-SYN-IMPLANTACION,Implantación y soporte: jornada,"La Suite, desde 2 jornadas; MUV, de 1 a 4. Sin impuestos.",jornada,720,,true,service,IGI_GEN
-SYN-WEB-ESENCIAL,Página web Esencial,Pago único. Sin impuestos.,ud,1200,,true,service,IGI_GEN
-SYN-WEB-PROFESIONAL,Página web Profesional,Pago único. Sin impuestos.,ud,2900,,true,service,IGI_GEN
-SYN-WEB-PREMIUM,Página web Premium,"Desde: el precio final, en la propuesta. Pago único. Sin impuestos.",ud,6500,,true,service,IGI_GEN
-SYN-WEB-PAGINA,Página web: página adicional,Pago único. Sin impuestos.,ud,250,,true,service,IGI_GEN
-SYN-WEB-IDIOMA,Página web: idioma adicional,Pago único. Sin impuestos.,ud,350,,true,service,IGI_GEN
-SYN-WEB-MANT-BASICO,Mantenimiento web Básico,Al mes. Sin impuestos.,mes,49,,true,service,IGI_GEN
-SYN-WEB-MANT-PLUS,Mantenimiento web Plus,Al mes. Sin impuestos.,mes,99,,true,service,IGI_GEN
-SYN-ENE-ESTUDIO-PART,Estudio energético de un particular,Se devuelve si el ahorro anual que encontramos no llega a su precio. Pago único. Sin impuestos.,ud,49,,true,service,IGI_GEN
-SYN-ENE-ESTUDIO-EMP,Estudio energético de una empresa (por suministro),Pago único. Sin impuestos.,suministro,290,,true,service,IGI_GEN
-SYN-ENE-EXITO,Ahorro energético a éxito,El 30 % del ahorro comprobado de los 12 primeros meses: el importe se calcula en cada caso. Sin impuestos.,ud,,,true,service,IGI_GEN
-SYN-ENE-MON-VIVIENDA,Monitorización energética de una vivienda: instalación,"Incluye los medidores de esos puntos. Desde: el precio final, en la propuesta. Pago único. Sin impuestos.",ud,690,,true,service,IGI_GEN
-SYN-ENE-MON-VIVIENDA-CUOTA,Monitorización energética de una vivienda: cuota,Al mes. Sin impuestos.,mes,19,,true,service,IGI_GEN
-SYN-ENE-MON-PYME,Monitorización energética de una pyme: instalación,"Incluye los medidores de esos puntos. Desde: el precio final, en la propuesta. Pago único. Sin impuestos.",ud,2900,,true,service,IGI_GEN
-SYN-ENE-MON-PYME-CUOTA,Monitorización energética de una pyme: cuota,Al mes. Sin impuestos.,mes,49,,true,service,IGI_GEN
-SYN-ENE-MON-EDIFICIO,Monitorización energética de un edificio: instalación,"Incluye los medidores de esos puntos. Desde: el precio final, en la propuesta. Pago único. Sin impuestos.",ud,6900,,true,service,IGI_GEN
-SYN-ENE-MON-EDIFICIO-CUOTA,Monitorización energética de un edificio: cuota,Al mes. Sin impuestos.,mes,99,,true,service,IGI_GEN
-SYN-ENE-MON-GRAN-CUOTA,Monitorización energética de un gran consumidor: cuota,"Desde: el precio final, en la propuesta. Al mes. Sin impuestos.",mes,290,,true,service,IGI_GEN
-SYN-MIG-ARRANQUE,Migración: arranque,Pago único. Sin impuestos.,ud,1440,,true,service,IGI_GEN
-SYN-MIG-CONTA-PRIMERO,Migración de la contabilidad: primer ejercicio,Pago único. Sin impuestos.,ud,1440,,true,service,IGI_GEN
-SYN-MIG-CONTA-ADICIONAL,Migración de la contabilidad: ejercicio adicional,Pago único. Sin impuestos.,ejercicio,720,,true,service,IGI_GEN
-SYN-MIG-PERSONAL,Migración del personal,"Hasta 25 personas; con más, a medida. Pago único. Sin impuestos.",ud,1440,,true,service,IGI_GEN
-SYN-CONV-PUESTA,Convivencia con el programa actual: puesta en marcha,Pago único. Sin impuestos.,ud,720,,true,service,IGI_GEN
-SYN-CONV-CUOTA,Convivencia con el programa actual: cuota,Hasta 4 cargas de ficheros al mes. Al mes. Sin impuestos.,mes,99,,true,service,IGI_GEN
-SYN-CON-DIAGNOSTICO-IA-EXPRESS,Diagnóstico exprés de IA,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,950,,true,service,IGI_GEN
-SYN-CON-AUDITORIA-HOJA-RUTA-IA,Auditoría de oportunidades y hoja de ruta de IA,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2400,,true,service,IGI_GEN
-SYN-CON-PILOTO-PRUEBA-CONCEPTO,Prueba piloto de un caso de uso (30-60 días),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN
-SYN-CON-DIRECCION-IA-TIEMPO-PARCIAL,Responsable de IA externo (dirección a tiempo parcial),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,500,,true,service,IGI_GEN
-SYN-CON-DIRECCION-IA-TIEMPO-PARCIAL-CUOTA,Responsable de IA externo (dirección a tiempo parcial): cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,650,,true,service,IGI_GEN
-SYN-CON-TALLER-IA-DIRECCION,Taller de IA para dirección,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,700,,true,service,IGI_GEN
-SYN-CON-FORMACION-IA-EQUIPOS,Formación práctica en IA generativa para equipos (incluye alfabetización en IA),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,950,,true,service,IGI_GEN
-SYN-CON-PROGRAMA-ADOPCION-IA,Programa de adopción de IA con referentes internos,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2400,,true,service,IGI_GEN
-SYN-CON-ASISTENTE-ATENCION-CLIENTE,Asistente de atención al cliente en web y WhatsApp,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN
-SYN-CON-ASISTENTE-ATENCION-CLIENTE-CUOTA,Asistente de atención al cliente en web y WhatsApp: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,90,,true,service,IGI_GEN
-SYN-CON-AGENTE-VOZ-TELEFONICO,Recepcionista telefónico con IA (agente de voz),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2400,,true,service,IGI_GEN
-SYN-CON-AGENTE-VOZ-TELEFONICO-CUOTA,Recepcionista telefónico con IA (agente de voz): cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,150,,true,service,IGI_GEN
-SYN-CON-GESTION-RESENAS,Gestión de reseñas y reputación en línea con IA,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,700,,true,service,IGI_GEN
-SYN-CON-GESTION-RESENAS-CUOTA,Gestión de reseñas y reputación en línea con IA: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,40,,true,service,IGI_GEN
-SYN-CON-ASISTENTE-COMERCIAL,Asistente comercial: cualificación de contactos y presupuestos,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN
-SYN-CON-ASISTENTE-COMERCIAL-CUOTA,Asistente comercial: cualificación de contactos y presupuestos: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,80,,true,service,IGI_GEN
-SYN-CON-LECTURA-FACTURAS-ALBARANES,Lectura automática de facturas y albaranes,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN
-SYN-CON-LECTURA-FACTURAS-ALBARANES-CUOTA,Lectura automática de facturas y albaranes: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,90,,true,service,IGI_GEN
-SYN-CON-CORREO-ENTRANTE,Clasificación y respuesta asistida del correo,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1450,,true,service,IGI_GEN
-SYN-CON-CORREO-ENTRANTE-CUOTA,Clasificación y respuesta asistida del correo: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,60,,true,service,IGI_GEN
-SYN-CON-AUTOMATIZACION-FLUJOS,Automatización de tareas entre aplicaciones (paquete de 3 flujos),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN
-SYN-CON-AUTOMATIZACION-FLUJOS-CUOTA,Automatización de tareas entre aplicaciones (paquete de 3 flujos): cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,60,,true,service,IGI_GEN
-SYN-CON-AGENTES-IA-PROCESOS,Agentes de IA para procesos de varios pasos,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,3850,,true,service,IGI_GEN
-SYN-CON-AGENTES-IA-PROCESOS-CUOTA,Agentes de IA para procesos de varios pasos: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,150,,true,service,IGI_GEN
-SYN-CON-CONTENIDOS-MARKETING,Contenidos y marketing con IA,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1450,,true,service,IGI_GEN
-SYN-CON-CONTENIDOS-MARKETING-CUOTA,Contenidos y marketing con IA: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,50,,true,service,IGI_GEN
-SYN-CON-BUSCADOR-DOCUMENTAL-RAG,Buscador inteligente sobre documentos internos (RAG),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2400,,true,service,IGI_GEN
-SYN-CON-BUSCADOR-DOCUMENTAL-RAG-CUOTA,Buscador inteligente sobre documentos internos (RAG): cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,90,,true,service,IGI_GEN
-SYN-CON-ASISTENTE-INTERNO,Asistente interno para la plantilla (procedimientos y personal),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1450,,true,service,IGI_GEN
-SYN-CON-ASISTENTE-INTERNO-CUOTA,Asistente interno para la plantilla (procedimientos y personal): cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,60,,true,service,IGI_GEN
-SYN-CON-EXTRACCION-REVISION-DOCUMENTOS,"Extracción y revisión de documentos (contratos, expedientes, pólizas)","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN
-SYN-CON-EXTRACCION-REVISION-DOCUMENTOS-CUOTA,"Extracción y revisión de documentos (contratos, expedientes, pólizas): cuota","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,90,,true,service,IGI_GEN
-SYN-CON-ACTAS-TRANSCRIPCION,"Transcripción y actas automáticas (reuniones, visitas, consultas)","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,950,,true,service,IGI_GEN
-SYN-CON-ACTAS-TRANSCRIPCION-CUOTA,"Transcripción y actas automáticas (reuniones, visitas, consultas): cuota","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,60,,true,service,IGI_GEN
-SYN-CON-TRADUCCION-MULTILINGUE,Traducción y comunicación multilingüe,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,950,,true,service,IGI_GEN
-SYN-CON-TRADUCCION-MULTILINGUE-CUOTA,Traducción y comunicación multilingüe: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,50,,true,service,IGI_GEN
-SYN-CON-CUADRO-MANDO-IA,Cuadro de mando con preguntas en lenguaje natural,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN
-SYN-CON-CUADRO-MANDO-IA-CUOTA,Cuadro de mando con preguntas en lenguaje natural: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,80,,true,service,IGI_GEN
-SYN-CON-PREVISION-DEMANDA,"Previsión de demanda, ocupación y ventas","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2400,,true,service,IGI_GEN
-SYN-CON-PREVISION-DEMANDA-CUOTA,"Previsión de demanda, ocupación y ventas: cuota","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,100,,true,service,IGI_GEN
-SYN-CON-MANTENIMIENTO-PREDICTIVO,Mantenimiento predictivo y detección de anomalías,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2900,,true,service,IGI_GEN
-SYN-CON-MANTENIMIENTO-PREDICTIVO-CUOTA,Mantenimiento predictivo y detección de anomalías: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,150,,true,service,IGI_GEN
-SYN-CON-CALIDAD-DATOS,Preparación y calidad de datos,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1450,,true,service,IGI_GEN
-SYN-CON-IA-LOCAL-PRIVADA,IA privada en servidor propio o andorrano,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2400,,true,service,IGI_GEN
-SYN-CON-IA-LOCAL-PRIVADA-CUOTA,IA privada en servidor propio o andorrano: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,150,,true,service,IGI_GEN
-SYN-CON-DESARROLLO-MEDIDA,Desarrollo e integración de IA a medida,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,4800,,true,service,IGI_GEN
-SYN-CON-DESARROLLO-MEDIDA-CUOTA,Desarrollo e integración de IA a medida: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,120,,true,service,IGI_GEN
-SYN-CON-VISION-ARTIFICIAL,"Visión artificial (control de calidad, inventario, conteo)","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,3850,,true,service,IGI_GEN
-SYN-CON-VISION-ARTIFICIAL-CUOTA,"Visión artificial (control de calidad, inventario, conteo): cuota","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,100,,true,service,IGI_GEN
-SYN-CON-ADECUACION-REGLAMENTO-IA,Adecuación al Reglamento europeo de IA,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1450,,true,service,IGI_GEN
-SYN-CON-PROTECCION-DATOS-IA,Protección de datos en proyectos de IA (LQPD y RGPD),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,950,,true,service,IGI_GEN
-SYN-CON-POLITICA-USO-IA,Política interna de uso de IA y gobierno,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,700,,true,service,IGI_GEN
-SYN-CON-MANTENIMIENTO-SOPORTE,Mantenimiento y soporte de soluciones de IA,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,250,,true,service,IGI_GEN
-SYN-CON-MANTENIMIENTO-SOPORTE-CUOTA,Mantenimiento y soporte de soluciones de IA: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,150,,true,service,IGI_GEN
-SYN-CON-BOLSA-JORNADAS,Bolsa de jornadas de mejora continua,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2150,,true,service,IGI_GEN
-SYN-CON-OPERACION-IA-GESTIONADA,Servicio gestionado de IA local,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,500,,true,service,IGI_GEN
-SYN-CON-OPERACION-IA-GESTIONADA-CUOTA,Servicio gestionado de IA local: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,250,,true,service,IGI_GEN
+code,name,description,unit,sale_price,purchase_price,is_active,type,tax_code,periodicidad
+SYN-BASE,Synentor Base,"Contabilidad y 5 usuarios incluidos. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,149,,true,service,IGI_GEN,mensual
+SYN-USUARIO,Usuario adicional,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",usuario/mes,15,,true,service,IGI_GEN,mensual
+SYN-EMPRESA,Empresa adicional,"Más sus módulos, al 50 % de su cuota. Con más de 10 empresas, bajo propuesta. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",empresa/mes,39,,true,service,IGI_GEN,mensual
+SYN-MOD-COMPRAS,Módulo Compras inteligentes,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,69,,true,service,IGI_GEN,mensual
+SYN-MOD-VENTAS-CRM,Módulo Ventas y CRM,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,59,,true,service,IGI_GEN,mensual
+SYN-MOD-RRHH,Módulo Recursos humanos y nóminas,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,59,,true,service,IGI_GEN,mensual
+SYN-MOD-FISCAL,Módulo Fiscal,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,39,,true,service,IGI_GEN,mensual
+SYN-MOD-JURIDICO,Módulo Jurídico y trámites,"Requiere Recursos humanos y nóminas. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,79,,true,service,IGI_GEN,mensual
+SYN-MOD-PBC,Módulo Prevención del blanqueo,"Requiere Jurídico y trámites. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,49,,true,service,IGI_GEN,mensual
+SYN-MOD-PRODUCTOS,"Módulo Productos, escandallos y stock","Requiere Compras inteligentes. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,39,,true,service,IGI_GEN,mensual
+SYN-MOD-COSTES,Módulo Control de costes de compra,"Requiere Compras inteligentes. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,59,,true,service,IGI_GEN,mensual
+SYN-MOD-TPV,Módulo TPV y caja,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,39,,true,service,IGI_GEN,mensual
+SYN-MOD-ELECTRICA,Módulo C. Eléctrica,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,79,,true,service,IGI_GEN,mensual
+SYN-MOD-RRHH-PERSONA,Módulo Recursos humanos y nóminas: por persona en plantilla,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",persona/mes,18,,true,service,IGI_GEN,mensual
+SYN-PAQ-GESTION,Paquete Synentor Completo,"Synentor Base · Compras inteligentes · Ventas y CRM · Fiscal; 10 usuarios incluidos. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,469,,true,service,IGI_GEN,mensual
+SYN-PAQ-GESTION-USUARIO,Paquete Synentor Completo: usuario adicional,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",usuario/mes,45,,true,service,IGI_GEN,mensual
+SYN-PAQ-OBRADOR,Paquete Obrador,"Synentor Base · Compras inteligentes · Productos, escandallos y stock · TPV y caja · Recursos humanos y nóminas; 5 usuarios incluidos. Usuarios y personas en plantilla, a la tarifa normal. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,299,,true,service,IGI_GEN,mensual
+SYN-PAQ-OBRADOR-COSTES,Paquete Obrador con Control de costes de compra,"Como el Paquete Obrador, con Control de costes de compra. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,329,,true,service,IGI_GEN,mensual
+SYN-GESTORIAS,Paquete Despachos y gestorías,"Solo para despachos que llevan empresas de sus clientes. Contabilidad · Compras inteligentes · Ventas y CRM · Fiscal · Recursos humanos y nóminas; 10 empresas y 5 usuarios incluidos. Con más de 25 empresas, bajo propuesta. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,249,,true,service,IGI_GEN,mensual
+SYN-GESTORIAS-EMPRESA,Paquete Despachos y gestorías: empresa cliente adicional,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",empresa/mes,9,,true,service,IGI_GEN,mensual
+SYN-GESTORIAS-NOMINA,Paquete Despachos y gestorías: por nómina,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",nómina/mes,5,,true,service,IGI_GEN,mensual
+SYN-PORTAL,Portal del empleado (sin la Base),"10 personas incluidas. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,59,,true,service,IGI_GEN,mensual
+SYN-PORTAL-PERSONA,Portal del empleado: persona adicional,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",persona/mes,4,,true,service,IGI_GEN,mensual
+SYN-PORTAL-IMPLANTACION,Portal del empleado: implantación,Pago único. Sin impuestos.,ud,720,,true,service,IGI_GEN,unica
+SYN-MODALIDAD-B,Modalidad alojada por Synentor en Andorra,"En desarrollo inminente: desactivado hasta que se pueda vender. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",instalación/mes,50,,false,service,IGI_GEN,mensual
+SYN-IMPLANTACION,Implantación y soporte: jornada,"La Suite, desde 2 jornadas; MUV, de 1 a 4. Sin impuestos.",jornada,720,,true,service,IGI_GEN,unica
+SYN-WEB-ESENCIAL,Página web Esencial,Pago único. Sin impuestos.,ud,1200,,true,service,IGI_GEN,unica
+SYN-WEB-PROFESIONAL,Página web Profesional,Pago único. Sin impuestos.,ud,2900,,true,service,IGI_GEN,unica
+SYN-WEB-PREMIUM,Página web Premium,"Desde: el precio final, en la propuesta. Pago único. Sin impuestos.",ud,6500,,true,service,IGI_GEN,unica
+SYN-WEB-PAGINA,Página web: página adicional,Pago único. Sin impuestos.,ud,250,,true,service,IGI_GEN,unica
+SYN-WEB-IDIOMA,Página web: idioma adicional,Pago único. Sin impuestos.,ud,350,,true,service,IGI_GEN,unica
+SYN-WEB-MANT-BASICO,Mantenimiento web Básico,Al mes. Sin impuestos.,mes,49,,true,service,IGI_GEN,mensual
+SYN-WEB-MANT-PLUS,Mantenimiento web Plus,Al mes. Sin impuestos.,mes,99,,true,service,IGI_GEN,mensual
+SYN-ENE-ESTUDIO-PART,Estudio energético de un particular,Se devuelve si el ahorro anual que encontramos no llega a su precio. Pago único. Sin impuestos.,ud,49,,true,service,IGI_GEN,unica
+SYN-ENE-ESTUDIO-EMP,Estudio energético de una empresa (por suministro),Pago único. Sin impuestos.,suministro,290,,true,service,IGI_GEN,unica
+SYN-ENE-EXITO,Ahorro energético a éxito,El 30 % del ahorro comprobado de los 12 primeros meses: el importe se calcula en cada caso. Sin impuestos.,ud,,,true,service,IGI_GEN,unica
+SYN-ENE-MON-VIVIENDA,Monitorización energética de una vivienda: instalación,"Incluye los medidores de esos puntos. Desde: el precio final, en la propuesta. Pago único. Sin impuestos.",ud,690,,true,service,IGI_GEN,unica
+SYN-ENE-MON-VIVIENDA-CUOTA,Monitorización energética de una vivienda: cuota,Al mes. Sin impuestos.,mes,19,,true,service,IGI_GEN,mensual
+SYN-ENE-MON-PYME,Monitorización energética de una pyme: instalación,"Incluye los medidores de esos puntos. Desde: el precio final, en la propuesta. Pago único. Sin impuestos.",ud,2900,,true,service,IGI_GEN,unica
+SYN-ENE-MON-PYME-CUOTA,Monitorización energética de una pyme: cuota,Al mes. Sin impuestos.,mes,49,,true,service,IGI_GEN,mensual
+SYN-ENE-MON-EDIFICIO,Monitorización energética de un edificio: instalación,"Incluye los medidores de esos puntos. Desde: el precio final, en la propuesta. Pago único. Sin impuestos.",ud,6900,,true,service,IGI_GEN,unica
+SYN-ENE-MON-EDIFICIO-CUOTA,Monitorización energética de un edificio: cuota,Al mes. Sin impuestos.,mes,99,,true,service,IGI_GEN,mensual
+SYN-ENE-MON-GRAN-CUOTA,Monitorización energética de un gran consumidor: cuota,"Desde: el precio final, en la propuesta. Al mes. Sin impuestos.",mes,290,,true,service,IGI_GEN,mensual
+SYN-MIG-ARRANQUE,Migración: arranque,Pago único. Sin impuestos.,ud,1440,,true,service,IGI_GEN,unica
+SYN-MIG-CONTA-PRIMERO,Migración de la contabilidad: primer ejercicio,Pago único. Sin impuestos.,ud,1440,,true,service,IGI_GEN,unica
+SYN-MIG-CONTA-ADICIONAL,Migración de la contabilidad: ejercicio adicional,Pago único. Sin impuestos.,ejercicio,720,,true,service,IGI_GEN,unica
+SYN-MIG-PERSONAL,Migración del personal,"Hasta 25 personas; con más, a medida. Pago único. Sin impuestos.",ud,1440,,true,service,IGI_GEN,unica
+SYN-CONV-PUESTA,Convivencia con el programa actual: puesta en marcha,Pago único. Sin impuestos.,ud,720,,true,service,IGI_GEN,unica
+SYN-CONV-CUOTA,Convivencia con el programa actual: cuota,Hasta 4 cargas de ficheros al mes. Al mes. Sin impuestos.,mes,99,,true,service,IGI_GEN,mensual
+SYN-CON-DIAGNOSTICO-IA-EXPRESS,Diagnóstico exprés de IA,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,950,,true,service,IGI_GEN,unica
+SYN-CON-AUDITORIA-HOJA-RUTA-IA,Auditoría de oportunidades y hoja de ruta de IA,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2400,,true,service,IGI_GEN,unica
+SYN-CON-PILOTO-PRUEBA-CONCEPTO,Prueba piloto de un caso de uso (30-60 días),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN,unica
+SYN-CON-DIRECCION-IA-TIEMPO-PARCIAL,Responsable de IA externo (dirección a tiempo parcial),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,500,,true,service,IGI_GEN,unica
+SYN-CON-DIRECCION-IA-TIEMPO-PARCIAL-CUOTA,Responsable de IA externo (dirección a tiempo parcial): cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,650,,true,service,IGI_GEN,mensual
+SYN-CON-TALLER-IA-DIRECCION,Taller de IA para dirección,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,700,,true,service,IGI_GEN,unica
+SYN-CON-FORMACION-IA-EQUIPOS,Formación práctica en IA generativa para equipos (incluye alfabetización en IA),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,950,,true,service,IGI_GEN,unica
+SYN-CON-PROGRAMA-ADOPCION-IA,Programa de adopción de IA con referentes internos,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2400,,true,service,IGI_GEN,unica
+SYN-CON-ASISTENTE-ATENCION-CLIENTE,Asistente de atención al cliente en web y WhatsApp,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN,unica
+SYN-CON-ASISTENTE-ATENCION-CLIENTE-CUOTA,Asistente de atención al cliente en web y WhatsApp: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,90,,true,service,IGI_GEN,mensual
+SYN-CON-AGENTE-VOZ-TELEFONICO,Recepcionista telefónico con IA (agente de voz),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2400,,true,service,IGI_GEN,unica
+SYN-CON-AGENTE-VOZ-TELEFONICO-CUOTA,Recepcionista telefónico con IA (agente de voz): cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,150,,true,service,IGI_GEN,mensual
+SYN-CON-GESTION-RESENAS,Gestión de reseñas y reputación en línea con IA,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,700,,true,service,IGI_GEN,unica
+SYN-CON-GESTION-RESENAS-CUOTA,Gestión de reseñas y reputación en línea con IA: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,40,,true,service,IGI_GEN,mensual
+SYN-CON-ASISTENTE-COMERCIAL,Asistente comercial: cualificación de contactos y presupuestos,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN,unica
+SYN-CON-ASISTENTE-COMERCIAL-CUOTA,Asistente comercial: cualificación de contactos y presupuestos: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,80,,true,service,IGI_GEN,mensual
+SYN-CON-LECTURA-FACTURAS-ALBARANES,Lectura automática de facturas y albaranes,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN,unica
+SYN-CON-LECTURA-FACTURAS-ALBARANES-CUOTA,Lectura automática de facturas y albaranes: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,90,,true,service,IGI_GEN,mensual
+SYN-CON-CORREO-ENTRANTE,Clasificación y respuesta asistida del correo,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1450,,true,service,IGI_GEN,unica
+SYN-CON-CORREO-ENTRANTE-CUOTA,Clasificación y respuesta asistida del correo: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,60,,true,service,IGI_GEN,mensual
+SYN-CON-AUTOMATIZACION-FLUJOS,Automatización de tareas entre aplicaciones (paquete de 3 flujos),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN,unica
+SYN-CON-AUTOMATIZACION-FLUJOS-CUOTA,Automatización de tareas entre aplicaciones (paquete de 3 flujos): cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,60,,true,service,IGI_GEN,mensual
+SYN-CON-AGENTES-IA-PROCESOS,Agentes de IA para procesos de varios pasos,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,3850,,true,service,IGI_GEN,unica
+SYN-CON-AGENTES-IA-PROCESOS-CUOTA,Agentes de IA para procesos de varios pasos: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,150,,true,service,IGI_GEN,mensual
+SYN-CON-CONTENIDOS-MARKETING,Contenidos y marketing con IA,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1450,,true,service,IGI_GEN,unica
+SYN-CON-CONTENIDOS-MARKETING-CUOTA,Contenidos y marketing con IA: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,50,,true,service,IGI_GEN,mensual
+SYN-CON-BUSCADOR-DOCUMENTAL-RAG,Buscador inteligente sobre documentos internos (RAG),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2400,,true,service,IGI_GEN,unica
+SYN-CON-BUSCADOR-DOCUMENTAL-RAG-CUOTA,Buscador inteligente sobre documentos internos (RAG): cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,90,,true,service,IGI_GEN,mensual
+SYN-CON-ASISTENTE-INTERNO,Asistente interno para la plantilla (procedimientos y personal),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1450,,true,service,IGI_GEN,unica
+SYN-CON-ASISTENTE-INTERNO-CUOTA,Asistente interno para la plantilla (procedimientos y personal): cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,60,,true,service,IGI_GEN,mensual
+SYN-CON-EXTRACCION-REVISION-DOCUMENTOS,"Extracción y revisión de documentos (contratos, expedientes, pólizas)","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN,unica
+SYN-CON-EXTRACCION-REVISION-DOCUMENTOS-CUOTA,"Extracción y revisión de documentos (contratos, expedientes, pólizas): cuota","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,90,,true,service,IGI_GEN,mensual
+SYN-CON-ACTAS-TRANSCRIPCION,"Transcripción y actas automáticas (reuniones, visitas, consultas)","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,950,,true,service,IGI_GEN,unica
+SYN-CON-ACTAS-TRANSCRIPCION-CUOTA,"Transcripción y actas automáticas (reuniones, visitas, consultas): cuota","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,60,,true,service,IGI_GEN,mensual
+SYN-CON-TRADUCCION-MULTILINGUE,Traducción y comunicación multilingüe,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,950,,true,service,IGI_GEN,unica
+SYN-CON-TRADUCCION-MULTILINGUE-CUOTA,Traducción y comunicación multilingüe: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,50,,true,service,IGI_GEN,mensual
+SYN-CON-CUADRO-MANDO-IA,Cuadro de mando con preguntas en lenguaje natural,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1900,,true,service,IGI_GEN,unica
+SYN-CON-CUADRO-MANDO-IA-CUOTA,Cuadro de mando con preguntas en lenguaje natural: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,80,,true,service,IGI_GEN,mensual
+SYN-CON-PREVISION-DEMANDA,"Previsión de demanda, ocupación y ventas","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2400,,true,service,IGI_GEN,unica
+SYN-CON-PREVISION-DEMANDA-CUOTA,"Previsión de demanda, ocupación y ventas: cuota","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,100,,true,service,IGI_GEN,mensual
+SYN-CON-MANTENIMIENTO-PREDICTIVO,Mantenimiento predictivo y detección de anomalías,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2900,,true,service,IGI_GEN,unica
+SYN-CON-MANTENIMIENTO-PREDICTIVO-CUOTA,Mantenimiento predictivo y detección de anomalías: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,150,,true,service,IGI_GEN,mensual
+SYN-CON-CALIDAD-DATOS,Preparación y calidad de datos,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1450,,true,service,IGI_GEN,unica
+SYN-CON-IA-LOCAL-PRIVADA,IA privada en servidor propio o andorrano,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2400,,true,service,IGI_GEN,unica
+SYN-CON-IA-LOCAL-PRIVADA-CUOTA,IA privada en servidor propio o andorrano: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,150,,true,service,IGI_GEN,mensual
+SYN-CON-DESARROLLO-MEDIDA,Desarrollo e integración de IA a medida,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,4800,,true,service,IGI_GEN,unica
+SYN-CON-DESARROLLO-MEDIDA-CUOTA,Desarrollo e integración de IA a medida: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,120,,true,service,IGI_GEN,mensual
+SYN-CON-VISION-ARTIFICIAL,"Visión artificial (control de calidad, inventario, conteo)","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,3850,,true,service,IGI_GEN,unica
+SYN-CON-VISION-ARTIFICIAL-CUOTA,"Visión artificial (control de calidad, inventario, conteo): cuota","Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,100,,true,service,IGI_GEN,mensual
+SYN-CON-ADECUACION-REGLAMENTO-IA,Adecuación al Reglamento europeo de IA,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,1450,,true,service,IGI_GEN,unica
+SYN-CON-PROTECCION-DATOS-IA,Protección de datos en proyectos de IA (LQPD y RGPD),"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,950,,true,service,IGI_GEN,unica
+SYN-CON-POLITICA-USO-IA,Política interna de uso de IA y gobierno,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,700,,true,service,IGI_GEN,unica
+SYN-CON-MANTENIMIENTO-SOPORTE,Mantenimiento y soporte de soluciones de IA,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,250,,true,service,IGI_GEN,unica
+SYN-CON-MANTENIMIENTO-SOPORTE-CUOTA,Mantenimiento y soporte de soluciones de IA: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,150,,true,service,IGI_GEN,mensual
+SYN-CON-BOLSA-JORNADAS,Bolsa de jornadas de mejora continua,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,2150,,true,service,IGI_GEN,unica
+SYN-CON-OPERACION-IA-GESTIONADA,Servicio gestionado de IA local,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Pago único. Sin impuestos.",ud,500,,true,service,IGI_GEN,unica
+SYN-CON-OPERACION-IA-GESTIONADA-CUOTA,Servicio gestionado de IA local: cuota,"Desde, para una microempresa: el precio final, en la propuesta de IA a medida. Al mes. Sin impuestos.",mes,250,,true,service,IGI_GEN,mensual
