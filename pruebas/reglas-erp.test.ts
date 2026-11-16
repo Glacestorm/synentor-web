@@ -6,7 +6,6 @@ import { articulosErp } from '../src/lib/precios/articulosErp';
 import {
   CABECERAS_REGLAS,
   csvReglas,
-  PENDIENTES_DE_GERENCIA,
   reglasErp,
   RUTA_CSV_REGLAS,
   type ReglaErp,
@@ -127,16 +126,26 @@ describe('reglas de los artículos de la tarifa para el ERP', () => {
     }
   });
 
-  it('las tres reglas pendientes de gerencia están marcadas y no se escriben en el CSV', () => {
-    expect(PENDIENTES_DE_GERENCIA).toHaveLength(3);
-    const p = PENDIENTES_DE_GERENCIA;
-    expect(p.some((x) => x.articulo.includes('SYN-PORTAL') && x.clase === 'exige' && x.destinos.includes('SYN-PORTAL-IMPLANTACION'))).toBe(true);
-    expect(p.some((x) => x.articulo.includes('SYN-WEB-ESENCIAL') && x.clase === 'recomienda' && x.destinos.includes('SYN-WEB-MANT-BASICO'))).toBe(true);
-    expect(p.some((x) => x.articulo.includes('SYN-MIG-ARRANQUE') && x.clase === 'exige' && x.destinos.includes('SYN-BASE'))).toBe(true);
-    for (const x of p) expect(x.motivo.length).toBeGreaterThan(5);
-    expect(reglas.some((r) => r.clase === 'recomienda')).toBe(false);
-    expect(destinos('SYN-PORTAL', 'exige')).not.toContainEqual(['SYN-PORTAL-IMPLANTACION']);
-    expect(reglas.some((r) => r.articulo.startsWith('SYN-MIG-') && r.articulo !== 'SYN-MIG-CONTA-ADICIONAL')).toBe(false);
+  it('las tres reglas que confirmó gerencia el 16/11/2026: portal, mantenimiento de la web y migraciones', () => {
+    exige('SYN-PORTAL', 'SYN-PORTAL-IMPLANTACION');
+    expect(de('SYN-PORTAL', 'exige')).toHaveLength(1);
+    expect(de('SYN-PORTAL', 'exige')[0].cantidad).toBe(1);
+    for (const web of ['SYN-WEB-ESENCIAL', 'SYN-WEB-PROFESIONAL', 'SYN-WEB-PREMIUM']) {
+      expect(destinos(web, 'recomienda')).toEqual([['SYN-WEB-MANT-BASICO', 'SYN-WEB-MANT-PLUS']]);
+    }
+    expect(reglas.filter((r) => r.clase === 'recomienda').map((r) => r.articulo)).toEqual([
+      'SYN-WEB-ESENCIAL',
+      'SYN-WEB-PROFESIONAL',
+      'SYN-WEB-PREMIUM',
+    ]);
+    for (const r of reglas.filter((x) => x.clase === 'recomienda')) {
+      expect(r.cantidad).toBe(1);
+      expect(r.por_unidad).toBe(false);
+    }
+    for (const mig of ['SYN-MIG-ARRANQUE', 'SYN-MIG-CONTA-PRIMERO', 'SYN-MIG-CONTA-ADICIONAL', 'SYN-MIG-PERSONAL']) {
+      exige(mig, 'SYN-BASE');
+    }
+    expect(destinos('SYN-MIG-CONTA-ADICIONAL', 'exige')).toEqual([['SYN-BASE'], ['SYN-MIG-CONTA-PRIMERO']]);
   });
 
   it('el CSV guardado es el que genera la orden y se lee con sus 6 campos', () => {

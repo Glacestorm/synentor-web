@@ -22,33 +22,6 @@ export interface ReglaErp {
   orden: number;
 }
 
-/** Reglas por confirmar con gerencia (§5.7 del diseño): NO se escriben en el CSV hasta que diga sí. */
-export const PENDIENTES_DE_GERENCIA: readonly {
-  articulo: string;
-  clase: string;
-  destinos: string[];
-  motivo: string;
-}[] = [
-  {
-    articulo: 'SYN-PORTAL',
-    clase: 'exige',
-    destinos: ['SYN-PORTAL-IMPLANTACION'],
-    motivo: 'Que el portal del empleado exija su implantación: pendiente de gerencia.',
-  },
-  {
-    articulo: 'SYN-WEB-ESENCIAL|SYN-WEB-PROFESIONAL|SYN-WEB-PREMIUM',
-    clase: 'recomienda',
-    destinos: ['SYN-WEB-MANT-BASICO'],
-    motivo: 'Que una web recomiende el mantenimiento básico: pendiente de gerencia.',
-  },
-  {
-    articulo: 'SYN-MIG-ARRANQUE|SYN-MIG-CONTA-PRIMERO|SYN-MIG-CONTA-ADICIONAL|SYN-MIG-PERSONAL',
-    clase: 'exige',
-    destinos: ['SYN-BASE'],
-    motivo: 'Que las migraciones exijan la Base: pendiente de gerencia.',
-  },
-];
-
 export function reglasErp(): ReglaErp[] {
   const salida: ReglaErp[] = [];
   const contador = new Map<string, number>();
@@ -85,15 +58,23 @@ export function reglasErp(): ReglaErp[] {
   exige('SYN-GESTORIAS-EMPRESA', 'SYN-GESTORIAS');
   exige('SYN-GESTORIAS-NOMINA', 'SYN-GESTORIAS');
 
-  // Portal y modalidad alojada.
+  // Portal y modalidad alojada. Que el portal exija su implantación lo confirmó gerencia el 16/11/2026.
+  exige('SYN-PORTAL', 'SYN-PORTAL-IMPLANTACION');
   exige('SYN-PORTAL-PERSONA', 'SYN-PORTAL');
   exige('SYN-MODALIDAD-B', 'SYN-BASE');
 
-  // Servicios.
+  // Servicios. Que una web recomiende el mantenimiento (básico o plus) y que las migraciones exijan la Base lo confirmó
+  // gerencia el 16/11/2026.
+  for (const web of ['SYN-WEB-ESENCIAL', 'SYN-WEB-PROFESIONAL', 'SYN-WEB-PREMIUM']) {
+    regla(web, 'recomienda', ['SYN-WEB-MANT-BASICO', 'SYN-WEB-MANT-PLUS']);
+  }
   for (const a of ['SYN-WEB-PAGINA', 'SYN-WEB-IDIOMA']) {
     regla(a, 'exige', ['SYN-WEB-ESENCIAL', 'SYN-WEB-PROFESIONAL', 'SYN-WEB-PREMIUM']);
   }
   for (const x of ['VIVIENDA', 'PYME', 'EDIFICIO']) exige(`SYN-ENE-MON-${x}-CUOTA`, `SYN-ENE-MON-${x}`);
+  for (const mig of ['SYN-MIG-ARRANQUE', 'SYN-MIG-CONTA-PRIMERO', 'SYN-MIG-CONTA-ADICIONAL', 'SYN-MIG-PERSONAL']) {
+    exige(mig, 'SYN-BASE');
+  }
   exige('SYN-MIG-CONTA-ADICIONAL', 'SYN-MIG-CONTA-PRIMERO');
   exige('SYN-CONV-CUOTA', 'SYN-CONV-PUESTA');
   for (const s of consultoria.servicios) {

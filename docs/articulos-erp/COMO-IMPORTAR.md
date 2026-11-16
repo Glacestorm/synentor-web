@@ -42,7 +42,7 @@ artículo salen siempre juntas y conviene importar el fichero entero, no un troz
 artículo que deja de tener reglas en la tarifa (y por tanto no sale en el fichero) conserva en el ERP las que tenía. Hay
 que quitárselas a mano en su ficha del ERP (sección «Va amb…»).
 
-Tres reglas están **pendientes de gerencia** y NO se escriben (están marcadas en `PENDIENTES_DE_GERENCIA`, en
-`src/lib/precios/reglasErp.ts`): que el portal exija su implantación, que una web recomiende el mantenimiento básico y que
-las migraciones exijan la Base. Tampoco se edita a mano: sale de `tarifa.ts` y de la consultoría, y su prueba
+Gerencia confirmó el 16/11/2026 tres reglas más: el portal del empleado exige su implantación, cada web (Esencial,
+Profesional o Premium) recomienda el mantenimiento (básico o plus; se sugiere, no entra solo) y las cuatro migraciones
+exigen la Base. El fichero no se edita a mano: sale de `tarifa.ts` y de la consultoría, y su prueba
 (`pruebas/reglas-erp.test.ts`) comprueba que el fichero guardado es el que genera la orden.
