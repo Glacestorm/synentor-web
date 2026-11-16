@@ -56,6 +56,19 @@ describe('configurador', () => {
     expect(raiz.querySelector('[data-k="cta"]')!.textContent).toBe('Pide tu propuesta');
   });
 
+  it('el botón de demostración lleva data-evento="demostracion"; el de propuesta, no', () => {
+    const raiz = monta('AD');
+    marca(casilla(raiz, 0, 'rrhh'));
+    const cta = raiz.querySelector('[data-k="cta"]')!;
+    expect(cta.getAttribute('href')).toContain('asunto=demostracion');
+    expect(cta.getAttribute('data-evento')).toBe('demostracion');
+    const es = monta('ES');
+    marca(casilla(es, 0, 'rrhh'));
+    const ctaEs = es.querySelector('[data-k="cta"]')!;
+    expect(ctaEs.getAttribute('href')).toContain('asunto=precios');
+    expect(ctaEs.hasAttribute('data-evento')).toBe(false);
+  });
+
   it('el total que se ve es el de calcula con los mismos datos', () => {
     const raiz = monta();
     for (const m of ['compras', 'rrhh', 'fiscal', 'productos', 'tpv']) marca(casilla(raiz, 0, m));

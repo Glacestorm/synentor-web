@@ -214,7 +214,7 @@ export function montaConfigurador(raiz: HTMLElement, idioma: Idioma, paisInicial
       </dl>
       ${p.implantacionDesde > 0 ? `<p class="conf-implantacion">${esc(rellena(c.implantacion, { precio: eur(p.implantacionDesde) }))}</p>` : ''}
       ${avisos ? `<ul class="conf-avisos">${avisos}</ul>` : ''}
-      <a class="boton boton-oro" data-k="cta" href="${esc(`${contacto}?asunto=${asunto}`)}">${esc(cta)}</a>
+      <a class="boton boton-oro" data-k="cta"${asunto === 'demostracion' ? ' data-evento="demostracion"' : ''} href="${esc(`${contacto}?asunto=${asunto}`)}">${esc(cta)}</a>
       <a class="boton boton-contorno" data-k="pedido" data-evento="pedido-calculadora" href="${esc(pedido)}">${esc(c.botonPedido)}</a>
       <p class="conf-nota-pedido">${esc(c.pedidoNota)}</p>`;
   }

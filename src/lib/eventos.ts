@@ -49,7 +49,7 @@ export function origenPermitido(origen: string | null, referente: string | null)
   }
 }
 
-/** La baliza del contador solo se carga en los dominios de producción y con testimonio de consentimiento. */
+/** La baliza de Cloudflare Web Analytics solo se carga en los dominios de producción y con el testimonio (token) puesto. */
 export function debeCargarBaliza(hostname: string, testimonio: string): boolean {
   return testimonio !== '' && (DOMINIOS_PRODUCCION as readonly string[]).includes(hostname);
 }

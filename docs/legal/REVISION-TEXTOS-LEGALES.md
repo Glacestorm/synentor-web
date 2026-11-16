@@ -1,7 +1,7 @@
 # Textos legales de synentor.com — para la revisión del asesor jurídico
 
 Generado con `npm run revision-legal` desde los textos y datos de la web (no se edita a mano). Fecha de los textos:
-14/11/2026. Modelo de partida: guía de la APDA «Ús de cookies, política de privadesa i avís legal», versión 4
+16/11/2026. Modelo de partida: guía de la APDA «Ús de cookies, política de privadesa i avís legal», versión 4
 (23/01/2024), anexos 1 a 3.
 
 **Cómo se publica**: en la web, la tabla de cookies y la de proveedores solo enseñan las herramientas activas. Aquí salen
@@ -10,6 +10,8 @@ Las duraciones marcadas «(sin verificar)» no se han podido comprobar en la pá
 activar esa herramienta hasta comprobarlas.
 
 **Activas en esta versión**: Google Analytics, Microsoft Clarity.
+
+**Cloudflare Web Analytics**: preparada y no activa (falta el testimonio de la baliza: mientras tanto no cuenta ninguna visita).
 
 ## Puntos que hay que confirmar
 
@@ -23,6 +25,9 @@ activar esa herramienta hasta comprobarlas.
 5. Comprobación antirrobot (Cloudflare Turnstile): base en interés legítimo. Cloudflare dice en su anuncio que Turnstile no
    usa cookies, pero su guía para móviles habla de cookies y almacenamiento local: no se ha puesto en la tabla de cookies.
 6. Prueba del consentimiento (D1): base en la obligación de poder demostrarlo; 12 meses.
+7. Estadísticas sin cookies (Cloudflare Web Analytics y el recuento propio de acciones): si necesitan consentimiento previo
+   según la LQPD y la guía de la APDA. Se han tratado como medición de audiencia propia sin cookies, que no se somete a
+   consentimiento; está pendiente de confirmar.
 
 **Traducciones (inglés, francés, portugués, italiano y alemán)**: el texto que prevalece es el catalán. Revisar:
 - El nombre de la Llei 29/2021 y el de la APDA van traducidos entre paréntesis: no son traducciones oficiales.
@@ -33,7 +38,7 @@ activar esa herramienta hasta comprobarlas.
 - En alemán, el aviso legal se titula *Impressum*.
 
 **Gerencia**
-7. Número de inscripción en el Registre de Societats: el aviso legal solo dice «NRT: en trámite».
+8. Número de inscripción en el Registre de Societats: el aviso legal solo dice «NRT: en trámite».
 
 **Confirmado (gerencia y comprobaciones, 14 y 15/11/2026)**
 - Plazo para los mensajes de quien no llega a ser cliente: **1 año** desde el último contacto.
@@ -62,7 +67,13 @@ activar esa herramienta hasta comprobarlas.
   https://developers.cloudflare.com/workers/observability/logs/workers-logs/ · https://developers.cloudflare.com/observability/pricing/
 - Resend guarda todos los datos en Estados Unidos (aunque envíe desde Irlanda): https://resend.com/docs/dashboard/domains/regions ·
   https://resend.com/security/gdpr
-- Cloudflare Web Analytics (sin cookies): https://developers.cloudflare.com/web-analytics/ · https://www.cloudflare.com/privacypolicy/
+
+**Sin comprobar en la página oficial** (no se comprobó el 14/11/2026; abrirlas antes de activar):
+- Cloudflare Web Analytics (que no usa cookies): https://developers.cloudflare.com/web-analytics/ · https://www.cloudflare.com/privacypolicy/
+- Dónde guarda Cloudflare las estadísticas de visitas y el recuento de acciones: **sin comprobar** (la medición anterior los
+  guardaba en la UE). No se ha comprobado en la página oficial de Cloudflare.
+
+**Otras**
 - APDA: C/ Dr. Vilanova 15-17, planta -5, AD500 Andorra la Vella · https://www.apda.ad
 
 

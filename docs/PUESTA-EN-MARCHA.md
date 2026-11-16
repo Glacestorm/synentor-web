@@ -167,11 +167,14 @@ Dos piezas, las dos sin cookies y sin gasto (plan gratuito). Umami se retiró po
 **Contador propio** (acciones en `/api/evento`, que guarda el Worker en Analytics Engine):
 - Acciones: `demostracion`, `calculadora`, `pedido-calculadora`, `contacto-enviado` (solo la cuenta el Worker cuando el
   proveedor del correo confirma el envío) y `llegada-campana`.
-- El conjunto de datos `synentor_eventos` se crea solo con el primer punto de datos. Si el panel pide activar Analytics
-  Engine, actívalo con el plan gratuito.
+- El conjunto de datos `synentor_eventos` se crea solo con el primer punto de datos. Si al desplegar Cloudflare avisa de que
+  Analytics Engine no está activado, actívalo (plan gratuito) en el panel de Workers y vuelve a desplegar. No se ha podido
+  comprobar si hace falta activarlo antes del primer despliegue.
 - No guarda IP ni navegador; solo cifras de conjunto.
 
-Comprueba que llegan visitas y acciones después del paso 6.
+Comprueba después del paso 6 que llegan las visitas: se ven en el panel de Web Analytics. Las acciones (Analytics Engine) no
+se ven en ese panel: las leerá el robot del ERP por la API SQL de Cloudflare y saldrán en la pantalla Web de Comercial i
+Màrqueting.
 
 ## 9. Los cuatro identificadores del aviso de cookies (diseño, §17)
 

@@ -46,11 +46,29 @@ describe('POST /api/evento', () => {
     const { env, puntos } = entorno();
     const grande = { accion: 'demostracion', x: '€'.repeat(180) };
     expect((await worker.fetch(post(grande), env)).status).toBe(400);
-    // Sin Content-Length declarado fiable: lo leído también se mide.
+    // Con un Content-Length declarado que no es el real (10), lo leído también se mide.
     const sinDeclarar = post(null, { Origin: 'https://synentor.com', 'Content-Length': '10' }, JSON.stringify(grande));
     expect((await worker.fetch(sinDeclarar, env)).status).toBe(400);
     expect((await worker.fetch(post(null, undefined, '{roto'), env)).status).toBe(400);
     expect(puntos).toEqual([]);
+  });
+
+  it('E10 un POST válido con su Content-Length real → 204 y un punto', async () => {
+    const { env, puntos } = entorno();
+    const cuerpo = JSON.stringify({ accion: 'demostracion' });
+    const longitud = String(new TextEncoder().encode(cuerpo).length);
+    const r = await worker.fetch(post(null, { Origin: 'https://synentor.com', 'Content-Length': longitud }, cuerpo), env);
+    expect(r.status).toBe(204);
+    expect(puntos).toHaveLength(1);
+  });
+
+  it('E11 un Content-Length declarado de 600 → 400 sin leer el cuerpo y sin punto', async () => {
+    const { env, puntos } = entorno();
+    const peticion = post(null, { Origin: 'https://synentor.com', 'Content-Length': '600' }, JSON.stringify({ accion: 'demostracion' }));
+    const r = await worker.fetch(peticion, env);
+    expect(r.status).toBe(400);
+    expect(puntos).toEqual([]);
+    expect(peticion.bodyUsed).toBe(false);
   });
 
   it('E04 contacto-enviado o una acción desconocida → 400', async () => {

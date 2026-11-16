@@ -8,7 +8,7 @@ import { describe, expect, it } from 'vitest';
 import { TEXTOS } from '../src/i18n/t';
 import { PAGINAS, ruta, type Idioma } from '../src/i18n/idiomas';
 import { TURNSTILE_SITEKEY } from '../src/datos/turnstile';
-import { CLOUDFLARE_WEB_ANALYTICS, HERRAMIENTAS } from '../src/datos/analitica';
+import { HERRAMIENTAS } from '../src/datos/analitica';
 import { COOKIES, PROVEEDORES } from '../src/datos/legal';
 import { herramientasValidas } from '../src/lib/consentimiento';
 import { EMPRESA } from '../src/datos/empresa';
@@ -90,13 +90,14 @@ describe('páginas construidas', () => {
     }
   });
 
-  it('P06 ninguna página carga Umami ni la baliza de Cloudflare mientras el testimonio esté vacío', () => {
-    expect(CLOUDFLARE_WEB_ANALYTICS.testimonio).toBe('');
+  it('P06 ninguna página lleva la baliza de Cloudflare escrita en el HTML ni Umami; solo la añade el cargador', () => {
     for (const idioma of idiomas) {
       for (const pagina of PAGINAS) {
         const html = readFileSync(fichero(ruta(pagina, idioma)), 'utf8');
         expect(html.toLowerCase(), ruta(pagina, idioma)).not.toContain('umami');
-        expect(html, ruta(pagina, idioma)).not.toContain('cloudflareinsights');
+        // La dirección puede salir dentro del código empaquetado del cargador; lo que no puede haber es una etiqueta script con ella.
+        const etiquetas = html.match(/<script\b[^>]*>/g) ?? [];
+        for (const e of etiquetas) expect(e, ruta(pagina, idioma)).not.toContain('cloudflareinsights');
       }
     }
     const es = readFileSync(fichero(ruta('inicio', 'es')), 'utf8');
