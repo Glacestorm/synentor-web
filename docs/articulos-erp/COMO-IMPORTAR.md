@@ -38,6 +38,10 @@ Premium); `por_unidad` va escrito `true` o `false` (hoy, siempre `false`).
 la importación de reglas. El ERP **sustituye las reglas de cada artículo que aparece en el fichero**: por eso las de un
 artículo salen siempre juntas y conviene importar el fichero entero, no un trozo.
 
+**El fichero no puede dejar un artículo sin reglas**: el ERP solo toca los artículos que aparecen en él, así que un
+artículo que deja de tener reglas en la tarifa (y por tanto no sale en el fichero) conserva en el ERP las que tenía. Hay
+que quitárselas a mano en su ficha del ERP (sección «Va amb…»).
+
 Tres reglas están **pendientes de gerencia** y NO se escriben (están marcadas en `PENDIENTES_DE_GERENCIA`, en
 `src/lib/precios/reglasErp.ts`): que el portal exija su implantación, que una web recomiende el mantenimiento básico y que
 las migraciones exijan la Base. Tampoco se edita a mano: sale de `tarifa.ts` y de la consultoría, y su prueba
