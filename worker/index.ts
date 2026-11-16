@@ -1,8 +1,9 @@
 // Worker de la web: atiende solo «/» (idioma de entrada) y «/api/*»; lo demás lo sirve el almacén de ficheros estáticos
 // (wrangler.jsonc, run_worker_first). /api/contacto: el formulario (worker/contacto.ts); /api/consentimiento: la prueba
-// del consentimiento de cookies (worker/consentimiento.ts).
+// del consentimiento de cookies (worker/consentimiento.ts); /api/evento: el contador de acciones (worker/evento.ts).
 import { elegirIdioma, paisConfigurador } from './idioma';
 import { atiendeContacto } from './contacto';
+import { atiendeEvento } from './evento';
 import { atiendeConsentimiento, borraAntiguos } from './consentimiento';
 import { ruta } from '../src/i18n/idiomas';
 
@@ -14,6 +15,8 @@ export interface Env {
   RESEND_API_KEY?: string;
   /** Prueba de los consentimientos de cookies (Cloudflare D1; guía de puesta en marcha, §9.5). */
   CONSENTIMIENTOS?: D1Database;
+  /** Contador de acciones (Cloudflare Analytics Engine, conjunto synentor_eventos). Sin él (vistas previas), no se cuenta. */
+  EVENTOS?: AnalyticsEngineDataset;
 }
 
 /** El país de la conexión que da Cloudflare (no se guarda). */
@@ -52,6 +55,8 @@ export default {
     if (url.pathname === '/api/contacto') return atiendeContacto(request, env);
 
     if (url.pathname === '/api/consentimiento') return atiendeConsentimiento(request, env);
+
+    if (url.pathname === '/api/evento') return atiendeEvento(request, env);
 
     return env.ASSETS.fetch(request);
   },

@@ -8,6 +8,9 @@ export const UMAMI = {
   dominios: 'synentor.com,www.synentor.com',
 } as const;
 
+/** Dominios de producción: una sola lista (la usan el contador de acciones y, desde la tarea 2, la página). */
+export const DOMINIOS_PRODUCCION = ['synentor.com', 'www.synentor.com'] as const;
+
 // Herramientas con cookies (diseño §17, aprobado por gerencia el 14/11/2026). Solo se cargan si el visitante acepta su
 // categoría. Vacío = la herramienta no está y, si no hay ninguna, el aviso de cookies no sale. Cómo conseguir cada
 // identificador: docs/PUESTA-EN-MARCHA.md, §9. No son secretos (van en la página).

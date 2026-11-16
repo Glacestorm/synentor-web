@@ -194,3 +194,37 @@ describe('el correo', () => {
     expect(await verificaTurnstile('s', '', null)).toBe(false);
   });
 });
+
+describe('el contador de contactos enviados', () => {
+  function conContador(falla = false) {
+    const puntos: unknown[] = [];
+    const EVENTOS = {
+      writeDataPoint: vi.fn((p: unknown) => {
+        if (falla) throw new Error('fallo');
+        puntos.push(p);
+      }),
+    };
+    return { e: env({ EVENTOS } as unknown as Partial<Env>), puntos };
+  }
+
+  it('K01 solo un envío confirmado cuenta, y el punto no lleva datos de la persona', async () => {
+    const { e, puntos } = conContador();
+    expect((await atiendeContacto(post(BUENO), e, deps())).status).toBe(200);
+    expect(puntos).toEqual([{ indexes: ['contacto-enviado'], blobs: ['contacto-enviado', '', '', ''], doubles: [1] }]);
+    for (const valor of [BUENO.nombre, BUENO.correo, BUENO.mensaje]) expect(JSON.stringify(puntos)).not.toContain(valor);
+
+    const otros = conContador();
+    expect((await atiendeContacto(post(BUENO), otros.e, deps(true, true))).status).toBe(502);
+    expect((await atiendeContacto(post(BUENO), otros.e, deps(false))).status).toBe(403);
+    expect((await atiendeContacto(post({ ...BUENO, correo: 'mal' }), otros.e, deps())).status).toBe(400);
+    expect((await atiendeContacto(post({ ...BUENO, web: 'http://spam.example' }), otros.e, deps())).status).toBe(200);
+    expect(otros.puntos).toEqual([]);
+  });
+
+  it('K02 si escribir el punto falla, la respuesta sigue siendo 200 ok', async () => {
+    const { e } = conContador(true);
+    const r = await atiendeContacto(post(BUENO), e, deps());
+    expect(r.status).toBe(200);
+    expect(await json(r)).toEqual({ ok: true });
+  });
+});

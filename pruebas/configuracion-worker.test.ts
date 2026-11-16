@@ -34,6 +34,11 @@ describe('wrangler.jsonc', () => {
     expect(config.previews.vars).toEqual(config.vars);
   });
 
+  it('W01 el contador de acciones (Analytics Engine) está en producción y no en las vistas previas', () => {
+    expect(config.analytics_engine_datasets).toEqual([{ binding: 'EVENTOS', dataset: 'synentor_eventos' }]);
+    expect(config.previews.analytics_engine_datasets ?? []).toEqual([]);
+  });
+
   it('no guarda ningún secreto en las variables (el repositorio es público)', () => {
     const nombres = Object.keys(config.vars ?? {});
     expect(nombres.filter((n) => /SECRET|KEY|TOKEN|PASSWORD/i.test(n) && !n.startsWith('PUBLIC_'))).toEqual([]);
