@@ -8,7 +8,7 @@ import { describe, expect, it } from 'vitest';
 import { TEXTOS } from '../src/i18n/t';
 import { PAGINAS, ruta, type Idioma } from '../src/i18n/idiomas';
 import { TURNSTILE_SITEKEY } from '../src/datos/turnstile';
-import { HERRAMIENTAS } from '../src/datos/analitica';
+import { CLOUDFLARE_WEB_ANALYTICS, HERRAMIENTAS } from '../src/datos/analitica';
 import { COOKIES, PROVEEDORES } from '../src/datos/legal';
 import { herramientasValidas } from '../src/lib/consentimiento';
 import { EMPRESA } from '../src/datos/empresa';
@@ -81,13 +81,27 @@ describe('páginas construidas', () => {
     }
   }
 
-  it('los dos botones «Pide una demostración» de la portada llevan el evento de Umami, en todos los idiomas', () => {
+  it('los dos botones «Pide una demostración» de la portada llevan data-evento, en todos los idiomas', () => {
     for (const idioma of idiomas) {
       const html = readFileSync(fichero(ruta('inicio', idioma)), 'utf8');
-      const botones = html.match(/<a\b[^>]*data-umami-event="demostracion"[^>]*>/g) ?? [];
+      const botones = html.match(/<a\b[^>]*data-evento="demostracion"[^>]*>/g) ?? [];
       expect(botones.length, idioma).toBe(2);
       for (const b of botones) expect(b, idioma).toContain('asunto=demostracion');
     }
+  });
+
+  it('P06 ninguna página carga Umami ni la baliza de Cloudflare mientras el testimonio esté vacío', () => {
+    expect(CLOUDFLARE_WEB_ANALYTICS.testimonio).toBe('');
+    for (const idioma of idiomas) {
+      for (const pagina of PAGINAS) {
+        const html = readFileSync(fichero(ruta(pagina, idioma)), 'utf8');
+        expect(html, ruta(pagina, idioma)).not.toContain('cloud.umami.is');
+        expect(html, ruta(pagina, idioma)).not.toContain('data-umami');
+        expect(html, ruta(pagina, idioma)).not.toContain('cloudflareinsights');
+      }
+    }
+    const es = readFileSync(fichero(ruta('inicio', 'es')), 'utf8');
+    expect(es.match(/data-evento="demostracion"/g) ?? []).toHaveLength(2);
   });
 
   it('la portada dice qué es y dónde: Andorra, España y Europa en el título y el antetítulo dentro del H1, en todos los idiomas', () => {

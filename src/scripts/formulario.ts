@@ -62,14 +62,6 @@ export function montaFormulario(form: HTMLFormElement, params: URLSearchParams):
       });
       const cuerpo = (await r.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
       if (r.ok && cuerpo?.ok === true) {
-        // Estadística sin datos de nadie: solo el asunto y solo si es de la lista cerrada del propio formulario (sus
-        // opciones). Umami puede no estar. Sin asunto válido, el evento sale sin ningún dato.
-        const lista = [...form.querySelectorAll<HTMLInputElement>('input[type="radio"][name="asunto"]')].map((i) => i.value);
-        const asunto = lista.includes(datos.asunto ?? '') ? datos.asunto : undefined;
-        (window as { umami?: { track?: (n: string, d?: Record<string, string>) => void } }).umami?.track?.(
-          'contacto-enviado',
-          asunto ? { asunto } : {},
-        );
         form.reset();
         cuenta();
         form.classList.add('enviado');

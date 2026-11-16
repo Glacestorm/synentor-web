@@ -5,7 +5,7 @@ import '@fontsource-variable/manrope';
 import '../estilos/marca.css';
 import '../estilos/paginas.css';
 import { EMPRESA } from '../datos/empresa';
-import { UMAMI, HERRAMIENTAS, VERSION_POLITICA_COOKIES } from '../datos/analitica';
+import { CLOUDFLARE_WEB_ANALYTICS, DOMINIOS_PRODUCCION, HERRAMIENTAS, VERSION_POLITICA_COOKIES } from '../datos/analitica';
 import { categoriasConHerramientas } from '../lib/consentimiento';
 import { grafoPagina, jsonParaScript } from '../lib/datosEstructurados';
 import { etiquetaLocal } from '../lib/formato';
@@ -64,13 +64,26 @@ const opcionesCookies = hayCookies
     <meta property="og:image" content={new URL('/marca/portada.png', EMPRESA.dominio).toString()} />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json" is:inline set:html={datosEstructurados} />
-    <script
-      is:inline
-      defer
-      src={UMAMI.script}
-      data-website-id={UMAMI.idWeb}
-      data-domains={UMAMI.dominios}
-      data-do-not-track="true"></script>
+    {
+      CLOUDFLARE_WEB_ANALYTICS.testimonio !== '' && (
+        <script
+          is:inline
+          define:vars={{ dominios: DOMINIOS_PRODUCCION, testimonio: CLOUDFLARE_WEB_ANALYTICS.testimonio }}
+        >
+          // Baliza de Cloudflare Web Analytics: solo en los dominios de producción.
+          (function () {
+            try {
+              if (dominios.indexOf(location.hostname) < 0) return;
+              var s = document.createElement('script');
+              s.defer = true;
+              s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+              s.setAttribute('data-cf-beacon', JSON.stringify({ token: testimonio }));
+              document.head.appendChild(s);
+            } catch (e) {}
+          })();
+        </script>
+      )
+    }
     <slot name="cabeza" />
   </head>
   <body>
@@ -170,6 +183,10 @@ const opcionesCookies = hayCookies
       </div>
     </footer>
     {hayCookies && <div id="cookies" class="cookies" data-opciones={opcionesCookies}></div>}
+    <script>
+      import { iniciaEventos } from '../scripts/eventos';
+      iniciaEventos(document, location);
+    </script>
     <script>
       import { montaCookies } from '../scripts/cookies';
       const raiz = document.getElementById('cookies');

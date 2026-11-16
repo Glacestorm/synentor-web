@@ -34,7 +34,7 @@ const pilares = [
       <h1><span class="antetitulo">{tx.portada.antetitulo}</span> <span class="texto-oro">{tx.portada.titulo}</span></h1>
       <p class="subtitulo">{tx.portada.subtitulo}</p>
       <div class="botones">
-        <a class="boton boton-oro" href={`${contacto}?asunto=demostracion`} data-umami-event="demostracion">{tx.portada.botonDemo}</a>
+        <a class="boton boton-oro" href={`${contacto}?asunto=demostracion`} data-evento="demostracion">{tx.portada.botonDemo}</a>
         <a class="boton boton-contorno" href={precios}>{tx.portada.botonPrecio}</a>
       </div>
       <p class="nota">{nota}</p>
@@ -158,7 +158,7 @@ const pilares = [
     <h2>{tx.final.titulo}</h2>
     <p class="subtitulo">{tx.final.texto}</p>
     <div class="botones" style="justify-content:center">
-      <a class="boton boton-oro" href={`${contacto}?asunto=demostracion`} data-umami-event="demostracion">{tx.final.boton}</a>
+      <a class="boton boton-oro" href={`${contacto}?asunto=demostracion`} data-evento="demostracion">{tx.final.boton}</a>
     </div>
   </div>
 </section>
