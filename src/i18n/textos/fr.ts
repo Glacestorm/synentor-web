@@ -31,7 +31,7 @@ export const fr: Textos = {
     privacidad: 'Confidentialité',
     cookies: 'Cookies',
     nrt: 'NRT en cours',
-    estadisticas: 'Statistiques de visites sans cookies (Umami).',
+    estadisticas: 'Statistiques de visites sans cookies (Cloudflare Web Analytics).',
     linkedin: 'Synentor sur LinkedIn (s’ouvre dans un nouvel onglet)',
   },
   cookiesAviso: {
@@ -677,7 +677,7 @@ export const fr: Textos = {
             'Vérification anti-robots du formulaire (Cloudflare Turnstile). Données : l’adresse IP et des données techniques du navigateur. Finalité : vérifier que le formulaire est envoyé par une personne. Base légale : notre intérêt légitime à protéger le site contre les abus. Nous ne les conservons pas.',
             'Preuve de votre choix concernant les cookies. Données : un identifiant aléatoire qui ne vous identifie pas, la version de la politique, ce que vous avez décidé et la date ; jamais l’adresse IP. Finalité : pouvoir prouver votre consentement. Base légale : l’obligation de pouvoir le prouver. Durée : 12 mois.',
             'Journaux techniques de l’hébergement (Cloudflare). Données : l’adresse IP, la date et l’heure, la page demandée et les erreurs. Finalité : la sécurité et le bon fonctionnement du site. Base légale : notre intérêt légitime. Durée : jusqu’à {plazoRegistros}.',
-            'Statistiques de visites (Umami). Sans cookies et sans données qui vous identifient : uniquement des chiffres globaux, comme les pages vues, le pays ou le navigateur.',
+            'Statistiques de visites (Cloudflare Web Analytics) et un comptage propre des actions : combien de fois une démonstration est demandée, le calculateur est utilisé, une sélection ou le formulaire est envoyé, et de quelle campagne vous venez. Sans cookies et sans données qui vous identifient : uniquement des chiffres globaux, comme les pages vues, le pays ou le type de navigateur. Le comptage propre ne conserve ni l’IP ni le navigateur.',
             'Cookies d’autres entreprises, uniquement si vous les acceptez : tout est expliqué dans la {cookies}.',
             'Si vous nous écrivez par e-mail ou nous appelez : vos coordonnées et ce que vous nous dites, pour vous répondre, avec la même base légale et la même durée que pour le formulaire.',
           ],
@@ -750,7 +750,7 @@ export const fr: Textos = {
         {
           t: 'Statistiques sans cookies',
           p: [
-            'Nous comptons les visites avec Umami, qui n’utilise pas de cookies et ne conserve aucune donnée qui vous identifie.',
+            'Nous comptons les visites avec Cloudflare Web Analytics et les actions avec un comptage propre. Aucun des deux n’utilise de cookies ni ne conserve de données qui vous identifient.',
           ],
         },
         {
@@ -833,7 +833,7 @@ export const fr: Textos = {
     },
     proveedores: {
       cloudflare: {
-        para: 'Hébergement du site, vérification anti-robots du formulaire, preuve des consentements et journaux techniques.',
+        para: 'Hébergement du site, vérification anti-robots du formulaire, preuve des consentements, journaux techniques, statistiques de visites sans cookies et comptage des actions.',
         donde: 'Son réseau mondial, avec un siège aux États-Unis. Les preuves de consentement sont conservées dans l’Union européenne.',
         garantia: 'Cadre de protection des données UE-États-Unis et clauses contractuelles types.',
       },
@@ -846,11 +846,6 @@ export const fr: Textos = {
         para: 'La messagerie de l’entreprise, où nous recevons et conservons les messages.',
         donde: 'Union européenne (région européenne de Microsoft). L’entreprise est américaine.',
         garantia: 'Cadre de protection des données UE-États-Unis et clauses contractuelles types.',
-      },
-      umami: {
-        para: 'Statistiques de visites sans cookies.',
-        donde: 'Union européenne (Francfort, Allemagne). L’entreprise est américaine.',
-        garantia: 'Clauses contractuelles types.',
       },
       google: {
         para: 'Statistiques de visites (Google Analytics), si vous les acceptez.',

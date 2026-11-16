@@ -31,7 +31,7 @@ export const pt: Textos = {
     privacidad: 'Privacidade',
     cookies: 'Cookies',
     nrt: 'NRT em curso',
-    estadisticas: 'Estatísticas de visitas sem cookies (Umami).',
+    estadisticas: 'Estatísticas de visitas sem cookies (Cloudflare Web Analytics).',
     linkedin: 'Synentor no LinkedIn (abre num novo separador)',
   },
   cookiesAviso: {
@@ -677,7 +677,7 @@ export const pt: Textos = {
             'Verificação antirrobôs do formulário (Cloudflare Turnstile). Dados: o endereço IP e dados técnicos do navegador. Para quê: verificar que o formulário é enviado por uma pessoa. Fundamento: o nosso interesse legítimo em proteger o site contra abusos. Nós não os guardamos.',
             'Prova da sua decisão sobre os cookies. Dados: um identificador aleatório que não o identifica, a versão da política, o que decidiu e a data; nunca o IP. Para quê: poder demonstrar o seu consentimento. Fundamento: a obrigação de o poder demonstrar. Prazo: 12 meses.',
             'Registos técnicos do alojamento (Cloudflare). Dados: o endereço IP, a data e a hora, a página pedida e os erros. Para quê: a segurança e o bom funcionamento do site. Fundamento: o nosso interesse legítimo. Prazo: até {plazoRegistros}.',
-            'Estatísticas de visitas (Umami). Sem cookies e sem dados que o identifiquem: apenas números agregados, como as páginas vistas, o país ou o navegador.',
+            'Estatísticas de visitas (Cloudflare Web Analytics) e uma contagem própria de ações: quantas vezes se pede uma demonstração, se usa a calculadora, se envia uma seleção ou o formulário, e de que campanha se chega. Sem cookies e sem dados que o identifiquem: apenas números agregados, como as páginas vistas, o país ou o tipo de navegador. A contagem própria não guarda o IP nem o navegador.',
             'Cookies de outras empresas, só se os aceitar: está explicado na {cookies}.',
             'Se nos escrever por correio eletrónico ou nos telefonar: os seus dados de contacto e o que nos contar, para lhe responder, com o mesmo fundamento e o mesmo prazo que o formulário.',
           ],
@@ -750,7 +750,7 @@ export const pt: Textos = {
         {
           t: 'Estatísticas sem cookies',
           p: [
-            'Contamos as visitas com o Umami, que não usa cookies nem guarda dados que o identifiquem.',
+            'Contamos as visitas com o Cloudflare Web Analytics e as ações com uma contagem própria. Nenhum dos dois usa cookies nem guarda dados que o identifiquem.',
           ],
         },
         {
@@ -833,7 +833,7 @@ export const pt: Textos = {
     },
     proveedores: {
       cloudflare: {
-        para: 'Alojamento do site, verificação antirrobôs do formulário, prova dos consentimentos e registos técnicos.',
+        para: 'Alojamento do site, verificação antirrobôs do formulário, prova dos consentimentos, registos técnicos, estatísticas de visitas sem cookies e contagem de ações.',
         donde: 'A sua rede mundial, com sede nos Estados Unidos. As provas de consentimento são guardadas na União Europeia.',
         garantia: 'Quadro de Privacidade de Dados UE-EUA e cláusulas contratuais-tipo.',
       },
@@ -846,11 +846,6 @@ export const pt: Textos = {
         para: 'O correio eletrónico da empresa, onde recebemos e guardamos as mensagens.',
         donde: 'União Europeia (região europeia da Microsoft). A empresa é dos Estados Unidos.',
         garantia: 'Quadro de Privacidade de Dados UE-EUA e cláusulas contratuais-tipo.',
-      },
-      umami: {
-        para: 'Estatísticas de visitas sem cookies.',
-        donde: 'União Europeia (Frankfurt, Alemanha). A empresa é dos Estados Unidos.',
-        garantia: 'Cláusulas contratuais-tipo.',
       },
       google: {
         para: 'Estatísticas de visitas (Google Analytics), se as aceitar.',

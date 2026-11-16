@@ -31,7 +31,7 @@ export const de: Textos = {
     privacidad: 'Datenschutz',
     cookies: 'Cookies',
     nrt: 'NRT in Bearbeitung',
-    estadisticas: 'Besucherstatistik ohne Cookies (Umami).',
+    estadisticas: 'Besucherstatistik ohne Cookies (Cloudflare Web Analytics).',
     linkedin: 'Synentor auf LinkedIn (öffnet sich in einem neuen Tab)',
   },
   cookiesAviso: {
@@ -677,7 +677,7 @@ export const de: Textos = {
             'Bot-Prüfung des Formulars (Cloudflare Turnstile). Daten: die IP-Adresse und technische Daten des Browsers. Zweck: zu prüfen, dass das Formular von einem Menschen gesendet wird. Rechtsgrundlage: unser berechtigtes Interesse, die Website vor Missbrauch zu schützen. Wir selbst speichern sie nicht.',
             'Nachweis Ihrer Cookie-Entscheidung. Daten: eine zufällige Kennung, die Sie nicht identifiziert, die Version der Richtlinie, Ihre Entscheidung und das Datum; niemals die IP-Adresse. Zweck: Ihre Einwilligung nachweisen zu können. Rechtsgrundlage: die Pflicht, sie nachweisen zu können. Speicherdauer: 12 Monate.',
             'Technische Protokolle des Hostings (Cloudflare). Daten: die IP-Adresse, Datum und Uhrzeit, die aufgerufene Seite und Fehler. Zweck: die Sicherheit und der reibungslose Betrieb der Website. Rechtsgrundlage: unser berechtigtes Interesse. Speicherdauer: höchstens {plazoRegistros}.',
-            'Besucherstatistik (Umami). Ohne Cookies und ohne Daten, die Sie identifizieren: nur Gesamtzahlen, etwa aufgerufene Seiten, Land oder Browser.',
+            'Besucherstatistik (Cloudflare Web Analytics) und eine eigene Zählung von Aktionen: wie oft eine Demonstration angefragt, der Rechner benutzt, eine Auswahl oder das Formular gesendet wird und über welche Kampagne Sie kommen. Ohne Cookies und ohne Daten, die Sie identifizieren: nur Gesamtzahlen, etwa aufgerufene Seiten, Land oder Browsertyp. Die eigene Zählung speichert weder die IP-Adresse noch den Browser.',
             'Cookies anderer Unternehmen, nur wenn Sie sie akzeptieren: Das erklärt die {cookies}.',
             'Wenn Sie uns eine E-Mail schreiben oder uns anrufen: Ihre Kontaktdaten und was Sie uns mitteilen, um Ihnen zu antworten, mit derselben Rechtsgrundlage und derselben Speicherdauer wie beim Formular.',
           ],
@@ -750,7 +750,7 @@ export const de: Textos = {
         {
           t: 'Statistik ohne Cookies',
           p: [
-            'Wir zählen die Besuche mit Umami, das keine Cookies verwendet und keine Daten speichert, die Sie identifizieren.',
+            'Wir zählen die Besuche mit Cloudflare Web Analytics und die Aktionen mit einer eigenen Zählung. Keines von beiden verwendet Cookies oder speichert Daten, die Sie identifizieren.',
           ],
         },
         {
@@ -833,7 +833,7 @@ export const de: Textos = {
     },
     proveedores: {
       cloudflare: {
-        para: 'Hosting der Website, Bot-Prüfung des Formulars, Nachweis der Einwilligungen und technische Protokolle.',
+        para: 'Hosting der Website, Bot-Prüfung des Formulars, Nachweis der Einwilligungen, technische Protokolle, Besucherstatistik ohne Cookies und Zählung der Aktionen.',
         donde: 'Das weltweite Netz des Unternehmens, mit Sitz in den Vereinigten Staaten. Die Einwilligungsnachweise werden in der Europäischen Union gespeichert.',
         garantia: 'EU-US-Datenschutzrahmen und Standardvertragsklauseln.',
       },
@@ -846,11 +846,6 @@ export const de: Textos = {
         para: 'Die E-Mail des Unternehmens, in der wir die Nachrichten empfangen und aufbewahren.',
         donde: 'Europäische Union (europäische Region von Microsoft). Das Unternehmen hat seinen Sitz in den Vereinigten Staaten.',
         garantia: 'EU-US-Datenschutzrahmen und Standardvertragsklauseln.',
-      },
-      umami: {
-        para: 'Besucherstatistik ohne Cookies.',
-        donde: 'Europäische Union (Frankfurt, Deutschland). Das Unternehmen hat seinen Sitz in den Vereinigten Staaten.',
-        garantia: 'Standardvertragsklauseln.',
       },
       google: {
         para: 'Besucherstatistik (Google Analytics), wenn Sie sie akzeptieren.',

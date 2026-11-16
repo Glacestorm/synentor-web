@@ -70,7 +70,7 @@ function md(idioma: Idioma): string {
 const NOMBRES = { ga4: 'Google Analytics', clarity: 'Microsoft Clarity', metaPixel: 'píxel de Meta', linkedin: 'LinkedIn Insight Tag' } as const;
 const validas = herramientasValidas(HERRAMIENTAS);
 const lista = (Object.keys(NOMBRES) as (keyof typeof NOMBRES)[]).filter((k) => validas[k] !== null).map((k) => NOMBRES[k]);
-const activas = lista.length ? lista.join(', ') : 'ninguna (solo las cookies necesarias y Umami, sin cookies)';
+const activas = lista.length ? lista.join(', ') : 'ninguna (solo las cookies necesarias; las estadísticas, sin cookies)';
 
 const cabecera = `# Textos legales de synentor.com — para la revisión del asesor jurídico
 
@@ -89,7 +89,7 @@ activar esa herramienta hasta comprobarlas.
 
 **Asesor jurídico**
 1. Base del formulario de contacto: consentimiento (casilla) y, si se pide propuesta, medidas precontractuales.
-2. Transferencias a Estados Unidos (Cloudflare, Resend, Microsoft, Umami, Google, Meta, LinkedIn): si el Marco de
+2. Transferencias a Estados Unidos (Cloudflare, Resend, Microsoft, Google, Meta, LinkedIn): si el Marco de
    Privacidad de Datos UE-EE. UU. y las cláusulas tipo son garantía suficiente con la LQPD y si hay que informar de algo
    más; el texto avisa del riesgo (la guía de la APDA lo pide cuando el país no tiene un nivel equivalente).
 3. Píxel de Meta y LinkedIn Insight Tag: si hay corresponsabilidad con Meta y LinkedIn y cómo decirlo.
@@ -113,8 +113,9 @@ activar esa herramienta hasta comprobarlas.
 - Plazo para los mensajes de quien no llega a ser cliente: **1 año** desde el último contacto.
 - La base de datos de las pruebas de consentimiento (Cloudflare D1) se creó con la **jurisdicción de la Unión Europea**:
   los registros se guardan en la UE.
-- La cuenta de Umami está en la región **Unión Europea (Fráncfort)**: las estadísticas sin cookies se guardan en la UE;
-  la empresa es de Estados Unidos.
+- Estadísticas de visitas: Cloudflare Web Analytics (sin cookies; es de Cloudflare, el mismo proveedor del alojamiento) y un
+  recuento propio de acciones en Cloudflare Analytics Engine (sin IP ni navegador; solo cifras de conjunto). Cloudflare es
+  de Estados Unidos.
 - Microsoft 365 (el correo de la empresa): la organización de synentor.com está en la **región «EU»** de Microsoft
   (\`tenant_region_scope: EU\` en https://login.microsoftonline.com/synentor.com/v2.0/.well-known/openid-configuration,
   15/11/2026; la tarjeta «Ubicación de los datos» del centro de administración no cargó ese día).
@@ -135,7 +136,7 @@ activar esa herramienta hasta comprobarlas.
   https://developers.cloudflare.com/workers/observability/logs/workers-logs/ · https://developers.cloudflare.com/observability/pricing/
 - Resend guarda todos los datos en Estados Unidos (aunque envíe desde Irlanda): https://resend.com/docs/dashboard/domains/regions ·
   https://resend.com/security/gdpr
-- Umami: sin cookies, cláusulas tipo; región de datos elegida al crear la cuenta (la nuestra, UE): https://umami.is/dpa · https://umami.is/terms
+- Cloudflare Web Analytics (sin cookies): https://developers.cloudflare.com/web-analytics/ · https://www.cloudflare.com/privacypolicy/
 - APDA: C/ Dr. Vilanova 15-17, planta -5, AD500 Andorra la Vella · https://www.apda.ad
 `;
 

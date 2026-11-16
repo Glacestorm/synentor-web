@@ -95,8 +95,7 @@ describe('páginas construidas', () => {
     for (const idioma of idiomas) {
       for (const pagina of PAGINAS) {
         const html = readFileSync(fichero(ruta(pagina, idioma)), 'utf8');
-        expect(html, ruta(pagina, idioma)).not.toContain('cloud.umami.is');
-        expect(html, ruta(pagina, idioma)).not.toContain('data-umami');
+        expect(html.toLowerCase(), ruta(pagina, idioma)).not.toContain('umami');
         expect(html, ruta(pagina, idioma)).not.toContain('cloudflareinsights');
       }
     }
@@ -206,7 +205,7 @@ describe('páginas construidas', () => {
       expect(cookies, idioma).toContain(`data-etiqueta="${col.duracion}"`);
 
       const privacidad = readFileSync(fichero(ruta('privacidad', idioma)), 'utf8');
-      for (const p of ['Cloudflare', 'Resend', 'Umami']) expect(privacidad, idioma).toContain(p);
+      for (const p of ['Cloudflare', 'Resend']) expect(privacidad, idioma).toContain(p);
       // Cada proveedor de una herramienta, solo si está activa (por su política: la de Microsoft es la misma que la de Clarity).
       for (const p of PROVEEDORES.filter((q) => q.herramienta && !PROVEEDORES.some((o) => o.herramienta === null && o.politica === q.politica))) {
         if (esta(p.herramienta)) expect(privacidad, `${idioma} ${p.id}`).toContain(`href="${p.politica}"`);

@@ -31,7 +31,7 @@ export const en: Textos = {
     privacidad: 'Privacy',
     cookies: 'Cookies',
     nrt: 'NRT pending',
-    estadisticas: 'Cookie-free visit statistics (Umami).',
+    estadisticas: 'Cookie-free visit statistics (Cloudflare Web Analytics).',
     linkedin: 'Synentor on LinkedIn (opens in a new tab)',
   },
   cookiesAviso: {
@@ -677,7 +677,7 @@ export const en: Textos = {
             'Anti-bot check on the form (Cloudflare Turnstile). Data: your IP address and technical data from your browser. Purpose: to check that the form is sent by a person. Legal basis: our legitimate interest in protecting the website from abuse. We do not keep this data.',
             'Record of your cookie choice. Data: a random identifier that does not identify you, the version of the policy, what you decided and the date; never your IP address. Purpose: to be able to prove your consent. Legal basis: the obligation to be able to prove it. Retention: 12 months.',
             'Technical logs from our hosting (Cloudflare). Data: the IP address, the date and time, the page requested and any errors. Purpose: the security and proper functioning of the website. Legal basis: our legitimate interest. Retention: up to {plazoRegistros}.',
-            'Visit statistics (Umami). No cookies and no data that identifies you: only aggregate figures, such as the pages viewed, the country or the browser.',
+            'Visit statistics (Cloudflare Web Analytics) and our own count of actions: how many times a demonstration is requested, the calculator is used, a selection or the form is sent, and which campaign brought you here. No cookies and no data that identifies you: only aggregate figures, such as the pages viewed, the country or the type of browser. Our own count does not store the IP address or the browser.',
             'Cookies from other companies, only if you accept them: these are explained in the {cookies}.',
             'If you email or call us: your contact details and what you tell us, in order to reply to you, with the same legal basis and retention period as the form.',
           ],
@@ -750,7 +750,7 @@ export const en: Textos = {
         {
           t: 'Statistics without cookies',
           p: [
-            'We count visits with Umami, which does not use cookies or store data that identifies you.',
+            'We count visits with Cloudflare Web Analytics and actions with our own count. Neither uses cookies or stores data that identifies you.',
           ],
         },
         {
@@ -833,7 +833,7 @@ export const en: Textos = {
     },
     proveedores: {
       cloudflare: {
-        para: 'Website hosting, anti-bot check on the form, record of consents and technical logs.',
+        para: 'Website hosting, anti-bot check on the form, record of consents, technical logs, cookie-free visit statistics and the count of actions.',
         donde: 'Its global network, headquartered in the United States. Consent records are stored in the European Union.',
         garantia: 'EU-U.S. Data Privacy Framework and standard contractual clauses.',
       },
@@ -846,11 +846,6 @@ export const en: Textos = {
         para: 'The company email, where we receive and keep messages.',
         donde: 'European Union (Microsoft’s European region). The company is based in the United States.',
         garantia: 'EU-U.S. Data Privacy Framework and standard contractual clauses.',
-      },
-      umami: {
-        para: 'Visit statistics without cookies.',
-        donde: 'European Union (Frankfurt, Germany). The company is based in the United States.',
-        garantia: 'Standard contractual clauses.',
       },
       google: {
         para: 'Visit statistics (Google Analytics), if you accept them.',

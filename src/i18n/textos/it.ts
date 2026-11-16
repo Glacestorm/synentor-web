@@ -31,7 +31,7 @@ export const it: Textos = {
     privacidad: 'Privacy',
     cookies: 'Cookie',
     nrt: 'NRT in corso di rilascio',
-    estadisticas: 'Statistiche delle visite senza cookie (Umami).',
+    estadisticas: 'Statistiche delle visite senza cookie (Cloudflare Web Analytics).',
     linkedin: 'Synentor su LinkedIn (si apre in una nuova scheda)',
   },
   cookiesAviso: {
@@ -677,7 +677,7 @@ export const it: Textos = {
             'Verifica antirobot del modulo (Cloudflare Turnstile). Dati: l’indirizzo IP e dati tecnici del browser. Finalità: verificare che il modulo sia inviato da una persona. Base giuridica: il nostro legittimo interesse a proteggere il sito dagli abusi. Noi non li conserviamo.',
             'Prova della Sua scelta sui cookie. Dati: un identificativo casuale che non La identifica, la versione dell’informativa, ciò che ha deciso e la data; mai l’IP. Finalità: poter dimostrare il Suo consenso. Base giuridica: l’obbligo di poterlo dimostrare. Durata: 12 mesi.',
             'Log tecnici dell’hosting (Cloudflare). Dati: l’indirizzo IP, la data e l’ora, la pagina richiesta e gli errori. Finalità: la sicurezza e il corretto funzionamento del sito. Base giuridica: il nostro legittimo interesse. Durata: fino a {plazoRegistros}.',
-            'Statistiche delle visite (Umami). Senza cookie e senza dati che La identifichino: solo dati aggregati, come le pagine viste, il Paese o il browser.',
+            'Statistiche delle visite (Cloudflare Web Analytics) e un conteggio proprio delle azioni: quante volte si chiede una dimostrazione, si usa il calcolatore, si invia una selezione o il modulo, e da quale campagna si arriva. Senza cookie e senza dati che La identifichino: solo dati aggregati, come le pagine viste, il Paese o il tipo di browser. Il conteggio proprio non conserva né l’IP né il browser.',
             'Cookie di altre aziende, solo se li accetta: è spiegato nella {cookies}.',
             'Se ci scrive per e-mail o ci telefona: i Suoi dati di contatto e ciò che ci racconta, per risponderLe, con la stessa base giuridica e la stessa durata del modulo.',
           ],
@@ -750,7 +750,7 @@ export const it: Textos = {
         {
           t: 'Statistiche senza cookie',
           p: [
-            'Contiamo le visite con Umami, che non usa cookie né conserva dati che La identifichino.',
+            'Contiamo le visite con Cloudflare Web Analytics e le azioni con un conteggio proprio. Nessuno dei due usa cookie né conserva dati che La identifichino.',
           ],
         },
         {
@@ -833,7 +833,7 @@ export const it: Textos = {
     },
     proveedores: {
       cloudflare: {
-        para: 'Hosting del sito, verifica antirobot del modulo, prova dei consensi e log tecnici.',
+        para: 'Hosting del sito, verifica antirobot del modulo, prova dei consensi, log tecnici, statistiche delle visite senza cookie e conteggio delle azioni.',
         donde: 'La sua rete mondiale, con sede negli Stati Uniti. Le prove del consenso sono conservate nell’Unione europea.',
         garantia: 'Quadro UE-USA per la protezione dei dati personali e clausole contrattuali standard.',
       },
@@ -846,11 +846,6 @@ export const it: Textos = {
         para: 'La posta elettronica aziendale, dove riceviamo e conserviamo i messaggi.',
         donde: 'Unione europea (regione europea di Microsoft). L’azienda ha sede negli Stati Uniti.',
         garantia: 'Quadro UE-USA per la protezione dei dati personali e clausole contrattuali standard.',
-      },
-      umami: {
-        para: 'Statistiche delle visite senza cookie.',
-        donde: 'Unione europea (Francoforte, Germania). L’azienda ha sede negli Stati Uniti.',
-        garantia: 'Clausole contrattuali standard.',
       },
       google: {
         para: 'Statistiche delle visite (Google Analytics), se le accetta.',

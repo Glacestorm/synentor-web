@@ -152,9 +152,11 @@ publicarlo. Los temas se ordenan con lo que diga Search Console (punto 2.1).
 ## Etiquetas de campaña (UTM)
 
 Todo enlace que se ponga en una publicación, un correo o un anuncio y lleve a synentor.com lleva las tres etiquetas, para
-que las estadísticas (Umami) digan de dónde llega cada visita:
+que el contador propio de la web (acción `llegada-campana`) diga de dónde llega cada visita:
 
 `?utm_source=<red>&utm_medium=<social|email|anuncio>&utm_campaign=<slug>`
+
+El contador guarda `utm_source`, `utm_medium` y `utm_campaign` en minúsculas; todo lo que no sea `a-z`, `0-9`, `-` o `_` (o pase de 60 caracteres) se cuenta como `otro`.
 
 - `utm_source`: la red o el origen, en minúsculas (`linkedin`, `boletin`, `google`).
 - `utm_medium`: solo uno de tres: `social`, `email` o `anuncio`.

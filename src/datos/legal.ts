@@ -81,7 +81,6 @@ export const PROVEEDORES: readonly ProveedorLegal[] = [
   { id: 'cloudflare', nombre: 'Cloudflare', herramienta: null, politica: 'https://www.cloudflare.com/privacypolicy/' },
   { id: 'resend', nombre: 'Resend', herramienta: null, politica: 'https://resend.com/security/gdpr' },
   { id: 'microsoft365', nombre: 'Microsoft', herramienta: null, politica: 'https://www.microsoft.com/en-us/privacy/privacystatement' },
-  { id: 'umami', nombre: 'Umami', herramienta: null, politica: 'https://umami.is/dpa' },
   { id: 'google', nombre: 'Google', herramienta: 'ga4', politica: 'https://policies.google.com/privacy' },
   { id: 'clarity', nombre: 'Microsoft', herramienta: 'clarity', politica: 'https://www.microsoft.com/en-us/privacy/privacystatement' },
   { id: 'meta', nombre: 'Meta', herramienta: 'metaPixel', politica: 'https://www.facebook.com/privacy/policies/cookies/' },
