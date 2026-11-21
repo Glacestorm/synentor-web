@@ -215,7 +215,7 @@ esta lista el 21/11/2026: MUV la tiene desde el 16/11/2026.
   el 16/11/2026).
 - «MUV para family offices», apoyado en sus cinco plantillas de partida. Es un uso de MUV con plantillas que existen, no
   un sector de los del §6. No se dice «especialistas» ni nada parecido, y se dice lo que no hace: no valora carteras ni
-  se conecta con bancos. **No se publica hasta que la instalación de producción de MUV lleve esas plantillas.**
+  se conecta con bancos. Las plantillas están en la instalación de producción de MUV desde el 21/11/2026.
 
 ### 7.3 Paquete «Synentor Completo»
 
