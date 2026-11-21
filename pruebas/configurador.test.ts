@@ -5,6 +5,9 @@ import { montaConfigurador } from '../src/scripts/configurador';
 import { textosConfigurador } from '../src/lib/textosConfigurador';
 import { calcula } from '../src/lib/precios/calcula';
 import { euros } from '../src/lib/formato';
+import { enviaEvento } from '../src/scripts/eventos';
+
+vi.mock('../src/scripts/eventos', () => ({ enviaEvento: vi.fn() }));
 
 function monta(pais: 'AD' | 'ES' = 'AD') {
   document.body.innerHTML = '<div id="conf"></div>';
@@ -51,6 +54,19 @@ describe('configurador', () => {
     marca(casilla(raiz, 0, 'rrhh'));
     expect(casilla(raiz, 0, 'rrhh').closest('label')!.textContent).toContain('En desarrollo inminente');
     expect(raiz.querySelector('[data-k="cta"]')!.textContent).toBe('Pide tu propuesta');
+  });
+
+  it('el botón de demostración lleva data-evento="demostracion"; el de propuesta, no', () => {
+    const raiz = monta('AD');
+    marca(casilla(raiz, 0, 'rrhh'));
+    const cta = raiz.querySelector('[data-k="cta"]')!;
+    expect(cta.getAttribute('href')).toContain('asunto=demostracion');
+    expect(cta.getAttribute('data-evento')).toBe('demostracion');
+    const es = monta('ES');
+    marca(casilla(es, 0, 'rrhh'));
+    const ctaEs = es.querySelector('[data-k="cta"]')!;
+    expect(ctaEs.getAttribute('href')).toContain('asunto=precios');
+    expect(ctaEs.hasAttribute('data-evento')).toBe(false);
   });
 
   it('el total que se ve es el de calcula con los mismos datos', () => {
@@ -151,34 +167,21 @@ describe('configurador', () => {
     expect(raiz.querySelector('input[data-k="muv"]')).not.toBeNull();
   });
 
-  describe('eventos de Umami', () => {
-    const conUmami = () => {
-      const track = vi.fn();
-      (window as unknown as { umami?: unknown }).umami = { track };
-      return track;
-    };
-    afterEach(() => {
-      delete (window as unknown as { umami?: unknown }).umami;
-    });
+  describe('acciones del contador', () => {
+    beforeEach(() => vi.mocked(enviaEvento).mockClear());
 
     it('«calculadora» sale una sola vez por visita, en el primer cambio', () => {
-      const track = conUmami();
       const raiz = monta();
-      expect(track).not.toHaveBeenCalled();
+      expect(enviaEvento).not.toHaveBeenCalled();
       marca(casilla(raiz, 0, 'compras'));
       marca(casilla(raiz, 0, 'fiscal'));
       elige(raiz, 'completo');
-      expect(track.mock.calls.filter((c) => c[0] === 'calculadora')).toHaveLength(1);
+      expect(vi.mocked(enviaEvento).mock.calls.filter((c) => c[0] === 'calculadora')).toHaveLength(1);
     });
 
-    it('«Envía mi selección» lleva el evento «pedido-calculadora»', () => {
+    it('«Envía mi selección» lleva data-evento=«pedido-calculadora»', () => {
       const raiz = monta();
-      expect(raiz.querySelector('[data-k="pedido"]')!.getAttribute('data-umami-event')).toBe('pedido-calculadora');
-    });
-
-    it('sin Umami, el configurador sigue funcionando', () => {
-      const raiz = monta();
-      expect(() => marca(casilla(raiz, 0, 'compras'))).not.toThrow();
+      expect(raiz.querySelector('[data-k="pedido"]')!.getAttribute('data-evento')).toBe('pedido-calculadora');
     });
   });
 });

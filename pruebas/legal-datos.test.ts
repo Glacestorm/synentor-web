@@ -1,5 +1,6 @@
 // Los datos de los textos legales (diseño §19): qué cookies y proveedores salen según las herramientas activas, y que
 // nada sin comprobar llegue a la web.
+import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { COOKIES, PROVEEDORES, NAVEGADORES, cookiesDe, proveedoresDe } from '../src/datos/legal';
 import { HERRAMIENTAS } from '../src/datos/analitica';
@@ -25,7 +26,7 @@ describe('cookies y proveedores según las herramientas activas', () => {
   });
 
   it('los proveedores de siempre, y los de cada herramienta solo si está activa', () => {
-    expect(proveedoresDe(PROVEEDORES, NADA).map((p) => p.id)).toEqual(['cloudflare', 'resend', 'microsoft365', 'umami']);
+    expect(proveedoresDe(PROVEEDORES, NADA).map((p) => p.id)).toEqual(['cloudflare', 'resend', 'microsoft365']);
     expect(proveedoresDe(PROVEEDORES, SOLO_GA).map((p) => p.id)).toContain('google');
   });
 });
@@ -58,4 +59,34 @@ describe('cada dato tiene su texto en todos los idiomas', () => {
       }
     });
   }
+});
+
+describe('estadísticas: Cloudflare Web Analytics y recuento propio, sin Umami', () => {
+  const idiomas = Object.keys(TEXTOS) as (keyof typeof TEXTOS)[];
+
+  it('T01 ningún fichero de los textos ni de los datos nombra a Umami', () => {
+    for (const dir of ['src/i18n/textos', 'src/datos']) {
+      for (const f of readdirSync(dir).filter((n) => n.endsWith('.ts'))) {
+        expect(readFileSync(`${dir}/${f}`, 'utf8').toLowerCase(), `${dir}/${f}`).not.toContain('umami');
+      }
+    }
+  });
+
+  it('T02 en los siete idiomas, el pie, la privacidad y la política de cookies nombran Cloudflare Web Analytics', () => {
+    expect(idiomas).toHaveLength(7);
+    for (const idioma of idiomas) {
+      const t = TEXTOS[idioma]!;
+      expect(t.pie.estadisticas, idioma).toContain('Cloudflare Web Analytics');
+      const lineas = JSON.stringify(t.legal.privacidad).split('Cloudflare Web Analytics').length - 1;
+      expect(lineas, `${idioma} privacidad`).toBeGreaterThanOrEqual(1);
+      expect(JSON.stringify(t.legal.cookies), `${idioma} cookies`).toContain('Cloudflare Web Analytics');
+    }
+  });
+
+  it('T03 no queda el proveedor umami, ni en los datos ni en los textos', () => {
+    expect(PROVEEDORES.map((p) => p.id)).not.toContain('umami');
+    for (const idioma of idiomas) {
+      expect(Object.keys(TEXTOS[idioma]!.legal.proveedores), idioma).not.toContain('umami');
+    }
+  });
 });

@@ -3,6 +3,7 @@
 // los registros llevan los datos de la persona.
 import { esIdioma } from '../src/i18n/idiomas';
 import { ASUNTOS, enviaCorreo, verificaTurnstile, type Mensaje } from './correo';
+import { cuentaEvento } from './evento';
 import type { Env } from './index';
 
 export interface Dependencias {
@@ -85,5 +86,7 @@ export async function atiendeContacto(
     console.error('contacto: el proveedor del correo no ha confirmado el envío');
     return responde(502, { ok: false, error: 'envio' });
   }
+  // Solo ahora, con el envío confirmado por el proveedor: cuenta la acción (sin ningún dato de la persona).
+  cuentaEvento(env, 'contacto-enviado');
   return responde(200, { ok: true });
 }

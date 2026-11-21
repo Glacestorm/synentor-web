@@ -8,7 +8,7 @@ import { EMPRESA } from '../src/datos/empresa';
 import { COOKIES, PROVEEDORES, NAVEGADORES, PLAZOS } from '../src/datos/legal';
 import { duracion } from '../src/lib/duracion';
 import { rellena } from '../src/i18n/rellena';
-import { HERRAMIENTAS } from '../src/datos/analitica';
+import { CLOUDFLARE_WEB_ANALYTICS, HERRAMIENTAS } from '../src/datos/analitica';
 import { herramientasValidas } from '../src/lib/consentimiento';
 
 function md(idioma: Idioma): string {
@@ -70,12 +70,16 @@ function md(idioma: Idioma): string {
 const NOMBRES = { ga4: 'Google Analytics', clarity: 'Microsoft Clarity', metaPixel: 'píxel de Meta', linkedin: 'LinkedIn Insight Tag' } as const;
 const validas = herramientasValidas(HERRAMIENTAS);
 const lista = (Object.keys(NOMBRES) as (keyof typeof NOMBRES)[]).filter((k) => validas[k] !== null).map((k) => NOMBRES[k]);
-const activas = lista.length ? lista.join(', ') : 'ninguna (solo las cookies necesarias y Umami, sin cookies)';
+const activas = lista.length ? lista.join(', ') : 'ninguna (solo las cookies necesarias; las estadísticas, sin cookies)';
+
+const baliza = CLOUDFLARE_WEB_ANALYTICS.testimonio !== ''
+  ? 'activa (el testimonio de la baliza está puesto)'
+  : 'preparada y no activa (falta el testimonio de la baliza: mientras tanto no cuenta ninguna visita)';
 
 const cabecera = `# Textos legales de synentor.com — para la revisión del asesor jurídico
 
 Generado con \`npm run revision-legal\` desde los textos y datos de la web (no se edita a mano). Fecha de los textos:
-14/11/2026. Modelo de partida: guía de la APDA «Ús de cookies, política de privadesa i avís legal», versión 4
+16/11/2026. Modelo de partida: guía de la APDA «Ús de cookies, política de privadesa i avís legal», versión 4
 (23/01/2024), anexos 1 a 3.
 
 **Cómo se publica**: en la web, la tabla de cookies y la de proveedores solo enseñan las herramientas activas. Aquí salen
@@ -85,11 +89,13 @@ activar esa herramienta hasta comprobarlas.
 
 **Activas en esta versión**: ${activas}.
 
+**Cloudflare Web Analytics**: ${baliza}.
+
 ## Puntos que hay que confirmar
 
 **Asesor jurídico**
 1. Base del formulario de contacto: consentimiento (casilla) y, si se pide propuesta, medidas precontractuales.
-2. Transferencias a Estados Unidos (Cloudflare, Resend, Microsoft, Umami, Google, Meta, LinkedIn): si el Marco de
+2. Transferencias a Estados Unidos (Cloudflare, Resend, Microsoft, Google, Meta, LinkedIn): si el Marco de
    Privacidad de Datos UE-EE. UU. y las cláusulas tipo son garantía suficiente con la LQPD y si hay que informar de algo
    más; el texto avisa del riesgo (la guía de la APDA lo pide cuando el país no tiene un nivel equivalente).
 3. Píxel de Meta y LinkedIn Insight Tag: si hay corresponsabilidad con Meta y LinkedIn y cómo decirlo.
@@ -97,6 +103,9 @@ activar esa herramienta hasta comprobarlas.
 5. Comprobación antirrobot (Cloudflare Turnstile): base en interés legítimo. Cloudflare dice en su anuncio que Turnstile no
    usa cookies, pero su guía para móviles habla de cookies y almacenamiento local: no se ha puesto en la tabla de cookies.
 6. Prueba del consentimiento (D1): base en la obligación de poder demostrarlo; 12 meses.
+7. Estadísticas sin cookies (Cloudflare Web Analytics y el recuento propio de acciones): si necesitan consentimiento previo
+   según la LQPD y la guía de la APDA. Se han tratado como medición de audiencia propia sin cookies, que no se somete a
+   consentimiento; está pendiente de confirmar.
 
 **Traducciones (inglés, francés, portugués, italiano y alemán)**: el texto que prevalece es el catalán. Revisar:
 - El nombre de la Llei 29/2021 y el de la APDA van traducidos entre paréntesis: no son traducciones oficiales.
@@ -107,14 +116,15 @@ activar esa herramienta hasta comprobarlas.
 - En alemán, el aviso legal se titula *Impressum*.
 
 **Gerencia**
-7. Número de inscripción en el Registre de Societats: el aviso legal solo dice «NRT: en trámite».
+8. Número de inscripción en el Registre de Societats: el aviso legal solo dice «NRT: en trámite».
 
 **Confirmado (gerencia y comprobaciones, 14 y 15/11/2026)**
 - Plazo para los mensajes de quien no llega a ser cliente: **1 año** desde el último contacto.
 - La base de datos de las pruebas de consentimiento (Cloudflare D1) se creó con la **jurisdicción de la Unión Europea**:
   los registros se guardan en la UE.
-- La cuenta de Umami está en la región **Unión Europea (Fráncfort)**: las estadísticas sin cookies se guardan en la UE;
-  la empresa es de Estados Unidos.
+- Estadísticas de visitas: Cloudflare Web Analytics (sin cookies; es de Cloudflare, el mismo proveedor del alojamiento) y un
+  recuento propio de acciones en Cloudflare Analytics Engine (sin IP ni navegador; solo cifras de conjunto). Cloudflare es
+  de Estados Unidos.
 - Microsoft 365 (el correo de la empresa): la organización de synentor.com está en la **región «EU»** de Microsoft
   (\`tenant_region_scope: EU\` en https://login.microsoftonline.com/synentor.com/v2.0/.well-known/openid-configuration,
   15/11/2026; la tarjeta «Ubicación de los datos» del centro de administración no cargó ese día).
@@ -135,7 +145,13 @@ activar esa herramienta hasta comprobarlas.
   https://developers.cloudflare.com/workers/observability/logs/workers-logs/ · https://developers.cloudflare.com/observability/pricing/
 - Resend guarda todos los datos en Estados Unidos (aunque envíe desde Irlanda): https://resend.com/docs/dashboard/domains/regions ·
   https://resend.com/security/gdpr
-- Umami: sin cookies, cláusulas tipo; región de datos elegida al crear la cuenta (la nuestra, UE): https://umami.is/dpa · https://umami.is/terms
+
+**Sin comprobar en la página oficial** (no se comprobó el 14/11/2026; abrirlas antes de activar):
+- Cloudflare Web Analytics (que no usa cookies): https://developers.cloudflare.com/web-analytics/ · https://www.cloudflare.com/privacypolicy/
+- Dónde guarda Cloudflare las estadísticas de visitas y el recuento de acciones: **sin comprobar** (la medición anterior los
+  guardaba en la UE). No se ha comprobado en la página oficial de Cloudflare.
+
+**Otras**
 - APDA: C/ Dr. Vilanova 15-17, planta -5, AD500 Andorra la Vella · https://www.apda.ad
 `;
 

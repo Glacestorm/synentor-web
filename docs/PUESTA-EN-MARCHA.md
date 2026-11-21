@@ -152,16 +152,29 @@ izquierda del panel.
 con y sin camino y consulta, dan 301 a `https://synentor.com/…` con el mismo camino y la misma consulta; `www.synentor.com`
 también. Las direcciones `http://` se comprueban en el navegador (ventana privada).
 
-## 8. Estadísticas
+## 8. Estadísticas: Cloudflare Web Analytics y el contador propio
 
-Umami: cuenta en la región **UE (Fráncfort)** y web dada de alta el 14/11/2026 (nombre `Synentor`, dominio
-`synentor.com`). El identificador va en `src/datos/analitica.ts` y solo cuenta `synentor.com` y `www.synentor.com`.
-Comprueba que llegan visitas después del paso 6.
+Dos piezas, las dos sin cookies y sin gasto (plan gratuito). Umami se retiró porque su API es de pago.
 
-- El identificador es el **«ID del lloc web»** (Website ID): en Umami, «Llocs web» → la fila de la web → editar, o la
-  pestaña «Codi de seguiment». **No es el «Account ID» de la cuenta**, que tiene la misma forma: hasta el 14/11/2026 la
-  web llevaba ese por error y Umami no guardaba nada.
-- El guion es `https://cloud.umami.is/script.js` también en la región UE (lo dice el código de seguimiento de la cuenta).
+**Cloudflare Web Analytics** (visitas, páginas, países, navegadores):
+1. En el panel de Cloudflare: Analítica y registros → Web Analytics → añadir un sitio → `synentor.com`.
+2. Elige la baliza **manual** (el fragmento de JavaScript) y deja la **configuración automática apagada**: con las dos, cada
+   página contaría dos veces.
+3. Del fragmento, copia **solo el valor de `"token"`** a `CLOUDFLARE_WEB_ANALYTICS.testimonio` de `src/datos/analitica.ts`.
+   No pegues el fragmento en ninguna página. Mientras el testimonio esté vacío no se carga nada. Solo cuenta en
+   `synentor.com` y `www.synentor.com`.
+
+**Contador propio** (acciones en `/api/evento`, que guarda el Worker en Analytics Engine):
+- Acciones: `demostracion`, `calculadora`, `pedido-calculadora`, `contacto-enviado` (solo la cuenta el Worker cuando el
+  proveedor del correo confirma el envío) y `llegada-campana`.
+- El conjunto de datos `synentor_eventos` se crea solo con el primer punto de datos. Si al desplegar Cloudflare avisa de que
+  Analytics Engine no está activado, actívalo (plan gratuito) en el panel de Workers y vuelve a desplegar. No se ha podido
+  comprobar si hace falta activarlo antes del primer despliegue.
+- No guarda IP ni navegador; solo cifras de conjunto.
+
+Comprueba después del paso 6 que llegan las visitas: se ven en el panel de Web Analytics. Las acciones (Analytics Engine) no
+se ven en ese panel: las leerá el robot del ERP por la API SQL de Cloudflare y saldrán en la pantalla Web de Comercial i
+Màrqueting.
 
 ## 9. Los cuatro identificadores del aviso de cookies (diseño, §17)
 

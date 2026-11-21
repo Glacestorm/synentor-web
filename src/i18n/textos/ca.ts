@@ -32,7 +32,7 @@ export const ca = {
     privacidad: 'Privacitat',
     cookies: 'Galetes',
     nrt: 'NRT en tràmit',
-    estadisticas: 'Estadístiques de visites sense galetes (Umami).',
+    estadisticas: 'Estadístiques de visites sense galetes (Cloudflare Web Analytics).',
     linkedin: 'Synentor a LinkedIn (s’obre en una pestanya nova)',
   },
   cookiesAviso: {
@@ -679,7 +679,7 @@ export const ca = {
             'Comprovació antirobots del formulari (Cloudflare Turnstile). Dades: l’adreça IP i dades tècniques del navegador. Per a què: comprovar que el formulari l’envia una persona. Base: el nostre interès legítim a protegir el web de l’abús. Nosaltres no les guardem.',
             'Prova de la teva decisió sobre les galetes. Dades: un identificador a l’atzar que no t’identifica, la versió de la política, el que vas decidir i la data; mai la IP. Per a què: poder demostrar el teu consentiment. Base: l’obligació de poder-lo demostrar. Termini: 12 mesos.',
             'Registres tècnics de l’allotjament (Cloudflare). Dades: l’adreça IP, la data i l’hora, la pàgina demanada i els errors. Per a què: la seguretat i el bon funcionament del web. Base: el nostre interès legítim. Termini: fins a {plazoRegistros}.',
-            'Estadístiques de visites (Umami). Sense galetes i sense dades que t’identifiquin: només xifres de conjunt, com les pàgines vistes, el país o el navegador.',
+            'Estadístiques de visites (Cloudflare Web Analytics) i un recompte propi d’accions: quantes vegades es demana una demostració, es fa servir la calculadora, s’envia una selecció o el formulari, i des de quina campanya s’arriba. Sense galetes i sense dades que t’identifiquin: només xifres de conjunt, com les pàgines vistes, el país o el tipus de navegador. El recompte propi no guarda la IP ni el navegador.',
             'Galetes d’altres empreses, només si les acceptes: ho explica la {cookies}.',
             'Si ens escrius per correu o ens truques: les teves dades de contacte i el que ens expliquis, per respondre’t, amb la mateixa base i el mateix termini que el formulari.',
           ],
@@ -752,7 +752,7 @@ export const ca = {
         {
           t: 'Estadístiques sense galetes',
           p: [
-            'Comptem les visites amb Umami, que no fa servir galetes ni guarda dades que t’identifiquin.',
+            'Comptem les visites amb Cloudflare Web Analytics i les accions amb un recompte propi. Cap dels dos fa servir galetes ni guarda dades que t’identifiquin.',
           ],
         },
         {
@@ -835,7 +835,7 @@ export const ca = {
     },
     proveedores: {
       cloudflare: {
-        para: 'Allotjament del web, comprovació antirobots del formulari, prova dels consentiments i registres tècnics.',
+        para: 'Allotjament del web, comprovació antirobots del formulari, prova dels consentiments, registres tècnics, estadístiques de visites sense galetes i recompte d’accions.',
         donde: 'La seva xarxa mundial, amb seu als Estats Units. Les proves de consentiment es guarden a la Unió Europea.',
         garantia: 'Marc de Privadesa de Dades UE-EUA i clàusules contractuals tipus.',
       },
@@ -848,11 +848,6 @@ export const ca = {
         para: 'El correu de l’empresa, on rebem i guardem els missatges.',
         donde: 'Unió Europea (regió europea de Microsoft). L’empresa és dels Estats Units.',
         garantia: 'Marc de Privadesa de Dades UE-EUA i clàusules contractuals tipus.',
-      },
-      umami: {
-        para: 'Estadístiques de visites sense galetes.',
-        donde: 'Unió Europea (Frankfurt, Alemanya). L’empresa és dels Estats Units.',
-        garantia: 'Clàusules contractuals tipus.',
       },
       google: {
         para: 'Estadístiques de visites (Google Analytics), si les acceptes.',

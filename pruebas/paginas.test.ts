@@ -81,13 +81,27 @@ describe('páginas construidas', () => {
     }
   }
 
-  it('los dos botones «Pide una demostración» de la portada llevan el evento de Umami, en todos los idiomas', () => {
+  it('los dos botones «Pide una demostración» de la portada llevan data-evento, en todos los idiomas', () => {
     for (const idioma of idiomas) {
       const html = readFileSync(fichero(ruta('inicio', idioma)), 'utf8');
-      const botones = html.match(/<a\b[^>]*data-umami-event="demostracion"[^>]*>/g) ?? [];
+      const botones = html.match(/<a\b[^>]*data-evento="demostracion"[^>]*>/g) ?? [];
       expect(botones.length, idioma).toBe(2);
       for (const b of botones) expect(b, idioma).toContain('asunto=demostracion');
     }
+  });
+
+  it('P06 ninguna página lleva la baliza de Cloudflare escrita en el HTML ni Umami; solo la añade el cargador', () => {
+    for (const idioma of idiomas) {
+      for (const pagina of PAGINAS) {
+        const html = readFileSync(fichero(ruta(pagina, idioma)), 'utf8');
+        expect(html.toLowerCase(), ruta(pagina, idioma)).not.toContain('umami');
+        // La dirección puede salir dentro del código empaquetado del cargador; lo que no puede haber es una etiqueta script con ella.
+        const etiquetas = html.match(/<script\b[^>]*>/g) ?? [];
+        for (const e of etiquetas) expect(e, ruta(pagina, idioma)).not.toContain('cloudflareinsights');
+      }
+    }
+    const es = readFileSync(fichero(ruta('inicio', 'es')), 'utf8');
+    expect(es.match(/data-evento="demostracion"/g) ?? []).toHaveLength(2);
   });
 
   it('la portada dice qué es y dónde: Andorra, España y Europa en el título y el antetítulo dentro del H1, en todos los idiomas', () => {
@@ -192,7 +206,7 @@ describe('páginas construidas', () => {
       expect(cookies, idioma).toContain(`data-etiqueta="${col.duracion}"`);
 
       const privacidad = readFileSync(fichero(ruta('privacidad', idioma)), 'utf8');
-      for (const p of ['Cloudflare', 'Resend', 'Umami']) expect(privacidad, idioma).toContain(p);
+      for (const p of ['Cloudflare', 'Resend']) expect(privacidad, idioma).toContain(p);
       // Cada proveedor de una herramienta, solo si está activa (por su política: la de Microsoft es la misma que la de Clarity).
       for (const p of PROVEEDORES.filter((q) => q.herramienta && !PROVEEDORES.some((o) => o.herramienta === null && o.politica === q.politica))) {
         if (esta(p.herramienta)) expect(privacidad, `${idioma} ${p.id}`).toContain(`href="${p.politica}"`);

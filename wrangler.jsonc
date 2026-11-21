@@ -27,6 +27,9 @@
       "migrations_dir": "migraciones"
     }
   ],
+  // Contador de acciones de la web (worker/evento.ts): Cloudflare Analytics Engine. A propósito solo en el nivel
+  // principal, como la base D1: una vista previa no escribe en el conjunto de producción.
+  "analytics_engine_datasets": [{ "binding": "EVENTOS", "dataset": "synentor_eventos" }],
   // Cada día a las 03:17 (UTC) se borran las pruebas de consentimiento de más de 12 meses (worker/consentimiento.ts).
   "triggers": { "crons": ["17 3 * * *"] },
   // Las vistas previas de las ramas (Cloudflare las publica con `wrangler preview`, que exige este bloque). A propósito
