@@ -19,6 +19,39 @@ export const ASUNTOS = Object.keys(textos('es').contacto.formulario.asuntos);
 
 const unaLinea = (s: string) => s.replace(/[\r\n\t]+/g, ' ').trim();
 
+/**
+ * La marca fija del correo, para la máquina que lo lea (el ERP): la cabecera `X-Synentor-Formulario` con esta versión y,
+ * al principio del cuerpo, un bloque de claves que no cambian con el idioma. Si el bloque cambia de forma, cambia el número.
+ */
+export const FORMATO_FORMULARIO = 'contacto/1';
+const CABECERA_FORMULARIO = 'X-Synentor-Formulario';
+
+// Todo lo que un lector de líneas puede tomar por un salto (también lo que parte `str.splitlines` de Python: \v, \f,
+// \x1c-\x1e, \x85, U+2028 y U+2029) y los demás caracteres de control: en el bloque, cada valor ocupa UNA línea, escriba
+// lo que escriba la persona.
+const SALTOS_Y_CONTROL = /[\u0000-\u001F\u007F-\u009F\u2028\u2029]+/g;
+const valorDeBloque = (s: string | undefined) => (s ?? '').replace(SALTOS_Y_CONTROL, ' ').trim();
+
+/** El bloque de datos: siempre las mismas seis claves y en este orden; la que no tiene valor sale presente y vacía. */
+function bloqueDeDatos(m: Mensaje): string[] {
+  const campos: [string, string | undefined][] = [
+    ['asunto', m.asunto],
+    ['idioma', m.idioma],
+    ['nombre', m.nombre],
+    ['correo', m.correo],
+    ['empresa', m.empresa],
+    ['telefono', m.telefono],
+  ];
+  return [
+    '--- datos ---',
+    ...campos.map(([clave, v]) => {
+      const valor = valorDeBloque(v);
+      return valor ? `${clave}: ${valor}` : `${clave}:`;
+    }),
+    '--- fin ---',
+  ];
+}
+
 export function componeCorreo(m: Mensaje) {
   const asuntos = textos('es').contacto.formulario.asuntos as Record<string, string>;
   const asunto = asuntos[m.asunto] ?? m.asunto;
@@ -39,7 +72,9 @@ export function componeCorreo(m: Mensaje) {
     to: [EMPRESA.correo],
     reply_to: m.correo,
     subject: unaLinea(`Web · ${asunto} · ${m.nombre}`).slice(0, 150),
-    text: filas.join('\n'),
+    headers: { [CABECERA_FORMULARIO]: FORMATO_FORMULARIO },
+    // Primero el bloque (lo lee la máquina: vale el PRIMERO, el mensaje libre va detrás) y después la parte legible, igual que siempre.
+    text: [...bloqueDeDatos(m), '', ...filas].join('\n'),
   };
 }
 

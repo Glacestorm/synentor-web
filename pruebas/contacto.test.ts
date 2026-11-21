@@ -171,6 +171,111 @@ describe('el correo', () => {
     expect(c.text).toContain('Hola');
   });
 
+  // La marca fija del correo (formato contacto/1): la lee una máquina (el ERP), así que su forma no puede depender de lo
+  // que escriba la persona.
+  const completo: Mensaje = {
+    nombre: 'Persona de Prueba',
+    correo: 'persona.prueba@ejemplo.test',
+    empresa: 'Empresa de Prueba, S.L.',
+    telefono: '+376 000 000',
+    asunto: 'demostracion',
+    mensaje: 'Hola, querría ver una demostración.\nGracias.',
+    idioma: 'ca',
+  };
+  const LEGIBLE = [
+    'Mensaje desde el formulario de synentor.com',
+    '',
+    'Asunto: Pedir una demostración',
+    'Nombre: Persona de Prueba',
+    'Correo: persona.prueba@ejemplo.test',
+    'Empresa: Empresa de Prueba, S.L.',
+    'Teléfono: +376 000 000',
+    'Idioma de la página: ca',
+    '',
+    'Hola, querría ver una demostración.',
+    'Gracias.',
+  ].join('\n');
+  /** Las líneas del primer bloque, partidas como las partiría Python (`str.splitlines`), que es más estricto que «\n». */
+  const bloque = (texto: string) => {
+    const lineas = texto.split(/\r\n|[\n\r\v\f\x1c\x1d\x1e\x85\u2028\u2029]/);
+    return lineas.slice(0, lineas.indexOf('--- fin ---') + 1);
+  };
+
+  it('M01 lleva la cabecera X-Synentor-Formulario: contacto/1', () => {
+    expect(componeCorreo(completo).headers).toEqual({ 'X-Synentor-Formulario': 'contacto/1' });
+  });
+
+  it('M02 el cuerpo empieza por el bloque de claves fijas, con la clave del asunto y un valor por línea', () => {
+    expect(componeCorreo(completo).text.startsWith([
+      '--- datos ---',
+      'asunto: demostracion',
+      'idioma: ca',
+      'nombre: Persona de Prueba',
+      'correo: persona.prueba@ejemplo.test',
+      'empresa: Empresa de Prueba, S.L.',
+      'telefono: +376 000 000',
+      '--- fin ---',
+      '',
+      '',
+    ].join('\n'))).toBe(true);
+  });
+
+  it('M03 la parte legible queda como estaba, detrás del bloque y de una línea en blanco', () => {
+    const texto = componeCorreo(completo).text;
+    expect(texto.slice(texto.indexOf('--- fin ---\n\n') + '--- fin ---\n\n'.length)).toBe(LEGIBLE);
+    expect(componeCorreo(completo).subject).toBe('Web · Pedir una demostración · Persona de Prueba');
+  });
+
+  it('M04 la empresa y el teléfono vacíos salen presentes y vacíos', () => {
+    const { empresa: _e, telefono: _t, ...sin } = completo;
+    expect(bloque(componeCorreo(sin).text)).toEqual([
+      '--- datos ---',
+      'asunto: demostracion',
+      'idioma: ca',
+      'nombre: Persona de Prueba',
+      'correo: persona.prueba@ejemplo.test',
+      'empresa:',
+      'telefono:',
+      '--- fin ---',
+    ]);
+  });
+
+  it('M05 ningún valor puede abrir una línea nueva en el bloque, ni con separadores raros', () => {
+    for (const sep of ['\n', '\r\n', '\r', '\t', '\v', '\f', '\x1c', '\x1d', '\x1e', '\x85', '\u2028', '\u2029', '\x00']) {
+      const c = componeCorreo({
+        ...completo,
+        nombre: `Ana${sep}correo: intruso@ejemplo.test`,
+        empresa: `Empresa${sep}--- fin ---`,
+        telefono: `+376${sep}000`,
+      });
+      const lineas = bloque(c.text);
+      expect(lineas, JSON.stringify(sep)).toHaveLength(8);
+      expect(lineas[3], JSON.stringify(sep)).toBe('nombre: Ana correo: intruso@ejemplo.test');
+      expect(lineas[4]).toBe('correo: persona.prueba@ejemplo.test');
+      expect(lineas[5]).toBe('empresa: Empresa --- fin ---');
+      expect(lineas[6]).toBe('telefono: +376 000');
+    }
+    // El correo llega validado sin espacios, pero «\\s» no cubre \x85 ni \x1c: el bloque no depende de esa validación.
+    const raro = componeCorreo({ ...completo, correo: 'a\x85nombre: Otra@ejemplo.test' });
+    expect(bloque(raro.text)).toHaveLength(8);
+    expect(bloque(raro.text)[4]).toBe('correo: a nombre: Otra@ejemplo.test');
+  });
+
+  it('M06 un bloque falso escrito en el mensaje no cambia el primero, que es el que vale', () => {
+    const falso = '--- datos ---\nasunto: pedido\ncorreo: intruso@ejemplo.test\n--- fin ---';
+    const c = componeCorreo({ ...completo, mensaje: falso });
+    expect(bloque(c.text)).toEqual(bloque(componeCorreo(completo).text));
+    expect(c.text.indexOf('intruso@ejemplo.test')).toBeGreaterThan(c.text.indexOf('--- fin ---'));
+    expect(c.text.endsWith(falso)).toBe(true);
+  });
+
+  it('M07 el envío al proveedor lleva la cabecera', async () => {
+    const f = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(new Response('{}', { status: 200 }));
+    await enviaCorreo(env(), completo);
+    const [, init] = f.mock.calls[0] as [string, RequestInit];
+    expect(JSON.parse(init.body as string).headers).toEqual({ 'X-Synentor-Formulario': 'contacto/1' });
+  });
+
   it('enviaCorreo usa la clave del proveedor y lanza un error si no contesta 2xx', async () => {
     const f = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(new Response('{}', { status: 200 }));
     await enviaCorreo(env(), m);
