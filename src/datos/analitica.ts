@@ -1,9 +1,10 @@
 // Estadísticas de visitas con Cloudflare Web Analytics (sin cookies). El «token» de la baliza lo da el panel de Cloudflare;
-// NO es secreto (va en el código de la página de todas formas). Vacío hasta que gerencia lo copie: con él vacío, la página
-// no lleva ninguna baliza. Es medición de audiencia sin cookies de la propia web, como la medición que había antes, que no se sometía
+// NO es secreto (va en el código de la página de todas formas). Puesto el 21/11/2026 (sitio synentor.com, instalación
+// manual del fragmento: la inserción automática del panel queda apagada). Con él vacío, la página no lleva ninguna baliza.
+// Es medición de audiencia sin cookies de la propia web, como la medición que había antes, que no se sometía
 // a consentimiento según el criterio que se aplicaba: pendiente de confirmar con el asesor jurídico
 // (docs/legal/REVISION-TEXTOS-LEGALES.md, punto 7).
-export const CLOUDFLARE_WEB_ANALYTICS = { testimonio: '' } as const;
+export const CLOUDFLARE_WEB_ANALYTICS: { readonly testimonio: string } = { testimonio: 'e467061e77cd4e5e86f69b9faf768279' };
 
 /** Dominios de producción: una sola lista (la usan el contador de acciones y la página). */
 export const DOMINIOS_PRODUCCION = ['synentor.com', 'www.synentor.com'] as const;

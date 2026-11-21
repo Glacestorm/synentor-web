@@ -11,7 +11,7 @@ activar esa herramienta hasta comprobarlas.
 
 **Activas en esta versión**: Google Analytics, Microsoft Clarity.
 
-**Cloudflare Web Analytics**: preparada y no activa (falta el testimonio de la baliza: mientras tanto no cuenta ninguna visita).
+**Cloudflare Web Analytics**: activa (el testimonio de la baliza está puesto).
 
 ## Puntos que hay que confirmar
 

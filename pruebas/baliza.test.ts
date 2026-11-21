@@ -19,6 +19,13 @@ describe('cargaBaliza', () => {
     expect(s[0]!.getAttribute('data-cf-beacon')).toBe('{"token":"tok123"}');
   });
 
+  it('B01b la etiqueta es la del fragmento que da el panel de Cloudflare: type="module" (no defer)', () => {
+    cargaBaliza(document, 'synentor.com', 'tok123');
+    const s = balizas()[0]!;
+    expect(s.getAttribute('type')).toBe('module');
+    expect(s.hasAttribute('defer')).toBe(false);
+  });
+
   it('B02 igual en www.synentor.com', () => {
     expect(cargaBaliza(document, 'www.synentor.com', 'tok123')).toBe(true);
     expect(balizas()).toHaveLength(1);

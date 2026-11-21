@@ -10,7 +10,8 @@ export function cargaBaliza(doc: Document, hostname: string, testimonio: string)
     if (!debeCargarBaliza(hostname, testimonio)) return false;
     if (doc.querySelector(`script[src="${SRC}"]`)) return false;
     const s = doc.createElement('script');
-    s.defer = true;
+    // Como el fragmento que da el panel de Cloudflare (21/11/2026): type="module", sin defer.
+    s.type = 'module';
     s.src = SRC;
     s.setAttribute('data-cf-beacon', JSON.stringify({ token: testimonio }));
     (doc.head ?? doc.body).appendChild(s);
