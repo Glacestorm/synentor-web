@@ -30,7 +30,11 @@ const CABECERA_FORMULARIO = 'X-Synentor-Formulario';
 // \x1c-\x1e, \x85, U+2028 y U+2029) y los demás caracteres de control: en el bloque, cada valor ocupa UNA línea, escriba
 // lo que escriba la persona.
 const SALTOS_Y_CONTROL = /[\u0000-\u001F\u007F-\u009F\u2028\u2029]+/g;
-const valorDeBloque = (s: string | undefined) => (s ?? '').replace(SALTOS_Y_CONTROL, ' ').trim();
+// Lo que no se ve y puede engañar a quien lea el valor en una ficha: los caracteres de dirección del texto (U+202E invierte
+// lo que se ve), el espacio de anchura cero, el unidor de palabras y la marca de orden de bytes. Se quitan sin dejar hueco.
+// Los unidores U+200C y U+200D se quedan: hay nombres que los llevan.
+const INVISIBLES = /[\u200B\u2060\uFEFF\u202A-\u202E\u2066-\u2069]/g;
+const valorDeBloque = (s: string | undefined) => (s ?? '').replace(INVISIBLES, '').replace(SALTOS_Y_CONTROL, ' ').trim();
 
 /** El bloque de datos: siempre las mismas seis claves y en este orden; la que no tiene valor sale presente y vacía. */
 function bloqueDeDatos(m: Mensaje): string[] {

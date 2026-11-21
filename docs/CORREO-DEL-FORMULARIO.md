@@ -16,7 +16,7 @@ lee una persona (el asunto y el cuerpo de siempre) queda igual.
 
 ## El bloque de datos
 
-El cuerpo es texto plano y **empieza** por el bloque. Ejemplo con datos de prueba:
+El cuerpo que manda la web es texto plano y **empieza** por el bloque. Ejemplo con datos de prueba:
 
 ```text
 --- datos ---
@@ -43,21 +43,33 @@ Gracias.
 
 Reglas para quien lo lea:
 
-- La primera línea del cuerpo es exactamente `--- datos ---` y el bloque acaba en la línea `--- fin ---`. Detrás va una
-  línea en blanco y la parte legible.
-- **Vale solo el primer bloque.** Todo lo que va detrás es texto libre de la persona, que puede haber escrito cualquier
-  cosa, también algo con la misma forma.
+- **Se lee el cuerpo ya decodificado**: la parte `text/plain` del correo, deshecha su codificación de transporte
+  (quoted-printable o base64; en Python, `get_content()` del módulo `email`). Leído en crudo, una línea larga del bloque
+  puede llegar partida con un «=» al final. Si el correo llega con `format=flowed`, antes se juntan las líneas que el
+  emisor partió.
+- El bloque empieza en la **primera** línea que sea exactamente `--- datos ---` y acaba en la primera `--- fin ---` que la
+  siga. La web lo pone al principio del cuerpo, pero el buzón puede añadir algo delante (un aviso de remitente externo,
+  por ejemplo): no hay que exigir que sea la línea 1.
+- **Vale solo ese primer bloque.** Todo lo que va detrás es la parte legible y el texto libre de la persona, que puede
+  haber escrito cualquier cosa, también algo con la misma forma.
 - Dentro hay siempre las mismas seis claves y en este orden: `asunto`, `idioma`, `nombre`, `correo`, `empresa` y
   `telefono`. Las claves no cambian con el idioma del formulario.
-- Cada línea es `clave: valor`. El valor puede llevar `: ` dentro: se parte por el primero. Una clave sin valor sale
-  presente y vacía (`empresa:`).
+- Cada línea se parte por el **primer `:`**; si detrás hay un espacio, se quita ese espacio. Las claves nunca llevan `:`,
+  y el valor puede llevarlos. Una clave sin valor sale presente y vacía, sin espacio detrás (`empresa:`).
 - Cada valor ocupa una sola línea: los saltos de línea, los separadores de línea de Unicode y los demás caracteres de
-  control que escriba la persona se cambian por un espacio.
+  control que escriba la persona se cambian por un espacio. Los caracteres invisibles que cambian el sentido del texto
+  (U+202A a U+202E y U+2066 a U+2069), el espacio de anchura cero, el unidor de palabras y la marca de orden de bytes se
+  quitan. Los unidores U+200C y U+200D se conservan, porque hay nombres que los llevan.
+- Cualquier valor puede llegar vacío menos `asunto`, `idioma` y `correo`; también `nombre`, si la persona solo escribió
+  caracteres de control.
 - `asunto` es la clave de la lista cerrada del formulario, no su rótulo: `informacion`, `demostracion`, `pedido`,
   `centralita`, `precios`, `consultoria`, `muv`, `web`, `gestorias` u `otro`.
 - `idioma` es el de la página desde la que se envió: `ca`, `es`, `en`, `fr`, `pt`, `it` o `de`.
-- Largos máximos, los del formulario: `nombre` 120, `correo` 200, `empresa` 160 y `telefono` 40.
+- Largos máximos, los del formulario, en caracteres (no en bytes; un emoji cuenta por dos): `nombre` 120, `correo` 200,
+  `empresa` 160 y `telefono` 40.
 - La selección de la calculadora no va en el bloque: llega dentro del mensaje, que la persona puede haber cambiado.
+- Sin comprobar todavía (se sabrá con el primer correo real): que el buzón conserve la cabecera `X-Synentor-Formulario`
+  y con qué codificación de transporte llega el cuerpo.
 
 ## Lo que no cambia
 

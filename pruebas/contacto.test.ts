@@ -269,6 +269,69 @@ describe('el correo', () => {
     expect(c.text.endsWith(falso)).toBe(true);
   });
 
+  /** Un lector que sigue docs/CORREO-DEL-FORMULARIO.md al pie de la letra: primera línea «--- datos ---», hasta el primer
+   *  «--- fin ---» que la siga, y cada línea partida por el primer «:» (quitando un espacio de detrás, si lo hay). */
+  const lee = (texto: string): Record<string, string> => {
+    const lineas = texto.split('\n');
+    const i = lineas.indexOf('--- datos ---');
+    const j = lineas.indexOf('--- fin ---', i + 1);
+    return Object.fromEntries(
+      lineas.slice(i + 1, j).map((l) => {
+        const k = l.indexOf(':');
+        return [l.slice(0, k), l.slice(k + 1).replace(/^ /, '')];
+      }),
+    );
+  };
+
+  it('M08 con todos los valores en su largo máximo, el bloque sigue teniendo 8 líneas y ninguna pasa de 998 caracteres', () => {
+    const c = componeCorreo({
+      ...completo,
+      nombre: 'n'.repeat(120),
+      correo: `${'c'.repeat(187)}@ejemplo.test`,
+      empresa: 'e'.repeat(160),
+      telefono: '9'.repeat(40),
+    });
+    const lineas = bloque(c.text);
+    expect(lineas).toHaveLength(8);
+    expect(Math.max(...lineas.map((l) => l.length))).toBeLessThanOrEqual(998);
+    expect(lee(c.text).correo).toHaveLength(200);
+  });
+
+  it('M09 un nombre hecho solo de caracteres de control sale presente y vacío', () => {
+    expect(bloque(componeCorreo({ ...completo, nombre: '\x01\x02\x1f' }).text)[3]).toBe('nombre:');
+  });
+
+  it('M10 los caracteres invisibles que cambian el sentido del texto o no se ven se quitan del bloque', () => {
+    // U+202E (invierte lo que se ve), los demás de dirección (U+202A-202E, U+2066-2069), el espacio de anchura cero, el
+    // unidor de palabras y la marca de orden de bytes. Los unidores U+200C y U+200D se quedan: hay nombres que los llevan.
+    const c = componeCorreo({
+      ...completo,
+      nombre: 'Ana\u202EodanimreT\u202C Pru\u200Beba\u2066\u2069\uFEFF\u2060',
+      empresa: 'Em\u200Cpre\u200Dsa',
+    });
+    expect(bloque(c.text)[3]).toBe('nombre: AnaodanimreT Prueba');
+    expect(bloque(c.text)[5]).toBe('empresa: Em\u200Cpre\u200Dsa');
+  });
+
+  it('M11 un lector que sigue la guía lee el bloque, también con claves vacías, con «: » dentro de un valor y con un aviso del buzón delante', () => {
+    expect(lee(componeCorreo(completo).text)).toEqual({
+      asunto: 'demostracion',
+      idioma: 'ca',
+      nombre: 'Persona de Prueba',
+      correo: 'persona.prueba@ejemplo.test',
+      empresa: 'Empresa de Prueba, S.L.',
+      telefono: '+376 000 000',
+    });
+    const { empresa: _e, telefono: _t, ...sin } = completo;
+    expect(lee(componeCorreo(sin).text)).toMatchObject({ empresa: '', telefono: '' });
+    expect(lee(componeCorreo({ ...completo, empresa: 'Grupo: Empresa: Filial' }).text).empresa).toBe('Grupo: Empresa: Filial');
+    // Lo que el buzón añada delante del cuerpo (un aviso de remitente externo) no lo escribe la persona: el bloque sigue
+    // siendo el primero, y un bloque falso en el mensaje sigue quedando detrás.
+    const falso = '--- datos ---\ncorreo: intruso@ejemplo.test\n--- fin ---';
+    const conAviso = `[Aviso del buzón: remitente externo]\n\n${componeCorreo({ ...completo, mensaje: falso }).text}`;
+    expect(lee(conAviso).correo).toBe('persona.prueba@ejemplo.test');
+  });
+
   it('M07 el envío al proveedor lleva la cabecera', async () => {
     const f = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(new Response('{}', { status: 200 }));
     await enviaCorreo(env(), completo);

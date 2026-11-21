@@ -50,6 +50,15 @@ describe('Worker de la web', () => {
     expect(r.headers.get('X-Mal')).toBeNull();
   });
 
+  it('R05 «/» con barras o direcciones dentro de un parámetro nunca sale del propio dominio', async () => {
+    for (const q of ['?next=//evil.example', '?next=https://evil.example/', '?a=\\\\evil.example', '?/../../evil']) {
+      const r = await worker.fetch(peticion(`https://synentor.com/${q}`, {}, 'AD'), entorno());
+      const destino = new URL(r.headers.get('Location') ?? '');
+      expect(destino.origin, q).toBe('https://synentor.com');
+      expect(destino.pathname, q).toBe('/ca/');
+    }
+  });
+
   it('R04 «/?» sin nada detrás redirige sin interrogación suelta', async () => {
     const r = await worker.fetch(peticion('https://synentor.com/?', {}, 'AD'), entorno());
     expect(r.headers.get('Location')).toBe('https://synentor.com/ca/');
