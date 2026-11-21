@@ -324,9 +324,13 @@ export const de: Textos = {
       titulo: 'MUV',
       texto:
         'Das operative Gehirn des Unternehmens: Wissenslandkarten, Aufgaben mit Verantwortlichen, Terminen und Abhängigkeiten sowie eine private KI, die in Ihrem Büro läuft.',
+      plazos:
+        'MUV berechnet Verfahrens- und Verwaltungsfristen für Spanien und Andorra anhand der amtlichen Kalender und macht daraus Aufgaben in der Karte. Lässt eine Vorschrift zwei Lesarten zu, zeigt MUV beide und übernimmt das frühere Datum; ist der Kalender des Jahres noch nicht veröffentlicht, weist MUV darauf hin.',
+      familyOffices:
+        'Auch für Family Offices: die Karte jeder Familie an einem Ort, mit ihrem Vermögen, ihren Gesellschaften, ihren Dokumenten, ihren Entscheidungen und allem, was fällig wird. Mit fünf Vorlagen für den Einstieg: Vermögenskarte, Familien-Governance und Nachfolge, Investitionsvorhaben, Pflichten und Fristen sowie Aufnahme einer neuen Familie. MUV bewertet keine Portfolios und verbindet sich nicht mit Banken.',
       precio: 'Kostenlos bis {gratis} Nutzer. Vom {desde1}. bis zum {hasta1}. Nutzer: {precio1} pro Nutzer und Monat; bis {hasta2} Nutzer: {precio2}.',
       equipos: 'Empfohlene Rechner (Einmalzahlung): Basis {basico} · KI {ia} · KI+ {iaPlus}.',
-      enDesarrollo: 'Noch ohne gleichzeitiges Bearbeiten in Echtzeit und ohne mobile App: in Entwicklung.',
+      enDesarrollo: 'Noch ohne mobile App: in Entwicklung.',
     },
     consultoria: {
       titulo: 'KI- und Vertriebsberatung',

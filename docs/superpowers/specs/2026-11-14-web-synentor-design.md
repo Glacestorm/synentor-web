@@ -206,7 +206,16 @@ piloto de 300 € desaparece (lo sustituye el plan gratuito). Equivalencias: 10 
 25 usuarios, 9.360 € (antes 5.400 €); 100 usuarios, 38.160 € (antes 15.600 €). Referencias: Kleos 49–79 € por usuario;
 Notion 9,50–19,50 €; OpenProject 5,95–15,95 €.
 
-**Lo que MUV aún no tiene** (se dice): edición simultánea en tiempo real y aplicación móvil — «en desarrollo».
+**Lo que MUV aún no tiene** (se dice): aplicación móvil — «en desarrollo». La edición simultánea en tiempo real salió de
+esta lista el 21/11/2026: MUV la tiene desde el 16/11/2026.
+
+**Lo que el bloque de MUV añade el 21/11/2026** (comprobado en el código de MUV):
+
+- El cálculo de plazos procesales y administrativos de España y de Andorra, que pasan a ser tareas del mapa (en MUV desde
+  el 16/11/2026).
+- «MUV para family offices», apoyado en sus cinco plantillas de partida. Es un uso de MUV con plantillas que existen, no
+  un sector de los del §6. No se dice «especialistas» ni nada parecido, y se dice lo que no hace: no valora carteras ni
+  se conecta con bancos. **No se publica hasta que la instalación de producción de MUV lleve esas plantillas.**
 
 ### 7.3 Paquete «Synentor Completo»
 
