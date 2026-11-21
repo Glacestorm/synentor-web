@@ -161,6 +161,8 @@ El contador guarda `utm_source`, `utm_medium` y `utm_campaign` en minúsculas; t
 - `utm_source`: la red o el origen, en minúsculas (`linkedin`, `boletin`, `google`).
 - `utm_medium`: solo uno de tres: `social`, `email` o `anuncio`.
 - `utm_campaign`: un nombre corto en minúsculas y con guiones, sin datos de nadie (`lanzamiento`, `precios-andorra`).
+- Mejor con el idioma en la ruta (`/es/…`). Un enlace a la raíz (`https://synentor.com/?utm_source=…`) también vale: al redirigir
+  al idioma conserva los parámetros (desde el 21/11/2026).
 
 Un ejemplo por canal:
 

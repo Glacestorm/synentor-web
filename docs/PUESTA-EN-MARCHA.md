@@ -79,6 +79,9 @@ npx wrangler secret put TURNSTILE_SECRET
 npx wrangler secret put RESEND_API_KEY
 ```
 
+El correo lleva una marca fija para que un programa lo reconozca y lo lea (formato `contacto/1`): está en
+`docs/CORREO-DEL-FORMULARIO.md`.
+
 ## 5. Prueba de punta a punta (en la dirección `*.workers.dev`) — hecho el 15/11/2026
 
 Comprobado ese día: el mensaje llega y la respuesta va a la dirección escrita en el formulario.

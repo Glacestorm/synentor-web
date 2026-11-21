@@ -35,10 +35,13 @@ export default {
         acceptLanguage: request.headers.get('Accept-Language'),
         pais: paisDe(request),
       });
+      // Los parámetros de la dirección se conservan tal cual (un enlace con campaña a la portada no pierde sus utm_*).
+      const destino = new URL(ruta('inicio', idioma), url);
+      destino.search = url.search;
       return new Response(null, {
         status: 302,
         headers: {
-          Location: new URL(ruta('inicio', idioma), url).toString(),
+          Location: destino.toString(),
           Vary: 'Accept-Language, Cookie',
           'Cache-Control': 'no-store',
         },

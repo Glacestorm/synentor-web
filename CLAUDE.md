@@ -31,6 +31,9 @@ entrada) y `/api/*` (formulario); lo demás lo sirve el almacén de ficheros est
 - **Precios**: un único origen, `src/lib/precios/tarifa.ts`. Ninguna cifra de precio escrita a mano en una página o en un
   texto. Un cambio de tarifa es una decisión de gerencia.
 - **Formulario**: «enviado» solo si el proveedor del correo lo confirma. Nunca un éxito falso. El mensaje no se guarda.
+  El correo lleva una marca fija para la máquina que lo lea (formato `contacto/1`: la cabecera `X-Synentor-Formulario` y un
+  bloque de seis claves al principio del cuerpo; `docs/CORREO-DEL-FORMULARIO.md`). Si el bloque cambia de forma, cambia la
+  versión; y cada valor del bloque ocupa una sola línea, escriba lo que escriba la persona.
 - **Marca**: colores y tipografía solo en `src/estilos/marca.css`. Del kit de marca solo entran los ficheros de
   `public/marca/` (logotipos, símbolo, iconos, portada y colores): nada de firmas ni papelería, que llevan datos de una
   persona. Los logotipos son raster: como mucho 325 px de ancho en pantalla.
