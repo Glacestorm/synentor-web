@@ -33,6 +33,8 @@ export function llms(): string {
     `- ${s.suite.titulo}: ${s.suite.texto}`,
     ...(Object.keys(s.modulos) as (keyof typeof s.modulos)[]).map((m) => `  - ${s.modulos[m].nombre}: ${s.modulos[m].texto}`),
     `- ${s.muv.titulo}: ${s.muv.texto}`,
+    `  - ${s.muv.plazos}`,
+    `  - ${s.muv.familyOffices}`,
     `- ${s.consultoria.titulo}: ${s.consultoria.texto}`,
     `- ${t.precios.tablas.servicios}: ${absoluta(ruta('servicios', IDIOMA))}`,
     '',

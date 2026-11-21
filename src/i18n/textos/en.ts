@@ -324,9 +324,13 @@ export const en: Textos = {
       titulo: 'MUV',
       texto:
         'The operational brain of your business: knowledge maps, tasks with owners, dates and dependencies, and a private AI that runs in your office.',
+      plazos:
+        'It calculates procedural and administrative deadlines for Spain and Andorra using their official calendars and turns them into tasks on the map. Where a rule can be read two ways, it shows both and takes the earlier date, and it warns you if that year’s calendar has not been published yet.',
+      familyOffices:
+        'Also for family offices: each family’s map in one place, with its assets, its companies, its documents, its decisions and what falls due. It comes with five starter templates: asset map, family governance and succession, investment transaction, obligations and due dates, and onboarding a family. It does not value portfolios or connect to banks.',
       precio: 'Free up to {gratis} users. Users {desde1} to {hasta1}: {precio1} per user a month; up to {hasta2}, {precio2}.',
       equipos: 'Recommended hardware (one-off payment): Basic {basico} · AI {ia} · AI+ {iaPlus}.',
-      enDesarrollo: 'It does not yet have real-time simultaneous editing or a mobile app: in development.',
+      enDesarrollo: 'It does not yet have a mobile app: in development.',
     },
     consultoria: {
       titulo: 'AI and sales consultancy',
