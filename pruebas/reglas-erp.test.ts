@@ -55,6 +55,17 @@ describe('reglas de los artículos de la tarifa para el ERP', () => {
     }
   });
 
+  // Gerencia, 22/11/2026: MUV entra en los artículos con una sola regla; no se inventa ninguna más.
+  it('la licencia de MUV exige 1 jornada de implantación (el mínimo de MUV de la tarifa), y MUV no lleva más reglas', () => {
+    expect(TARIFA.implantacion.minimoMuv).toBe(1);
+    const deMuv = reglas.filter((r) => r.articulo.includes('MUV') || r.destinos.some((d) => d.includes('MUV')));
+    expect(deMuv).toEqual([
+      { articulo: 'SYN-MUV-TRAMO-1', clase: 'exige', destinos: ['SYN-IMPLANTACION'], cantidad: 1, por_unidad: false, orden: 1 },
+    ]);
+    expect(deMuv[0].cantidad).toBe(TARIFA.implantacion.minimoMuv);
+    expect(csvReglas().split('\n')).toContain('SYN-MUV-TRAMO-1,exige,SYN-IMPLANTACION,1,false,1');
+  });
+
   it('los paquetes incluyen la Base y los módulos de su «incluye»', () => {
     const modulos = (p: readonly string[]) => p.map(codigoModulo);
     const incluye = (a: string) => de(a, 'incluye').map((r) => r.destinos[0]).sort();

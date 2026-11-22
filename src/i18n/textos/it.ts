@@ -328,8 +328,8 @@ export const it: Textos = {
         'Calcola i termini processuali e amministrativi di Spagna e Andorra con i rispettivi calendari ufficiali e li trasforma in attività della mappa. Se la norma ammette due letture, mostra entrambe e adotta la data che cade prima, e avvisa se il calendario dell’anno non è ancora stato pubblicato.',
       familyOffices:
         'Anche per i family office: la mappa di ogni famiglia in un unico posto, con il suo patrimonio, le sue società, i suoi documenti, le sue decisioni e ciò che scade. Include cinque modelli di partenza: mappa patrimoniale, governance familiare e successione, operazione di investimento, obblighi e scadenze, e inserimento di una nuova famiglia. Non valuta portafogli e non si collega alle banche.',
-      precio: 'Gratis fino a {gratis} utenti. Dal {desde1}º al {hasta1}º, {precio1} per utente al mese; fino a {hasta2}, {precio2}.',
-      equipos: 'Computer consigliati (pagamento unico): Base {basico} · IA {ia} · IA+ {iaPlus}.',
+      precio: 'Licenza per utente al mese, con pagamento annuale, dal primo utente: dal 1º al {hasta1}º, {precio1}; dal {desde2}º al {hasta2}º, {precio2}; dal {desde3}º al {hasta3}º, {precio3}. Con più di {max} utenti, su misura.',
+      equipos: 'Computer consigliati (pagamento unico): Base, {basico}: non esegue l’IA che redige i testi. Completo, {completo}: ha la scheda grafica ed esegue tutta l’IA.',
       enDesarrollo: 'Non ha ancora l’app per dispositivi mobili: in sviluppo.',
     },
     consultoria: {

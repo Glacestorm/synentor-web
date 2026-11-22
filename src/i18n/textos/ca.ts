@@ -330,8 +330,8 @@ export const ca = {
         'Calcula terminis processals i administratius d’Espanya i d’Andorra amb els seus calendaris oficials i els converteix en tasques del mapa. Si la norma admet dues lectures, mostra totes dues i pren la data més primerenca, i avisa si el calendari de l’any encara no s’ha publicat.',
       familyOffices:
         'També per a family offices: el mapa de cada família en un sol lloc, amb el seu patrimoni, les seves societats, els seus documents, les seves decisions i el que venç. Porta cinc plantilles de partida: mapa patrimonial, govern familiar i successió, operació d’inversió, obligacions i venciments, i alta d’una família. No valora carteres ni es connecta amb bancs.',
-      precio: 'Gratis fins a {gratis} usuaris. Del {desde1}è al {hasta1}è, {precio1} per usuari al mes; fins a {hasta2}, {precio2}.',
-      equipos: 'Equips recomanats (pagament únic): Bàsic {basico} · IA {ia} · IA+ {iaPlus}.',
+      precio: 'Llicència per usuari i mes, amb pagament anual, des del primer usuari: de l’1r al {hasta1}è, {precio1}; del {desde2}è al {hasta2}è, {precio2}; del {desde3}è al {hasta3}è, {precio3}. Amb més de {max} usuaris, a mida.',
+      equipos: 'Equips recomanats (pagament únic): Bàsic, {basico}: no mou la IA que redacta. Complet, {completo}: porta targeta gràfica i mou tota la IA.',
       enDesarrollo: 'Encara no té aplicació mòbil: en desenvolupament.',
     },
     consultoria: {

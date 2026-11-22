@@ -13,8 +13,8 @@ SYN-MOD-COSTES,Módulo Control de costes de compra,"Requiere Compras inteligente
 SYN-MOD-TPV,Módulo TPV y caja,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,39,,true,service,IGI_GEN,mensual
 SYN-MOD-ELECTRICA,Módulo C. Eléctrica,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,79,,true,service,IGI_GEN,mensual
 SYN-MOD-RRHH-PERSONA,Módulo Recursos humanos y nóminas: por persona en plantilla,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",persona/mes,18,,true,service,IGI_GEN,mensual
-SYN-PAQ-GESTION,Paquete Synentor Completo,"Synentor Base · Compras inteligentes · Ventas y CRM · Fiscal; 10 usuarios incluidos. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,469,,true,service,IGI_GEN,mensual
-SYN-PAQ-GESTION-USUARIO,Paquete Synentor Completo: usuario adicional,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",usuario/mes,45,,true,service,IGI_GEN,mensual
+SYN-PAQ-GESTION,Paquete Synentor Completo,"Synentor Base · Compras inteligentes · Ventas y CRM · Fiscal · MUV; 10 usuarios incluidos. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,1069,,true,service,IGI_GEN,mensual
+SYN-PAQ-GESTION-USUARIO,Paquete Synentor Completo: usuario adicional,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",usuario/mes,85,,true,service,IGI_GEN,mensual
 SYN-PAQ-OBRADOR,Paquete Obrador,"Synentor Base · Compras inteligentes · Productos, escandallos y stock · TPV y caja · Recursos humanos y nóminas; 5 usuarios incluidos. Usuarios y personas en plantilla, a la tarifa normal. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,299,,true,service,IGI_GEN,mensual
 SYN-PAQ-OBRADOR-COSTES,Paquete Obrador con Control de costes de compra,"Como el Paquete Obrador, con Control de costes de compra. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,329,,true,service,IGI_GEN,mensual
 SYN-GESTORIAS,Paquete Despachos y gestorías,"Solo para despachos que llevan empresas de sus clientes. Contabilidad · Compras inteligentes · Ventas y CRM · Fiscal · Recursos humanos y nóminas; 10 empresas y 5 usuarios incluidos. Con más de 25 empresas, bajo propuesta. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",mes,249,,true,service,IGI_GEN,mensual
@@ -24,7 +24,12 @@ SYN-PORTAL,Portal del empleado (sin la Base),"10 personas incluidas. Al mes, con
 SYN-PORTAL-PERSONA,Portal del empleado: persona adicional,"Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",persona/mes,4,,true,service,IGI_GEN,mensual
 SYN-PORTAL-IMPLANTACION,Portal del empleado: implantación,Pago único. Sin impuestos.,ud,720,,true,service,IGI_GEN,unica
 SYN-MODALIDAD-B,Modalidad alojada por Synentor en Andorra,"En desarrollo inminente: desactivado hasta que se pueda vender. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",instalación/mes,50,,false,service,IGI_GEN,mensual
-SYN-IMPLANTACION,Implantación y soporte: jornada,"La Suite, desde 2 jornadas; MUV, de 1 a 4. Sin impuestos.",jornada,720,,true,service,IGI_GEN,unica
+SYN-IMPLANTACION,Implantación y soporte: jornada,"La Suite, desde 2 jornadas; MUV, de 1 a 4. Sin impuestos.",jornada,790,,true,service,IGI_GEN,unica
+SYN-MUV-TRAMO-1,"MUV: licencia por usuario, del 1.º al 5.º","La licencia se paga desde el primer usuario; cada usuario, al precio de su tramo. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",usuario/mes,99,,true,service,IGI_GEN,mensual
+SYN-MUV-TRAMO-2,"MUV: licencia por usuario, del 6.º al 15.º","La licencia se paga desde el primer usuario; cada usuario, al precio de su tramo. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",usuario/mes,89,,true,service,IGI_GEN,mensual
+SYN-MUV-TRAMO-3,"MUV: licencia por usuario, del 16.º al 100.º","La licencia se paga desde el primer usuario; cada usuario, al precio de su tramo. Con más de 100 usuarios, a medida. Al mes, con pago anual (con pago mensual, +20 %). Sin impuestos.",usuario/mes,79,,true,service,IGI_GEN,mensual
+SYN-MUV-EQUIPO-BASICO,MUV: equipo Básico,No mueve la IA que redacta. Pago único. Sin impuestos.,ud,2190,,true,service,IGI_GEN,unica
+SYN-MUV-EQUIPO-COMPLETO,MUV: equipo Completo,Lleva tarjeta gráfica y mueve toda la IA. Pago único. Sin impuestos.,ud,6490,,true,service,IGI_GEN,unica
 SYN-WEB-ESENCIAL,Página web Esencial,Pago único. Sin impuestos.,ud,1200,,true,service,IGI_GEN,unica
 SYN-WEB-PROFESIONAL,Página web Profesional,Pago único. Sin impuestos.,ud,2900,,true,service,IGI_GEN,unica
 SYN-WEB-PREMIUM,Página web Premium,"Desde: el precio final, en la propuesta. Pago único. Sin impuestos.",ud,6500,,true,service,IGI_GEN,unica

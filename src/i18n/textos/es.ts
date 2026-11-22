@@ -328,8 +328,8 @@ export const es: Textos = {
         'Calcula plazos procesales y administrativos de España y de Andorra con sus calendarios oficiales y los convierte en tareas del mapa. Si la norma admite dos lecturas, enseña las dos y toma la fecha más temprana, y avisa si el calendario del año aún no se ha publicado.',
       familyOffices:
         'También para family offices: el mapa de cada familia en un solo sitio, con su patrimonio, sus sociedades, sus documentos, sus decisiones y lo que vence. Trae cinco plantillas de partida: mapa patrimonial, gobierno familiar y sucesión, operación de inversión, obligaciones y vencimientos, y alta de una familia. No valora carteras ni se conecta con bancos.',
-      precio: 'Gratis hasta {gratis} usuarios. Del {desde1}.º al {hasta1}.º, {precio1} por usuario al mes; hasta {hasta2}, {precio2}.',
-      equipos: 'Equipos recomendados (pago único): Básico {basico} · IA {ia} · IA+ {iaPlus}.',
+      precio: 'Licencia por usuario y mes, con pago anual, desde el primer usuario: del 1.º al {hasta1}.º, {precio1}; del {desde2}.º al {hasta2}.º, {precio2}; del {desde3}.º al {hasta3}.º, {precio3}. Con más de {max} usuarios, a medida.',
+      equipos: 'Equipos recomendados (pago único): Básico, {basico}: no mueve la IA que redacta. Completo, {completo}: lleva tarjeta gráfica y mueve toda la IA.',
       enDesarrollo: 'Aún no tiene aplicación móvil: en desarrollo.',
     },
     consultoria: {

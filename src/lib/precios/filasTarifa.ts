@@ -13,13 +13,41 @@ export interface FilaTarifa {
   ancla?: string;
 }
 
+/**
+ * La licencia de MUV en una frase (Servicios, la tabla de Precios y llms.txt): se paga desde el primer usuario y cada
+ * usuario va al precio de su tramo (gerencia, 22/11/2026). Los tramos y los importes, de la tarifa.
+ */
+export function licenciaMuv(idioma: Idioma): string {
+  const [t1, t2, t3] = TARIFA.muv.tramos;
+  const eur = (n: number) => euros(n, idioma);
+  return rellena(textos(idioma).servicios.muv.precio, {
+    hasta1: t1.hasta,
+    precio1: eur(t1.precio),
+    desde2: t1.hasta + 1,
+    hasta2: t2.hasta,
+    precio2: eur(t2.precio),
+    desde3: t2.hasta + 1,
+    hasta3: t3.hasta,
+    precio3: eur(t3.precio),
+    max: TARIFA.muv.maxSinPropuesta,
+  });
+}
+
+/** Los dos equipos de MUV, de pago único (gerencia, 22/11/2026). */
+export function equiposMuv(idioma: Idioma): string {
+  const e = TARIFA.muv.equipos;
+  return rellena(textos(idioma).servicios.muv.equipos, {
+    basico: euros(e.basico, idioma),
+    completo: euros(e.completo, idioma),
+  });
+}
+
 export function filasTarifa(idioma: Idioma): FilaTarifa[] {
   const todo = textos(idioma);
   const tt = todo.precios.tablas;
   const eur = (n: number) => euros(n, idioma);
   const pct = (n: number) => porcentaje(n, idioma);
   const alMes = (n: number) => rellena(tt.alMes, { precio: eur(n) });
-  const [t1, t2] = TARIFA.muv.tramos;
   const consultoriaDesde = Math.min(...porCategoria().map((g) => g.desde));
 
   return [
@@ -66,17 +94,7 @@ export function filasTarifa(idioma: Idioma): FilaTarifa[] {
         nomina: eur(TARIFA.gestorias.porNomina),
       }),
     },
-    {
-      concepto: tt.muv,
-      precio: rellena(todo.servicios.muv.precio, {
-        gratis: TARIFA.muv.gratisHasta,
-        desde1: TARIFA.muv.gratisHasta + 1,
-        hasta1: t1.hasta,
-        precio1: eur(t1.precio),
-        hasta2: t2.hasta,
-        precio2: eur(t2.precio),
-      }),
-    },
+    { concepto: tt.muv, precio: licenciaMuv(idioma) },
     { concepto: tt.consultoria, precio: rellena(todo.servicios.consultoria.desde, { precio: eur(consultoriaDesde) }) },
     { concepto: todo.servicios.implantacion.titulo, precio: rellena(tt.implantacion, { precio: eur(TARIFA.implantacion.jornada) }) },
   ];

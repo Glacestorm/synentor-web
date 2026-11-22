@@ -5,6 +5,7 @@ import { textos, rellena } from '../../i18n/t';
 import { ruta, type Idioma } from '../../i18n/idiomas';
 import { MODULOS, TARIFA, type ModuloId } from '../../lib/precios/tarifa';
 import { estadoModulo, type Producto } from '../../lib/precios/disponibilidad';
+import { equiposMuv, licenciaMuv } from '../../lib/precios/filasTarifa';
 import { porCategoria, FECHA_CATALOGO } from '../../lib/consultoria';
 import { euros, porcentaje } from '../../lib/formato';
 import Icono from '../Icono.astro';
@@ -62,8 +63,6 @@ const iconoCategoria: Record<Categoria, NombreIcono> = {
   cumplimiento: 'pbc',
   soporte: 'reloj',
 };
-const t1 = TARIFA.muv.tramos[0];
-const t2 = TARIFA.muv.tramos[1];
 ---
 
 <section class="cabecera-pagina">
@@ -145,27 +144,8 @@ const t2 = TARIFA.muv.tramos[1];
       <p class="pequeno">{tx.muv.enDesarrollo}</p>
     </div>
     <div>
-      <p class="destacado">
-        {
-          rellena(tx.muv.precio, {
-            gratis: TARIFA.muv.gratisHasta,
-            desde1: TARIFA.muv.gratisHasta + 1,
-            hasta1: t1.hasta,
-            precio1: eur(t1.precio),
-            hasta2: t2.hasta,
-            precio2: eur(t2.precio),
-          })
-        }
-      </p>
-      <p>
-        {
-          rellena(tx.muv.equipos, {
-            basico: eur(TARIFA.muv.equipos.basico),
-            ia: eur(TARIFA.muv.equipos.ia),
-            iaPlus: eur(TARIFA.muv.equipos.iaPlus),
-          })
-        }
-      </p>
+      <p class="destacado">{licenciaMuv(idioma)}</p>
+      <p>{equiposMuv(idioma)}</p>
     </div>
   </div>
 </section>
