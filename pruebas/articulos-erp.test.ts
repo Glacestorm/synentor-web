@@ -102,9 +102,89 @@ describe('artículos de la tarifa para el ERP', () => {
     }
   });
 
-  it('no lleva MUV (ya está en el ERP) ni la centralita (próximamente, sin precios en la web)', () => {
+  it('no lleva la centralita (próximamente, sin precios en la web)', () => {
     const codigos = [...porCodigo.keys()];
-    expect(codigos.some((c) => c.includes('MUV') || c.includes('CENTRALITA'))).toBe(false);
+    expect(codigos.some((c) => c.includes('CENTRALITA'))).toBe(false);
+  });
+
+  // Gerencia, 22/11/2026: MUV entra en el fichero (antes quedaba fuera: «ya está en el ERP»). Códigos y precios, a mano.
+  describe('MUV (gerencia, 22/11/2026)', () => {
+    const muv = articulosErp().filter((a) => a.code.includes('MUV'));
+
+    it('cinco artículos SYN-MUV-…: uno por tramo de la licencia y uno por equipo', () => {
+      expect(muv.map((a) => a.code)).toEqual([
+        'SYN-MUV-TRAMO-1',
+        'SYN-MUV-TRAMO-2',
+        'SYN-MUV-TRAMO-3',
+        'SYN-MUV-EQUIPO-BASICO',
+        'SYN-MUV-EQUIPO-COMPLETO',
+      ]);
+      expect(muv.every((a) => a.code.startsWith('SYN-MUV-'))).toBe(true);
+      expect(muv.every((a) => a.is_active && a.type === 'service' && a.tax_code === 'IGI_GEN')).toBe(true);
+    });
+
+    it('la licencia: precio por usuario y mes de cada tramo, 99, 89 y 79 €, con periodicidad mensual', () => {
+      expect(precio('SYN-MUV-TRAMO-1')).toBe(99);
+      expect(precio('SYN-MUV-TRAMO-2')).toBe(89);
+      expect(precio('SYN-MUV-TRAMO-3')).toBe(79);
+      TARIFA.muv.tramos.forEach((tramo, i) => {
+        const a = porCodigo.get(`SYN-MUV-TRAMO-${i + 1}`)!;
+        expect(a.sale_price).toBe(tramo.precio);
+        expect(a.unit).toBe('usuario/mes');
+        expect(a.periodicidad).toBe('mensual');
+        expect(a.name.startsWith('MUV: ')).toBe(true);
+        expect(a.description).toContain('desde el primer usuario');
+        expect(a.description).toContain('pago anual');
+        expect(a.description).toContain('+20 %');
+        expect(a.description).not.toMatch(/gratis/i);
+      });
+      expect(muv.filter((a) => a.code.includes('TRAMO'))).toHaveLength(TARIFA.muv.tramos.length);
+    });
+
+    it('cada tramo dice en su nombre de qué usuario a qué usuario va, sin huecos: 1-5, 6-15 y 16-100', () => {
+      expect(porCodigo.get('SYN-MUV-TRAMO-1')?.name).toBe('MUV: licencia por usuario, del 1.º al 5.º');
+      expect(porCodigo.get('SYN-MUV-TRAMO-2')?.name).toBe('MUV: licencia por usuario, del 6.º al 15.º');
+      expect(porCodigo.get('SYN-MUV-TRAMO-3')?.name).toBe('MUV: licencia por usuario, del 16.º al 100.º');
+      expect(porCodigo.get('SYN-MUV-TRAMO-3')?.description).toContain('Con más de 100 usuarios, a medida');
+    });
+
+    it('los dos equipos: Básico 2.190 € y Completo 6.490 €, de pago único', () => {
+      expect(precio('SYN-MUV-EQUIPO-BASICO')).toBe(2190);
+      expect(precio('SYN-MUV-EQUIPO-COMPLETO')).toBe(6490);
+      expect(precio('SYN-MUV-EQUIPO-BASICO')).toBe(TARIFA.muv.equipos.basico);
+      expect(precio('SYN-MUV-EQUIPO-COMPLETO')).toBe(TARIFA.muv.equipos.completo);
+      for (const code of ['SYN-MUV-EQUIPO-BASICO', 'SYN-MUV-EQUIPO-COMPLETO']) {
+        const a = porCodigo.get(code)!;
+        expect(a.unit).toBe('ud');
+        expect(a.periodicidad).toBe('unica');
+        expect(a.description).toContain('Pago único');
+      }
+      // Los tres equipos de antes (Básico, IA e IA+) ya no existen.
+      expect(muv.filter((a) => a.code.includes('EQUIPO'))).toHaveLength(2);
+    });
+
+    it('en el CSV salen con su precio, su unidad y su periodicidad', () => {
+      const lineas = csvArticulos().split('\n');
+      expect(lineas.find((l) => l.startsWith('SYN-MUV-TRAMO-1,'))!.endsWith(',usuario/mes,99,,true,service,IGI_GEN,mensual')).toBe(true);
+      expect(lineas.find((l) => l.startsWith('SYN-MUV-EQUIPO-COMPLETO,'))!.endsWith(',ud,6490,,true,service,IGI_GEN,unica')).toBe(true);
+    });
+
+    it('el paquete Completo dice que lleva MUV y cuesta lo que dice la tarifa: 1.069 € y 85 € el usuario adicional', () => {
+      expect(precio('SYN-PAQ-GESTION')).toBe(1069);
+      expect(precio('SYN-PAQ-GESTION-USUARIO')).toBe(85);
+      expect(porCodigo.get('SYN-PAQ-GESTION')?.description).toContain('· MUV;');
+    });
+
+    it('la jornada de implantación: 790 €', () => {
+      expect(precio('SYN-IMPLANTACION')).toBe(790);
+    });
+  });
+
+  it('la guía de importación cita el número de artículos del fichero y dice que MUV va dentro', () => {
+    const guia = readFileSync('docs/articulos-erp/COMO-IMPORTAR.md', 'utf8');
+    expect(guia).toContain(`salen ${articulosErp().length} artículos con código \`SYN-\``);
+    expect(guia).toContain('SYN-MUV-');
+    expect(guia).not.toMatch(/No lleva MUV/i);
   });
 
   it('la modalidad alojada va desactivada (en desarrollo inminente) y lo demás, activo', () => {

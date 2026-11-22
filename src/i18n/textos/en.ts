@@ -324,8 +324,8 @@ export const en: Textos = {
       titulo: 'MUV',
       texto:
         'The operational brain of your business: knowledge maps, tasks with owners, dates and dependencies, and a private AI that runs in your office.',
-      precio: 'Free up to {gratis} users. Users {desde1} to {hasta1}: {precio1} per user a month; up to {hasta2}, {precio2}.',
-      equipos: 'Recommended hardware (one-off payment): Basic {basico} · AI {ia} · AI+ {iaPlus}.',
+      precio: 'Licence per user per month, paid annually, from the first user:users 1 to {hasta1}, {precio1}; users {desde2} to {hasta2}, {precio2}; users {desde3} to {hasta3}, {precio3}. With more than {max} users, bespoke.',
+      equipos: 'Recommended hardware (one-off payment): Basic, {basico}: does not run the AI that drafts text. Complete, {completo}: has a graphics card and runs all the AI.',
       enDesarrollo: 'It does not yet have real-time simultaneous editing or a mobile app: in development.',
     },
     consultoria: {

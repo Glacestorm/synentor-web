@@ -76,10 +76,13 @@ export function resuelveDependencias(modulos: readonly ModuloId[]): { modulos: M
   return { modulos: resultado, anadidos };
 }
 
-/** Cuota de MUV, en céntimos, para un número de usuarios (los primeros gratis; después, por tramos). */
+/**
+ * Cuota de MUV, en céntimos, para un número de usuarios: se paga desde el primero y cada usuario va al precio de su
+ * tramo (gerencia, 22/11/2026). Por encima del último tramo no se suma nada: es «a medida» y pide propuesta.
+ */
 function cuotaMuv(usuarios: number): number {
   let total = 0;
-  let desde: number = TARIFA.muv.gratisHasta;
+  let desde = 0;
   for (const tramo of TARIFA.muv.tramos) {
     const enTramo = Math.max(0, Math.min(usuarios, tramo.hasta) - desde);
     total += enTramo * cent(tramo.precio);

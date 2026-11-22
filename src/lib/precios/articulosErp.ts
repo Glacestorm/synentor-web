@@ -1,7 +1,8 @@
 // Los artículos de la tarifa para el ERP de Synentor (Productos → Importar/Exportar, en la empresa SYNENTOR).
 // Todo importe sale de tarifa.ts o del catálogo de consultoría: aquí no se escribe ningún precio. Los nombres de la
-// Suite, de los textos en castellano de la web. Fuera, a propósito: MUV (ya está en el ERP) y la centralita
-// (próximamente, sin precios en la web). Orden: npm run articulos-erp (escribe RUTA_CSV); la prueba compara.
+// Suite, de los textos en castellano de la web. MUV entra desde la tarifa del 22/11/2026, con códigos SYN-MUV-… (los
+// artículos antiguos de MUV que haya en el ERP se desactivan a mano). Fuera, a propósito: la centralita (próximamente,
+// sin precios en la web). Orden: npm run articulos-erp (escribe RUTA_CSV); la prueba compara.
 import consultoria from '../../datos/consultoria.json';
 import { textos } from '../../i18n/t';
 import { TARIFA, type ModuloId } from './tarifa';
@@ -22,6 +23,9 @@ export const CABECERAS_ERP = [
 
 /** El código del artículo de un módulo de la Suite (también lo usan las reglas). */
 export const codigoDeModulo = (m: ModuloId) => `SYN-MOD-${m.toUpperCase().replace('_', '-')}`;
+
+/** El código del artículo de un tramo de la licencia de MUV, contando desde 1 (también lo usan las reglas). */
+export const codigoDeTramoMuv = (n: number) => `SYN-MUV-TRAMO-${n}`;
 
 export const RUTA_CSV = 'docs/articulos-erp/articulos-synentor.csv';
 
@@ -84,7 +88,7 @@ export function articulosErp(): ArticuloErp[] {
     articulo('SYN-MOD-RRHH-PERSONA', `Módulo ${nombreModulo('rrhh')}: por persona en plantilla`,
       TARIFA.modulos.rrhh.porPersona, 'persona/mes', SUITE),
     articulo('SYN-PAQ-GESTION', tt.paquete, TARIFA.paquete.cuota, 'mes',
-      `${mod.base.nombre} · ${TARIFA.paquete.incluye.map(nombreModulo).join(' · ')}; ${TARIFA.paquete.usuariosIncluidos} usuarios incluidos. ${SUITE}`),
+      `${mod.base.nombre} · ${TARIFA.paquete.incluye.map(nombreModulo).join(' · ')} · ${t.servicios.muv.titulo}; ${TARIFA.paquete.usuariosIncluidos} usuarios incluidos. ${SUITE}`),
     articulo('SYN-PAQ-GESTION-USUARIO', `${tt.paquete}: usuario adicional`, TARIFA.paquete.usuarioAdicional,
       'usuario/mes', SUITE),
     articulo('SYN-PAQ-OBRADOR', tt.paqueteObrador, TARIFA.paqueteObrador.cuota, 'mes',
@@ -106,6 +110,24 @@ export function articulosErp(): ArticuloErp[] {
       `En desarrollo inminente: desactivado hasta que se pueda vender. ${SUITE}`, false),
     articulo('SYN-IMPLANTACION', `${t.servicios.implantacion.titulo}: jornada`, TARIFA.implantacion.jornada, 'jornada',
       `La Suite, desde ${TARIFA.implantacion.minimoSuite} jornadas; MUV, de ${TARIFA.implantacion.minimoMuv} a ${TARIFA.implantacion.maximoMuv}. ${SIN_IMPUESTOS}.`),
+  ];
+
+  // MUV (gerencia, 22/11/2026): un artículo por tramo de la licencia (precio por usuario y mes) y uno por equipo.
+  const nombreMuv = t.servicios.muv.titulo;
+  const tramosMuv = TARIFA.muv.tramos;
+  const muv: ArticuloErp[] = [
+    ...tramosMuv.map((tramo, i) => {
+      const desde = i === 0 ? 1 : tramosMuv[i - 1].hasta + 1;
+      const aMedida =
+        i === tramosMuv.length - 1 ? ` Con más de ${TARIFA.muv.maxSinPropuesta} usuarios, a medida.` : '';
+      return articulo(codigoDeTramoMuv(i + 1), `${nombreMuv}: licencia por usuario, del ${desde}.º al ${tramo.hasta}.º`,
+        tramo.precio, 'usuario/mes',
+        `La licencia se paga desde el primer usuario; cada usuario, al precio de su tramo.${aMedida} ${SUITE}`);
+    }),
+    articulo('SYN-MUV-EQUIPO-BASICO', `${nombreMuv}: equipo Básico`, TARIFA.muv.equipos.basico, 'ud',
+      `No mueve la IA que redacta. ${UNICO}`),
+    articulo('SYN-MUV-EQUIPO-COMPLETO', `${nombreMuv}: equipo Completo`, TARIFA.muv.equipos.completo, 'ud',
+      `Lleva tarjeta gráfica y mueve toda la IA. ${UNICO}`),
   ];
 
   const servicios: ArticuloErp[] = [
@@ -158,7 +180,7 @@ export function articulosErp(): ArticuloErp[] {
     return filas;
   });
 
-  return [...suite, ...servicios, ...consultoriaIa];
+  return [...suite, ...muv, ...servicios, ...consultoriaIa];
 }
 
 function celda(v: string): string {

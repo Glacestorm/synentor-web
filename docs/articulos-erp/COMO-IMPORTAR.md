@@ -8,13 +8,23 @@ el fichero guardado es el que sale de la tarifa. La misma orden escribe `reglas-
 ## Qué lleva y qué no
 
 - La Suite (Base, usuarios, empresas, módulos, paquetes, Despachos y gestorías, portal del empleado e implantación),
-  las páginas web y su mantenimiento, la energía, las migraciones, la convivencia y los servicios de consultoría de IA
-  (el precio «desde» de una microempresa y, si la lleva, su cuota en otro artículo).
-- Todos son servicios con el IGI general (`IGI_GEN`, 4,5 %) y precios sin impuestos. Las cuotas de la Suite son al mes
-  con pago anual; la descripción dice el recargo del pago mensual.
+  MUV, las páginas web y su mantenimiento, la energía, las migraciones, la convivencia y los servicios de consultoría de
+  IA (el precio «desde» de una microempresa y, si la lleva, su cuota en otro artículo).
+- **Lleva MUV, con códigos `SYN-MUV-…`** (tarifa del 22/11/2026): un artículo por tramo de la licencia
+  (`SYN-MUV-TRAMO-1`, `-2` y `-3`: el precio es por usuario y mes, y cada usuario va al precio de su tramo) y uno por
+  cada equipo, de pago único (`SYN-MUV-EQUIPO-BASICO` y `SYN-MUV-EQUIPO-COMPLETO`).
+- Todos son servicios con el IGI general (`IGI_GEN`, 4,5 %) y precios sin impuestos. Las cuotas de la Suite y de MUV son
+  al mes con pago anual; la descripción dice el recargo del pago mensual.
 - La modalidad alojada en Andorra va **desactivada** (en desarrollo inminente).
-- **No lleva MUV** (ya está dado de alta en el ERP) **ni la centralita** (próximamente, sin precios en la web).
+- **No lleva la centralita** (próximamente, sin precios en la web).
 - Los códigos empiezan por `SYN-`. Si un código ya existe en la empresa, el importador lo actualiza; si no, lo crea.
+
+## Los artículos antiguos de MUV
+
+Hasta el 22/11/2026 este fichero dejaba MUV fuera, porque ya estaba dado de alta en el ERP con otros códigos. El
+importador solo crea o actualiza los códigos que vienen en el fichero: **los artículos antiguos de MUV siguen en el ERP
+tal como estaban**, con la tarifa anterior. Después de importar, hay que **desactivarlos a mano, uno por uno, en su
+ficha del ERP**, para que no se puedan vender con el precio viejo. Los nuevos son los que empiezan por `SYN-MUV-`.
 
 ## Cómo se importa
 
@@ -22,7 +32,8 @@ el fichero guardado es el que sale de la tarifa. La misma orden escribe `reglas-
 2. Productos → Importar/Exportar → elegir `articulos-synentor.csv`.
 3. Revisar la vista previa: si alguna fila dice «la empresa no tiene el impuesto IGI_GEN», no se importa nada de esa fila
    (la empresa tiene que tener los impuestos de Andorra; los crea la migración `20261114a`).
-4. Importar y comprobar en la lista que salen 106 artículos con código `SYN-`.
+4. Importar y comprobar en la lista que salen 111 artículos con código `SYN-`.
+5. Desactivar a mano los artículos antiguos de MUV (ver «Los artículos antiguos de MUV»).
 
 El fichero lleva al final la columna `periodicidad`: `mensual` para lo que se cobra al mes (la unidad es `mes` o acaba en
 `/mes`) y `unica` para lo demás (`anual` existe en el ERP, pero hoy ningún artículo lo usa).
@@ -46,3 +57,7 @@ Gerencia confirmó el 16/11/2026 tres reglas más: el portal del empleado exige 
 Profesional o Premium) recomienda el mantenimiento (básico o plus; se sugiere, no entra solo) y las cuatro migraciones
 exigen la Base. El fichero no se edita a mano: sale de `tarifa.ts` y de la consultoría, y su prueba
 (`pruebas/reglas-erp.test.ts`) comprueba que el fichero guardado es el que genera la orden.
+
+Con la tarifa de MUV del 22/11/2026 entra una regla más, y solo una: la licencia de MUV exige 1 jornada de implantación
+(el mínimo de MUV de la tarifa). Va en `SYN-MUV-TRAMO-1`, el tramo que lleva toda licencia porque se paga desde el
+primer usuario. Los demás artículos de MUV no llevan reglas.

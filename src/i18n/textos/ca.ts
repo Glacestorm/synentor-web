@@ -326,8 +326,8 @@ export const ca = {
       titulo: 'MUV',
       texto:
         'El cervell operatiu de l’empresa: mapes de coneixement, tasques amb responsables, dates i dependències, i una IA privada que funciona a la teva oficina.',
-      precio: 'Gratis fins a {gratis} usuaris. Del {desde1}è al {hasta1}è, {precio1} per usuari al mes; fins a {hasta2}, {precio2}.',
-      equipos: 'Equips recomanats (pagament únic): Bàsic {basico} · IA {ia} · IA+ {iaPlus}.',
+      precio: 'Llicència per usuari i mes, amb pagament anual, des del primer usuari: de l’1r al {hasta1}è, {precio1}; del {desde2}è al {hasta2}è, {precio2}; del {desde3}è al {hasta3}è, {precio3}. Amb més de {max} usuaris, a mida.',
+      equipos: 'Equips recomanats (pagament únic): Bàsic, {basico}: no mou la IA que redacta. Complet, {completo}: porta targeta gràfica i mou tota la IA.',
       enDesarrollo: 'Encara no té edició simultània en temps real ni aplicació mòbil: en desenvolupament.',
     },
     consultoria: {

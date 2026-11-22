@@ -3,7 +3,7 @@
 // articulos-synentor.csv. El ERP sustituye las reglas de cada artículo que aparece en el fichero: las de un artículo
 // salen juntas. Orden: npm run articulos-erp (escribe RUTA_CSV_REGLAS); la prueba compara.
 import consultoria from '../../datos/consultoria.json';
-import { codigoDeModulo } from './articulosErp';
+import { codigoDeModulo, codigoDeTramoMuv } from './articulosErp';
 import { TARIFA, type ModuloId } from './tarifa';
 
 export const CABECERAS_REGLAS = ['articulo', 'clase', 'destino', 'cantidad', 'por_unidad', 'orden'] as const;
@@ -62,6 +62,10 @@ export function reglasErp(): ReglaErp[] {
   exige('SYN-PORTAL', 'SYN-PORTAL-IMPLANTACION');
   exige('SYN-PORTAL-PERSONA', 'SYN-PORTAL');
   exige('SYN-MODALIDAD-B', 'SYN-BASE');
+
+  // MUV (gerencia, 22/11/2026): la licencia exige la implantación mínima de MUV. Una sola regla, en el primer tramo:
+  // toda licencia lo lleva, porque se paga desde el primer usuario.
+  regla(codigoDeTramoMuv(1), 'exige', ['SYN-IMPLANTACION'], TARIFA.implantacion.minimoMuv);
 
   // Servicios. Que una web recomiende el mantenimiento (básico o plus) y que las migraciones exijan la Base lo confirmó
   // gerencia el 16/11/2026.

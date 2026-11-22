@@ -324,8 +324,8 @@ export const fr: Textos = {
       titulo: 'MUV',
       texto:
         'Le cerveau opérationnel de l’entreprise : cartes de connaissances, tâches avec responsables, échéances et dépendances, et une IA privée qui fonctionne dans vos bureaux.',
-      precio: 'Gratuit jusqu’à {gratis} utilisateurs. Du {desde1}e au {hasta1}e, {precio1} par utilisateur et par mois ; jusqu’à {hasta2}, {precio2}.',
-      equipos: 'Équipements recommandés (paiement unique) : Basique {basico} · IA {ia} · IA+ {iaPlus}.',
+      precio: 'Licence par utilisateur et par mois, en paiement annuel, dès le premier utilisateur : du 1er au {hasta1}e, {precio1} ; du {desde2}e au {hasta2}e, {precio2} ; du {desde3}e au {hasta3}e, {precio3}. Au-delà de {max} utilisateurs, sur mesure.',
+      equipos: 'Équipements recommandés (paiement unique) : Basique, {basico} : ne fait pas tourner l’IA qui rédige. Complet, {completo} : doté d’une carte graphique, il fait tourner toute l’IA.',
       enDesarrollo: 'Pas encore d’édition simultanée en temps réel ni d’application mobile : en développement.',
     },
     consultoria: {

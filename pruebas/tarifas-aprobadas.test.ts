@@ -62,7 +62,8 @@ describe('solo el portal del empleado', () => {
     expect(cuotaPortal(11.7)).toBe(63);
   });
 
-  it('implantación de una jornada', () => {
+  // Gerencia, 22/11/2026: la jornada sube a 790 €, pero este precio cerrado no se ha pedido tocarlo y sigue en 720 €.
+  it('implantación: 720 €, un precio cerrado que no sigue a la jornada', () => {
     expect(TARIFA.portalEmpleado).toEqual({ cuota: 59, personasIncluidas: 10, personaAdicional: 4, implantacion: 720 });
   });
 });
@@ -82,6 +83,7 @@ describe('tarifas de servicios aprobadas el 14/11/2026', () => {
     });
   });
 
+  // Gerencia, 22/11/2026: estos precios cerrados de 720 y 1.440 € no cambian aunque la jornada pase a 790 €.
   it('migraciones y convivencia', () => {
     expect(TARIFA.migracion).toEqual({
       arranque: 1440,
@@ -141,5 +143,47 @@ describe('Paquete Despachos y gestorías', () => {
       porNomina: 5,
       maxEmpresas: 25,
     });
+  });
+});
+
+// Gerencia, 22/11/2026: tarifa nueva de MUV, jornada de implantación y paquete Completo. Escritos a mano a propósito.
+describe('MUV, jornada de implantación y paquete Completo (gerencia, 22/11/2026)', () => {
+  it('licencia de MUV: 99 € del 1.º al 5.º usuario, 89 € del 6.º al 15.º y 79 € del 16.º al 100.º; más de 100, a medida', () => {
+    expect(TARIFA.muv.tramos).toEqual([
+      { hasta: 5, precio: 99 },
+      { hasta: 15, precio: 89 },
+      { hasta: 100, precio: 79 },
+    ]);
+    expect(TARIFA.muv.maxSinPropuesta).toBe(100);
+  });
+
+  it('nada gratis: la tarifa de MUV no lleva usuarios gratis ni ningún precio a cero', () => {
+    expect(Object.keys(TARIFA.muv).sort()).toEqual(['equipos', 'maxSinPropuesta', 'tramos']);
+    expect(JSON.stringify(TARIFA.muv)).not.toMatch(/gratis/i);
+    for (const tramo of TARIFA.muv.tramos) expect(tramo.precio).toBeGreaterThan(0);
+    const muv = (muvUsuarios: number) => calcula({ ...base, suite: false, muvUsuarios }).cuotaMensual;
+    for (const n of [1, 2, 3, 4, 5]) expect(muv(n)).toBe(n * 99);
+  });
+
+  it('equipos de MUV: dos, de pago único: Básico 2.190 € y Completo 6.490 €', () => {
+    expect(TARIFA.muv.equipos).toEqual({ basico: 2190, completo: 6490 });
+  });
+
+  it('jornada de implantación: 790 €; la Suite, desde 2 jornadas; MUV, de 1 a 4', () => {
+    expect(TARIFA.implantacion).toEqual({ jornada: 790, minimoSuite: 2, minimoMuv: 1, maximoMuv: 4 });
+  });
+
+  it('paquete Synentor Completo: 1.069 € con 10 usuarios y 85 € el usuario adicional; Compras, Ventas y CRM y Fiscal', () => {
+    expect(TARIFA.paquete).toEqual({
+      cuota: 1069,
+      incluye: ['compras', 'ventas_crm', 'fiscal'],
+      usuariosIncluidos: 10,
+      usuarioAdicional: 85,
+    });
+  });
+
+  it('el pago mensual sigue en +20 % y el IGI de Andorra en el 4,5 %', () => {
+    expect(TARIFA.recargoMensual).toBe(0.2);
+    expect(TARIFA.igiAndorra).toBe(0.045);
   });
 });
