@@ -12,6 +12,8 @@ import { HERRAMIENTAS } from '../src/datos/analitica';
 import { COOKIES, PROVEEDORES } from '../src/datos/legal';
 import { herramientasValidas } from '../src/lib/consentimiento';
 import { EMPRESA } from '../src/datos/empresa';
+import { equiposMuv, licenciaMuv } from '../src/lib/precios/filasTarifa';
+import { euros } from '../src/lib/formato';
 
 const DIST = fileURLToPath(new URL('../dist', import.meta.url));
 const idiomas = Object.keys(TEXTOS) as Idioma[];
@@ -227,5 +229,42 @@ describe('páginas construidas', () => {
       const html = readFileSync(fichero(ruta('precios', idioma)), 'utf8');
       expect(html).toMatch(/id="configurador"[^>]*data-textos="/);
     }
+  });
+
+  // Gerencia, 22/11/2026: tarifa nueva de MUV, jornada a 790 € y paquete Completo a 1.069 €. Las cifras, a mano; cómo
+  // se escribe cada importe en cada idioma lo da el formateador.
+  it('MUV: Servicios y Precios dicen la licencia desde el primer usuario y los dos equipos, y nada es gratis', () => {
+    const llano = (s: string) => s.replace(/[  ]/g, ' ');
+    const texto = (html: string) =>
+      llano(desescapa(visible(html).replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' '))).replace(/\s+/g, ' ');
+    const importe = (n: number, idioma: Idioma) => llano(euros(n, idioma));
+    const gratis = /gratis|gratu[iï]t|\bfree\b|grátis|kostenlos|de franc/i;
+    for (const idioma of idiomas) {
+      const servicios = readFileSync(fichero(ruta('servicios', idioma)), 'utf8');
+      const muv = texto(servicios.match(/<section[^>]*id="muv"[\s\S]*?<\/section>/)![0]);
+      expect(muv, idioma).toContain(llano(licenciaMuv(idioma)));
+      expect(muv, idioma).toContain(llano(equiposMuv(idioma)));
+      for (const n of [99, 89, 79, 2190, 6490]) expect(muv, `${idioma} ${n}`).toContain(importe(n, idioma));
+      // Ni la tarifa anterior (39 y 32 € por usuario; equipos de 890, 3.200 y 5.900 €) ni nada gratis.
+      for (const n of [39, 32, 890, 3200, 5900]) expect(muv, `${idioma} ${n}`).not.toContain(importe(n, idioma));
+      expect(muv, idioma).not.toMatch(gratis);
+      expect(texto(servicios), idioma).toContain(importe(790, idioma));
+
+      const htmlPrecios = readFileSync(fichero(ruta('precios', idioma)), 'utf8');
+      const precios = texto(htmlPrecios);
+      // La fila de MUV de la tabla «Todas las tarifas»: la misma frase que en Servicios.
+      const filaMuv = htmlPrecios.split('</tr>').map((f) => texto(f).trim()).find((f) => f.startsWith(`${TEXTOS[idioma]!.precios.tablas.muv} `));
+      expect(filaMuv, idioma).toBe(`${TEXTOS[idioma]!.precios.tablas.muv} ${llano(licenciaMuv(idioma))}`);
+      expect(filaMuv, idioma).not.toMatch(gratis);
+      for (const n of [1069, 85, 790]) expect(precios, `${idioma} ${n}`).toContain(importe(n, idioma));
+      // El paquete Completo ya no vale 469 € ni la jornada 720 €.
+      for (const n of [469, 720]) expect(precios, `${idioma} ${n}`).not.toContain(importe(n, idioma));
+    }
+    expect(licenciaMuv('es')).toBe(
+      'Licencia por usuario y mes, con pago anual, desde el primer usuario: del 1.º al 5.º, 99 €; del 6.º al 15.º, 89 €; del 16.º al 100.º, 79 €. Con más de 100 usuarios, a medida.',
+    );
+    const llms = readFileSync(join(DIST, 'llms.txt'), 'utf8');
+    expect(llano(llms)).toContain(llano(licenciaMuv('es')));
+    expect(llms).not.toMatch(/gratis hasta/i);
   });
 });

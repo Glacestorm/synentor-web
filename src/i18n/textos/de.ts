@@ -324,8 +324,8 @@ export const de: Textos = {
       titulo: 'MUV',
       texto:
         'Das operative Gehirn des Unternehmens: Wissenslandkarten, Aufgaben mit Verantwortlichen, Terminen und Abhängigkeiten sowie eine private KI, die in Ihrem Büro läuft.',
-      precio: 'Kostenlos bis {gratis} Nutzer. Vom {desde1}. bis zum {hasta1}. Nutzer: {precio1} pro Nutzer und Monat; bis {hasta2} Nutzer: {precio2}.',
-      equipos: 'Empfohlene Rechner (Einmalzahlung): Basis {basico} · KI {ia} · KI+ {iaPlus}.',
+      precio: 'Lizenz pro Nutzer und Monat bei jährlicher Zahlung, ab dem ersten Nutzer: 1. bis {hasta1}. Nutzer je {precio1}; {desde2}. bis {hasta2}. Nutzer je {precio2}; {desde3}. bis {hasta3}. Nutzer je {precio3}. Bei mehr als {max} Nutzern: individuell.',
+      equipos: 'Empfohlene Rechner (Einmalzahlung): Basis, {basico}: Die KI, die Texte verfasst, läuft darauf nicht. Komplett, {completo}: mit Grafikkarte, darauf läuft die gesamte KI.',
       enDesarrollo: 'Noch ohne gleichzeitiges Bearbeiten in Echtzeit und ohne mobile App: in Entwicklung.',
     },
     consultoria: {

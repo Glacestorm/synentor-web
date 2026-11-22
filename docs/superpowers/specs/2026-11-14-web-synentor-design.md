@@ -112,6 +112,19 @@ local» (no lo es en todo el producto), CashDro en varias empresas de una instal
 Todos **sin IGI** (en Andorra, el total es la base × 1,045, a confirmar por cliente; en España, IVA aparte). Precio **por
 mes con pago anual**; pago mensual, **+20 %**. Revisión prevista tras los 5–10 primeros clientes (unos 90 días).
 
+**Cambios del 22/11/2026 (gerencia).** Lo que sigue es la propuesta aprobada el 14/11/2026 y se conserva como se aprobó;
+estos tres puntos la sustituyen donde la contradicen. Los importes vigentes viven solo en `src/lib/precios/tarifa.ts`.
+
+- **MUV (§7.2)**: la licencia se paga desde el primer usuario, por usuario y mes con pago anual: 99 € del 1.º al 5.º,
+  89 € del 6.º al 15.º y 79 € del 16.º al 100.º; con más de 100, a medida. Ya no hay usuarios gratis, ni piloto, ni
+  evaluación gratuita. Equipos, de pago único: Básico, 2.190 € (no mueve la IA que redacta) y Completo, 6.490 € (lleva
+  tarjeta gráfica y mueve toda la IA); sustituyen a Básico, IA e IA+.
+- **Jornada de implantación (§7.1, §7.2 y §7.4)**: 790 € (antes, 720 €); los mínimos de jornadas no cambian. Los precios
+  cerrados de 720 y 1.440 € de otros servicios (§7.4 ter: migraciones, convivencia e implantación del portal del empleado)
+  no se han tocado.
+- **Paquete «Synentor Completo» (§7.3)**: MUV sigue dentro; 1.069 € al mes con 10 usuarios y 85 € el usuario adicional
+  (por separado, 391 € del ERP-CRM y 940 € de MUV: 1.331 €; el paquete sigue valiendo alrededor de un 20 % menos).
+
 ### 7.0 Países, disponibilidad y modalidades
 
 **El configurador es para todos los países** (gerencia, 14/11/2026): un selector de país arriba (Andorra · España ·

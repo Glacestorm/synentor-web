@@ -1,5 +1,6 @@
 // La tarifa de Synentor: el ÚNICO sitio con precios (diseño aprobado, §7; gerencia, 14/11/2026).
 // Euros sin impuestos, por mes y con pago anual. Un cambio aquí es una decisión de gerencia.
+// Gerencia, 22/11/2026: tarifa nueva de MUV (licencia y equipos), la jornada de implantación y el paquete Completo.
 
 export type ModuloId =
   | 'compras'
@@ -56,12 +57,21 @@ export const TARIFA = {
   modalidadB: 50,
   recargoMensual: 0.2,
   igiAndorra: 0.045,
-  implantacion: { jornada: 720, minimoSuite: 2, minimoMuv: 1, maximoMuv: 4 },
+  /**
+   * La jornada la comparten la Suite y MUV (gerencia, 22/11/2026: de 720 a 790 €; los mínimos no cambian). Los precios
+   * cerrados de otros servicios (migraciones, convivencia, implantación del portal del empleado) no siguen a la jornada.
+   */
+  implantacion: { jornada: 790, minimoSuite: 2, minimoMuv: 1, maximoMuv: 4 },
+  /**
+   * Paquete «Synentor Completo»: la Base, estos módulos y MUV, con los mismos usuarios en los dos programas. Gerencia,
+   * 22/11/2026: con la tarifa nueva de MUV, la cuota pasa de 469 a 1.069 € y el usuario adicional de 45 a 85 €, para
+   * que el paquete siga valiendo alrededor de un 20 % menos que sus piezas por separado (la prueba lo vigila).
+   */
   paquete: {
-    cuota: 469,
+    cuota: 1069,
     incluye: ['compras', 'ventas_crm', 'fiscal'] as const satisfies readonly ModuloId[],
     usuariosIncluidos: 10,
-    usuarioAdicional: 45,
+    usuarioAdicional: 85,
   },
   /**
    * Paquete Obrador (gerencia, 14/11/2026; diseño §18): la Base con sus 5 usuarios y estos módulos. Con el control de
@@ -138,13 +148,19 @@ export const TARIFA = {
     },
     minutoAdicional: 0.15,
   },
+  /**
+   * MUV (gerencia, 22/11/2026). La licencia se paga desde el primer usuario: por usuario y mes, con pago anual, cada
+   * usuario al precio de su tramo (`hasta` es el último usuario del tramo); con más de `maxSinPropuesta`, a medida. No
+   * hay usuarios gratis, piloto ni evaluación gratuita. Equipos, de pago único: el Básico no mueve la IA que redacta;
+   * el Completo lleva tarjeta gráfica y mueve toda la IA.
+   */
   muv: {
-    gratisHasta: 5,
     tramos: [
-      { hasta: 25, precio: 39 },
-      { hasta: 100, precio: 32 },
+      { hasta: 5, precio: 99 },
+      { hasta: 15, precio: 89 },
+      { hasta: 100, precio: 79 },
     ],
     maxSinPropuesta: 100,
-    equipos: { basico: 890, ia: 3200, iaPlus: 5900 },
+    equipos: { basico: 2190, completo: 6490 },
   },
 } as const;

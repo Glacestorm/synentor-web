@@ -324,8 +324,8 @@ export const pt: Textos = {
       titulo: 'MUV',
       texto:
         'O cérebro operativo da empresa: mapas de conhecimento, tarefas com responsáveis, datas e dependências, e uma IA privada que funciona no seu escritório.',
-      precio: 'Grátis até {gratis} utilizadores. Do {desde1}.º ao {hasta1}.º, {precio1} por utilizador por mês; até {hasta2}, {precio2}.',
-      equipos: 'Equipamentos recomendados (pagamento único): Básico {basico} · IA {ia} · IA+ {iaPlus}.',
+      precio: 'Licença por utilizador por mês, com pagamento anual, desde o primeiro utilizador: do 1.º ao {hasta1}.º, {precio1}; do {desde2}.º ao {hasta2}.º, {precio2}; do {desde3}.º ao {hasta3}.º, {precio3}. Com mais de {max} utilizadores, por medida.',
+      equipos: 'Equipamentos recomendados (pagamento único): Básico, {basico}: não corre a IA que redige. Completo, {completo}: tem placa gráfica e corre toda a IA.',
       enDesarrollo: 'Ainda não tem edição simultânea em tempo real nem aplicação móvel: em desenvolvimento.',
     },
     consultoria: {

@@ -167,6 +167,32 @@ describe('configurador', () => {
     expect(raiz.querySelector('input[data-k="muv"]')).not.toBeNull();
   });
 
+  // Gerencia, 22/11/2026: MUV se paga desde el primer usuario y la jornada de implantación vale 790 €.
+  it('solo MUV con 3 usuarios: la línea de MUV son 297 €, sin nada gratis, y la implantación empieza en 790 €', () => {
+    const raiz = monta();
+    marca(raiz.querySelector<HTMLInputElement>('input[data-k="suite"]')!);
+    const muv = raiz.querySelector<HTMLInputElement>('input[data-k="muv"]')!;
+    muv.value = '3';
+    muv.dispatchEvent(new Event('change', { bubbles: true }));
+    const lineas = raiz.querySelector('.conf-lineas')!.textContent!;
+    expect(lineas).toContain('MUV × 3');
+    expect(lineas).toContain(euros(297, 'es'));
+    expect(raiz.querySelector('.conf-implantacion')!.textContent).toContain(euros(790, 'es'));
+    expect(raiz.querySelector('[data-k="total"]')!.textContent).toBe(euros(calcula({
+      pais: 'AD', modalidad: 'A', pago: 'anual', suite: false, paquete: 'ninguno',
+      empresas: [{ modulos: [], personas: 0 }], usuarios: 5, muvUsuarios: 3,
+    }).totalMensual, 'es'));
+    expect(raiz.textContent).not.toMatch(/gratis/i);
+  });
+
+  it('el paquete Completo se ofrece con el precio de la tarifa: 1.069 € al mes con 10 usuarios', () => {
+    const raiz = monta();
+    const opcion = raiz.querySelector('input[name="conf-paquete"][value="completo"]')!.closest('label')!;
+    expect(opcion.textContent).toContain(`${euros(1069, 'es')} al mes`);
+    expect(opcion.textContent).toContain('con 10 usuarios');
+    expect(opcion.textContent).toContain('MUV');
+  });
+
   describe('acciones del contador', () => {
     beforeEach(() => vi.mocked(enviaEvento).mockClear());
 
