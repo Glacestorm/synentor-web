@@ -176,6 +176,24 @@ describe('páginas construidas', () => {
     }
   });
 
+  it('Servicios: MUV cuenta los plazos y el uso para family offices, y ya no le falta la edición en tiempo real (diseño §7.2)', () => {
+    for (const idioma of idiomas) {
+      const html = desescapa(readFileSync(fichero(ruta('servicios', idioma)), 'utf8'));
+      const muv = html.match(/<section[^>]*id="muv"[\s\S]*?<\/section>/)![0];
+      const t = TEXTOS[idioma]!.servicios.muv;
+      for (const texto of [t.plazos, t.familyOffices, t.enDesarrollo]) expect(muv, idioma).toContain(texto);
+      expect(t.plazos, idioma).toMatch(/Andorr/);
+      expect(t.familyOffices, idioma).toMatch(/family offices?/i);
+      // La edición en tiempo real ya está en MUV: no puede seguir entre lo que falta.
+      expect(t.enDesarrollo, idioma).not.toMatch(/tiempo real|temps real|real-time|temps réel|tempo real|Echtzeit/i);
+      // Family offices es un uso de MUV con sus plantillas, no una especialidad de la casa.
+      expect(muv, idioma).not.toMatch(/especiali|speciali|spéciali|spezial/i);
+    }
+    const llms = readFileSync(join(DIST, 'llms.txt'), 'utf8');
+    expect(llms).toContain(TEXTOS.es!.servicios.muv.plazos);
+    expect(llms).toContain(TEXTOS.es!.servicios.muv.familyOffices);
+  });
+
   it('Precios lleva las filas del Obrador y de las gestorías y la tarjeta de gestorías (diseño §18)', () => {
     for (const idioma of idiomas) {
       const html = readFileSync(fichero(ruta('precios', idioma)), 'utf8');

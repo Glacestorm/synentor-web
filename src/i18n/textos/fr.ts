@@ -324,9 +324,13 @@ export const fr: Textos = {
       titulo: 'MUV',
       texto:
         'Le cerveau opérationnel de l’entreprise : cartes de connaissances, tâches avec responsables, échéances et dépendances, et une IA privée qui fonctionne dans vos bureaux.',
+      plazos:
+        'Il calcule les délais procéduraux et administratifs d’Espagne et d’Andorre avec leurs calendriers officiels et les transforme en tâches de la carte. Si la règle admet deux lectures, il montre les deux et retient la date la plus précoce, et il prévient si le calendrier de l’année n’a pas encore été publié.',
+      familyOffices:
+        'Aussi pour les family offices : la carte de chaque famille en un seul endroit, avec son patrimoine, ses sociétés, ses documents, ses décisions et ce qui arrive à échéance. Il propose cinq modèles de départ : carte patrimoniale, gouvernance familiale et succession, opération d’investissement, obligations et échéances, et accueil d’une nouvelle famille. Il n’évalue pas les portefeuilles et ne se connecte pas aux banques.',
       precio: 'Licence par utilisateur et par mois, en paiement annuel, dès le premier utilisateur : du 1er au {hasta1}e, {precio1} ; du {desde2}e au {hasta2}e, {precio2} ; du {desde3}e au {hasta3}e, {precio3}. Au-delà de {max} utilisateurs, sur mesure.',
       equipos: 'Équipements recommandés (paiement unique) : Basique, {basico} : ne fait pas tourner l’IA qui rédige. Complet, {completo} : doté d’une carte graphique, il fait tourner toute l’IA.',
-      enDesarrollo: 'Pas encore d’édition simultanée en temps réel ni d’application mobile : en développement.',
+      enDesarrollo: 'Pas encore d’application mobile : en développement.',
     },
     consultoria: {
       titulo: 'Conseil en IA et en ventes',

@@ -324,9 +324,13 @@ export const pt: Textos = {
       titulo: 'MUV',
       texto:
         'O cérebro operativo da empresa: mapas de conhecimento, tarefas com responsáveis, datas e dependências, e uma IA privada que funciona no seu escritório.',
+      plazos:
+        'Calcula prazos processuais e administrativos de Espanha e de Andorra com os respetivos calendários oficiais e converte-os em tarefas do mapa. Se a norma admitir duas leituras, mostra as duas e adota a data que ocorrer primeiro, e avisa se o calendário do ano ainda não tiver sido publicado.',
+      familyOffices:
+        'Também para family offices: o mapa de cada família num só lugar, com o seu património, as suas sociedades, os seus documentos, as suas decisões e o que vence. Traz cinco modelos de partida: mapa patrimonial, governação familiar e sucessão, operação de investimento, obrigações e vencimentos, e integração de uma nova família. Não avalia carteiras nem se liga a bancos.',
       precio: 'Licença por utilizador por mês, com pagamento anual, desde o primeiro utilizador: do 1.º ao {hasta1}.º, {precio1}; do {desde2}.º ao {hasta2}.º, {precio2}; do {desde3}.º ao {hasta3}.º, {precio3}. Com mais de {max} utilizadores, por medida.',
       equipos: 'Equipamentos recomendados (pagamento único): Básico, {basico}: não corre a IA que redige. Completo, {completo}: tem placa gráfica e corre toda a IA.',
-      enDesarrollo: 'Ainda não tem edição simultânea em tempo real nem aplicação móvel: em desenvolvimento.',
+      enDesarrollo: 'Ainda não tem aplicação móvel: em desenvolvimento.',
     },
     consultoria: {
       titulo: 'Consultoria de IA e vendas',
